@@ -1,0 +1,655 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: cormorant-garamond, serif;
+        font-weight: 400;
+        font-style: italic;
+        margin: 0;
+        background-color: #f4f2e7;
+      }
+      .fullScreen {
+        width: 100%;
+        /* max-height:100%;
+                  min-height:100%; */
+        height: 100%;
+        margin: 0;
+      }
+      #cover {
+        font-size: 34px;
+        font-family: cormorant-garamond, serif;
+        font-weight: 300;
+        font-style: normal;
+        letter-spacing: 12px;
+        text-align: center;
+        background-image: url('cover_new_web_flipped.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        visibility: visible;
+      }
+      #title {
+        bottom: 26%;
+        left: 10%;
+        position: absolute;
+        color: white;
+      }
+      a {
+        color: black;
+      }
+      a:visited {
+        color: black;
+      }
+      #footer {
+        font-family: monospace;
+        font-weight: 500;
+        font-style: normal;
+        background-color: black;
+        margin: auto;
+        color: white;
+        /* width:100vw; */
+        height: 25px;
+        padding: 20px 10%;
+        vertical-align: middle;
+        font-size: 11px;
+        line-height: 20px;
+        text-align: center;
+      }
+      #footer a {
+        color: white;
+      }
+      #chart {
+        position: relative;
+        text-align: left;
+        /* margin-left:3%; */
+        /* padding:0 2em; */
+      }
+      .xAxis,
+      .yAxis {
+        font-family: cormorant-garamond, serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 1em;
+        letter-spacing: 1;
+        font-style: italic;
+      }
+      .yAxis {
+        /* text-transform: uppercase; */
+        font-variant: small-caps;
+        font-size: 1em;
+      }
+      .xAxis {
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+      .yAxis > .tick > line {
+        stroke-dasharray: 2;
+      }
+      #better {
+        text-anchor: start;
+        text-transform: capitalize;
+      }
+      #worse {
+        text-anchor: end;
+        text-transform: capitalize;
+      }
+      #avg {
+        text-anchor: middle;
+        text-transform: uppercase;
+      }
+      #intervention-tick {
+        font-family: monospace;
+        font-style: normal;
+        font-size: 13px;
+        letter-spacing: 0.5;
+      }
+      .domain {
+        marker-end: url(#arrow);
+        marker-start: url(#arrow);
+      }
+      .mood {
+        stroke: fuchsia;
+        fill: fuchsia;
+      }
+      /* .predArea.mood{
+                  opacity: 0.3;
+              } */
+      .morale {
+        stroke: gold;
+        fill: gold;
+      }
+      /* .predArea.morale{
+                  opacity: 0.4;
+              } */
+      .stress {
+        stroke: blue;
+        fill: blue;
+      }
+      /* .predArea.stress{
+                  opacity: 0.6;
+              } */
+      .fatigue {
+        stroke: lavender;
+        fill: lavender;
+        opacity: 1;
+      }
+      /* .predArea.fatigue{
+                  opacity: 0.35;
+              } */
+      .predLine {
+        stroke-width: 12;
+        fill: none;
+        opacity: 0.5;
+      }
+      .predLine.fatigue {
+        opacity: 0.8;
+      }
+      .interventionLine,
+      .ritualLine {
+        fill: none;
+        stroke-width: 1;
+        /* stroke-dasharray: 2; */
+        /* stroke:black; */
+      }
+      .interventionLine.fatigue {
+        stroke: #9b9fe8;
+      }
+      .interventionTXT.fatigue {
+        fill: #9b9fe8;
+      }
+      .deetline.fatigue {
+        stroke: #9b9fe8;
+      }
+      .ritualLine,
+      .ritualPTS {
+        stroke: grey;
+      }
+      .interventionPTS {
+        fill: #fffbe5;
+        stroke-width: 2;
+      }
+      .interventionPTS.fatigue {
+        stroke: #9b9fe8;
+      }
+      .ritualPTS {
+        fill: grey;
+        stroke-width: 0;
+      }
+      .deetLine.rituals {
+        stroke: grey;
+      }
+      .deets {
+        font-family: cormorant-garamond, serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 1em;
+        line-height: 1.25em;
+        position: absolute;
+        /* background-color: white; */
+        width: 350px;
+        position: absolute;
+        text-align: left;
+        /* padding: 1em 2em; */
+        padding-left: 10px;
+      }
+      .deets.mood {
+        border-left: 2px solid fuchsia;
+        /* box-shadow: 5px 5px fuchsia; */
+      }
+      .deets.morale {
+        border-left: 2px solid gold;
+        /* box-shadow: 5px 5px gold; */
+      }
+      .deets.stress {
+        border-left: 2px solid blue;
+        /* box-shadow: 5px 5px blue; */
+      }
+
+      .deets.fatigue {
+        border-left: 2px solid #9b9fe8;
+        /* box-shadow: 5px 5px lavender; */
+      }
+      .deets.rituals {
+        border-left: 2px solid grey;
+      }
+      .interventionTXT,
+      .ritualTXT {
+        stroke-width: 0;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: monospace;
+        font-weight: 500;
+        font-style: normal;
+        letter-spacing: -0.6;
+      }
+      .ritualTXT {
+        fill: grey;
+      }
+      .hide {
+        opacity: 0 !important;
+      }
+      .documentation {
+        position: absolute;
+        font-family: monospace;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 10.5px;
+        line-height: 8px;
+        text-align: left;
+        border-right: 1px;
+      }
+      .deets.documentation {
+        position: absolute;
+        /* background-color: white; */
+        width: 350px;
+        position: absolute;
+        text-align: left;
+        /* padding: 1em 2em; */
+        padding-left: 10px;
+        border-left: 2px solid grey;
+      }
+      .deets.documentation > p {
+        margin-bottom: 0;
+      }
+      .deetLine {
+        fill: none;
+        stroke-width: 1.5;
+      }
+      .docLine {
+        fill: none;
+        stroke-width: 1;
+        stroke: grey;
+        stroke-dasharray: 2;
+      }
+      /* .docPTS {
+        fill: black; */
+      /* stroke-width: 1;
+                  stroke: black; */
+      /* } */
+      .docTXT {
+        font-size: 0.9em;
+        color: grey;
+      }
+      #chartNav {
+        /* display:none; */
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: opacity 600ms, visibility 600ms;
+        transition: opacity 600ms, visibility 600ms;
+      }
+      #filterBox {
+        font-family: monospace;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        position: fixed;
+        bottom: 5%;
+        right: 2%;
+        border: black 1px solid;
+        margin: 0;
+        padding: 1%;
+        text-align: left;
+        background-color: white;
+      }
+      #filterBy > p {
+        line-height: 2;
+      }
+      input {
+        vertical-align: middle;
+        margin: 4px 6px;
+      }
+      #prevDay,
+      #nextDay {
+        bottom: 50%;
+        position: fixed;
+        border: black 4px double;
+        margin: 0;
+        /* padding: 1%; */
+        text-align: center;
+        background-color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 30px;
+        /* vertical-align: middle; */
+        line-height: 48px;
+        cursor: pointer;
+      }
+      #prevDay {
+        left: 2%;
+      }
+      #nextDay {
+        right: 2%;
+      }
+      #gentileschi {
+        opacity: 0;
+        position: fixed;
+        top: 0%;
+        right: 5%;
+        text-align: right;
+        z-index: -1;
+      }
+      #gentileschi img {
+        /* height:120%; */
+        max-width: 85%;
+      }
+      #intro {
+        margin-top: 75%;
+        padding-top: 10%;
+        padding-left: 10%;
+        width: 28%;
+        font-size: 1.15em;
+        line-height: 1.35;
+        font-size: 1.1em;
+        font-style: normal;
+      }
+      #video {
+        position: relative;
+        /* background-color:#fffbe5; */
+      }
+      #video iframe {
+        position: absolute;
+        top: 20%;
+        /* height: 535; */
+        /* margin-top: -267.5; */
+        width: 100%;
+        /* left: 50%; */
+        /* margin-left: -475; */
+      }
+      .arrow {
+        font-size: 2em;
+        transform: rotate(45deg);
+        transform-origin: left;
+      }
+      #caption-container {
+        font-family: monospace;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 10.5px;
+        line-height: 17px;
+        /* text-transform: uppercase; */
+        bottom: 3%;
+        right: 5.5%;
+        color: white;
+        position: fixed;
+        z-index: 1000;
+        width: 155;
+        cursor: pointer;
+        letter-spacing: 1.2;
+        word-spacing: -2.2;
+      }
+      #caption {
+        font-family: cormorant-garamond, serif;
+        font-size: 15px;
+        line-height: 20px;
+        padding-top: 5px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        display: none;
+      }
+
+      #caption a {
+        color: white;
+      }
+      .nav-arrow {
+        font-size: 2em;
+        margin: 0;
+        font-style: normal;
+      }
+      #nextDayCaption,
+      #prevDayCaption {
+        font-family: monospace;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 14px;
+        font-size: 10.5px;
+        margin-top: 20px;
+        display: none;
+      }
+      /* #border-fullScreen{
+                  width:100%;
+                  max-height:100%;
+                  min-height:100%;
+                  margin:0;
+                  font-size:28px;
+                  font-family: cormorant-garamond, serif;
+                  font-weight: 300;
+                  font-style: italic;
+                  letter-spacing: 12px;
+              }
+              #border-dec {
+                  width:80%;
+                  height:80%;
+                  margin:0;
+                  border: 1px solid black;
+              } */
+      #chart-intro {
+        /* margin-top: 75%; */
+        /* padding-top: 10%; */
+        padding-left: 5%;
+        width: 28%;
+        font-size: 1.15em;
+        line-height: 1.35;
+        font-size: 1.1em;
+        font-style: normal;
+        display: inline-block;
+        padding-right: 15%;
+        margin-bottom: 8%;
+      }
+      #description-key {
+        display: inline-block;
+        font-size: 0.95em;
+        line-height: 0.75;
+        /* font-family: 'source-code-pro'; */
+        font-style: normal;
+        vertical-align: text-bottom;
+      }
+      #description-key > p::first-letter {
+        font-size: 0.5em;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="caption-container">
+      ABOUT THIS IMAGE <span style="font-size: 15px">⌄</span>
+      <div id="caption"></div>
+    </div>
+
+    <div class="fullScreen" id="cover">
+      <div id="title">
+        SELF-PORTRAIT
+        <span style="font-style: italic; font-size: 28px; vertical-align: 10%; font-weight: 500">as</span> ALLEGORY
+        <span style="font-style: italic; font-size: 28px; vertical-align: 10%; font-weight: 500">of</span>
+      </div>
+    </div>
+
+    <div id="gentileschi">
+      <img src="smaller-Self-portrait_as_the_Allegory_of_Painting_by_Artemisia_Gentileschi.jpg" />
+    </div>
+
+    <div id="intro">
+      <p>
+        <i>Self-Portrait as Allegory of</i> is my masters's thesis project: a data-driven, machine-managed, sanity
+        maintenance system.
+      </p>
+
+      <p>
+        Adapting the conceptual format and title of an Artemisia Gentileschi painting from 1638–39, it is at once a
+        self-portrait as depicted by personal data and predictive models, as well as an allegory to an amalgamation of
+        scientific, cultural, and personal ideals of mental health.
+      </p>
+
+      <p>
+        In construction, <i>Self-Portrait as Allegory of</i> comprises three systems: data collection by a body of
+        trackers I built to collect digital phenotypes; mood prediction by a suite of neural networks that use this data
+        to predict my mood, morale, stress, and fatigue levels; and intervention by a noninteractive voice assistant
+        that responds to these predictions by directing me to perform mood-improving interventions and rituals that,
+        taken together, form a lifestyle shift that optimizes for mental health.
+      </p>
+
+      <p>
+        In manifestation, the project is an n-of-one behavioral modification experiment: a data-driven, AI-directed
+        performance of a composite aspiration comprising optimizations from positive psychology, the wellness industry,
+        self-care culture, the female-empowerment zeitgeist, and my own romanticism of past, present, and future lives
+        forever shaped, stagnated, and propelled by my history with depression. Synthesized into actionable
+        interventions and rituals, these frameworks form the body of allegorical symbolism for idealized mental health,
+        which I perform throughout the day as the system sees fit. The mere act of embodying these ideals allows me to
+        not only adopt and benefit from an optimized lifestyle in the present, but also write it into my narrative of
+        the future.
+      </p>
+
+      <p>
+        By transforming mental health maintenance—normally a consciously effortful, continuous act of
+        self-discipline—into a simple performance of externally mandated instruction,
+        <i>Self-Portrait as Allegory of</i> aims to bypass some of the most insidious and persistent depressive
+        symptoms—learned helplessness, fixed mindset, and the inability to construct a future—by removing willpower,
+        decision-making, and constant emotional monitoring out of the daily work of self-care and recovery.
+      </p>
+
+      <p class="arrow">➳</p>
+    </div>
+    <!-- <div id="border-fullScreen">
+        <div id="border-title">EXPLAINER</div>
+        <div id="border-dec"></div>
+    </div> -->
+    <div class="fullScreen" id="video">
+      <iframe
+        src="https://player.vimeo.com/video/336817760"
+        width="950"
+        height="535"
+        frameborder="0"
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen
+      ></iframe>
+      <!-- <p><i>Dimensions: social, physical, mental</i></p> -->
+    </div>
+    <div id="chart-intro">
+      <p>
+        The first half of this project—data collection and mood prediction—is
+        <a href="https://xujenna.com/speakmemory/" target="new">documented in detail here</a>. The final half—machine
+        intervention in response to the mood prediction—is documented below.
+      </p>
+      <p>
+        Mood predictions are sent to my noninteractive voice assistant, affectionately named Fitter Happier, which I
+        carried on me for about a month. Fitter Happier is comprised of a raspberry pi, a GSM hat, a SIM card, and a
+        lithium battery. The pi, running Node.js, speaks to me via a bluetooth earpiece.
+      </p>
+      <br />
+      <p>
+        <video width="100%" id="fitter-happier-vid" controls>
+          <source src="fitter-happier.mp4" type="video/mp4" />
+        </video>
+      </p>
+      <br />
+      <p>
+        The non-interactivity was intentional: I hoped that removing any opportunity to opt out, or exchange one
+        intervention for another, would ensure adherence (otherwise, the following chart would be embarrasingly barren).
+      </p>
+      <p>
+        Each mood prediction domain—morale, stress, fatigue, and general mood—has a targeted set of interventions
+        tailored to my personal preferences. For example, if my stress levels were predicted to be worse than normal,
+        the intervention would be a cortisol-lowering activity: a meditation, a random imgur photo tagged 'aww' (a
+        reliable source of cute animal photos), a physical exercise, a field trip to a random coordinate in Lower
+        Manhattan, or one of my favorite poems or videos.
+      </p>
+      <p>
+        Rituals, also directed by Fitter Happier, focused on developing more long-term habits, for example:
+        everymeditations on my roof in the mornings, walks around Washington Square Park at sunset; approaching random
+        people with an
+        <a href="https://journals.sagepub.com/doi/pdf/10.1177/0146167297234003" target="new"
+          >intimacy-encouraging question</a
+        >
+        in the afternoon; during the day, I would log grateful moments—the complete list of which would be sent to
+        someone mentioned, and someone random, at the end of the day, along with an ask that they share their own lists;
+        every weekend, I visited a random
+        <a href="https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_York_City" target="new"
+          >historical landmark in New York City</a
+        >.
+      </p>
+      <p>
+        Many of these rituals and interventions were attempts to inject the novelty and randomness I experienced, and
+        the curiosity and gratitude I felt, while traveling in my 20s, which I ultimately credit for my recovery from an
+        exceptionally severe bout of depression.
+      </p>
+      <p>
+        In the following chart, mood predictions are displayed as line graphs deviating from a rolling mean; in other
+        words, better or worse than my baseline mood.
+      </p>
+      <p>
+        On the worse (or right) side of the y-axis baseline, you'll see what Fitter Happier said to me upon the
+        unfortunate prediction. Click on the intervention, and you'll see the details.
+      </p>
+      <p>
+        Each chart is a day's worth of predictions and interventions. Click on the right or left arrows to move backward
+        or forward a day, respectively.
+      </p>
+    </div>
+    <div id="description-key">
+      <p><span style="color: rgb(255, 0, 255)">█ &nbsp;</span>Mood</p>
+      <p><span style="color: rgb(245, 205, 0)">█ &nbsp;</span>Morale</p>
+      <p><span style="color: rgb(0, 0, 255)">█ &nbsp;</span>Stress</p>
+      <p><span style="color: rgb(200, 200, 220)">█ &nbsp;</span>Fatigue</p>
+    </div>
+    <div id="chart">
+      <svg id="charts"></svg>
+    </div>
+
+    <div id="chartNav">
+      <div id="prevDay">
+        <p class="nav-arrow" span style="transform: rotate(180deg)">➳</p>
+        <div id="prevDayCaption">Previous Day</div>
+      </div>
+      <div id="nextDay">
+        <p class="nav-arrow">➳</p>
+        <div id="nextDayCaption">Next Day</div>
+      </div>
+      <div id="filterBox">
+        <p><b>Filter By:</b></p>
+        <form id="filterBy">
+          <p>
+            Predictions<br />
+            <label style="margin-right: 0.5em"><input type="checkbox" name="chart1" value="mood" checked />Mood</label
+            ><br />
+            <label style="margin-right: 0.5em"
+              ><input type="checkbox" name="chart2" value="morale" checked />Morale</label
+            ><br />
+            <label style="margin-right: 0.5em"
+              ><input type="checkbox" name="chart3" value="stress" checked />Stress</label
+            ><br />
+            <label style="margin-right: 0.5em"
+              ><input type="checkbox" name="chart4" value="fatigue" checked />Fatigue</label
+            >
+          </p>
+          <p>
+            Documentation<br />
+            <label style="margin-right: 0.5em"
+              ><input type="checkbox" name="documentation2" value="interventions" checked />Interventions</label
+            >
+            <br />
+            <label style="margin-right: 0.5em"
+              ><input type="checkbox" name="documentation1" value="rituals" />Rituals</label
+            >
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <div id="footer">
+      Created by <a href="https://xujenna.com" target="new">Jenna Xu</a> for her Master's thesis at ITP, NYU.
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-database.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/ymy2xzx.css" />
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

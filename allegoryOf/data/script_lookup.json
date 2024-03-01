@@ -1,0 +1,45 @@
+{
+    "stress": {
+        "videos": "Hey Jenna, I e-mailed you a calming video.",
+        "meditations": "Hey Jenna, let's do a quick meditation.",
+        "cuteThings": "Hey Jenna, check your e-mail.",
+        "poetry": "Hey Jenna, I e-mailed you a poem ",
+        "exercises": {
+            "workouts": "Hey Jenna, let's do a short exercise.",
+            "danceTracks": "Hey Jenna, let's dance to"
+        },
+        "fieldTrip": "Hey Jenna, let's go on a field trip."
+    },
+    "morale": {
+        "poetry": "Hey Jenna, I e-mailed you a poem ",
+        "videos": "Hey Jenna, I sent you a video to hype you up!",
+        "fieldTrip": "Hey Jenna, let's go on a field trip."
+    },
+    "mood": {
+        "meditations": "Hey Jenna, let's do a quick meditation.",
+        "interactions": {
+            "compliment": "Hey Jenna, pay someone a compliment.",
+            "question": "Hey Jenna, ask someone this question.",
+            "joke": "Hey Jenna, tell someone this joke",
+            "fact": "Hey Jenna, share this animal fact"
+        },
+        "exercises": {
+            "workouts": "Hey Jenna, let's do a short exercise.",
+            "danceTracks": "Hey Jenna, let's dance to"
+        },
+        "fieldTrip": "Hey Jenna, let's go on a field trip."
+    },
+    "fatigue": {
+        "exercises": {
+            "workouts": "Hey Jenna, let's do a short exercise.",
+            "danceTracks": "Hey Jenna, let's dance to"
+        },
+        "videos": "Hey Jenna, I sent you a video to hype you up!",
+        "interactions": {
+            "compliment": "Hey Jenna, pay someone a compliment.",
+            "question": "Hey Jenna, ask someone this question.",
+            "joke": "Hey Jenna, tell someone this joke",
+            "fact": "Hey Jenna, share this animal fact"
+        }
+    }
+}

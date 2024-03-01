@@ -1,0 +1,504 @@
+@font-face {
+	font-family: "Freight Text";
+	src: url("./freight/freight-normal.woff") format("woff");
+	font-style: normal;
+	font-weight: normal;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "Freight Text";
+	src: url("./freight/freight-italic.woff") format("woff");
+	font-style: italic;
+	font-weight: normal;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "Freight Text";
+	src: url("./freight/freight-bold.woff") format("woff");
+	font-style: normal;
+	font-weight: bold;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "Freight Text";
+	src: url("./freight/freight-bold-italic.woff") format("woff");
+	font-style: italic;
+	font-weight: bold;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+
+  @font-face {
+	font-family: "Freight Big";
+	src: url("./freight/freight-big-pro-regular-font.woff2") format("woff2");
+	font-style: normal;
+	font-weight: normal;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "Freight Big";
+	src: url("./freight/freight-big-pro-italic-font.woff2") format("woff2");
+	font-style: italic;
+	font-weight: italic;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+
+  @font-face {
+	font-family: "futura";
+	src: url("./futura_web/FuturaPT-Book.woff2") format("woff2");
+	font-style: normal;
+	font-weight: normal;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "futura";
+	src: url("./futura_web/FuturaPT-Bold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: bold;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "futura";
+	src: url("./futura_web/FuturaPT-Medium.woff2") format("woff2");
+	font-style: medium;
+	font-weight: 500;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "futura";
+	src: url("./futura_web/FuturaPT-Demi.woff2") format("woff2");
+	font-style: bold;
+	font-weight: 600;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "prophet";
+	src: url("./prophetLight.woff") format("woff");
+	font-style: normal;
+	font-weight: 300;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+
+  @font-face {
+	font-family: "meridian";
+	src: url("./meridian.woff") format("woff");
+	font-style: normal;
+	font-weight: 300;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+
+  @font-face {
+	font-family: "meridian";
+	src: url("./meridian-medium.woff") format("woff");
+	font-style: medium;
+	font-weight: 600;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+
+  @font-face {
+	font-family: "The Serif";
+	src: url("./SerifText-Light.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 300;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+  @font-face {
+	font-family: "The Serif";
+	src: url("./SerifText-Bold.otf") format("otf");
+	font-style: bold;
+	font-weight: 600;
+	unicode-range: U+0000-DFFF, U+F900-FFFD;
+  }
+body {
+    font-size: 17px;
+    font-family: "The Serif", serif;
+    /* letter-spacing: 1; */
+	font-weight: 300;
+	/* word-spacing: -3px;
+	line-height: 1.7; */
+	background: #fff;
+	  background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin:3%;
+    background-color:whitesmoke;
+}
+
+a{
+    color:blue;
+    text-decoration: none;
+    text-decoration: underline;
+}
+
+.card-title{
+    font-weight:bold;
+    text-decoration: none;
+    /* border-bottom: 1px solid black;
+    padding-bottom:2px; */
+    /* width: max-content; */
+    color:black;
+    margin-bottom:0;
+    font-family: 'meridian';
+    font-weight: 600;
+    /* letter-spacing: 0.8; */
+    border-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    font-size: 1em!important;
+}
+.card-title:hover{
+    color: blue;
+}
+#hello{
+    font-size:2.1em;
+    line-height:1.5;
+    margin-bottom: 7%;
+    width:97%;
+    font-family: "meridian";
+}
+#hello>ul>li{
+    margin-bottom:15px;
+    line-height: 1.2;
+}
+#hello>ul>li::marker{
+    content: '✎ ';
+}
+#hello-kicker{
+    /* font-family:'futura';
+    text-transform: uppercase;
+    letter-spacing: 1.25;
+    font-size:0.95em;
+    margin-bottom:2.5%;
+    color:blue; */
+    font-family: "meridian";
+    font-weight: medium;
+    font-size: 100;
+    margin-bottom: 0;
+}
+
+.filter-group{
+    width: 35%;
+    display:inline-block;
+    vertical-align: top;
+}
+.project-card, #filters{
+    min-height: 200px;
+    margin: 1% 2% 2% 0%;
+    padding:2%;
+    border: 1px solid black;
+    background-color:white;
+    vertical-align: top;
+    top: 0;
+    transition: all ease 0.25s;
+}
+.project-card > p{
+    line-height: 1.4;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 16px;
+    font-size:0.9em;
+}
+#filters{
+    font-family:'meridian';
+    text-transform: lowercase;
+    letter-spacing: 1;
+    font-size:0.9em;
+    line-height:2.1;
+    padding:1%;
+    /* margin-bottom: 2.5%; */
+    position: fixed;
+    width: 180px;
+    height: 280px;
+    min-height: max-content;
+    z-index:100;
+    transition: height ease 0.25s;
+    overflow:hidden;
+}
+
+.displayed{
+    position:relative;
+    display:inline-block;
+    width: 27%;
+    min-width:240px;
+}
+.project-card:hover{
+    top: -10;
+    box-shadow: -5px 5px rgb(0 0 0 / 40%);
+}
+
+.tag{
+    background-color: lightgrey;
+    padding:2px 4px;
+    display: inline-block;
+    margin-right:4px;
+    margin-top:4px;
+    /* font-family: monospace; */
+    font-family:'meridian';
+    text-transform: uppercase;
+    letter-spacing: 1.25;
+    font-size: 0.6em;
+    cursor:pointer
+}
+.tag:hover{
+    background-color: rgba(0%, 0%, 100%, 40%);
+}
+.tags{
+    margin-bottom: 50px;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 15px;
+}
+
+.lead-in{
+    font-family:'meridian';
+    font-weight:700;
+    text-transform: uppercase;
+    letter-spacing: 1.25;
+    font-size:0.65em;
+}
+
+.card-img {
+    max-width: 100%;
+    max-height: 400px;
+}
+
+.collapsed{
+    position: fixed;
+    width: 180px;
+    height: 280px;
+    overflow: hidden;
+    background-color: lightgrey;
+    padding:1%;
+
+}
+.collapsed:hover{
+    box-shadow: none;
+}
+
+.expanded{
+    width: 95.25%;
+    max-height:max-content;
+    display:inline-block;
+    padding: 6%;
+}
+.expanded > .card-img {
+    max-height: 600px;
+    transition: all ease 0.25s;
+}
+.link_out{
+    display: none;
+    margin-bottom:25px;
+}
+
+
+.minMax{
+    cursor:pointer;
+}
+
+.readMore{
+    margin-bottom:5px;
+    display: inline-block;
+}
+.readMore:hover{
+    color:blue;
+}
+.openProj{
+    margin-bottom:5px;
+    display: inline-block;
+    float:right;
+}
+
+.material-icons{
+    font-size: inherit;
+    line-height: inherit;
+    vertical-align: sub;
+}
+
+.featured-links > a{
+    color:black;
+    text-decoration: underline;
+}
+.featured-links > a:hover{
+    color:blue;
+}
+
+#filter-minMax{
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.25;
+    cursor:pointer;
+}
+
+#filter-inputs > input, #filter-inputs > label {
+    cursor: pointer;
+    vertical-align: middle;
+}
+.expand-less-icon{
+    font-weight: bold;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+.expand-more-icon{
+    font-weight: bold;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+.collapsed-min{
+    height:40px;
+    min-height: 40px;
+}
+
+#description_text{
+    width: 90%;
+    line-height:1.5;
+    font-family: 'The Serif';
+    font-size:1em;
+}
+
+.slideshow-container{
+    margin-top: 2em;
+    /* font-family: 'meridian'; */
+    font-size: 0.9em;
+}
+.prev, .next{
+    font-family: 'meridian';
+    font-weight: 600;
+}
+
+.prev:hover, .next:hover {
+    cursor:pointer;
+}
+
+.card-title-place{
+    font-variant: small-caps;
+    font-size: 0.85em;
+    font-weight: normal;
+    letter-spacing: 1;
+    display:block;
+    font-family: 'meridian';
+}
+
+.img-responsive{
+    max-width: 100%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.inline_screens {
+	margin-right:10px;
+	width:27%;
+	display:inline-block;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.19);
+    max-width: 150px;
+    min-width:125px;
+}
+.inline_screen_arrows {
+	margin-top: 25%;
+    margin-right: 8px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+#slide_img{
+    width:100%;
+    max-width: 700px;
+}
+
+#img-container img {
+    margin-bottom: 45px;
+}
+
+.section_hed {
+    border-top: solid 1px black;
+    padding-top: 40px;
+    margin-top: 50px;
+    max-width: 600px;
+    margin-bottom: 30px;
+    font-family: 'meridian';
+}
+
+.inset_emphasis {
+    border-left: solid 1px black;
+    padding-left: 25px;
+    margin: 35px 0 !important;
+}
+
+.figma-embed{
+    width: 100%;
+    aspect-ratio: 2 / 1.5;
+}
+.video > .embed-responsive-item{
+    width: 100%;
+}
+
+.hidden{
+    display:none;
+}
+
+@media (max-width:960px) {
+    body{
+        margin: 12% 6%;
+    }
+}
+
+@media (max-width:480px) {
+    body{
+        margin: 20% 6%;
+    }
+    #hello{
+        font-size: 1.25em;
+        margin-bottom: 15%;
+        line-height: 1.4;
+    }
+    #hello > ul {
+        padding-inline-start: 20px;
+    }
+    #hello-kicker{
+        font-family: "meridian", serif;
+        font-weight: medium;
+        font-size: 50;
+        margin-bottom: 0;
+        line-height: 1.25;
+    }
+    #filters{
+        top:0;
+        right:0;
+        margin:0;
+        padding: 3%;
+    }
+    .displayed{
+        display:block;
+        padding: 6%;
+        margin-right: 0;
+        margin-bottom: 10%;
+        width: auto;
+    }
+    .expanded{
+        width: auto;
+        margin: auto;
+        margin-bottom: 10%;
+    }
+    #description_text{
+        width: auto;
+        line-height:1.5;
+    }
+    .video > .embed-responsive-item{
+        width: 100%;
+        height: auto;
+    }
+    .inset_emphasis {
+        border-left: 0;
+        padding-left: 0;
+        margin: 0;
+    }
+    .inline_screens {
+        margin-bottom: 0!important;
+    }
+    .figma-embed{
+        width: 100%;
+        height:40%;
+    }
+}

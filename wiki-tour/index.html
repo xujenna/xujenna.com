@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz736x04lEqizPrEKGNXKdYLyikmlUaZU&callback=mapsCallback"
+    ></script>
+    <script src="walking_tour_anywhere.js"></script>
+    <style>
+      #map {
+        height: 50%;
+      }
+      #tour-container {
+        padding: 10%;
+      }
+      /* body {
+              background-color: linen;
+            }
+            
+            h1 {
+              color: maroon;
+              margin-left: 40px;
+            } */
+    </style>
+  </head>
+
+  <body>
+    <button
+      onclick="getWikiPage({county:'Alameda County', state: 'California', latlng: { lat: 37.811225, lng: -122.256176}})"
+    >
+      Get my location and go
+    </button>
+    <br />or<br />
+
+    <button onclick="getRandomCoords()">Try random coordinates</button>
+    <div id="map"></div>
+    <!-- <div id="directions-panel"></div> -->
+    <div id="tour-container">
+      <p id="0"></p>
+      <p id="1"></p>
+      <p id="2"></p>
+      <p id="3"></p>
+      <p id="4"></p>
+      <p id="5"></p>
+      <p id="6"></p>
+      <p id="7"></p>
+      <p id="8"></p>
+      <p id="9"></p>
+    </div>
+  </body>
+</html>

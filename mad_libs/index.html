@@ -1,0 +1,521 @@
+<html>
+<head>
+	<meta charset="UTF-8" name = "viewport" content="width=device-width,initial-scale=1">
+	<style type="text/css">
+
+
+	body{
+		margin:0px;
+		font-family: old-standard, serif;
+	}
+	img, embed, object, video {
+		max-width: 100%;
+	}
+
+	@media screen and (min-width: 500px){
+
+	}
+
+	.step-container {
+		min-width: 100%;
+		min-height: 100%;
+		display:none;
+	}
+
+	.player1{
+		background-color: coral;
+	}
+
+	.player2{
+		background-color: mediumblue;
+	}
+	.step {
+		width:55%;
+		vertical-align: middle;
+		/* margin:auto; */
+		padding:10%;
+		/* position:fixed;
+		left:5%; */
+		color:white;
+	}
+
+	.script > input {
+		font-size:36px;
+		font-family:inherit;
+		color:white;
+		padding:4px;
+		padding-top:0px;
+		background-color: rgba(255,255,255,0.6);
+		border: 2px dashed white;
+	}
+	.script > input:focus{
+		outline:0;
+	}
+
+	::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+		color: white;
+		opacity: 1; /* Firefox */
+	}
+
+	.instructions{
+		font-family: josefin-sans;
+		font-weight: 400;
+		font-size:20px;
+	}
+
+	.script {
+		line-height:1.5;
+		word-spacing: 2;
+		font-family: old-standard, serif;
+		font-weight: 400;
+		font-size: 50px;
+		/* line-height: 1.5; */
+	}
+
+	.step-num{
+		font-family: josefin-sans;
+		font-weight: 400;
+		font-size: 20px;
+		word-spacing: normal;
+		/* text-transform: uppercase; */
+		letter-spacing: 0.1px;
+		border-bottom: 2px solid white;
+		padding-bottom: 32px;
+		margin-bottom: 60px;
+	}
+	.player{
+		font-size:22px;
+	}
+
+
+
+/* .start{
+	font-size:18px;
+	text-align:center;
+} */
+/* .start > button{
+    width:300px;
+    height:300px;
+    background-color:red;
+    border-radius: 300px;
+    font-size: 23px;
+	font-family: josefin-sans;
+	font-weight: 700;
+    color: white;
+    padding: 20px;
+    cursor:pointer;
+    text-align: center;
+    box-shadow: 10px 20px darkred;
+    border: none;
+  }
+
+  .start > button:hover {
+    background-color: red;
+    color:white;
+  }
+  .start > button:active {
+    /* background-color: red; */
+    /* box-shadow: 10px 10px darkred;
+    transform: translateY(10px)
+  }
+
+  .start > button:focus{
+    outline:0;
+  } */
+  #step0{
+	  display:block;
+  }
+
+#de-escalationScreen, #theEnd{
+	background-color:lightslategray;
+}
+#de-escalationScreen > a{
+	font-family:josefin-sans;
+	font-weight:700;
+	color:white;
+}
+
+#de-escalationScreen > a:visited{
+	color:white;
+}
+
+#rules{
+	background-color:white;
+	color:midnightblue;
+	border:1px midnightblue solid;
+	padding: 2%;
+	display:none;
+	width:14%;
+	position:fixed;
+	top:50%;
+	right:2%;
+	}
+
+#de-escalation{
+	font-family: josefin-sans;
+	font-weight: 700;
+	display:none;
+	position:fixed;
+	bottom:5%;
+	right:2%;
+	background-color:white;
+	color:silver;
+	border:3px silver solid;
+	padding: 1%;
+	cursor:pointer;
+	letter-spacing: 1.5;
+}
+#de-escalation:hover {
+	background-color:silver;
+    color:white;
+	border:3px white solid;
+  }
+
+#score{
+    display: none;
+    width: 25%;
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    /* background-color: white; */
+    color: darkgrey;
+    /* border: 3px silver solid; */
+    /* padding: 2%; */
+    /* font-weight: 200; */
+    font-family: josefin-sans;
+    font-size: 14px;
+}
+
+#score > hr {
+	border:3px silver solid;
+}
+
+#score > p {
+	line-height:1.5;
+}
+
+#score > div{
+    width: 39%;
+    display: inline-block;
+    /* height: 100%; */
+    background-color: white;
+    /* padding-top: 2%; */
+    /* padding-bottom: 2%; */
+    padding: 2% 5% 2% 5%;
+}
+
+#player1scores{
+    /* border-right: 1px silver solid; */
+    /* padding-right: 3%; */
+    /* margin-right: 4%; */
+    line-height: 1.25;
+    height: 100%;
+    /* padding: 5%; */
+}
+
+#player2scores{
+	line-height:1.25;
+}
+
+#bonus{
+    display: none;
+    width: 21%;
+    position: fixed;
+    right: 2%;
+    background-color: white;
+    color: darkgrey;
+    padding: 1% 2% 2%;
+    top: 32%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    word-spacing: normal;
+    font-family: josefin-sans;
+}
+
+.score_title{
+    /* color: lightslategray; */
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid silver;
+    padding-bottom: 10px;
+}
+
+#homepage{
+	display:block;
+	height:90%;
+}
+
+.start{
+	padding-top:12%;
+	font-size:150px;
+	line-height:110px;
+	font-weight:bold;
+	font-family: josefin-sans;
+	text-align: center;
+}
+.start p{
+	cursor:pointer;
+}
+
+#step0_0{
+	background-color:lightslategray;
+}
+
+.rules{
+	font-size:26px;
+}
+
+.transcriptDiv {
+	/* min-width: 100%; */
+	/* min-height: 100%; */
+	display:none;
+	font-family: josefin-sans;
+	font-weight: 600;
+	font-size:34px;
+	line-height:1.75;
+	padding:10%;
+}
+
+.transcriptDiv > p:focus{
+	outline:0;
+}
+
+.offendingString{
+	background-color: rgba(255,0,0,0.75);
+	padding-left:4px;
+	padding-right:4px;
+}
+
+.bonusString{
+	background-color: rgba(0,255,255,0.75);
+	padding-left:4px;
+	padding-right:4px;
+	text-decoration: none;
+}
+
+.you-underline{
+	padding-bottom:3px;
+	text-decoration-line: underline;
+	text-decoration-style: wavy;
+	text-decoration-color:rgba(255,0,0,0.5);
+}
+
+.angryString{
+	padding-bottom:3px;
+	border-bottom: 1px wavy red;
+}
+
+.joyfulString{
+	padding-bottom:3px;
+	border-bottom: 1px wavy cyan;
+}
+
+.transcriptInstructions{
+	font-family: josefin-sans;
+	font-weight: 400;
+	color: silver;
+	font-size:14px;
+}
+a{
+	font-family: josefin-sans;
+	font-weight: 600;
+	font-size:14px;
+	color:white;
+	text-decoration: none;
+}
+a:visited{
+	color:white;
+}
+
+</style>
+</head>
+
+<body>
+	<link rel="stylesheet" href="https://use.typekit.net/jwv7rhn.css">
+	<div class="step-container" id="homepage">
+	<div class="start">
+
+			<p onclick="nextStep();">mad<span style="font-size:84px">😡</span>libs</p>
+			<!-- <button onclick="nextStep();">START GAME</button> -->
+
+		</div>
+	</div>
+	<!-- <div id="rules">
+		<ul>
+			<li>Listen carefully</li>
+			<li>Be honest to yourself and your partner</li>
+			<li>Use "I" statements; refrain from "you"</li>
+			<li>Make no assumptions</li>
+			<li>Give the benefit of the doubt</li>
+			<li>Refrain from bringing up past issues</li>
+			<li>Refrain from narratives</li>
+			<li>Players will lose points for global statements ("always", "never", etc), as well as excessive anger.</li>
+			<li>Avoid the "four horsemen": criticism, contempt, defensiveness, and stonewalling</li>
+			<li>Once a turn is completed, say "I'm done" to continue.</li>
+			<li>There can only be either two winners, or two losers.</li>
+		</ul>
+	</div> -->
+	<div id="bonus">
+			<p><b>BONUS</b></p>
+			Any bonus statements will appear here.
+			<!-- <p><b>Bonus point:</b> Empathize.</p>
+	
+			<p class="script"><input type="checkbox" name="empathize" /><label for="empathize"> "I recognize that you did not mean to <input type="text" name="trigger"> because <input type="text" name="feeling">."</label></p>
+	
+			<p><b>Bonus Point:</b> Mention instances in which your partner has done the positive/reverse version of the complaint as an example of a solution.</p>
+	
+			<p class="script"><input type="checkbox" name="gratitude" /><label for="gratitude"> "I really appreciate when you <input type="text" name="trigger"> and <input type="text" name="trigger"> in the past, because it made me feel <input type="text" name="trigger">."</label></p> -->
+	</div>
+	<div id="score">
+		<div id="player1scores">
+			<p class="score_title"><b>PLAYER 1</b></p>
+			<p><b>Bonus: </b> <span id = "player1bonus"></span></p>
+			<p><b>Penalties: </b><span id = "player1Penalties"></span></p>
+			<p><b>Score: </b><span id = "player1score"></span></p>
+			<p><b>"You" count: </b><span id = "player1yous"></span></p>
+			<p><b>"I" count: </b><span id = "player1Is"></span></p>
+			<p><b>"We" count: </b><span id = "player1Wes"></span></p>
+
+		</div>
+		<div id="player2scores">
+			<p class="score_title"><b>PLAYER 2</b></p>
+			<p><b>Bonus: </b><span id = "player2bonus"></span></p>
+			<p><b>Penalties: </b><span id = "player2Penalties"></span></p>
+			<p><b>Score: </b><span id = "player2score"></span></p>
+			<p><b>"You" count: </b><span id = "player2yous"></span></p>
+			<p><b>"I" count: </b><span id = "player2Is"></span></p>
+			<p><b>"We" count: </b><span id = "player2Wes"></span></p>
+		</div>
+	</div>
+	<div id="de-escalation">
+		<b>DE-ESCALATE!</b>
+	</div>
+	<div class="step-container" id="step0_0">
+		<div class="step">
+			<!-- <p class="step-num">Player 1 and 2</p> -->
+			<p class="step-num">1. This is a two-player cooperative challenge to communicate to and understand your partner better by working through an issue of your choice. The rules are:</p>
+	
+			<ul class="rules">
+				<li>Make no assumptions and listen carefully.</li>
+				<li>Give the benefit of the doubt.</li>
+				<li>Be honest to yourself and your partner.</li>
+				<li>Use "I" statements; refrain from "you".</li>
+				<li>Refrain from referencing past issues.</li>
+				<li>Refrain from speaking out of turn.</li>
+				<li>Players will lose points for global statements ("always", "never", etc)</li>
+				<li>There can only be either two winners, or two losers.</li>
+				<li>Once a turn is completed, say "I'm done" to continue.</li>
+			</ul>
+		</div>
+	</div>
+	<div class="step-container player1" id="step1_0">
+		<div class="step">
+			<!-- <p class="step-num">Player 1</p> -->
+
+			<p class="step-num">2.1 Identify the complaint, not the criticism, by formulating your "I" statement. Elaborate as necessary, using feeling words and avoiding the word "you", "always", and "never". Consider and include assertions of individual responsibility, self-disclosure, and empathy.</p>
+
+			<p class="script">"I feel/felt <input type="text" name="feeling" placeholder="(emotion)"> when/because <input type="text" name="trigger" placeholder="(specific action/incident)">."</label></p>
+		</div>
+	</div>
+	<div class="step-container player1" id="step1_1">
+		<div class="step">
+			<!-- <p class="step-num">Player 1</p> -->
+			<p class="step-num">2.2 Define your emotional needs.</p>
+			<p class="script">"I need <input type="text" name="need" placeholder="(behavior change)"> when <input type="text" name="trigger" placeholder="(situation)">."</label></p>
+		</div>
+	</div>
+	<div class="transcriptDiv" id="transcript1">
+		<p class="transcriptInstructions">Edit this directly if there are errors in the transcript.</p>
+	</div>
+	<div class="step-container player2" id="step2_0">
+		<div class="step">
+			<!-- <p class="step-num">Player 2</p> -->
+
+			<p class="step-num">3.1 Acknowledge your partner by repeating their "I" statement.</p>
+
+			<p class="script">"I understand that you feel/felt <input type="text" name="feeling" placeholder="(emotion)"> when <input type="text" name="trigger" placeholder="(specific action/incident)">."</label></p>
+		</div>
+	</div>
+	<div class="step-container player2" id="step2_1">
+		<div class="step">
+			<!-- <p class="step-num">Player 2</b></p> -->
+			<p class="step-num">3.2 Consider and assert your responsibility, and explain your intentions/perspective. Include self-disclosure, use feeling words, and avoid using the word "you", "always", and "never".</p>
+			<p class="script">"I know I <input type="text" name="action" placeholder="(offending behavior)">, but I don't mean to make you feel <input type="text" name="trigger" placeholder="(emotion)">. It happened because <input type="text" name="trigger" placeholder="(reason)">."</label></p>
+		</div>
+	</div>
+	<div class="transcriptDiv" id="transcript2">
+		<p class="transcriptInstructions">Edit this directly if there are errors in the transcript.</p>
+	</div>
+	<div class="step-container player1" id="step3_0">
+		<div class="step">
+			<!-- <p class="step-num">Player 1</p> -->
+
+			<p class="step-num">4. Acknowledge their intentions, consider your role in your emotions, recognize any misunderstandings, and reevaluate your feelings based on the new information given.</p>
+
+			<p class="script">"I understand that you <input type="text" name="intention" placeholder="(stated reason)">. Now that I know you <input type="text" name="intention" placeholder="(intention)">, I feel <input type="text" name="feeling" placeholder="(emotion)">."</label></p>
+		</div>
+	</div>
+	<div class="transcriptDiv" id="transcript3">
+		<p class="transcriptInstructions">Edit this directly if there are errors in the transcript.</p>
+	</div>
+	<div class="step-container player2" id="step4_0">
+		<div class="step">
+			<!-- <p class="step-num">Player 2</p> -->
+				
+			<p class="step-num">5. Address the complaint and propose a solution</p>
+
+			<p class="script">"I understand that you feel <input type="text" name="feeling" placeholder="(emotion)"> and need <input type="text" name="need" placeholder="(behavior change)">. What if I/we <input type="text" name="solution" placeholder="(solution)">."</label></p>
+		</div>
+	</div>
+	<div class="transcriptDiv" id="transcript4">
+		<p class="transcriptInstructions">Edit this directly if there are errors in the transcript.</p>
+	</div>
+	<div class="step-container player1" id="step5_0">
+		<div class="step">
+			<!-- <p class="step-num">Player 1</p> -->
+			
+			<p class="step-num">6. Evaluate the solution, consider your needs honestly, and if necessary, renegotiate based on your needs.</p>
+
+			<p class="script">"That's a good idea because it addresses my needs by <input type="text" name="reason" placeholder="(merits)">. I would also appreciate if we/you could <input type="text" name="solution" placeholder="(solution)"> because it would make me feel <input type="text" name="feeling" placeholder="(emotion)">."</label></p>
+		</div>
+	</div>
+	<div class="transcriptDiv" id="transcript5">
+		<p class="transcriptInstructions">Edit this directly if there are errors in the transcript.</p>
+	</div>
+	<div class="step-container player2" id="step6_0">
+		<div class="step">
+			<!-- <p class="step-num">Player 2</p> -->
+			
+			<p class="step-num">7. Repeat steps 5-6 until a solution is reached and both parties are satisfied.</p>
+
+			<p class="script">"I understand that you feel <input type="text" name="feeling" placeholder="(emotion)"> and need <input type="text" name="need" placeholder="(behavior change)">. What if I/we <input type="text" name="solution" placeholder="(solution)">."</label></p>
+		</div>
+	</div>
+	<div class="transcriptDiv" id="transcript6">
+		<p class="transcriptInstructions">Edit this directly if there are errors in the transcript.</p>
+	</div>
+	<div class="step-container" id="de-escalationScreen">
+		<div class="step">
+			<p class="step-num">Let go of your pride, or feelings of being wronged, and consider your partner's pain. What can you both do to heal each other's pain and protect your relationship?</p>
+			<!-- <ul class="script"> -->
+			<p class="script">
+				"What if we..."<br>
+				"I know this is hard..."<br>
+				"I hear what you're saying..."<br>
+				"What do you think about..."
+			</p>
+			<a href="javascript:nextStep()"><b>Return to last step</b></a>
+		</div>
+	</div>
+	<div class="step-container" id="theEnd">
+		<div class="step">
+			<p class="script">Great job completing the challenge. Be sure to review the transcript, note any markings, and discuss ways to further improve your communication. To save this transcript for future reference, go to <span style="font-variant:small-caps; font-weight:500; font-family:josefin-sans">file &gt; save page as &gt; webpage, complete</span>.</p>
+		</div>
+	</div>
+<script src="script.js"></script>
+<script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
+
+
+</body>
+</html>

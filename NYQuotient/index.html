@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<!-- A silly experiment by Jenna Xu -->
+<!-- xujenna@gmail.com -->
+<head>
+
+  <style type="text/css">
+
+  body{
+    text-align: center;
+    font-family: monospace;
+    margin:0;
+    background-color: whitesmoke;
+  }
+
+  body a:visited{
+    color:black;
+  }
+
+  #start-button{
+    /* display:block!important; */
+    margin:auto!important;
+    /* margin-top:100px; */
+    position:fixed;
+    bottom:30px;
+    right:10px;
+    background-color:transparent!important;
+    border:none!important;
+    box-shadow:none!important;
+    width:220px!important;
+  }
+
+  #start-button > button{
+    width:100%;
+    height:100px;
+    background-color:white;
+    /* border-radius: 250px; */
+    font-size: 23px;
+    font-family: monospace;
+    font-weight:bold;
+    color: red;
+    padding: 20px;
+    cursor:pointer;
+    text-align: center;
+    box-shadow: 10px 10px rgba(128,128,128, 0.5);
+    border: red 3px solid;
+  }
+
+  #start-button > button:hover {
+    background-color: red;
+    color:white;
+    border: white 3px solid;
+  }
+  #start-button > button:active {
+    /* background-color: red; */
+    box-shadow: 5px 5px rgba(128,128,128, 0.5);
+    transform: translateY(5px)
+  }
+
+  #start-button > button:focus{
+    outline:0;
+  }
+
+  #restartButtonContainer button{
+    /* width:140px; */
+    /* height:50px; */
+    /* border-radius: 60px; */
+    border: 3px solid white;
+    background-color: transparent;
+    /* display:none; */
+    font-size: 14px;
+    font-family: monospace;
+    font-weight:bold;
+    color: white;
+    padding: 10px;
+    cursor:pointer;
+    text-align: center;
+    box-shadow: 1.5px 1.5px white;
+    margin-right:10px;
+  }
+
+  #restartButtonContainer button:hover{
+    background-color: rgba(250,250,250,0.25);
+  }
+
+  #restartButtonContainer button:active{
+    box-shadow: 1.5px 0.5px white;
+    transform: translateY(1px)
+  }
+
+  #restartButtonContainer button:focus{
+    outline:0;
+  }
+
+  #restartButtonContainer{
+    display:none;
+  }
+
+  #turnBar {
+    color:white;
+    position:fixed;
+    top:0px;
+    width:100%;
+    height:75px;
+    padding:10px;
+    background-color: grey;
+    z-index:-1;
+  }
+
+  #turnBar > div {
+    display:inline-block;
+    margin-left:75px;
+    vertical-align: middle;
+  }
+
+  #turnBar > div > h1 {
+    font-size:30px;
+  }
+ 
+  #lastRoundPoints{
+    color:blue;
+  }
+  #lastRoundTimePenalty{
+    color: red;
+  }
+
+  #embeddingText {
+    font-family:monospace;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:0.75px;
+  }
+
+  #newEmbeddingText {
+    font-family:monospace;
+    font-size:26px;
+    font-weight:bold;
+  }
+
+  .player1text{
+    fill: orangered;
+  }
+
+  .player2text{
+    fill:dodgerblue;
+  }
+  .player0text{
+    fill:dimgray;
+    font-size:26px!important;
+    font-weight:bold;
+  }
+ 
+  .player1line{
+    stroke: orangered;
+    stroke-width: 3;
+    opacity: 0.6;
+    /* stroke-dasharray: 3; */
+  }
+  .player2line{
+    stroke: dodgerblue;
+    stroke-width: 3;
+    opacity: 0.6;
+    /* stroke-dasharray: 3; */
+  }
+  #homepage{
+    margin-top:50px;
+  }
+  #homepage h3{
+    border-bottom: 1px solid black;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
+  #homepage div{
+    font-size: 16px;
+    width:25%;
+    display:inline-block;
+    text-align:left;
+    margin-right:40px;
+    line-height:24px;
+    border: 3px solid black;
+    background-color: white;
+    box-shadow: 10px 10px rgba(128,128,128, 0.5);
+    padding: 25px 40px;
+    vertical-align: top;
+  }
+
+  #intro{
+    margin:auto!important;
+    width:35%!important;
+    margin-bottom:50px!important;
+    font-size:20px!important;
+    line-height:28px!important;
+    border: 3px solid black;
+    background-color: white;
+    box-shadow: 10px 10px rgba(128,128,128, 0.5);
+    padding: 25px 45px 30px 45px!important;
+    display:block!important;
+    text-align:center!important;
+  }
+
+  #demo{
+    /* position:fixed; */
+    top:100px;
+    display:block;
+  }
+
+  #tsneSVG{
+    width:100%;
+    /* padding-top:70px; */
+    /* text-align:right; */
+  }
+  #tsneSVG svg{
+    display:none;
+    position:fixed;
+    top:75px;
+    z-index:-2;
+  }
+  .title{
+    text-transform: uppercase;
+    font-weight:bold;
+    padding-bottom:15px;
+    margin-bottom:8px;
+    margin-top:2px;
+    letter-spacing: 4px;
+  }
+
+  #playerContainer{
+    margin-left:0px;
+  }
+
+  #playerOneStats > .title{
+    border-bottom: 3px solid orangered;
+    color:orangered;
+  }
+  #playerTwoStats > .title{
+    border-bottom: 3px solid dodgerblue;
+    color:dodgerblue;
+  }
+  .playerStats{
+    width:160px;
+    padding:25px;
+    margin:auto;
+    margin-top:20px;
+    text-align:left;
+    display:none;
+    position:fixed;
+    top:0px;
+    box-shadow: 10px 10px rgba(128,128,128, 0.5);
+    background-color: white;
+  }
+
+  .playerStats p{
+    font-family: roboto, sans-serif;
+    font-size: 11px;
+    text-transform:uppercase;
+    width: 50px;
+    display: inline-block;
+    padding-right:20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+  .playerStats h2{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size:24px;
+  }
+  #playerOneStats{
+    border: 3px solid orangered;
+    color: orangered;
+    left:60px;
+  }
+
+  #playerTwoStats{
+    border: 3px solid dodgerblue;
+    color: dodgerblue;
+    right:70px;
+  }
+ 
+  .playerBars{
+    width: 60px;
+    /* height: 100px; */
+    bottom: 0px;
+    position: fixed;
+  }
+
+  #playerOneBar{
+    background-color: orangered;
+  }
+  #playerTwoBar{
+    background-color: dodgerblue;
+    right:0px;
+  }
+
+  #highScore{
+    position: fixed;
+    display:none;
+    width:40%;
+    left: 50%;
+    margin-left:-23%;
+    top: 30%;
+    margin-top: -10%;
+    padding: 40px 40px 60px 40px;
+    background-color: white;
+    box-shadow: 10px 10px rgba(128,128,128, 0.5);
+    border: 3px solid black;
+    max-height: 70%;
+    overflow:scroll;
+  }
+
+  #highScore input{
+    width: 50%;
+    font-size: 24px;
+    height: 34px;
+    font-family: monospace;
+    color: grey;
+    padding: 10px;
+    border: 3px solid grey;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: grey;
+  }
+
+  #highScore input:focus{
+    outline:0;
+  }
+
+  #highScore button{
+    margin-left:20px;
+    font-size:18px;
+    font-family: monospace;
+    font-weight: bold;
+    height:60px;
+    padding:10px;
+    border: 3px solid black;
+    color:black;
+    box-shadow: 3px 3px black;
+    cursor:pointer;
+  }
+
+  #highScore button:hover{
+    border: 3px solid fuchsia;
+    color:fuchsia;
+    box-shadow: 3px 3px fuchsia; 
+  }
+
+  #highScore button:active{
+    box-shadow: 3px 1px rgba(128,128,128, 0.5);
+    transform: translateY(2px)
+  }
+
+  #highScore button:focus{
+    outline:0;
+  }
+
+  #closeHighScore{
+    position:absolute;
+    top:0px;
+    right:8px;
+    padding:10px;
+    font-weight:bold;
+    font-size:20px;
+    cursor:pointer;
+  }
+
+  #closeHighScore:hover{
+    color:fuchsia;
+  }
+
+  #highScore p{
+    font-size:36px;
+  }
+
+  #footer{
+  background-color:#000;
+  color:white;
+  margin:auto;
+  /* width:100vw; */
+  height:fit-content ;
+  padding: 30px 10% 30px 10%;
+  vertical-align: middle;
+  font-size:11px;
+  line-height:20px;
+  text-align: center;
+letter-spacing: 1px;
+margin-top: 10%;
+}
+#footer > a{
+  color:white;
+}
+
+  </style>
+
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How New York Are You?</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-tsne"></script>
+  <script src="d3.v4.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+  <script src="https://d3js.org/d3-ease.v1.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="homepage">
+  <div id="intro">
+    <p>🗽🍎🚕</p>
+    <p><h1>How New York are you?</h1></p>
+    <p>So you think you're a real New Yorker? Well, here's your chance to quantify how cool and cynical you are by comparing your opinions with those of all other New Yorkers—at least, those active on Twitter in 2018.</p>
+  </div>
+  <div id="rules">
+    <p><h3 class="title">How to play:</h3></p>
+    <p>Speakers, a microphone (laptop built-ins are fine), and the Chrome browser are required. The computer will volley hot topic keywords from the past year, and two players will have one shot per topic to prove how aligned they are with most common New York opinions. But you have to be quick, because nothing is less cool than trying too hard.</p>
+    <p onclick="micTest();" id="micTest"><span style="cursor:pointer; text-decoration: underline">Click here to test your mic.</span></p>
+    <p onclick="demo();"><span style="cursor:pointer; text-decoration: underline;">Click here to view a demo.</span></p>
+  </div>
+
+  <div id="info">
+    <p><h3 class="title">How it works:</h3></p>
+      <p>Each topic has a corresponding word2vec model that's trained on relevant tweets that originated in NYC from the past year. Word2vec analyzes corpora to find relationships among its words and embed them into a multidimensional space; the closer words are in this space, the more frequently they appear near each other in the corpus—thus, you can get a sense of what New Yorkers are tweeting, about which subjects, and with what frequency. Tensorflow.js then calculates the distances between words, which serves as the basis for the scoring system. The closer your responses are to the topic—and the faster you respond—the higher you score. For more details, <a href="https://www.xujenna.com/ITP/NYQuotient/index.php" target="new">see my documentation.</a></p>
+    </div>
+
+  <div id="start-button">Loading word2vec Model...</div>
+
+</div>
+
+<div id="demo"></div>
+
+
+<div id="tsneSVG"></div>
+
+
+<div id="turnBar">
+    <!-- <p>Current Word:</p> -->
+  <div id="playerContainer"><h1 id="player"></h1></div>
+
+  <div id="timer">
+      <h1 id="countDown"></h1>
+    </div>
+
+  <div id="error"><h1 id="tryAgain"></h1></div>
+
+  <div id="restartButtonContainer"></div>
+
+</div>
+
+
+  <div class="playerStats" id="playerOneStats">
+    <h3 class="title">Player One</h3>
+    <p>Distance:</p>
+    <h2 id="playerOneDistance"></h2>
+    <p>Time Penalty:</p>
+    <h2 id="playerOneTimePenalty"></h2>
+
+    <p>NYC Quotient:</p>
+    <h2 id="playerOneScore"></h2>
+  </div>
+
+  <div class="playerStats" id="playerTwoStats">
+    <h3 class="title">Player Two</h3>
+    <p>Distance:</p>
+    <h2 id="playerTwoDistance"></h2>
+    <p>Time Penalty:</p>
+    <h2 id="playerTwoTimePenalty"></h2>
+    <p>NYC Quotient:</p>
+    <h2 id="playerTwoScore"></h2>
+  </div>
+
+
+  <div id="highScore">
+    <div id="closeHighScore">X</div>
+    <h1>High Score!</h1>
+    <input type="text" id="hiScore_name" name="hiScore_name" size="40" required>
+    <button id="submitHighScore">SUBMIT</button>
+  </div>
+
+
+  <script src="twitter.js"></script>
+<footer id="footer">A silly experiment completed in the Fall 2018 semester at ITP NYU; featured in <a href="https://experiments.withgoogle.com/how-new-york-are-you" target="new">Experiments with Google</a> and exhibited at IEEE GEM 2019 at Yale University. Copyright (C) 2020 <a href="http://www.xujenna.com" target="new">Jenna Xu</a>.</footer>
+</body>
+
+</html>

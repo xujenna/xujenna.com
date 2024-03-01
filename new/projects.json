@@ -1,0 +1,338 @@
+[
+    {
+        "project_title": "Speak, (Random Access) Memory",
+        "img_src": "./new_doc/speak_mem_thumb.png",
+        "description_short": "The first half of my masters thesis; visualizing my data collection and mood prediction efforts.",
+        "role": ["All of them ✌️"],
+        "tags": ["frontend dev", "machine learning", "backend dev", "data viz", "mental health tech", "web"],
+        "medium": ["Python", "Javascript", "d3.js", "Node", "bash"],
+        "link_out": "./speakmemory/",
+        "featured_on": [
+            {
+                "name": "Mozilla's Artists Open Web",
+                "url": "https://www.mozillapulse.org/entry/854"
+            },
+            {
+                "name": "MozFest 2018",
+                "url": "https://xujenna.com/ABOUT/Screen%20Shot%202018-10-18%20at%2010.33.40%20PM.png"
+            },
+            {
+                "name": "NYC Media Lab's 2018 Summit",
+                "url": "https://www.nycmedialab.org/"
+            },
+            {
+                "name": "NYU's Tech Summit 2018",
+                "url": "https://www.nyu.edu/life/information-technology/about-nyu-it/nyu-technology-summit.HTML"
+            },
+            {
+                "name": "The Adjacent Conference 2018",
+                "url": "https://tisch.nyu.edu/itp/events/fall-2018/adjacent-conference--bodies-and-borders"
+            },
+            {
+                "name": "Art Machines: International Symposium on Computational Media Art",
+                "url": "https://www.cityu.edu.hk/iscma/"
+            }
+        ]
+    },
+    {
+        "project_title": "How New York Are You?",
+        "img_src": "./new_doc/20181216_175451.gif",
+        "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
+        "role": ["All of them ✌️"],
+        "tags": ["voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
+        "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
+        "link_out": "./NYQuotient/",
+        "documentation": "./ITP/NYQuotient/index.php",
+        "featured_on": [
+            {
+                "name": "Experiments with Google",
+                "url": "https://experiments.withgoogle.com/how-new-york-are-you"
+            },
+            {
+                "name": "Google I/O 2019",
+                "url": "https://xujenna.com/ABOUT/io.mp4"
+            },
+            {
+                "name": "IEEE GEM 2019",
+                "url": "https://www.ieee-gem.space/"
+            }
+        ]
+    },
+    {
+        "project_title": "FirstThen V1 Prototype",
+        "img_src": "./new_doc/firstThen/firstThen_demo.gif",
+        "description_short": "Product development, design, and prototyping work on a web app for parents and their children with ADHD.",
+        "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
+        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
+        "documentation": "./new_doc/firstThen/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "youarereally.cool",
+        "img_src": "./new_doc/Screen%20Shot%202021-06-15%20at%205.35.57%20PM.png",
+        "description_short": "Cool group ecards for warm, fuzzy feelings.",
+        "role": ["Product Designer", "Frontend Developer", "Co-Founder"],
+        "tags": ["mobile", "web", "product design", "visual design", "frontend dev", "backend dev", "branding"],
+        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
+        "link_out": "https://youarereally.cool",
+        "featured_on": []
+    },
+    {
+        "project_title": "I Guess We're Stuck Here",
+        "img_src": "./new_doc/america.png",
+        "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
+        "role": ["All of them ✌️"],
+        "tags": ["web", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "Firebase", "Wikipedia API", "Google Maps API", "Navigator Web API", "Node", "HTML", "CSS"],
+        "link_out": "https://wiki-tour.web.app/",
+        "featured_on": [
+            {
+                "name": "At Home and Away from The New York Times",
+                "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
+            }
+        ]
+    },
+    {
+        "project_title": "Adya V1 Prototype",
+        "img_src": "./new_doc/adya_demo.gif",
+        "description_short": "Product development, design, and prototyping work on a voice-only space for college students.",
+        "role": ["Product Designer", "Full Stack Developer", "Co-Founder"],
+        "tags": ["mental health tech", "mobile", "web", "product design", "frontend dev"],
+        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
+        "link_out": "http://adyahealth.com",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Data Viz for Clinical Workflows",
+        "img_src": "./new_doc/mindviz/emoji_sentiment.png",
+        "description_short": "Interpreting research data science for clinical product applications.",
+        "role": ["Frontend Developer", "Data Wrangler", "Product Designer"],
+        "tags": ["data viz", "web", "frontend dev", "product design", "mental health tech"],
+        "medium": ["Javascript", "d3.js", "Python"],
+        "documentation": "./new_doc/mindviz/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Product Work",
+        "img_src": "./new_doc/persistent_ranked.png",
+        "description_short": "Helping Mindstrong design a mobile experience for the SMI population.",
+        "role": ["Product Designer", "Copy Writer"],
+        "tags": ["mobile", "product design", "mental health tech", "redesign"],
+        "medium": ["Sketch", "Figma"],
+        "documentation": "./Mindstrong/health/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Redesign",
+        "img_src": "./new_doc/cover.gif",
+        "description_short": "Exploring how branding, visual language, and copy can help Mindstrong's members feel supported, engaged, and understood.",
+        "role": ["Product Designer", "Copy Writer"],
+        "tags": ["mobile", "product design", "visual design", "mental health tech", "redesign", "branding"],
+        "medium": ["Sketch", "Figma"],
+        "documentation": "./Mindstrong/health-redesign/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Clinical Web App Product Work",
+        "img_src": "./new_doc/timeline5.png",
+        "description_short": "Empowering Mindstrong's clinical web platform to minimize time spent on administrative tasks, and maximize time spent with patients.",
+        "role": ["Product Designer"],
+        "tags": ["web", "product design", "mental health tech", "redesign"],
+        "medium": ["Sketch", "Figma"],
+        "documentation": "./Mindstrong/care/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "Self-Portrait as Allegory Of",
+        "img_src": "./new_doc/Screen%20Shot%202018-10-13%20at%201.15.47%20PM.png",
+        "description_short": "My masters thesis, an n-of-1 experiment composed of three systems: data collection, mood prediction, and intervention.",
+        "role": ["All of them ✌️"],
+        "tags": ["frontend dev", "backend dev", "machine learning", "physical computing", "mental health tech"],
+        "medium": ["Python", "Raspberry Pi", "Javascript", "Node", "bash"],
+        "link_out": "./allegoryOf/",
+        "featured_on": []
+    },
+    {
+        "project_title": "Life Support",
+        "img_src": "./new_doc/clip.gif",
+        "description_short": "Teaching a voice assistant to teach me back.",
+        "role": ["All of them ✌️"],
+        "tags": ["voice", "backend dev", "mental health tech"],
+        "medium": ["Node", "Dialogflow", "Google Assistant", "Firebase"],
+        "documentation": "./ITP/LifeSupport/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "Mad Libs",
+        "img_src": "./new_doc/mad_libs_transcript.gif",
+        "description_short": "A browser-based couples therapist. Requires Chrome on desktop.",
+        "role": ["All of them ✌️"],
+        "tags": ["voice", "frontend dev", "web", "two player"],
+        "medium": ["Javascript", "HTML5 Speech API", "Chrome"],
+        "documentation": "./ITP/mad_libs/index.php",
+        "link_out": "./mad_libs/",
+        "featured_on": []
+    },
+    {
+        "project_title": "Good Vibrations",
+        "img_src": "./new_doc/good_vibes.gif",
+        "description_short": "Enter the mind of a monk via our pan-sensory brain entrainment dome ✨; a collaboration with Barak Chamo.",
+        "role": ["Full Stack Developer", "EEG Hacker", "Dome Builder", "Interaction Designer", "Prototyper"],
+        "tags": ["frontend dev", "web", "physical computing", "data viz", "audio", "open-source hardware"],
+        "medium": ["Javascript", "Microcontrollers", "Sensors", "Electronics Components"],
+        "documentation": "./ITP/GoodVibes/index.php",
+        "imgs": ["1_environment.jpg", "58_screen-shot-2018-01-22-at-73815-pm.png", "headset.jpg", "user.jpg"],
+        "featured_on": []
+    },
+    {
+        "project_title": "Photo Jukebox",
+        "img_src": "./ITP/Jukebox/37920748842_7e78c081f1_o.png",
+        "description_short": "A little jukebox that plays music associated with photographs; a collaboration with Ilana Bonder.",
+        "role": ["Full Stack Developer", "Interface Designer", "Interaction Designer", "Prototyper", "Visual Designer"],
+        "tags": ["physical computing", "backend dev", "audio", "open-source hardware"],
+        "medium": ["Arduino", "C++", "Copper Tape", "Electronics Components"],
+        "documentation": "./ITP/Jukebox/index.php",
+        "imgs": ["37920748842_7e78c081f1_o.png", "37951351261_85bcbc0a8c_o.png", "37951358171_074e5ea668_o.png"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>ambassadors for sustained health</span>Website Redesign",
+        "img_src": "./new_doc/ASH_web.png",
+        "description_short": "A website redesign as part of my larger rebrand for the nonprofit Ambassadors for Sustained Health.",
+        "role": ["Creative Director", "Web Designer", "Brand Designer", "Copy Writer"],
+        "tags": ["web", "redesign", "visual design", "branding"],
+        "medium": ["Photoshop", "Illustrator", "Squarespace"],
+        "link_out": "https://www.weareash.org/",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>ambassadors for sustained health</span>Rebrand",
+        "img_src": "./ASH/Rebrand/39_acronym_v2.png",
+        "description_short": "A rebrand for the nonprofit Ambassadors for Sustained Health, born of extensive user and staff interviews at their pilot site in Wamuini, Kenya.",
+        "role": ["Creative Director", "Web Designer", "Brand Designer"],
+        "tags": ["web", "redesign", "visual design", "branding"],
+        "medium": ["Photoshop", "Illustrator", "Squarespace", "social media", "photo", "video"],
+        "documentation": "./ASH/Rebrand/index.php",
+        "imgs": ["39_acronym_v2.png", "39_launchgraphic.png", "39_screen-shot-2016-12-01-at-122350-am.jpg", "39_screen-shot-2016-12-01-at-122923-am.jpg", "39_screen-shot-2017-01-10-at-100608-pm.jpg", "39_stacked.png"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>ambassadors for sustained health</span>Donut Dash 2017",
+        "img_src": "./ASH/DonutDash/57_1852751018535245646733764675031245757347738o.jpg",
+        "description_short": "Brand refresh and collateral design for ASH's annual 5k fundraiser.",
+        "role": ["Creative Director", "Brand Designer"],
+        "tags": ["web", "redesign", "visual design", "branding"],
+        "medium": ["Photoshop", "Illustrator", "social media", "t-shirts"],
+        "documentation": "./ASH/DonutDash/index.php",
+        "imgs": ["57_1849149118535630613361931644989030637607117o.jpg", "57_1858872218535573980034261609916826102267777o.jpg", "57_1852751018535245646733764675031245757347738o.jpg", "57_flier.png", "57_screen-shot-2017-05-22-at-84608-pm.png"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>itp unconference</span>Ode to the Avocado",
+        "img_src": "./new_doc/avo.png",
+        "description_short": "Data viz demo created for our d3.js workshop at ITP's 2019 Unconference.",
+        "role": ["Frontend Developer"],
+        "tags": ["frontend dev", "backend dev", "data viz", "web"],
+        "medium": ["Python", "Javascript", "d3.js"],
+        "link_out": "https://xujenna.github.io/d3-unconference-workshop/",
+        "featured_on": []
+    },
+    {
+        "project_title": "Death by Firearms, 2014",
+        "img_src": "./new_doc/death_firearms.png",
+        "description_short": "Visualized breakdown of deaths by firearms in the US in 2014.",
+        "role": ["All of them ✌️"],
+        "tags": ["frontend dev", "backend dev", "data viz", "web"],
+        "medium": ["Python", "Javascript", "d3.js"],
+        "link_out": "http://bl.ocks.org/xujenna/raw/32b4b11f1b25a5cf3493fd9308e1e735/",
+        "featured_on": []
+    },
+    {
+        "project_title": "U.S. Mass Shootings, 1982-2016",
+        "img_src": "./new_doc/mass_shootings.png",
+        "description_short": "Visualizing Mother Jones's database of 3+ decades of US mass shootings.",
+        "role": ["All of them ✌️"],
+        "tags": ["frontend dev", "backend dev", "data viz", "web"],
+        "medium": ["Python", "Javascript", "d3.js"],
+        "link_out": "http://bl.ocks.org/xujenna/raw/25db2af0bf59950d7390ceeba187df42/",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>new york magazine</span>Spring/Summer Weddings 2016",
+        "img_src": "./NYMAG/SS2016/55_nymss163.png",
+        "description_short": "Sample work from my seasonal contract with NY Mag.",
+        "role": ["Designer", "Art Director"],
+        "tags": ["visual design", "editorial design"],
+        "medium": ["Indesign", "print"],
+        "documentation": "./NYMAG/SS2016/index.php",
+        "imgs": ["55_nymss16.png", "55_nymss162.png", "55_nymss163.png", "55_nymss164.png", "55_nymss165.png", "55_nymss166.png", "55_nymss167.png"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>new york magazine</span>Winter Weddings 2016",
+        "img_src": "./NYMAG/WW2016/50_nymww1677.png",
+        "description_short": "Sample work from my seasonal contract with NY Mag.",
+        "role": ["Designer", "Art Director"],
+        "tags": ["visual design", "editorial design"],
+        "medium": ["Indesign", "print"],
+        "documentation": "./NYMAG/WW2016/index.php",
+        "imgs": ["50_nymww167.png", "50_nymww16710.png","50_nymww16712.png", "50_nymww1672.png","50_nymww1673.png", "50_nymww1674.png", "50_nymww1675.png","50_nymww1676_v2.png","50_nymww1677.png","50_nymww1678.png","50_nymww1679.png"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>essential homme magazine</span>April/May 2015 Redesign",
+        "img_src": "./EHM/Redesign/EHAM30.jpg",
+        "description_short": "Comprehensive redesign for Essential Homme Magazine.",
+        "role": ["Design Director", "Art Director", "Retoucher"],
+        "tags": ["visual design", "editorial design", "redesign", "branding"],
+        "medium": ["Indesign", "print"],
+        "documentation": "./EHM/Redesign/index.php",
+        "imgs": ["1_coversgif3.gif", "EHAM4.jpg", "EHAM5.jpg","EHAM6.jpg","EHAM7.jpg","EHAM8.jpg","EHAM9.jpg","EHAM10.jpg","EHAM17.jpg","EHAM19.jpg","EHAM20.jpg","EHAM26.jpg","EHAM27.jpg","EHAM28.jpg", "EHAM29.jpg","EHAM30.jpg","EHAM.jpg"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>condé nast</span>A-List 2014 Prototype",
+        "img_src": "./EDG/A_LIST2/44_alist26.jpg",
+        "description_short": "Prototype issue showcasing the 'the best performances of 2014', with curated content from Condé Nast's premier titles.",
+        "role": ["Designer", "Art Director"],
+        "tags": ["visual design", "editorial design", "branding"],
+        "medium": ["Indesign", "print"],
+        "documentation": "./EDG/A_LIST2/index.php",
+        "imgs": ["44_alist2.jpg", "44_alist22.jpg","44_alist23.jpg","44_alist24.jpg","44_alist25.jpg","44_alist26.jpg","44_alist27.jpg"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>condé nast</span>Epicurious: America's Best Recipes",
+        "img_src": "./EDG/EPI_AMERICA/38_spread17.png",
+        "description_short": "A recipe book and travel guide for America's distinct culinary regions.",
+        "role": ["Designer", "Art Director"],
+        "tags": ["visual design", "editorial design", "branding"],
+        "medium": ["Indesign", "print"],
+        "documentation": "./EDG/EPI_AMERICA/index.php",
+        "imgs": ["38_sketches.jpg", "38_sketches2.jpg","38_sketches3.jpg","38_sketches4.jpg", "38_sketches5.jpg","38_spread13.png","38_spread14.png","38_spread15.png","38_spread16.png","38_spread17.png","38_spread18.png"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>condé nast</span>Domino Color Prototype",
+        "img_src": "./EDG/DOMINO/41_spread14.png",
+        "description_short": "A prototype issue showcasing Domino's boldest color stories.",
+        "role": ["Designer", "Art Director"],
+        "tags": ["visual design", "editorial design", "branding"],
+        "medium": ["Indesign", "print"],
+        "documentation": "./EDG/DOMINO/index.php",
+        "imgs": ["41_spread1.png","41_spread12.png","41_spread13.png","41_spread14.png"],
+        "featured_on": []
+    },
+    {
+        "project_title": "A Wedding",
+        "img_src": "./ETC/WEDDING/42_screen-shot-2014-07-31-at-94900-pm.png",
+        "description_short": "Design for a wedding.",
+        "role": ["All of them ✌️"],
+        "tags": ["visual design", "branding"],
+        "medium": ["Indesign", "print", "lots of nice paper"],
+        "documentation": "./ETC/WEDDING/index.php",
+        "imgs": ["42_20140621103617-copy.jpg", "42_20140124215507.jpg", "42_20140319231243-copy.jpg", "42_screen-shot-2014-07-31-at-94900-pm.png"],
+        "featured_on": []
+    }
+]

@@ -1,0 +1,88 @@
+{
+    "workouts": [
+        {
+            "title": "Seven Minute Workout",
+            "script": "Let's do the seven minute workout."
+        },
+        {
+            "title": "Take a walk in the park.",
+            "script": "Go to the park and take a walk."
+        },
+        {
+            "title": "Yoga with Adrienne",
+            "script": "Do yoga with Adrienne."
+        }
+    ],
+    "danceTracks": [
+        {
+            "title" : "Lisztomania - Phoenix",
+            "script" : "Let's dance to Phoenix! Check your e-mail.",
+            "link": "https://open.spotify.com/track/6ZrlXT6mUMEgomN128iekU"
+        },
+        {
+            "title" : "I Want You - MØ",
+            "script" : "Let's dance to MØ! Check your e-mail.",
+            "link": "https://open.spotify.com/track/5mpibPxO6AWUhl2RiHpOGe"
+        },
+        {
+            "title" : "Juice - Lizzo",
+            "script" : "Let's dance to Lizzo! Check your e-mail.",
+            "link": "https://open.spotify.com/track/0onslUNmSLDkuYaideYWir"
+        },
+        {
+            "title" : "Boys - Lizzo",
+            "script" : "Let's dance to Lizzo! Check your e-mail.",
+            "link": "https://open.spotify.com/track/0j77ikAaghcss4idQVcAXT"
+        },
+        {
+            "title" : "Uptown Funk - Bruno Mars",
+            "script" : "Let's dance to Bruno Mars! Check your e-mail.",
+            "link": "https://open.spotify.com/track/32OlwWuMpZ6b0aN2RZOeMS"
+        },
+        {
+            "title" : "Last Nite - The Strokes",
+            "script" : "Let's dance to The Strokes! Check your e-mail.",
+            "link": "https://open.spotify.com/track/3SUusuA9jH1v6PVwtYMbdv"
+        },
+        {
+            "title" : "Deceptacon - Le Tigre",
+            "script" : "Let's dance to Le Tigre! Check your e-mail.",
+            "link": "https://open.spotify.com/track/5773KSWFzg9kCc8yazjbSt"
+        },
+        {
+            "title" : "On + Off - Maggie Rogers",
+            "script" : "Let's dance to Maggie Rogers! Check your e-mail.",
+            "link": "https://open.spotify.com/track/2kvwSbG26eHKUJdvH7DiR2?si=jPJ9kWDkQ-O4Y8N4nMjH-Q"
+        },
+        {
+            "title": "I Like It - Cardi B",
+            "script" : "Let's dance to Cardi B! Check your e-mail.",
+            "link": "https://open.spotify.com/track/58q2HKrzhC3ozto2nDdN4z"
+        },
+        {
+            "title": "Partition - Beyonce",
+            "script" : "Let's dance to Beyonce! Check your e-mail.",
+            "link": "https://open.spotify.com/track/5hgnY0mVcVetszbb85qeDg?si=N04ztuusS_imVTLTN-D8CQ"
+        },
+        {
+            "title": "***Flawless - Beyonce",
+            "script" : "Let's dance to Beyonce! Check your e-mail.",
+            "link": "https://open.spotify.com/track/7tefUew2RUuSAqHyegMoY1?si=0GbNLFN4TGWbrmuMUNHCQA"
+        },
+        {
+            "title": "Deja Vu - Beyonce",
+            "script" : "Let's dance to Beyonce! Check your e-mail.",
+            "link": "https://open.spotify.com/track/1DN9QmcCfImicRfZtHxHKH"
+        },
+        {
+            "title": "APES**T - The Carters",
+            "script" : "Let's dance to The Carters! Check your e-mail.",
+            "link": "https://open.spotify.com/track/0E6PsO3ymCfUh7pJQjBgkj?si=_qlMLHt6QT-uSkozN8Frlw"
+        },
+        {
+            "title": "Drunk In Love - Beyonce",
+            "script" : "Let's dance to Beyonce! Check your e-mail.",
+            "link": "https://open.spotify.com/track/6jG2YzhxptolDzLHTGLt7S?si=CitZl17RQC29y6b8L0lEQQ"
+        }
+    ]
+}

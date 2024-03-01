@@ -1,0 +1,3628 @@
+<html>
+<head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+
+  <style type="text/css">
+    /*css to go here*/
+
+    body {
+      background-color:#f3f2f7;
+      font-family: fanwood, serif;
+      font-size:16px;
+      font-style: text;
+      text-align: center;
+      letter-spacing: 0.5px;
+      margin:0px;
+  }
+
+#ml_mood_predictions {
+  margin-right:40px
+}
+#ml_stress_predictions {
+  margin-right:40px
+}
+
+  svg {
+  /*  border: 1px solid #f0f;
+  */  /*color: white;*/
+      /*fill: white;*/
+      z-index: 2;
+      display:inline;
+  }
+
+hr {
+  border-top: 1px solid black;
+}
+  .axis line,
+  .axis path,
+  .smallAxis line,
+  .smallAxis path {
+    fill:none;
+    stroke:silver;
+    stroke-width:1;
+  }
+
+  .axisLabel, .axis text {
+    fill: black;
+    font-family: europa, sans-serif;
+    font-style: light;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.axisLabel {
+ letter-spacing: 2.5px;
+ font-weight: bold;
+}
+
+  .tick line {
+    fill: none;
+    stroke-dasharray: 2px 4px;
+  }
+
+  .y-axis-label {
+    margin-left:0px;
+  }
+
+
+.smallAxisLabel, .smallAxis text {
+  font-size:8.5px;
+  font-family: europa, sans-serif;
+}
+
+.matrix-label {
+  font-size:8.5px;
+  font-family: europa, sans-serif;
+  transform:rotate(-45deg);
+}
+.regression {
+  stroke-width: 2px;
+/*  stroke: black;
+*/  stroke-dasharray: 3.5,1.5;
+}
+
+  .time-title {
+    display:inline;
+  }
+
+  .wrapper {
+    height: 100%;
+    display:inline;
+    margin:20px;
+  }
+
+
+  .tooltip {
+    width: 200px;
+    font-family: europa, sans-serif;
+    font-style: light;
+    font-size: 12px;
+    background:rgba(255,255,255,0.65);
+    padding:5px;
+    line-height:1.25;
+    clear:both;
+    text-align: center;
+  }
+
+
+
+  .n::after {
+    font-size:18px;
+    width: 200px;
+    color: black;
+    content: "\2193";
+    position:absolute;
+    text-align:center;
+    display:block;
+    pointer-events:none;
+    margin-top:5px;
+  }
+
+  .s::before {
+    font-size:18px;
+    width: 200px;
+    color: black;
+    content: "\2191";
+    position:absolute;
+    text-align:center;
+    display:block;
+    pointer-events:none;
+    clear:both;
+    margin-top:-27px;
+  }
+
+
+  .container {
+    overflow: auto;
+    margin-top: 70px;
+    margin-bottom: 150px;
+    display:block;
+    width:100vw;
+  }
+
+
+
+  #intro-container {
+    height:100%;
+/*    width:100%;
+*/    /*display:block;*/
+    overflow: auto;
+    /*background-color: silver;*/
+    color: white;
+/*    margin-bottom: 170px;
+*/    padding: 5%;
+    display:flex;
+    align-items:center;
+  }
+
+  #hero-img {
+    overflow: auto;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    z-index:-10;
+    opacity: .9;
+  }
+
+  #hero-img img {
+    min-width:100%;
+    min-height: 100%;
+  }
+
+  #intro-text {
+    width:25%;
+/*    margin:auto;
+*/ /* -webkit-columns: 2;
+     -moz-columns: 2;
+          columns: 2;
+  -moz-column-fill: balance;
+       column-fill: balance;    
+  -webkit-column-gap: 30px;
+     -moz-column-gap: 30px;
+          column-gap: 30px;    */
+    text-align: left;
+    line-height: 22px;
+    display:inline-block;
+    margin-top: -10%;
+
+  }
+
+  #intro-text p {
+    text-indent: 1.5em;
+    margin:0;
+    padding:0;
+  }
+
+  #hed {
+    width: 50%;
+    line-height:60px;
+    text-align: left;
+    padding-left: 10%;
+  }
+
+  #hed h1 {
+    margin-bottom: 30px;
+    margin-top: 0px;
+  }
+
+  #hed p {
+    margin-bottom: 0px;
+    font-size:15px;
+  }
+
+  h1 {
+    font-size:40px;
+    font-family: fanwood, serif;
+    font-style: regular;
+    font-weight: 400;
+    margin-bottom: 25px;
+    margin-top:25px;
+  }
+  h2 {
+    font-family: europa, sans-serif;
+    font-size:28px;
+    letter-spacing: 1px;
+    font-weight:900;
+    /*border-bottom: 1px solid;*/
+  }
+
+  h4 {
+    font-family: europa, sans-serif;
+    font-style: light;
+    font-size:12px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: -30px;
+    font-weight:400;
+    /*border-bottom: 1px solid;*/
+  }
+
+  h5 {
+    font-family: europa, sans-serif;
+    font-style: light;
+    font-weight:400;
+    font-size:10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+
+  #context-container {
+    width:100%;
+    position: fixed;
+    bottom:0%;
+    padding-bottom:20px;
+    padding-top: 20px;
+    background-color: white;
+    margin-bottom:0;
+    margin-left:0;
+  }
+
+  #context{
+    margin:auto;
+    display:block;
+  }
+
+  .description{
+    display:flex;
+    align-items:center;
+    margin: 5% 20% 0% 20%;
+  }
+
+
+  .description p {
+    text-indent: 1.5em;
+    margin:0;
+    padding:0;
+  }
+
+  .description-body {
+    display:inline-block;
+    text-align: left;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    padding: 0% 5%;
+    margin: 0% 5%;
+    font-size:15px;
+  }
+
+  .description-hed {
+    display:inline-flex;
+    align-items:center;
+    text-align:left;
+    width:60%;
+  }
+  .description-key{
+    font-family: europa, sans-serif;
+    font-size:10px;
+    text-transform: uppercase;
+    text-align:left;
+    min-width:105px;
+  }
+  .description-key p {
+    line-height: 22px;
+    text-indent: 0;
+}
+
+#textAnalysis-description-key{
+  min-width:145px;
+}
+
+  .description a {
+    color:black;
+  }
+
+
+#keystroke-description{
+  margin-bottom:0%;
+  margin-right:10%;
+  margin-left:16%;
+  display:flex;
+  align-items:center;
+  margin-top:100px;
+}
+.keystroke-description-hed {
+    display:inline-flex;
+    align-items:center;
+    text-align:left;
+    width:75%;
+    margin-right:5%;
+    min-width: 180px;
+  }
+
+#keystroke-description-key{
+  min-width:145px;
+}
+
+#keystroke-description-key p{
+  margin:0;
+  padding:0;
+}
+
+  .alt-axis {
+    font-family: europa, sans-serif;
+    font-weight:600;
+    font-size:12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .compulsion-x {
+    font-family: europa, sans-serif;
+    font-weight:800;
+    font-size:12px;
+    text-align: left;
+  }
+
+  #intro-text a {
+    color:white;
+  }
+
+  #correlation-container {
+  overflow: visible;
+  width:100%;
+  display:inline-block;
+  margin:auto;
+  padding-top: 120px;
+  padding-bottom: 150px;
+/*  padding: 0 0 0 0;
+*/  text-align: center;
+  background-color:#fcf9ef;
+}
+#correlation-description-key{
+  min-width: 160px;
+}
+
+#variable-description-container{
+  width:60%;
+/*  display: none;
+*/  margin:auto;
+  margin-top:50px;
+  font-size: 11px;
+  font-family: europa, sans-serif;
+  text-align: left;
+  padding:14px;
+  border: 1px solid black;
+}
+#variable-description-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+#variable-description {
+  column-count: 6;
+  -webkit-column-count: 6; /* Chrome, Safari, Opera */
+  -moz-column-count: 6; /* Firefox */
+  column-gap: 10px;
+}
+#variable-description p {
+  margin:5px;
+  -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid;
+}
+
+#footer{
+  background-color:#000;
+  color:white;
+  margin:auto;
+  font-family: europa, sans-serif;
+  /* width:100vw; */
+  height: 25px;
+  padding: 30px 10% 50px 10%;
+  vertical-align: middle;
+  font-size:11px;
+  line-height:20px;
+  text-align: center;
+letter-spacing: 1px;
+}
+
+#footer a{
+  color:white;
+}
+
+.selection {
+  fill: orangered;
+  stroke-width:1.5;
+  stroke:orangered;
+}
+
+.viewport-nav {
+  font-size:11px;
+  display:inline-block;
+  font-weight: bold;
+  position:absolute;
+  font-family: europa, sans-serif;
+  text-transform: uppercase;
+}
+
+#viewport-back {
+  left:55px;
+  top:50px;
+}
+#viewport-forward {
+  right:55px;
+  top:50px;
+
+}
+
+
+#ML-container {
+  overflow: visible;
+  width:100%;
+  display:inline-block;
+  margin:auto;
+  padding-top: 120px;
+  padding-bottom: 150px;
+/*  padding: 0 0 0 0;
+*/  text-align: center;
+  background-color:#fcf9ef;
+}
+
+
+#predictions-nav-container{
+  font-family: europa, sans-serif;
+  margin-top:75px;
+  display:block;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#prev-link{
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display:inline-block;
+  text-align:left;
+  padding:3px;
+/*  background-color: white;
+*//*  border: 1px solid black;
+*/  vertical-align: middle;
+}
+
+#next-link{
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display:inline-block;
+  text-align: right;
+  padding:3px;
+/*  border: 1px solid black;
+*/  vertical-align: middle;
+color:lightgrey;
+}
+
+#current-range{
+  display:inline-block;
+  padding-right:3%;
+  padding-left:3%;
+/*  margin-right: 1.5%;
+  margin-left: 1.5%;*/
+/*  border-right:1px solid black;
+  border-left: 1px solid black;*/
+  font-weight: bold;
+}
+
+
+#ML-description-key{
+  min-width: 185px;
+  margin-left: -2%;
+}
+
+@media screen and (max-width: 1535px){
+  #intro-text {
+      width:35%;
+  }
+
+  .description {
+    margin: 5% 18% 0% 18%;
+  }
+
+  h1 {
+    font-size:36px;
+    font-family: fanwood, serif;
+    font-style: regular;
+    font-weight: 400;
+    margin-bottom: 25px;
+    margin-top:25px;
+  }
+
+}
+
+
+@media screen and (max-width: 1330px){
+  #intro-text {
+      width:45%;
+      margin-top: -20%;
+  }
+
+  #hed {
+    width:35%;
+  }
+
+  .description {
+    margin: 5% 15% 0% 15%;
+  }
+
+  h1 {
+    font-size:36px;
+    font-family: fanwood, serif;
+    font-style: regular;
+    font-weight: 400;
+    margin-bottom: 25px;
+    margin-top:25px;
+  }
+}
+
+@media screen and (max-width: 1250px){
+  #hed {
+    width:25%;
+    padding-right:10%;
+  }
+
+  .description{
+    display:block;
+  }
+
+  .description-hed{
+    width:inherit;
+    text-align: center;
+    display:block;
+    width: 87%;
+    margin:auto;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+  }
+
+  .description-body{
+    display: inline-block;
+    width:63%;
+    border-left: none;
+    padding: 0px 50px 0px 0px;
+    margin: 20px 50px 0px 0px;
+  }
+
+  .description-key{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width:1063px){
+  #correlation-description-body{
+    width:55%;
+  }
+  #correlation-description-hed{
+    width:90%;
+  }
+
+  #footer{
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .description-hed{
+    width:93%;
+  }
+
+  .description{
+    margin:5% 10% 0% 15%;
+  }
+
+  .description-body{
+    width:70%;
+    border:none;
+    padding: 0px;
+    margin:20px 50px 0px 0px;
+  }
+
+  #intro-text{
+    width:55%;
+    margin-top: -25%;
+  }
+
+  #hed{
+    padding: 0% 5% 0% 8%;
+  }
+
+  #correlation-description-body{
+    width:50%;
+  }
+}
+
+
+.axis-label{
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-family: europa, sans-serif;
+  transform: rotate(-90deg);
+}
+
+#loader {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 6px dotted white;
+  border-radius: 50%;
+  border-top: 6px solid transparent;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+  </style>
+
+
+</head>
+<body>
+
+  <div id="loader"></div>
+  <title>Speak, (Random Access) Memory</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-time.v1.min.js"></script>
+  <script src="d3-tip.js"></script>
+  <script src="jquery-3.3.1.js"></script>
+
+  <link rel="stylesheet" href="https://use.typekit.net/fao6qlb.css">
+
+  <div id="intro-container">
+    <div id="hero-img"><img src="composite4.jpg"></div>
+    <div id="hed">
+    😐😐😐😱
+    <h1>Speak, (Random Access) Memory</h1>
+    </div>
+
+  <div id = "intro-text">
+     As a professional graphic designer, a grad student in a technology program, a handheld-device-phobe, and a single person who lives alone in NYC, I probably get more facetime with my computer than with all of humanity combined. So during the fall of 2018, when I began work on a system of trackers for a host of potential/evidenced metrics of depression, it was pretty clear that my laptop would be my best data collector.
+    <p>Speak, (Random Access) Memory is a project that aims to monitor depression's cyclical nature, identify correlations between mood and my activity/environment, predict the onset of depression by feeding this data into a machine-learned model/neural network, and ultimately preempt it by teaching the system to recommend and enforce interventions.</p><p>Presently, there are seven trackers collecting data on 45 metrics; below are visualizations of the data collected by four of them: my three<a href="http://www.xujenna.com/itp_blog/2018/04/26/final/" target="new"> homemade python trackers</a> and one Chrome extension. The last section offers a chart that visualizes correlations among 40 select metrics, and another that illustrates the training progress of my machine learning models.</p><p>Use the brush at the bottom of the window to filter and navigate through my entire history of data.</p>
+  </div>
+</div>
+
+  <div class="container" id="reporter-container">
+    <div class="description">
+      <div class="description-hed"><h2>Mood Reporter</h2></div>
+      <div class="description-body">
+        Psychiatry traditionally employs self-administered questionnaires as diagnostic tools for mood disorders; these usually attempt to quantify the severity of DSM-IV criteria. The module for depression is called the PHQ-9, and I've adapted several of its questions into my own questionnaire, which python deploys every hour via the command line.
+      </div>
+      <div class="description-key">
+        <p><span style="color:rgb(255, 0, 255)">&block; &nbsp;</span>Mood</p>
+        <p><span style="color:rgb(245, 205, 0)">&block; &nbsp;</span>Morale</p>
+        <p><span style="color:rgb(0, 0, 255)">&block; &nbsp;</span>Stress</p>
+        <p><span style="color:rgb(200, 200, 220)">&block; &nbsp;</span>Fatigue</p>
+        <p><span style="color:rgb(0, 0, 255); font-size:18px; line-height: 14px"><b>&times;&nbsp;</b></span>Compulsions</p>
+      </div>
+
+    </div>
+    <svg id="reporter"></svg>
+  </div>
+
+  <div class="container" id="affectiva-container">
+    <div class="description">
+      <div class="description-hed"><h2>Facial Analyzer</h2></div>
+      <div class="description-body">
+      This tracker utilizes the Affectiva API, an emotion and facial recognition model. Via my laptop's webcam, it analyses my face for a minute every hour; a python script counts blinks and calculates the averages for attention and valence scores. The yellow area chart in the background are my productivity scores via the Rescuetime API. I choose these variables as <a href="http://www.xujenna.com/itp_blog/2018/02/01/blinking-mind-wandering/" target="new">an attempt to measure mindwandering</a>, a marker strongly correlated with depression.
+      </div>
+      <div class="description-key">
+        <p><span style="color:rgb(0, 0, 255)">&block; &nbsp;</span>Blinks</p>
+        <p><span style="color:rgb(255, 0, 255)">&block; &nbsp;</span>Attention</p>
+        <p><span style="color:rgb(0, 225, 225)">&block; &nbsp;</span>Valence</p>
+        <p><span style="color:rgb(245, 205, 0)">&block; &nbsp;</span>Productivity</p>
+      </div>
+    </div>
+    <svg id="affectiva"></svg>
+  </div>
+
+  <div class="container" id="keylogger-container">
+    <div class="description">
+      <div class="description-hed">
+      <h2>Sentiment Keylogger</h2>
+      </div>
+      <div class="description-body">
+      As an attempt to automatically measure mood, I created a sentiment analysis keylogger for my computer. Written in python, the keylogger collects any coherent phrase I type, and sends the log every hour to IBM's Tone Analyzer API, which returns sentiment scores for each sentence; below, only scores over 50% are visualized. The logs themselves have also been redacted, but the length of the analyzed sentence is encoded in each circle's diameter.</p>
+      </div>
+      <div class="description-key">
+        <p><span style="color:rgb(255, 0, 255)">&block; &nbsp;</span>Joy</p>
+        <p><span style="color:rgb( 0, 255, 127)">&block; &nbsp;</span>Confidence</p>
+        <p><span style="color:rgb(245, 205, 0)">&block; &nbsp;</span>Analysis</p>
+        <p><span style="color:rgb(200, 200, 220)">&block; &nbsp;</span>Tentativeness</p>
+        <p><span style="color:rgb(0, 225, 225)">&block; &nbsp;</span>Sadness</p>
+        <p><span style="color:rgb(0, 0, 225)">&block; &nbsp;</span>Fear</p>
+        <p><span style="color:rgb(255, 105, 180)">&block; &nbsp;</span>Anger</p>
+    </div>
+    </div>
+    <svg id="keylogger"></svg>
+  </div>
+
+  <div class="container" id="textAnalysis-container">
+    <div class="description">
+      <div class="description-hed">
+      <h2>Digital Phenotyping</h2>
+      </div>
+      <div class="description-body">
+      When depressed, a person is more likely to make spelling mistakes, use a smaller vocabulary, and generally say less; their psychomotor skills are normally impaired. As an approximation of these metrics, my keylogger uses NLTK to count total and unique words per hour. Keystroke dynamics are also calculated as an attempt to measure my psychomotor skills.</p>
+      </div>
+      <div class="description-key" id="textAnalysis-description-key">
+        <p><span style="color:rgb(255, 0, 255)">&block; &nbsp;</span>Character Count</p>
+        <p><span style="color:rgb(245, 205, 0)">&block; &nbsp;</span>Word Count</p>
+        <p><span style="color:rgb( 0, 255, 127)">&block; &nbsp;</span>Unique Word Count</p>
+        <p><span style="color:rgb(0, 0, 225)">&block; &nbsp;</span>Backspace Count</p>
+    </div>
+    </div>
+    <svg id="textAnalysis"></svg>
+
+    <div id="keystroke-description">
+        <div class="keystroke-description-hed">
+        <p class="alt-axis">KEYSTROKE DYNAMICS</p>
+        </div>
+    <div class="description-key" id="keystroke-description-key">
+      <p><span style="color:rgb(0, 0, 225)">&block; &nbsp;</span>Average Flight Time</p>
+      <p><span style="color:rgb(255, 0, 255)">&block; &nbsp;</span>Average Dwell Time</p>
+  </div>
+  </div>
+    <svg id="keystrokedynamics"></svg>
+  </div>
+
+  <div class="container" id="tabCounter-container">
+    <div class="description">
+      <div class="description-hed">
+        <h2>Tab Counter</h2>
+      </div>
+      <div class="description-body">
+        I'm an incorrigible tab hoarder, but if I'm feeling especially restless or unmotivated, I'm even more likely to open new—or activate existing—tabs but not actually consume their content, oftentimes leaving them open indefinitely. Inspired by the relationship between my mental states and my browser activity, I created a Chrome Extension that tracks tabs as they're created and activated, their corresponding favicons, and the final hourly count of tabs and windows left open.
+      </div>
+      <div class="description-key" id="textAnalysis-description-key">
+        <p><span style="color:rgb(0, 225, 225)">&block; &nbsp;</span>Tabs Created</p>
+        <p><span style="color:rgb(245, 205, 0)">&block; &nbsp;</span>Tabs Activated</p>
+        <p><span style="color:rgb(255, 0, 255)">&block; &nbsp;</span>Final Tab Count</p>
+        <p><span style="color:rgb(0, 0, 225)">&block; &nbsp;</span>Windows Created</p>
+
+    </div>
+    </div>
+    <svg id="tabCounter"></svg>
+  </div> 
+
+  <div class="container" id="context-container">
+    <div class="viewport-nav" id="viewport-back">&ltrif; prev</div>
+    <svg id="context"></svg>
+    <div class="viewport-nav" id="viewport-forward">next &rtrif;</div>
+  </div>
+
+<div class="container" id="correlation-container">
+  <div class="description" id="correlation-description">
+    <div class="description-hed" id="correlation-description-hed">
+      <h2>STAT 101</h2>
+    </div>
+    <div class="description-body" id="correlation-description-body">
+      So what sense can we make from all this data? Before we make a machine do the learning, we can get a sense of emerging relationships with 1) scatterplots, the shape of which suggests strength of correlation, 2) linear regression, the slope of which expresses the magnitude of how positive or negative a correlation is, and 3) Pearson coefficients, which measure the linear correlation between two variables.<br>
+        <p>A pearson correlation coefficient matrix can be generated by comparing <b>"All"</b> with <b>"All"</b> via the dropdown menus to the right (may take a minute to generate). Comparing a metric with another metric, or <b>"All"</b>, will generate scatterplots and trendlines.</p>
+    </div>
+    <div class="description-key" id="correlation-description-key">
+      <p><b>Generate a matrix:</b></p><br>
+      <form>
+      <select id = "selection1">
+      <option selected="selected"><b>Select an X-Axis Metric:</b></option>
+      </select>
+      </form>
+      <form>
+        <select id = "selection2">
+        <option selected="selected"><b>Select an Y-Axis Metric:</b></option>
+        </select>
+      </form>
+      <br>
+      <hr>
+      <br>
+        <p><span style="color:rgb(255, 0, 255)">&block; &nbsp;</span>Positive Correlation</p>
+        <p><span style="color:rgb(0, 0, 255)">&block; &nbsp;</span>Negative Correlation</p>
+
+    </div>
+    </div>
+    <br><br><br>
+  <svg id="correlations"></svg>
+
+    <div id="variable-description-container">
+      <div id="variable-description-title">METRICS KEY</div>
+      <div id="variable-description">
+      </div>
+      <div id="temp-instructions">
+            Use the dropdown menus at the top right to generate a matrix (may take a minute to generate).
+          </div>
+    </div>
+</div>
+
+
+<div class="container" id="ML-container">
+  <div class="description">
+    <div class="description-hed">
+      <h2>OK Computer</h2>
+    </div>
+    <div class="description-body" id="correlation-description-body">
+      My trackers are presently feeding data to four recurrent neural networks, which are predicting on my mood, morale, stress, and fatigue scores. Special thanks to <a href="https://machinelearningmastery.com" target="new">Jason Brownlee</a> for his posts on building RNNs for time series data. Visualized below are my models' predictions compared to their respective reported scores.
+    </div>
+    <div class="description-key" id="ML-description-key">
+      <p><span style="color:rgb(255, 0, 255, 0.3)">&block; &nbsp;</span>Actual Mood Score</p>
+      <p><span style="color:rgb(255, 0, 255)">&mdash; &nbsp;</span>RNN Mood Prediction</p>
+      <p><span style="color:rgb(245, 205, 0, 0.35)">&block; &nbsp;</span>Actual Morale Score</p>
+      <p><span style="color:rgb(245, 205, 0)">&mdash; &nbsp;</span>RNN Morale Prediction</p>
+      <p><span style="color:rgb(0, 0, 255, 0.3)">&block; &nbsp;</span>Actual Stress Score</p>
+      <p><span style="color:rgb(0, 0, 255)">&mdash; &nbsp;</span>RNN Stress Prediction</p>
+      <p><span style="color:rgb(200, 200, 220, 0.55)">&block; &nbsp;</span>Actual Fatigue Score</p>
+      <p><span style="color:#C0C0C0">&mdash; &nbsp;</span>RNN Fatigue Prediction</p>
+    </div>
+  </div>
+  <div id="predictions-nav-container">
+    <div class="predictions-nav" id="prev-link">◂ Prev Day</div>
+        <div class="predictions-nav" id="current-range"></div>
+    <div class="predictions-nav" id="next-link">Next Day ▸</div>
+  </div>
+
+  <div class="ml-container"> 
+      <svg id="ml_mood_predictions"></svg>
+      <svg id="ml_morale_predictions"></svg>
+  </div>
+
+<div class="ml-container">
+    <svg id="ml_stress_predictions"></svg>
+    <svg id="ml_fatigue_predictions"></svg>
+</div>
+
+
+</div>
+
+<div id="footer">
+  An ongoing project by <a href="http://www.xujenna.com" target="new">Jenna Xu</a>, started during the Spring 2018 semester at NYU ITP. Featured in: Mozilla's <a href="https://foundation.mozilla.org/opportunity/artists-open-web/" target="new"><i>Artists Open Web</i></a> and <a href="https://mozillafestival.org/" target="new">Mozfest 2018</a>; NYC Media Lab's <a href="https://www.summit.nycmedialab.org/" target="new">2018 Summit</a>; <a href="https://www.nyu.edu/life/information-technology/about-nyu-it/key-projects-and-initiatives/nyu-technology-summit.html" target="new">NYU's Tech Summit 2018</a>; <a href="https://itp.nyu.edu/adjacent/issue-3/" target="new">The Adjacent Conference</a>; and <a href="https://www.cityu.edu.hk/iscma/" target="new">Art Machines: International Symposium on Computational Media Art</a>.</div>
+
+<script>
+
+var margin = {top: 50, right: 40, bottom: 50, left: 40};
+var margin2 = {top: 5, right:2, bottom:20, left:2};
+
+var width = (window.innerWidth - (window.innerWidth * .27)) - margin.right - margin.left,
+height = 550 - margin.top - margin.bottom;
+
+var height2 = 80 - margin2.top - margin2.bottom;
+var width2 = (window.innerWidth - (window.innerWidth * .18)) - margin2.right - margin2.left;
+var body = d3.select("body");
+
+var contextSVG = d3.select("#context")
+      .attr("width", width2 + margin2.left + margin2.right)
+      .attr("height", height2 + margin2.top + margin2.bottom);
+
+
+var reporterSVG = d3.select("#reporter")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom);
+
+
+var xScale = d3.scaleTime()
+  .range([0,width]);
+  // .domain([xMin, xMax]);
+
+var xScale2 = d3.scaleTime()
+.range([0,width2]);
+
+var yScale = d3.scaleLinear()
+  .range([height,0]);
+  // .domain([0.45,1]);
+
+var yScale2 = d3.scaleLinear()
+  .range([height2,0]);
+
+var xAxis = d3.axisBottom(xScale).tickPadding(10);
+var xAxis2 = d3.axisBottom(xScale2).tickSize(-height2).tickPadding(10);
+var yAxis = d3.axisLeft(yScale).tickSize(-width).ticks(5).tickPadding(10).tickSizeOuter(0);
+
+
+var reporterChart = reporterSVG.append("g")
+  .attr("class", "focus")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var contextChart = contextSVG.append("g")
+  .attr("class", "context")
+  .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+
+
+  var brush = d3.brushX()
+    .extent([[0,0], [width2, height2]])
+    .on("brush end", brushed);
+
+
+  var moodArea = d3.area()
+      // .curve(d3.curveCardinal)
+      .x(function(d) { return xScale(d.time); })
+      .y1(function(d) { return yScale(d.mood); })
+      .y0(height)
+        .defined(function(d){return d.mood!=null;});
+
+  var fatigueArea = d3.area()
+    // .curve(d3.curveCardinal)
+    .x(function(d) { return xScale(d.time); })
+    .y1(function(d) { return yScale(d.fatigue); })
+    .y0(height)
+      .defined(function(d){return d.fatigue!=null;});
+
+
+  var stressArea = d3.area()
+      // .curve(d3.curveCardinal)
+      .x(function(d) { return xScale(d.time); })
+      .y1(function(d) { return yScale(d.stress); })
+      .y0(height)
+        .defined(function(d){return d.stress!=null;});
+
+  var moraleArea = d3.area()
+      // .curve(d3.curveCardinal)
+      .x(function(d) { return xScale(d.time); })
+      .y1(function(d) { return yScale(d.morale); })
+      .y0(height)
+        .defined(function(d){return d.morale!=null;});
+
+
+  var moodLine = d3.line()
+  .defined(function(d){return d.mood!=null})
+    .x(function(d) {return xScale(d.time);})
+    .y(function(d){return yScale(d.mood) - 1.5;});
+
+  var moodLine2 = d3.line()
+  .defined(function(d){return d.mood!=null})
+    .x(function(d) {return xScale2(d.time);})
+    .y(function(d){return yScale2(d.mood);});
+
+var newResponses = [];
+
+
+
+d3.tsv("responses.tsv", function (err, responses) {
+    if (err) console.warn(err, "error loading data");
+
+
+responses.forEach(function(d){
+  var dateTime = new Date(d.unix_time * 1e3);
+  d.time = dateTime;
+  d.mood = +d.mood;
+  d.fatigue = +d.fatigue;
+  d.morale = +d.morale;
+  d.unique_interactions = +d.unique_interactions;
+  d.stress = +d.stress;
+});
+
+
+
+responses.forEach(function(d,i){
+
+newResponses.push(d)
+
+  if(i+1 == responses.length){
+    return;
+  }
+
+  var timee = responses[i+1].time;
+
+  if(d.time < (timee - 24000000)) {
+    var nullTime = new Date(timee - 24000000);
+    var nullItems = {};
+
+    nullItems["time"] = nullTime;
+    nullItems["mood"] = null;
+    nullItems["moodNotes"] = null;
+    nullItems["fatigue"] = null;
+    nullItems["stress"] = null;
+    nullItems["activities"] = null;
+    nullItems["morale"] = null;
+    nullItems["compulsions"] = null;
+
+    newResponses.push(nullItems);
+  }
+
+})
+
+
+var xScaleMax = d3.max(newResponses, function(d) {return d.time;})
+var xScaleMin = new Date(1524982083090)
+
+xScale.domain([xScaleMin, xScaleMax]);
+yScale.domain([0,5]);
+yScale2.domain(yScale.domain());
+
+var domainMax = new Date(parseInt(newResponses[newResponses.length-1].unix_time * 1000));
+var domainMin = new Date(domainMax);
+domainMin.setMonth(domainMax.getMonth() - 1);
+
+xScale2.domain([domainMin, domainMax])
+
+
+reporterChart.append("g")
+  .attr("class", "axis axis--x")
+  .attr("transform","translate(0, "+(height)+")")
+  .call(xAxis);
+
+reporterChart.append("g")
+.attr("class", "axis axis--y")
+  .call(yAxis);
+
+
+
+reporterChart.append("path")
+  .datum(newResponses)
+  .attr("class", "moodArea")
+  .attr("d", moodArea)
+  .attr("fill", "magenta")
+  .attr("opacity", 0.4);
+
+reporterChart.append("path")
+  .datum(newResponses)
+  .attr("class", "moraleArea")
+  .attr("d", moraleArea)
+  .attr("fill", "gold")
+  .attr("opacity", 0.4);
+
+
+reporterChart.append("path")
+  .datum(newResponses)
+  .attr("class", "stressArea")
+  .attr("d", stressArea)
+  .attr("fill", "blue")
+  .attr("opacity", 0.25);
+
+
+reporterChart.append("path")
+  .datum(newResponses)
+  .attr("class", "fatigueArea")
+  .attr("d", fatigueArea)
+  .attr("fill", "lavender")
+  .attr("opacity", 0.7);
+
+
+
+var compulsionCircles = reporterChart.selectAll(".compulsion-circle")
+  .data(newResponses)
+  .enter()
+  .append("text")
+  .attr("class","compulsion-x")
+  .attr("x", function(d) {return xScale(d.time) - 1200})
+  .text(function(d){ 
+    if(d.compulsions !== null && d.compulsions !== "False"){
+      return "x"
+    }
+  })
+  .attr("y", function(d){return yScale(d.stress) + 3;})
+  .attr("opacity", 0.7)
+  .attr("fill", "blue");
+
+reporterChart.append("path")
+  .datum(newResponses)
+  .attr("d", moodLine)
+  .attr("stroke", "magenta")
+  .attr("stroke-width", 2)
+  .attr("fill", "none")
+  .attr("class", "moodLine")
+  .attr("opacity", 0.7);
+
+
+var moodCircles = reporterChart.selectAll(".moodCircle")
+  .data(newResponses)
+  .enter()
+  .append("circle")
+  .attr("class","moodCircle")
+  .attr("cx", function(d) {return xScale(d.time)})
+  .attr("r", function(d) {return d.mood == null ? 0 : 3; })
+  .attr("cy", function(d) { return yScale(d.mood);})
+  .attr("opacity", 0.7)
+  .attr("fill", "magenta");
+
+
+
+
+
+// contextChart.append("path")
+//   .attr("d", moodLine2(newResponses))
+//   .attr("stroke", "black")
+//   .attr("stroke-width", 2)
+//   .attr("fill", "none")
+//   .attr("class", "line");
+
+var month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+
+
+var dataLength = newResponses.length
+var maxDate = newResponses[dataLength-1]['time']
+var maxDateDay = new Date(newResponses[dataLength-1]['time'])
+maxDateDay.setDate(maxDate.getDate() - 2)
+
+
+var contextNavBack = d3.select("#viewport-back");
+var contextNavForward = d3.select("#viewport-forward");
+var currentDisplayDate = new Date(parseInt(newResponses[newResponses.length-1].unix_time * 1000));
+var currentDisplayIndex = currentDisplayDate.getMonth();
+
+// var firstDate = new Date(1524982083090);
+
+contextChart.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height2 + ")")
+    .call(xAxis2);
+
+var currentID = "March";
+
+contextChart.selectAll(".mood-bars")
+  .data(newResponses)
+  .enter().append("rect")
+  .filter(function(d) {return d.unix_time > 1524981000})
+  .attr("class", "mood-bars")
+  .attr("id", function(d){
+    var currentDate = new Date(parseInt(d.unix_time * 1000))
+    var currentMonth = currentDate.getMonth()
+    if (currentID = month[currentMonth]){
+      return currentID;
+    }
+  })
+  .style("fill", "grey")
+  .style("opacity", "0.3")
+  .attr("x", function(d) {return xScale2(d.time)})
+  .attr("width", "3px")
+  .attr("y", function(d) {return yScale2(d.mood)})
+  .attr("height", function(d) {return height2 - yScale2(d.mood)})
+
+
+var contextBrush = contextChart.append("g")
+    .attr("class", "brush")
+    .call(brush)
+    .call(brush.move, [maxDateDay, maxDate].map(xScale2));
+
+var prevLink = document.getElementById(month[currentDisplayIndex-1])
+var nextLink;
+
+
+contextNavBack.text("◂ " + month[currentDisplayIndex-1]).style("cursor", "pointer").on("mousedown", function(d){
+  // prevLink.scrollIntoView();
+  currentDisplayIndex--;
+
+  prevLink = document.getElementById(month[currentDisplayIndex-1])
+  nextLink = document.getElementById(month[currentDisplayIndex+1])
+
+  if(prevLink !== null){
+    contextNavBack.text("◂ " + month[currentDisplayIndex-1]);
+    contextNavForward.text(month[currentDisplayIndex+1] + " ▸")
+  }
+  else{
+    contextNavBack.text(" ");
+    contextNavForward.text(month[currentDisplayIndex+1] + " ▸")
+  }
+
+  domainMax = new Date(2018, currentDisplayIndex+1)
+  domainMax.setDate(domainMax.getDate()-1)
+  domainMin = new Date(2018, currentDisplayIndex)
+  // domainMax = new Date(d3.select(nextLink).datum().unix_time * 1000)
+  // domainMin = new Date(d3.select(nextLink).datum().unix_time * 1000)
+  // domainMin.setMonth(domainMin.getMonth() - 1);  
+
+  xScale2.domain([domainMin, domainMax])
+  contextChart.selectAll(".axis").call(xAxis2)
+  var brushMin = new Date(domainMax)
+  brushMin.setDate(brushMin.getDate()-1)
+
+  contextChart.selectAll("rect").attr("x", function(d) { return xScale2(d.time); })
+  contextBrush.call(brush.move, [brushMin, domainMax].map(xScale2))
+
+  contextChart.selectAll(".selection").call(contextTip)
+  });
+
+contextNavForward.text(" ").style("cursor", "pointer").on("mousedown", function(d){
+  // nextLink.scrollIntoView();
+  currentDisplayIndex++;
+
+  prevLink = document.getElementById(month[currentDisplayIndex-1])
+  nextLink = document.getElementById(month[currentDisplayIndex+1])
+
+  if(nextLink !== null){
+    contextNavBack.text("◂ " + month[currentDisplayIndex-1]);
+    contextNavForward.text(month[currentDisplayIndex+1] + " ▸")
+    // domainMax = new Date(d3.select(nextLink).datum().unix_time * 1000)
+    // domainMin = new Date(d3.select(nextLink).datum().unix_time * 1000)
+    // domainMin.setMonth(domainMin.getMonth() - 1);  
+
+  }
+  else{
+    contextNavBack.text("◂ " + month[currentDisplayIndex-1]);
+    contextNavForward.text(" ")
+    // domainMax = new Date(d3.select(prevLink).datum().unix_time * 1000)
+    // domainMin = new Date(d3.select(prevLink).datum().unix_time * 1000)
+    // domainMax.setMonth(domainMax.getMonth() + 2);  
+    // domainMin.setMonth(domainMin.getMonth() + 1);  
+
+  }
+
+  domainMax = new Date(2018, currentDisplayIndex+1)
+  domainMax.setDate(domainMax.getDate()-1)
+  domainMin = new Date(2018, currentDisplayIndex)
+
+
+  xScale2.domain([domainMin, domainMax])
+  contextChart.selectAll(".axis").call(xAxis2)
+  var brushMin = new Date(domainMax)
+  brushMin.setDate(brushMin.getDate()-1)
+
+
+  contextChart.selectAll("rect").attr("x", function(d) { return xScale2(d.time); })
+  contextBrush.call(brush.move, [brushMin, domainMax].map(xScale2))
+
+  contextChart.selectAll(".selection").call(contextTip)
+});
+
+
+  var reporterTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([-20,-5])
+    .html(function(d,i) {
+    return "<b>Activity: </b>" + d.activity + "<br><b>Alone: </b>" + d.alone + "<br><b>Unique Interactions: </b>" + d.unique_interactions
+    });
+
+  reporterChart.selectAll(".moodCircle")
+  .call(reporterTip)
+
+  .on("mouseover", function(d) {
+    reporterTip.show(d);
+  })
+
+  .on("mouseout", function(d) {
+    reporterTip.hide(d);
+  })
+
+
+
+  var contextTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([-20,-5])
+    .html(function(d,i) {
+    var brushSelection = d3.brushSelection(contextBrush.node())
+var formatTime = d3.timeFormat("%b %d %I:%M%p");
+
+  return "Viewing " + formatTime(xScale2.invert(brushSelection[0])) + " — <br>" + formatTime(xScale2.invert(brushSelection[1]))
+    });
+
+  contextChart.selectAll(".selection")
+  .call(contextTip)
+
+  .on("mousedown", function(d) {
+    contextTip.hide(d);
+  })
+
+  .on("mouseover", function(d) {
+    contextTip.show(d);
+  })
+
+  .on("mouseout", function(d) {
+    contextTip.hide(d);
+  })
+
+
+});
+
+
+function brushed() {
+  if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
+  var s = d3.event.selection || xScale2.range();
+  var formatTime = d3.timeFormat("%b %d %I:%M%p");
+  var newDateRange = s.map(xScale2.invert, xScale2);
+  for(var i = 0; i < newDateRange.length; i++) {
+    newDateRange[i] = formatTime(newDateRange[i])
+  }
+  xScale.domain(s.map(xScale2.invert, xScale2));
+  body.select("#context-description").html("Viewing " + newDateRange[0] + " — " + newDateRange[1]);
+  reporterChart.select(".moodArea").attr("d", moodArea);
+  reporterChart.select(".moodLine").attr("d", moodLine);
+  reporterChart.selectAll(".moodCircle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScale(d.mood)});
+  reporterChart.select(".moraleArea").attr("d", moraleArea);
+  reporterChart.select(".stressArea").attr("d", stressArea);
+  reporterChart.select(".fatigueArea").attr("d", fatigueArea);
+  reporterChart.selectAll(".compulsion-x").attr("x", function(d) {return xScale(d.time)});
+  keyloggerChart.selectAll(".joy-circle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScaleKeylogger(d.score)});
+  keyloggerChart.selectAll(".sad-circle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScaleKeylogger(d.score)});
+  keyloggerChart.selectAll(".tentative-circle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScaleKeylogger(d.score)});
+  keyloggerChart.selectAll(".angry-circle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScaleKeylogger(d.score)});
+  keyloggerChart.selectAll(".confident-circle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScaleKeylogger(d.score)});
+  keyloggerChart.selectAll(".analytical-circle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScaleKeylogger(d.score)});
+  keyloggerChart.selectAll(".disgust-circle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScaleKeylogger(d.score)});
+  keyloggerChart.selectAll(".fear-circle").attr("cx", function(d) {return xScale(d.time)}).attr("cy", function(d) {return yScaleKeylogger(d.score)});
+  blinksChart.selectAll(".blink-circle").attr("cx", function(d) {return xScale(d.time)});
+  expressionsChart.select(".productivityArea").attr("d", productivityArea);
+  expressionsChart.selectAll(".attentionLines").attr("x1", function(d){ return xScale(d.time);}).attr("x2", function(d) {return xScale(d.time);});
+  expressionsChart.selectAll(".valenceLines").attr("x1", function(d){ return xScale(d.time);}).attr("x2", function(d) {return xScale(d.time);});
+  emojiChart.selectAll(".emoji").attr("transform", function(d) {return "translate(" + (xScale(d.time)-7) + ")";});
+
+
+tabCounterChart.selectAll(".created-circle").attr("cx", function(d) { return xScale(dataset[d].timestamp); }).attr("cy", function(d) { return yScaleTabCounter(dataset[d].tabs_activated + dataset[d].tabs_created + dataset[d].current_tabCount); })
+
+ tabCounterChart.selectAll(".activated-circle").attr("cx", function(d) { return xScale(dataset[d].timestamp); }).attr("cy", function(d){ return yScaleTabCounter(dataset[d].tabs_activated + dataset[d].tabs_created + dataset[d].current_tabCount); });
+
+ tabCounterChart.selectAll(".currentCount-circle").attr("cx", function(d) { return xScale(dataset[d].timestamp); }).attr("cy", function(d){ return yScaleTabCounter(dataset[d].tabs_activated + dataset[d].tabs_created + dataset[d].current_tabCount); })
+
+ tabCounterChart.selectAll(".currentWindowCount-circle").attr("cx", function(d) { return xScale(dataset[d].timestamp); }).attr("cy", function(d){ return yScaleTabCounter(dataset[d].tabs_activated + dataset[d].tabs_created + dataset[d].current_tabCount); })
+
+  textAnalysisChart.selectAll("rect").attr("x", function(d) { return xScale(d.time);}).attr("width", (xScale(new Date("Sun Apr 29 2018 02:00:00 GMT-0500 (CDT)")) - xScale( new Date("Sun Apr 29 2018 01:00:00 GMT-0500 (CDT)"))));  
+  textAnalysisChart.selectAll(".charCount-lines").attr("x1", function(d){ return xScale(d.time) + (xScale(new Date("Sun Apr 29 2018 02:00:00 GMT-0500 (CDT)")) - xScale( new Date("Sun Apr 29 2018 01:00:00 GMT-0500 (CDT)"))) / 2;}).attr("x2", function(d) {return xScale(d.time)+ (xScale(new Date("Sun Apr 29 2018 02:00:00 GMT-0500 (CDT)")) - xScale( new Date("Sun Apr 29 2018 01:00:00 GMT-0500 (CDT)"))) / 2;})
+  textAnalysisChart.selectAll(".backspace-lines").attr("x1", function(d){ return xScale(d.time);}).attr("x2", function(d) {return xScale(d.time)+ (xScale(new Date("Sun Apr 29 2018 02:00:00 GMT-0500 (CDT)")) - xScale( new Date("Sun Apr 29 2018 01:00:00 GMT-0500 (CDT)")));});
+  keystrokesChart.selectAll(".dwell-line").attr("d", keystrokes_avgDwell_Line)
+  keystrokesChart.selectAll(".flight-line").attr("d", keystrokes_avgFlight_Line)
+
+  body.selectAll(".axis--x").call(xAxis);
+}
+
+
+
+let scrub = document.getElementById("context-container")
+
+window.addEventListener("scroll", function(){
+  var targetElement = document.getElementById("tabCounter-container");
+
+  if(window.scrollY > (targetElement.offsetTop)){
+    scrub.style.position = "inherit"
+  }
+  else if(window.scrollY <= (targetElement.offsetTop)){
+    scrub.style.position = "fixed"
+
+  }
+})
+
+</script>
+<script>
+
+var keyloggerSVG = d3.select("#keylogger")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+var keyloggerChart = keyloggerSVG.append("g")
+        .attr("class", "keyloggerG")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var textAnalysisHeight = height + 50;
+var textAnalysisSVG = d3.select("#textAnalysis")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", textAnalysisHeight + margin.top + margin.bottom)
+var textAnalysisChart = textAnalysisSVG.append("g")
+        .attr("class", "textAnalysisG")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var keystrokesHeight = height / 2.5;
+var keystrokesSVG = d3.select("#keystrokedynamics")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", keystrokesHeight + margin.top)
+var keystrokesChart = keystrokesSVG.append("g")
+        .attr("class", "keystrokesG")
+        .attr("transform", "translate(" + margin.left + ",10)");
+
+
+var yScaleKeylogger = d3.scaleLinear()
+  .range([height,0]);
+  // .domain([0.45,1]);
+var yAxisKeylogger = d3.axisLeft(yScaleKeylogger).tickSize(-width).ticks(4).tickPadding(10).tickSizeOuter(0).tickFormat(function(d) { return d*100 + "%"; });
+
+var yScaleTextAnalysis = d3.scaleLinear()
+  .range([textAnalysisHeight,0]);
+  // .domain([0.45,1]);
+var yAxisTextAnalysis = d3.axisLeft(yScaleTextAnalysis).tickSize(-width).ticks(4).tickPadding(10).tickSizeOuter(0).tickFormat(function(d) { return d});
+
+var yScaleKeystrokes = d3.scaleLinear()
+  .range([keystrokesHeight,0]);
+  // .domain([0.45,1]);
+var yAxisKeystrokes = d3.axisLeft(yScaleKeystrokes).tickSize(-width).ticks(4).tickPadding(10).tickSizeOuter(0).tickFormat(function(d) { return d});
+
+var keystrokes_avgDwell_Line = d3.line()
+  .defined(function(d){return d.avg_dwelltime!=null})
+    .x(function(d) {return xScale(d.time);})
+    .y(function(d){return yScaleKeystrokes(d.avg_dwelltime);});
+
+var keystrokes_avgFlight_Line = d3.line()
+  .defined(function(d){return d.avg_flighttime!=null})
+    .x(function(d) {return xScale(d.time);})
+    .y(function(d){return yScaleKeystrokes(d.avg_flighttime);});
+
+  d3.json("log_new.json", ready);
+
+  function ready(err, data) {
+      if (err) console.warn(err, "error loading data");
+
+  data.forEach(function(d){
+    var dateTime = new Date(d.unix_time * 1e3);
+    d.time = dateTime;
+  })
+
+
+  var joy = [];
+  var sadness = [];
+  var confidence = [];
+  var analytical = [];
+  var anger = [];
+  var disgust = [];
+  var fear = [];
+  var tentative = [];
+
+var textAnalysisData = [];
+var keystrokesData = [];
+
+  data.filter(function(d,i) {
+    var holder;
+    
+    if(d.word_count){
+      var textAnalysisHolder = {};
+      textAnalysisHolder['time'] = d.time;
+      textAnalysisHolder['word_count'] = d.word_count;
+      textAnalysisHolder['uniqueword_count'] = d.uniqueword_count;
+      textAnalysisHolder['char_count'] = d.char_count;
+      textAnalysisHolder['backspace_count'] = d.backspace_count;
+      textAnalysisHolder['avg_dwelltime'] = d.avg_dwelltime;
+      textAnalysisHolder['avg_flighttime'] = d.avg_flighttime;
+      textAnalysisData.push(textAnalysisHolder)
+      textAnalysisHolder = {};
+    }
+
+    if(d.avg_dwelltime){
+      var keystrokesHolder = {};
+      keystrokesHolder['time'] = d.time;
+      keystrokesHolder['avg_dwelltime'] = d.avg_dwelltime;
+      keystrokesHolder['avg_flighttime'] = d.avg_flighttime;
+      keystrokesData.push(keystrokesHolder)
+      keystrokesHolder = {};
+
+      if(i < data.length - 1) {
+        var timee = data[i+1].time;
+
+      if(d.time < (timee - 24000000)) {
+        var nullTime = new Date(timee - 24000000);
+        var nullItems = {};
+
+        nullItems["time"] = nullTime;
+        nullItems["avg_dwelltime"] = null;
+
+        keystrokesData.push(nullItems);
+      }
+      }
+    }
+
+
+    for(var i = 0; i < d.sentences_tone.length; i++) {
+      if(d.sentences_tone[i].tones.length > 0) {
+      for(var j = 0; j < d.sentences_tone[i].tones.length; j++) {
+          if(d.sentences_tone[i].tones[j].tone_name == "Joy"){
+            holder = d.sentences_tone[i].tones[j];
+            holder["time"]=d.time;
+            holder["sentence"]=d.sentences_tone[i].text;
+            joy.push(holder);
+            holder = "";
+          }
+          else if (d.sentences_tone[i].tones[j].tone_name == "Sadness"){
+            holder = d.sentences_tone[i].tones[j];
+            holder["time"]=d.time;
+            holder["sentence"]=d.sentences_tone[i].text;
+            sadness.push(holder);
+            holder = "";
+          }
+          else if (d.sentences_tone[i].tones[j].tone_name == "Confident"){
+            holder = d.sentences_tone[i].tones[j];
+            holder["time"]=d.time;
+            holder["sentence"]=d.sentences_tone[i].text;
+            confidence.push(holder);
+            holder = "";
+          }
+          else if (d.sentences_tone[i].tones[j].tone_name == "Analytical"){
+            holder = d.sentences_tone[i].tones[j];
+            holder["time"]=d.time;
+            holder["sentence"]=d.sentences_tone[i].text;
+            analytical.push(holder);
+            holder = "";
+          }
+          else if (d.sentences_tone[i].tones[j].tone_name == "Anger"){
+            holder = d.sentences_tone[i].tones[j];
+            holder["time"]=d.time;
+            holder["sentence"]=d.sentences_tone[i].text;
+            anger.push(holder);
+            holder = "";
+          }
+          else if (d.sentences_tone[i].tones[j].tone_name == "Disgust"){
+            holder = d.sentences_tone[i].tones[j];
+            holder["time"]=d.time;
+            holder["sentence"]=d.sentences_tone[i].text;
+            disgust.push(holder);
+            holder = "";
+          }
+          else if (d.sentences_tone[i].tones[j].tone_name == "Fear"){
+            holder = d.sentences_tone[i].tones[j];
+            holder["time"]=d.time;
+            holder["sentence"]=d.sentences_tone[i].text;
+            fear.push(holder);
+            holder = "";
+          }
+          else if (d.sentences_tone[i].tones[j].tone_name == "Tentative"){
+            holder = d.sentences_tone[i].tones[j];
+            holder["time"]=d.time;
+            holder["sentence"]=d.sentences_tone[i].text;
+            tentative.push(holder);
+            holder = "";
+          }
+        }
+      }
+    }
+  });
+
+  var tip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([-20,-5])
+    .html(function(d,i) {
+    return "<b>" + d.tone_name + "</b>: " + (d.score * 100) + "%";
+    });
+
+  var textAnalyzerTip = d3.tip()
+  .attr("class", "tooltip")
+  .offset([-20,-5])
+  .html(function(d,i) {
+  return "<b>Character Count</b>: " + d.char_count + "<br><b>Word Count</b>: " + d.word_count + "<br><b>Unique Word Count</b>: " + d.uniqueword_count + "<br><b>Backspace Count</b>: " + d.backspace_count;
+  });
+
+
+  yScaleKeylogger.domain([0.45,1]);
+
+  // var charCount_max = d3.max(textAnalysisData, function(d){return d['char_count']})
+  yScaleTextAnalysis.domain([0,1200]);
+
+  // var flightMax = d3.max(textAnalysisData, function(d){return d['avg_flighttime']})
+  yScaleKeystrokes.domain([0,0.7]);
+
+  keyloggerChart.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform","translate(0, "+(height)+")")
+    .call(xAxis);
+
+  keyloggerChart.append("g")
+  .attr("class", "axis axis--y")
+    .call(yAxisKeylogger);
+
+  textAnalysisChart.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform","translate(0, "+(textAnalysisHeight)+")")
+    .call(xAxis);
+
+  textAnalysisChart.append("g")
+  .attr("class", "axis axis--y")
+    .call(yAxisTextAnalysis);
+
+  // keystrokesChart.append("text")
+  //   .attr("class", "alt-axis")
+  //   .attr("y", -20)
+  //   .attr("x", 0)
+  //   .text("KEYSTROKE DYNAMICS");
+
+  // keystrokesChart.append("text")
+  //   .attr("class", "description-key")
+  //   .attr("y", -20)
+  //   .attr("x", 50)
+  //   .text("&block; &nbsp; Average Flight Time");
+
+  // keystrokesChart.append("g")
+  //   .attr("class", "axis axis--x")
+  //   .attr("transform","translate(0, "+(keystrokesHeight)+")")
+  //   .call(xAxis);
+
+ var keystroke_yaxis = keystrokesChart.append("g")
+     .attr("class", "axis axis--y")
+    .call(yAxisKeystrokes);
+
+keystroke_yaxis.select(".domain").remove();
+
+    var joyCircles = keyloggerChart.selectAll(".joy-circle")
+      .data(joy)
+      .enter()
+      .append("circle")
+      .attr("class","joy-circle")
+      .attr("cx", function(d) {return xScale(d.time)})
+      .attr("cy", function(d) {return yScaleKeylogger(d.score)})
+      .attr("r", function(d) { return d.sentence.length / 10;})
+      .attr("fill-opacity", function(d) { return Math.pow(d.score, 3);})
+      .attr("fill", "fuchsia");
+
+    var confidentCircles = keyloggerChart.selectAll(".confident-circle")
+      .data(confidence)
+      .enter()
+      .append("circle")
+      .attr("class", "confident-circle")
+      .attr("cx", function(d) {return xScale(d.time)})
+      .attr("cy", function(d) {return yScaleKeylogger(d.score)})
+      .attr("r", function(d) { return d.sentence.length / 10;})
+
+      // .attr("r", function(d) { return Math.pow(d.score, 3) * 20;})
+      .attr("fill-opacity", function(d) { return Math.pow(d.score, 3);})
+      .attr("fill", "springgreen");
+
+    var analyticalCircles = keyloggerChart.selectAll(".analytical-circle")
+      .data(analytical)
+      .enter()
+      .append("circle")
+      .attr("class", "analytical-circle")
+      .attr("cx", function(d) {return xScale(d.time)})
+      .attr("cy", function(d) {return yScaleKeylogger(d.score)})
+      .attr("r", function(d) { return d.sentence.length / 10;})
+
+      // .attr("r", function(d) { return Math.pow(d.score, 3) * 20;})
+      .attr("fill-opacity", function(d) { return Math.pow(d.score, 3);})
+      .attr("fill", "gold");
+
+    var tentativeCircles = keyloggerChart.selectAll(".tentative-circle")
+      .data(tentative)
+      .enter()
+      .append("circle")
+      .attr("class", "tentative-circle")
+      .attr("cx", function(d) {return xScale(d.time)})
+      .attr("cy", function(d) {return yScaleKeylogger(d.score)})
+      .attr("r", function(d) { return d.sentence.length / 10;})
+
+      // .attr("r", function(d) { return Math.pow(d.score, 3) * 20;})
+      .attr("fill-opacity", function(d) { return Math.pow(d.score, 3);})
+      .attr("fill", "lavender");
+
+    var sadCircles = keyloggerChart.selectAll(".sad-circle")
+      .data(sadness)
+      .enter()
+      .append("circle")
+      .attr("class", "sad-circle")
+      .attr("cx", function(d) {return xScale(d.time)})
+      .attr("cy", function(d) {return yScaleKeylogger(d.score)})
+      .attr("r", function(d) { return d.sentence.length / 10;})
+
+      // .attr("r", function(d) { return Math.pow(d.score, 3) * 20;})
+      .attr("fill-opacity", function(d) { return Math.pow(d.score, 3);})
+      .attr("fill", "cyan");
+
+    var fearCircles = keyloggerChart.selectAll(".fear-circle")
+      .data(fear)
+      .enter()
+      .append("circle")
+      .attr("class", "fear-circle")
+      .attr("cx", function(d) {return xScale(d.time)})
+      .attr("cy", function(d) {return yScaleKeylogger(d.score)})
+      .attr("r", function(d) { return d.sentence.length / 10;})
+
+      // .attr("r", function(d) { return Math.pow(d.score, 3) * 20;})
+      .attr("fill-opacity", function(d) { return Math.pow(d.score, 3);})
+      .attr("fill", "blue");
+
+    var angryCircles = keyloggerChart.selectAll(".angry-circle")
+      .data(anger)
+      .enter()
+      .append("circle")
+      .attr("class", "angry-circle")
+      .attr("cx", function(d) {return xScale(d.time)})
+      .attr("cy", function(d) {return yScaleKeylogger(d.score)})
+      .attr("r", function(d) { return d.sentence.length / 10;})
+
+      // .attr("r", function(d) { return Math.pow(d.score, 3) * 20;})
+      .attr("fill-opacity", function(d) { return Math.pow(d.score, 3);})
+      .attr("fill", "deeppink");
+
+    var disgustCircles = keyloggerChart.selectAll(".disgust-circle")
+      .data(disgust)
+      .enter()
+      .append("circle")
+      .attr("class", "disgust-circle")
+      .attr("cx", function(d) {return xScale(d.time)})
+      .attr("cy", function(d) {return yScaleKeylogger(d.score)})
+      .attr("r", function(d) { return Math.pow(d.score, 3) * 20;})
+      .attr("fill-opacity", 0.25)
+      .attr("fill", "thistle");
+
+
+var textAnalysisMarkerData = [
+{ id: 0, name: 'circle', path: 'M 0, 0  m -5, 0  a 5,5 0 1,0 10,0  a 5,5 0 1,0 -10,0', viewbox: '-6 -6 12 12' }
+]
+
+var textAnalysisDefs = textAnalysisSVG.append('svg:defs')
+
+var textAnalysisMarker = textAnalysisDefs.selectAll('wordCount_marker')
+  .data(textAnalysisMarkerData)
+  .enter()
+  .append('svg:marker')
+    .attr('id', "wordCount_marker")
+    .attr('markerHeight', 5)
+    .attr('markerWidth', 5)
+    .attr('markerUnits', 'strokeWidth')
+    .attr('orient', 'auto')
+    .attr('refX', 0)
+    .attr('refY', 0)
+    .attr('viewBox', '-1 -5 2 10')
+    .append('svg:circle')
+    .attr("r", 2)
+    .attr("fill", "fuchsia")
+    .attr("fill-opacity", 0.75);
+
+
+var textAnalysisPixelInterval = xScale(new Date("Sun Apr 29 2018 02:00:00 GMT-0500 (CDT)")) - xScale( new Date("Sun Apr 29 2018 01:00:00 GMT-0500 (CDT)"));
+
+
+textAnalysisChart.selectAll(".wordCount-bar")
+     .data(textAnalysisData)
+   .enter().append("rect")
+     .attr("class", "wordCount-bar")
+     .style("fill", "gold")
+     .style("opacity", 0.6)
+     .attr("x", function(d) { return xScale(d.time); })
+     .attr("width", textAnalysisPixelInterval)
+     .attr("y", function(d) { return yScaleTextAnalysis(d.word_count); })
+     .attr("height", function(d) { return textAnalysisHeight - yScaleTextAnalysis(d.word_count); });
+
+textAnalysisChart.selectAll(".uniqueWordCount-bar")
+   .data(textAnalysisData)
+ .enter().append("rect")
+   .attr("class", "uniqueWordCount-bar")
+   .style("fill", "cyan")
+   .style("opacity", 0.5)
+   .attr("x", function(d) { return xScale(d.time); })
+   .attr("width", textAnalysisPixelInterval)
+   .attr("y", function(d) { return yScaleTextAnalysis(d.uniqueword_count); })
+   .attr("height", function(d) { return textAnalysisHeight - yScaleTextAnalysis(d.uniqueword_count); });
+
+  textAnalysisChart.selectAll(".charCount-lines")
+  .data(textAnalysisData)
+  .enter()
+  .append("line")
+  .attr("class", "charCount-lines")
+  .attr("stroke", "fuchsia")
+  .attr("stroke-width", 2.25)
+  .attr("stroke-opacity", 0.5)
+  .attr("x1", function(d){ return xScale(d.time) + textAnalysisPixelInterval / 2;})
+  .attr("x2", function(d) {return xScale(d.time)+ textAnalysisPixelInterval / 2;})
+  .attr("y1", textAnalysisHeight)
+  .attr("y2", function(d) {return yScaleTextAnalysis(d.char_count)})
+  .attr('marker-end', 'url(#wordCount_marker)');
+
+  textAnalysisChart.selectAll(".backspace-lines")
+  .data(textAnalysisData)
+  .enter()
+  .append("line")
+  .attr("class", "backspace-lines")
+  .attr("stroke", "blue")
+  .attr("stroke-width", 2.25)
+  .attr("stroke-opacity", 0.7)
+  .attr("x1", function(d){ return xScale(d.time);})
+  .attr("x2", function(d) {return xScale(d.time)+ textAnalysisPixelInterval;})
+  .attr("y1", function(d) {return yScaleTextAnalysis(d.backspace_count)})
+  .attr("y2", function(d) {return yScaleTextAnalysis(d.backspace_count)});
+
+
+keystrokesChart.append("path")
+  .datum(keystrokesData)
+  .attr("d", keystrokes_avgDwell_Line)
+  .attr("stroke", "magenta")
+  .attr("fill", "none")
+  .attr("opacity", 0.75)
+  .attr("stroke-width", 2)
+  .attr("class", "dwell-line");
+keystrokesChart.append("path")
+.datum(keystrokesData)
+  .attr("d", keystrokes_avgFlight_Line)
+  .attr("stroke", "blue")
+  .attr("fill", "none")
+  .attr("opacity", 0.75)
+  .attr("stroke-width", 2)
+  .attr("class", "flight-line");
+
+
+  keyloggerChart.selectAll("circle")
+  .call(tip)
+  .on("mouseover", function(d) {
+    tip.show(d);
+  })
+  .on("mouseout", function(d) {
+    tip.hide(d);
+  })
+
+  textAnalysisChart.selectAll("rect")
+  .call(textAnalyzerTip)
+  .on("mouseover", function(d) {
+    textAnalyzerTip.show(d);
+  })
+  .on("mouseout", function(d){
+    textAnalyzerTip.hide(d);
+  })
+
+  textAnalysisChart.selectAll("line")
+  .call(textAnalyzerTip)
+  .on("mouseover", function(d) {
+    textAnalyzerTip.show(d);
+  })
+  .on("mouseout", function(d){
+    textAnalyzerTip.hide(d);
+  })
+}
+  </script>
+
+<script>
+
+var affectivaHeight = 850;
+var affectivaSVG = d3.select("#affectiva")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", affectivaHeight + margin.top + margin.bottom);
+
+var blinksHeight = (affectivaHeight/10) * 2;
+var blinksChart = affectivaSVG.append("g")
+        .attr("height", blinksHeight)
+        .attr("class", "blinksG")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var expressionsHeight = (affectivaHeight/10) * 5;
+var expressionsChart = affectivaSVG.append("g")
+        .attr("height", expressionsHeight)
+        .attr("class", "expressionsG")
+        .attr("transform", "translate(" + margin.left + "," + (blinksHeight + margin.top) + ")");
+
+var emojiHeight = (affectivaHeight/10) * 3;
+var emojiChart = affectivaSVG.append("g")
+        .attr("height", emojiHeight)
+        .attr("class", "emojiG")
+        .attr("transform", "translate(" + margin.left + "," + (expressionsHeight + blinksHeight + 90 + margin.top) + ")");
+
+var yScaleExpressions = d3.scaleLinear()
+  .range([expressionsHeight,0]);
+var yAxisExpressions = d3.axisLeft(yScaleExpressions).tickSize(-width).ticks(4).tickPadding(10).tickSizeOuter(0).tickFormat(function(d) { return d + "%"; });
+
+
+var productivityArea = d3.area()
+    .x(function(d) { return xScale(d[0]); })
+    .y1(function(d) { return yScaleExpressions(d[4]); })
+    .y0(expressionsHeight/2)
+      .defined(function(d){return d[4]!=null;});
+
+
+d3.json("merged_file.json", function (err, affectiva) {
+  d3.json("productivity.json", function(err, rescuetime){
+      if (err) console.warn(err, "error loading data");
+
+
+productivity = rescuetime.rows;
+
+productivity.forEach(function(d){
+  var dateTime = new Date(String(d[0]) + "-04:00");
+  d[0] = dateTime;
+})
+
+newProductivity = [];
+
+productivity.forEach(function(d, i){
+
+  newProductivity.push(d);
+
+  if(i == productivity.length-1){
+    return;
+  }
+  var timee = productivity[i+1][0];
+
+
+  if(d[0] < (timee - 3600000)) {
+    var nullTime = new Date(timee - 3600000);
+    var nullItems = [];
+    nullItems[0] = nullTime;
+    nullItems[1] = null;
+    nullItems[2] = null;
+    nullItems[3] = null;
+    nullItems[4] = null;
+    var nullIndex = i+1;
+    newProductivity.push(nullItems);
+
+  }
+
+});
+
+
+affectiva.sort(function(a,b) {return a.time - b.time});
+
+
+affectiva.forEach(function(d){
+
+    var dateTime = new Date(d.time);
+    d.time = dateTime;
+})
+
+
+
+    // var attentionLine = d3.svg.line()
+    //   .x(function(d) {return xScale(d.time);})
+    //   .y(function(d){return yScale(d.attention);});
+    //
+
+
+// xScale.domain(d3.extent(newResponses, function(d) {return d.time;}));
+  yScaleExpressions.domain([-100,100]);
+  // xScale2.domain(xScale.domain());
+  // yScale2.domain(yScale.domain());
+
+
+  // var productivityline = d3.line()
+  //   .defined(function(d){return d[4]!=null;})
+  //   .x(function(d) {return xScale(d[0]);})
+  //   .y(function(d){return yScaleExpressions(d[4]);});
+
+  // var blinkLine = d3.svg.line()
+  //   .defined(function(d){return d.blinks!=null;})
+  //   .x(function(d) {return xScale(d.time);})
+  //   .y(function(d){return yScale(d.blinks);});
+
+
+  var blinksTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([-22,-5])
+    .direction("n")
+    .html(function(d,i) {
+    return d.blinks + " blinks";
+    });
+
+
+
+  var attentionTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([-24,-5])
+    .html(function(d,i) {
+    return "<b>Max Attention:</b> " + d.max_attention.toFixed(2) + "% <br><b>Min Attention:</b> " + d.min_attention.toFixed(2) + "%";
+    });
+
+
+  var valenceTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([22,-5])
+    .direction("s")
+    .html(function(d,i) {
+    return "<b>Max Valence:</b> " + d.max_valence.toFixed(2) + "% <br><b>Min Valence:</b> " + d.min_valence.toFixed(2) + "% <p><span style='font-size:16px'>" + d.emoji + "</span></p>";
+    });
+
+  var markers = [
+   { id:0, name: 'attention', path: 'M 0,0 m -1,-4.5 L 1,-4.5 L 1,4.5 L -1,4.5 Z', fill: 'fuchsia', viewbox: '-1 -5 2 10' },
+   { id: 1, name: 'engagement', path: 'M 0,0 m -1,-2.5 L 1,-2.5 L 1,2.5 L -1,2.5 Z', fill: 'gold', viewbox: '-1 -5 2 10' },
+   { id: 2, name: 'valence', path: 'M 0,0 m -1,-4.5 L 1,-4.5 L 1,4.5 L -1,4.5 Z', fill: 'cyan', viewbox: '-1 -5 2 10' },
+  ]
+
+
+    var defs = affectivaSVG.append('svg:defs')
+
+  var marker = defs.selectAll('marker')
+    .data(markers)
+    .enter()
+    .append('svg:marker')
+      .attr('id', function(d){ return 'marker_' + d.name})
+      .attr('markerHeight', 5)
+      .attr('markerWidth', 5)
+      .attr('markerUnits', 'strokeWidth')
+      .attr('orient', 'auto')
+      .attr('refX', 0)
+      .attr('refY', 0)
+      .attr('viewBox', function(d){ return d.viewbox })
+      .append('svg:path')
+        .attr('d', function(d){ return d.path })
+        .attr("fill", function(d){return d.fill})
+        .attr("fill-opacity", 0.3);
+
+
+  blinksChart.append("line")
+    .style("stroke", "silver")
+    .style("stroke-width", 1)
+    .attr("x1", 60)
+    .attr("y1", 60)
+    .attr("x2", width)
+    .attr("y2", 60);
+
+  blinksChart.append("text")
+    .attr("class", "alt-axis")
+    .attr("y", 60)
+    .attr("x", -30)
+    .text("BLINKS/MIN");
+
+  var blinkCircles = blinksChart.selectAll(".blink-circle")
+    .data(affectiva)
+    .enter()
+    .append("circle")
+    .attr("class","blink-circle")
+    .attr("cx", function(d) {return xScale(d.time)})
+    .attr("cy", 60)
+    .attr("r", function(d) { return d.blinks * 1.5;})
+    .attr("fill-opacity", 0.6)
+    .attr("fill", "blue");
+
+
+
+    blinksChart.selectAll(".blink-circle")
+    .call(blinksTip)
+
+    .on("mouseover", function(d) {
+      blinksTip.show(d);
+    })
+
+    .on("mouseout", function(d) {
+      blinksTip.hide(d);
+    })
+
+
+
+  expressionsChart.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform","translate(0, "+expressionsHeight+")")
+    .call(xAxis);
+
+  expressionsChart.append("g")
+  .attr("class", "axis axis--y")
+    .call(yAxisExpressions);
+
+
+  expressionsChart.append("line")
+    .style("stroke", "#e0e0e0")
+    .style("stroke-dasharray", ("5,5"))
+    .attr("x1", 0)
+    .attr("y1", yScaleExpressions(50))
+    .attr("x2", width)
+    .attr("y2", yScaleExpressions(50));
+
+
+
+
+ expressionsChart.append("path")
+    .datum(newProductivity)
+    .attr("d", productivityArea)
+    .attr("fill", "gold")
+    .attr("opacity", 0.35)
+    .attr("class", "productivityArea");
+
+
+
+    var valenceLines = expressionsChart.selectAll(".valenceLines")
+    .data(affectiva)
+    .enter()
+    .append("line")
+    .attr("class", "valenceLines")
+    .attr("stroke", "cyan")
+    .attr("stroke-width", 2.25)
+    .attr("stroke-opacity", 0.6)
+    .attr("x1", function(d){ return xScale(d.time);})
+    .attr("x2", function(d) {return xScale(d.time);})
+    .attr("y1", function(d){return yScaleExpressions(d.min_valence)})
+    .attr("y2", function(d) {return yScaleExpressions(d.max_valence)})
+    .attr('marker-start', 'url(#marker_valence)')
+    .attr('marker-end', 'url(#marker_valence)');
+
+    var attentionLines = expressionsChart.selectAll(".attentionLines")
+    .data(affectiva)
+    .enter()
+    .append("line")
+    .attr("class", "attentionLines")
+    .attr("stroke", "fuchsia")
+    .attr("stroke-width", 2.25)
+    .attr("stroke-opacity", 0.6)
+    // .attr("stroke-linecap", "butt")
+    .attr("x1", function(d){ return xScale(d.time);})
+    .attr("x2", function(d) {return xScale(d.time);})
+    .attr("y1", function(d){return yScaleExpressions(d.min_attention)})
+    .attr("y2", function(d) {return yScaleExpressions(d.max_attention)})
+    .attr('marker-start', 'url(#marker_attention)')
+    .attr('marker-end', 'url(#marker_attention)');
+
+
+
+
+  expressionsChart.selectAll(".attentionLines")
+  .call(attentionTip)
+
+  .on("mouseover", function(d) {
+    attentionTip.show(d);
+  })
+
+  .on("mouseout", function(d) {
+    attentionTip.hide(d);
+  })
+
+
+  expressionsChart.selectAll(".valenceLines")
+  .call(valenceTip)
+
+  .on("mouseover", function(d) {
+    valenceTip.show(d);
+  })
+
+  .on("mouseout", function(d) {
+    valenceTip.hide(d);
+  })
+
+
+
+  emojiChart.append("line")
+    .style("stroke", "silver")
+    .style("stroke-width", 1)
+    .attr("x1", 70)
+    .attr("y1", 110)
+    .attr("x2", width)
+    .attr("y2", 110);
+
+  emojiChart.append("text")
+    .attr("class", "alt-axis")
+    .attr("y", 110)
+    .attr("x", -30)
+    .text("EXPRESSIONS");
+
+    var j = 0;
+    var k = 0;
+
+    var emoji = emojiChart.selectAll(".emoji")
+      .data(affectiva)
+      .enter()
+      .append("g")
+      .attr("class", "emoji")
+      .attr("transform", function(d) {
+        return "translate(" + (xScale(d.time)-7) + ")";})
+      .selectAll(".emoji")
+      .data(function(d) {
+        return d.emoji;
+      })
+      .enter()
+      .append("g")
+      .attr("transform", function(d,i) {
+        if (i == 0) {
+          j = 0;
+          k = 0;
+        }
+        if (d <= "😏" || d >= "😘" && d <="😝" || d == "😗") { //happy
+          var translate_string = "translate(0," + (yScaleExpressions(j*19)/2.5) + ")";
+          j += 1;
+          return translate_string;
+        }
+        else if (d > "😏" && d < "😘" || d > "😝") { //sad
+          var translate_string = "translate(0," + (235 - yScaleExpressions(k*19)/2.5) + ")";
+          k += 1;
+          return translate_string;
+        }
+      })
+      .append("text")
+      .text(function(d) {return d;})
+        .attr("font-size", "18px");
+
+
+
+})
+});
+
+</script>
+
+
+<script>
+
+var dataset; 
+// var tabCounterChartHeight = 800;
+// var tabCounterHeight = 500;
+// var faviconHeight = 300;
+
+var tabCounterSVG = d3.select("#tabCounter")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom);
+var tabCounterChart = tabCounterSVG.append("g")
+      .attr("class", "tabCounterG")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      // .attr("height", tabCounterHeight);
+// var faviconChart = tabCounterSVG.append("g")
+//       .attr("class", "faviconG")
+//       .attr("transform", "translate(" + margin.left + "," + (margin.top + faviconHeight) + ")")
+//       .attr("height", faviconHeight);
+
+
+var yScaleTabCounter = d3.scaleLinear()
+  .range([height,0]);
+  // .domain([0.45,1]);
+var yAxisTabCounter = d3.axisLeft(yScaleTabCounter).tickSize(-width).ticks(4).tickPadding(10).tickSizeOuter(0);
+
+
+var tabLine = d3.line()
+// .defined(function(d) { return (typeof dataset[d].current_tabCount !== 'string'); })
+.defined(function(d){
+    // return dataset[d].current_tabCount!==null ? d : console.log("null")
+  return (dataset[d].current_tabCount!==null) && (dataset[d].tabs_activated > 0 || dataset[d].tabs_created > 0)
+})
+  .x(function(d) {return xScale(dataset[d].timestamp);})
+  .y(function(d){return yScaleTabCounter(dataset[d].current_tabCount);});
+
+
+
+
+d3.json("chromeactivity.json", ready);
+
+function ready(err, data) {
+    if (err) console.warn(err, "error loading data");
+
+
+dataset = data;
+
+// console.log(dataset[1524982083090])
+var keyLookup = [];
+
+for(var key in dataset){
+  // console.log(dataset[key])
+  var dateTime = new Date(dataset[key].timestamp)
+  dataset[key].timestamp = dateTime;
+  keyLookup.push(key);
+
+  if(!dataset[key].favicons){
+    dataset[key]["favicons"] = [];
+  }
+}
+
+
+for(var key in dataset){
+
+  var currentIndex = keyLookup.indexOf(key);
+
+  if(currentIndex < keyLookup.length - 1){
+    var currentTime = dataset[key].timestamp;
+    var nextTime = dataset[keyLookup[currentIndex+1]].timestamp;
+
+
+    if (currentTime < (nextTime - 14000000)) {
+      var nullTime = nextTime - 14000000
+
+      var nullItems = {};
+
+      nullItems["timestamp"] = new Date(nullTime);
+      nullItems["current_windowCount"] = null;
+      nullItems["current_tabCount"] = null;
+      nullItems["favicons"] = [];
+      nullItems["tabs_activated"] = null;
+      nullItems["tabs_created"] = null;
+      nullItems["windows_created"] = null;
+
+      dataset[nullTime] = nullItems;
+    }
+
+    // else if (currentTime > (nextTime - 1800000)) {
+    //   var currentTimeMs = currentTime.getTime();
+    //   var nextTimeMs = nextTime.getTime();
+    //   dataset[currentTimeMs].tabs_activated += dataset[nextTimeMs].tabs_activated;
+    //   dataset[currentTimeMs].tabs_created += dataset[nextTimeMs].tabs_created;
+    //   dataset[currentTimeMs].windows_created += dataset[nextTimeMs].windows_created;
+    //   delete dataset[nextTimeMs];
+    // }
+  }
+}
+
+
+keyLookup = [];
+
+for(var key in dataset){
+    keyLookup.push(key);
+}
+
+keyLookup.sort(function(a,b){
+  return a - b;
+})
+
+
+var activatedMax = d3.extent(keyLookup, function(d) {return dataset[d].tabs_activated;})[1];
+var countMax = d3.extent(keyLookup, function(d) {return dataset[d].current_tabCount;})[1];
+
+yScaleTabCounter.domain([0,activatedMax+countMax]);
+// xScale2.domain(xScale.domain());
+// yScale2.domain(yScale.domain());
+
+
+  var tabTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([-22,-5])
+    .direction("n")
+    .html(function(d) {
+      var imgString = "";
+      for(var i = 0; i < dataset[d].favicons.length; i++){
+        var jnURL = "http://localhost:8888/static/base/images/"
+        if(dataset[d].favicons[i].includes(jnURL)){
+        imgString += "<img src="+dataset[d].favicons[i].slice(jnURL.length)+" width='13px' height='13px'>"
+        }
+        else{
+        imgString += "<img src='"+dataset[d].favicons[i]+"' width='13px' height='13px'>"
+        }
+      }
+      return "<b>Windows Left Open:</b> "+dataset[d].current_windowCount + "<br><b>Tab Total:</b> "+dataset[d].current_tabCount+ "<br><b>Tabs Created:</b> "+dataset[d].tabs_created + "<br><b>Tabs Activated:</b> "+dataset[d].tabs_activated+"<br><br>" + imgString;
+    });
+
+
+  tabCounterChart.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform","translate(0, "+(height)+")")
+    .call(xAxis);
+
+  tabCounterChart.append("g")
+  .attr("class", "axis axis--y")
+    .call(yAxisTabCounter);
+
+
+tabCounterChart.selectAll(".created-circle")
+    .data(keyLookup)
+  .enter().append("circle")
+    .attr("class", "created-circle")
+    .style("stroke", "cyan")
+    .style("opacity", 0.65)
+    .attr("fill", "none")
+    .attr("cx", function(d) { return xScale(dataset[d].timestamp); })
+    // .attr("width", pixelInterval)
+    .attr("cy", function(d) { return yScaleTabCounter(dataset[d].tabs_activated + dataset[d].tabs_created + dataset[d].current_tabCount); })
+    .attr("r", function(d) { return (dataset[d].tabs_activated/4) + (dataset[d].current_tabCount /2);})
+    .attr("stroke-width", function(d) { return dataset[d].tabs_created;});
+    // .attr("height", function(d) { return height - yScaleTabCounter(dataset[d].tabs_created); });
+
+
+ tabCounterChart.selectAll(".activated-circle")
+      .data(keyLookup)
+    .enter().append("circle")
+      .attr("class", "activated-circle")
+      .style("stroke", "gold")
+      .attr("fill", "none")
+      .style("opacity", 0.5)
+      .attr("cx", function(d) { return xScale(dataset[d].timestamp); })
+      .attr("cy", function(d){ return yScaleTabCounter(dataset[d].tabs_activated + dataset[d].tabs_created + dataset[d].current_tabCount); })
+      .attr("r", function(d) { return dataset[d].current_tabCount /2})
+      .attr("stroke-width", function(d) { return dataset[d].tabs_activated/2;});
+
+
+ tabCounterChart.selectAll(".currentCount-circle")
+      .data(keyLookup)
+    .enter().append("circle")
+      .attr("class", "currentCount-circle")
+      .style("fill", "magenta")
+      .style("opacity", 0.4)
+      .attr("cx", function(d) { return xScale(dataset[d].timestamp); })
+      .attr("cy", function(d){ return yScaleTabCounter(dataset[d].tabs_activated + dataset[d].tabs_created + dataset[d].current_tabCount); })
+      .attr("r", function(d) { return dataset[d].current_tabCount /2});
+
+ tabCounterChart.selectAll(".currentWindowCount-circle")
+      .data(keyLookup)
+    .enter().append("circle")
+      .attr("class", "currentWindowCount-circle")
+      .style("fill", "blue")
+      .style("opacity", 0.5)
+      .attr("cx", function(d) { return xScale(dataset[d].timestamp); })
+      .attr("cy", function(d){ return yScaleTabCounter(dataset[d].tabs_activated + dataset[d].tabs_created + dataset[d].current_tabCount); })
+      .attr("r", function(d) { return dataset[d].windows_created});
+
+
+
+tabCounterChart.selectAll("circle")
+.call(tabTip)
+
+.on("mouseover", function(d) {
+  tabTip.show(d);
+})
+
+.on("mouseout", function(d) {
+  tabTip.hide(d);
+})
+
+}
+
+
+</script>
+
+
+<script>
+
+// correlation matrix adapted from https://bl.ocks.org/emeeks/671c0e7adfb1ce7060b8
+// linear regression adapted from https://bl.ocks.org/HarryStevens/be559bed98d662f69e68fc8a7e0ad097
+
+
+d3.tsv("mergedDF.tsv", function(err, data) {
+  d3.tsv("correlationmatrix.tsv", function(err, correlationData) {
+      if (err) console.warn(err, "error loading data");
+
+var correlationSVG = d3.select("#correlations")
+      .attr("width", width + margin.left + margin.right)
+
+  attributes = ["All", "mood", "unique_interactions", "alone", "morale", "stress", "fatigue", "compulsions", "tv_activity", "with_friends_activity", "schoolwork_activity", "home_location","school_location", "hour_of_day", "avg_attention", "avg_engagement", "avg_valence", "blinks", "expressions", "Sadness_score", "Analytical_score", "Joy_score", "Fear_score", "Tentative_score", "Anger_score", "Confident_score", "word_count", "uniqueword_ratio", "backspace_count", "avg_dwelltime", "avg_flighttime", "stepCount", "current_tabCount", "tabs_activated", "tabs_created", "windows_created", "productivity_score", "heart_rate"]
+
+  attribute_descriptions = {All: "All variables", mood: "Mood Reporter data on scale of 0-5", unique_interactions: "Mood Reporter data on number of social interactions", alone: "Mood Reporter data (T/F)", morale: "Mood Reporter data on scale of 0-5", stress: "Mood Reporter data on scale of 0-5", fatigue: "Mood Reporter data on scale of 0-5", compulsions: "Mood Reporter data on compulsions (T/F)", tv_activity: "Mood Reporter data on time spent watching TV (T/F)", schoolwork_activity: "Mood Reporter data on time spent on schoolwork (T/F)", with_friends_activity: "Mood Reporter data on time with friends (T/F)", home_location: "Mood Reporter data on time spent at home (T/F)", school_location: "Mood Reporter data on time spent at school (T/F)", productivity_score: "Productivity_score, calculated by the RescueTime App on scale of 0-100%", blinks: "Count per minute, calculated with Facial Analysis data", expressions: "Number of expressions, detected with Facial Analysis data", Sadness_score: "Sentiment analysis score from Keylogger data", Analytical_score: "Sentiment analysis score from Keylogger data", Joy_score: "Sentiment analysis score from Keylogger data", Tentative_score: "Sentiment analysis score from Keylogger data", Confident_score: "Sentiment analysis score from Keylogger data", Fear_score: "Sentiment analysis score from Keylogger data", Anger_score: "Sentiment analysis score from Keylogger data", word_count: "Keylogger data on number of words typed per hour", uniqueword_ratio: "Keylogger data on percentage of unique words typed per hour", backspace_count: "Keylogger data on number of backspaces typed per hour", avg_dwelltime: "Keylogger data on hourly average keypress duration", avg_flighttime: "Keylogger data on hourly average duration between keystrokes", avg_attention: "Average attention score calculated from one minute of Facial Analysis data", avg_engagement: "Average engagement score calculated from one minute of Facial Analysis data", avg_valence: "Average valence score calculated from one minute of Facial Analysis data", tabs_activated: "Browser Activity Tracker count of tabs activated over an hour", tabs_created: "Browser Activity Tracker count of tabs created over an hour", windows_created: "Browser Activity Tracker count of windows created over an hour", hour_of_day: "Hour of day; recalculated 24-hour clock format to fit my sleep schedule and the linear approach of correlation/linear regression, ie 0-24 to 6-30", heart_rate: "Heart rate calculated by OpenCV"}
+    
+
+  d3.select("#selection1").selectAll("options")
+    .data(attributes)
+    .enter().append("option")
+    .text(function(d){return d})
+
+  d3.select("#selection2").selectAll("options")
+    .data(attributes)
+    .enter().append("option")
+    .text(function(d){return d})
+
+  attributeMatrix = [];
+
+  attributes.forEach(function(a,x) {
+    attributes.forEach(function(b,y){
+      if(y == attributes.length || x == attributes.length){
+        return
+      }
+      else{
+      attributeMatrix.push({a: a, b:b, x:x, y:y})
+    }
+    })
+  })
+
+
+  data.forEach(function (d) {
+    attributes.forEach(function (att) {
+      if(d[att] == "False"){
+        d[att] = 0;
+      }
+      else if (d[att] == "True") {
+        d[att] = 1;
+      }
+      else {
+        d[att] = parseFloat(d[att])
+      }
+    })
+  })
+
+  //create scales dynamically for each attribute's extent
+
+  scale = {};
+  attributes.forEach(function (att) {
+    scale[att] = d3.scaleLinear();
+    attExtent = d3.extent(data, function (d) {return d[att]});
+    scale[att].domain(attExtent);
+  })
+
+
+var selection1 = document.querySelector('#selection1');
+selection1.addEventListener('input', getInput)
+
+var selection2 = document.querySelector('#selection2');
+selection2.addEventListener('input', getInput)
+
+
+
+function getInput() {
+
+  var input1 = document.getElementById("selection1").value
+  var input2 = document.getElementById("selection2").value
+
+  var newMatrix = [];
+  var attributeSet = new Set()
+
+  if(input1 == "Select an X-Axis Metric:" || input2 == "Select an Y-Axis Metric:"){
+    return
+  }
+  if(input1 == "All" && input2 =="All"){
+    attributeSet = new Set(attributes);
+    correlationData.forEach(function(d){
+      if(attributeSet.has(d.index)){
+        attributeSet.forEach(function(att){
+          if(att != "All"){
+          newMatrix.push({a: d.index, b:att, corr: d[att]})
+          }
+        })
+
+      }
+    })
+
+  }
+  else if(input1 == "All") {
+    attributeSet.add(input2)
+    attributeMatrix.forEach(function(d){
+      if(d.b == input2) { 
+        if(d.a != "All" && d.a != d.b) {
+          newMatrix.push(d)
+          attributeSet.add(d.a)
+        }        
+
+      }
+    })
+  }
+  else if (input2 == "All"){
+    attributeSet.add(input1)
+    attributeMatrix.forEach(function(d){
+      if(d.a == input1) {
+        if(d.b != "All" && d.b != d.a) {
+          newMatrix.push(d)
+          attributeSet.add(d.b)
+        }        
+
+      }
+    })
+  }
+  else {
+    newMatrix.push({a: input1, b:input2})
+    attributeSet.add(input1)
+    attributeSet.add(input2)
+
+  }
+
+
+  // var variable_description_container = document.getElementById("variable-description-container")
+  
+  // variable_description_container.style.display = "block";
+  
+
+  var tempInstructions = document.querySelector("#temp-instructions")
+  if(tempInstructions != null){
+    tempInstructions.parentNode.removeChild(tempInstructions)
+  }
+
+  var variable_description = document.querySelector("#variable-description")
+  variable_description.innerHTML = null
+
+
+attributeSet.forEach(function(d){
+  // var newP = document.createTextNode("<b>"+ d + ": </b>" + attribute_descriptions[d])
+  var newP = document.createElement("p")
+
+  var newPair = "<b>"+ d + ": </b>" + attribute_descriptions[d]
+
+  newP.innerHTML = newPair
+
+  variable_description.appendChild(newP)
+
+})
+
+attributeSet.clear()
+
+
+if(newMatrix.length > 300) {
+  var containerWidth = width/41.25;
+  var containerHeight = width/41.25;
+  var chartHeight = width/44.25;
+  var chartWidth = width/44.25;
+  var rowLength = attributes.length - 1;
+  margin.left += attributes.length - 1;
+  margin.top += attributes.length - 1;
+}
+else if(newMatrix.length < 300 && newMatrix.length > 2){
+  var containerWidth = width/6;
+  var containerHeight = width/6;
+  var chartHeight = width/8;
+  var chartWidth = width/8;
+  var rowLength = 6;
+  var tickNumX = 4;
+  var tickNumY = 4;
+  var tickSize = 2;
+  var tickPadding = 2;
+  var axisClass = "smallAxis";
+  var radius = 2;
+  var labelClass = "smallAxisLabel"
+  margin.left = 50;
+  margin.top = 50;
+}
+else if (newMatrix.length < 2){
+  var containerWidth = width/2;
+  var containerHeight = width/2.5;
+  var chartHeight = 400;
+  var chartWidth = 900;
+  var rowLength = 1;
+  var tickNumX = 12;
+  var tickNumY = 6;
+  var tickSize = -chartWidth;
+  var tickPadding = 10;
+  var axisClass = "axis";
+  var radius = 4;
+  var labelClass = "axisLabel"
+  margin.left = 75;
+  margin.top = 50;
+}
+
+// d3.select("svg")
+correlationSVG
+.html("")
+.attr("height", (Math.ceil((newMatrix.length+2) / rowLength)  * containerHeight) + margin.top + margin.bottom)
+// .attr("width", width + margin.left + margin.right)
+
+
+
+var rows = 0;
+var j = -1;
+
+correlationSVG  
+  .selectAll("g")
+  .data(newMatrix)
+  .enter()
+  .append("g")
+  .attr("transform", function (d,i) {
+      if(i > 0 && i%rowLength == 0){
+        rows += 1;
+        j=0;
+        return "translate(" + ((j * containerWidth) + margin.left) + "," + ((rows * containerHeight) + margin.top) + ")" 
+      }
+      else{
+        j +=1;
+        return "translate(" + ((j * containerWidth) + margin.left) + "," + ((rows * containerHeight) + margin.top) + ")" 
+      }
+  });
+
+
+correlationSVG.selectAll("g").each(function(pair,i){
+
+
+  if(pair.a == pair.b && newMatrix.length < 2){
+    return
+  }
+  else if(newMatrix.length < 300) {
+
+    scale[pair.a].range([0,chartWidth]);
+    scale[pair.b].range([chartHeight,0]);
+
+    d3.select(this).append("rect").style("fill", "none").style("stroke", "none").style("stroke-width", 0)
+    .attr("height", chartHeight)
+    .attr("width", chartWidth)
+
+      var xAxisCorr = d3.axisBottom()
+          .scale(scale[pair.a])
+          .tickSize(3)
+          .ticks(tickNumX)
+          .tickPadding(tickPadding);
+
+      var yAxisCorr = d3.axisLeft()
+          .scale(scale[pair.b])
+          .tickSize(tickSize)
+          .ticks(tickNumY)
+          .tickPadding(tickPadding);
+
+      d3.select(this).append("g")
+        .attr("class", axisClass)
+        .attr("transform", "translate(0," + chartHeight + ")")
+        .call(xAxisCorr)
+
+      d3.select(this).append("g")
+          .attr("class", axisClass)
+          .call(yAxisCorr);
+
+      if(newMatrix.length > 2){
+          d3.select(this).append("text")
+          .attr("class", labelClass)
+          .attr("x", (chartWidth/2) + 5)
+          .style("text-anchor", "middle")
+          .attr("y", 7)
+          .attr("fill", "black")
+
+          .text(function(d){
+            var string = pair.a + pair.b;
+
+            if(string.length <= 20){
+              return pair.a.toUpperCase() + " - " + pair.b.toUpperCase();
+            }
+            else if(string.length > 20){
+              return pair.a.toUpperCase() + " -";
+            }
+          })
+          d3.select(this).append("text")
+          .attr("class",labelClass)
+          .attr("x", (chartWidth/2) + 5)
+          .style("text-anchor", "middle")
+          .attr("y", 20)
+          .attr("fill", "black")
+          .text(function(d){
+            var string = pair.a + pair.b;
+            if(string.length > 20){
+              return pair.b.toUpperCase()
+            }
+          });
+        }
+      else if (newMatrix.length < 2){
+        d3.select(this).append("text")
+          .attr("class", labelClass)
+          .attr("x", (chartWidth/2))
+          .attr("y", chartHeight + 60)
+          .attr("fill", "black")
+          .text(function(d){
+            return pair.a
+          })
+       d3.select(this).append("text")
+          .attr("class", labelClass)
+          .attr("transform", "rotate(-90)")
+          .attr("x", 0 - (chartHeight/2))
+          .attr("y", -50)
+          .style("text-anchor", "middle")
+          .attr("fill", "black")
+          .text(function(d){
+            return pair.b
+          })
+      }
+    }
+    else if (newMatrix.length >300) {
+      document.body.style.cursor = "default";
+
+      scale[pair.a].range([4,chartWidth]);
+      scale[pair.b].range([chartHeight,4]);
+
+      var corr_color = d3.scaleLinear()
+        .domain([-1,0,1])
+        .range(["blue", "#fcf9ef", "magenta"])
+
+      d3.select(this).append("rect").style("fill", corr_color(pair.corr)).style("stroke", "#fcf9ef").style("stroke-width", 2)
+      .attr("height", containerHeight)
+      .attr("width", containerWidth)
+
+
+      if (i == 0) {
+        d3.select(this).append("text")
+        .attr("class", "matrix-label")
+        .attr("x", 10)
+        .attr("y", 5)
+        .attr("fill", "black")
+        .text(pair.b.toUpperCase())  
+        d3.select(this).append("text")
+        .attr("class", "matrix-label")
+        .attr("x", -10)
+        .attr("y", 5)
+        .attr("fill", "black")
+        .style("text-anchor", "end")
+        .text(pair.a.toUpperCase())
+      }
+      else if(i < rowLength){
+        d3.select(this).append("text")
+        .attr("class", "matrix-label")
+        .attr("x", 10)
+        .attr("y", 5)
+        .attr("fill", "black")
+        .text(pair.b.toUpperCase())  
+      }
+      else if(i%rowLength == 0){
+        d3.select(this).append("text")
+        .attr("class", "matrix-label")
+        .attr("x", -10)
+        .attr("y", 5)
+        .attr("fill", "black")
+        .style("text-anchor", "end")
+        .text(pair.a.toUpperCase())
+      }
+
+  var corrTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([-20,-5])
+    .html(function(d,i) {
+    return "<b>" + d.a + ",<br>" + d.b + ":</b><br>" + d.corr;
+    });
+
+   correlationSVG.selectAll("rect")
+    .call(corrTip)
+
+    .on("mouseover", function(d) {
+      corrTip.show(d);
+    })
+
+    .on("mouseout", function(d) {
+      corrTip.hide(d);
+    })
+    return
+  }
+
+
+
+    var lg = calcLinear(data, pair.a, pair.b, 
+          d3.min(data, function(d){ return d[pair.a] }), 
+          d3.min(data, function(d){ return d[pair.b] }), 
+          d3.max(data, function(d){ return d[pair.a] }));
+
+    var circleclass;
+
+    d3.select(this).append("line")
+          .attr("class", "regression")
+          .attr("x1", scale[pair.a](lg.ptA.x))
+          .attr("y1", scale[pair.b](lg.ptA.y))
+          .attr("x2", scale[pair.a](lg.ptB.x))
+          .attr("y2", scale[pair.b](lg.ptB.y))
+          .attr("stroke", function(d){
+            if (pair.b == pair.a){
+              circleclass = "silver";
+              return "silver";
+            }
+            else if((scale[pair.b](lg.ptA.y)) >(scale[pair.b](lg.ptB.y))){
+              circleclass = "magenta";
+              return "magenta";
+            }
+            else {
+              circleclass = "blue";
+              return "blue";
+            }
+          });
+
+        // scatterplot points
+      d3.select(this).selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("r", radius)
+      .style("fill", circleclass)
+      // .style("fill", colors(i))
+      .style("opacity", 0.11)
+      .attr("cx", function (d) {
+        return scale[pair.a](d[pair.a])
+      })
+      .attr("cy", function (d) {return scale[pair.b](d[pair.b])});
+
+    })
+
+
+   // Calculate a linear regression from the data
+
+    // Takes 5 parameters:
+    // (1) Your data
+    // (2) The column of data plotted on your x-axis
+    // (3) The column of data plotted on your y-axis
+    // (4) The minimum value of your x-axis
+    // (5) The minimum value of your y-axis
+
+    // Returns an object with two points, where each point is an object with an x and y coordinate
+
+    function calcLinear(data, x, y, minX, minY, maxX){
+      /////////
+      //SLOPE//
+      /////////
+
+      // Let n = the number of data points
+      var n = data.length;
+
+      // Get just the points
+      var pts = [];
+      data.forEach(function(d,i){
+        // console.log("+d[x]", +d[x])
+        var obj = {};
+        obj.x = +d[x];
+        obj.y = +d[y];
+        obj.mult = obj.x*obj.y;
+        pts.push(obj);
+      });
+
+      // Let a equal n times the summation of all x-values multiplied by their corresponding y-values
+      // Let b equal the sum of all x-values times the sum of all y-values
+      // Let c equal n times the sum of all squared x-values
+      // Let d equal the squared sum of all x-values
+      var sum = 0;
+      var xSum = 0;
+      var ySum = 0;
+      var sumSq = 0;
+      pts.forEach(function(pt){
+        // console.log(pt)
+        sum = sum + pt.mult;
+        xSum = xSum + pt.x;
+        ySum = ySum + pt.y;
+        sumSq = sumSq + (pt.x * pt.x);
+      });
+
+      var a = sum * n;
+      var b = xSum * ySum;
+      var c = sumSq * n;
+      var d = xSum * xSum;
+
+
+      // Plug the values that you calculated for a, b, c, and d into the following equation to calculate the slope
+      // slope = m = (a - b) / (c - d)
+      var m = (a - b) / (c - d);
+      /////////////
+      //INTERCEPT//
+      /////////////
+
+      // Let e equal the sum of all y-values
+      var e = ySum;
+      // Let f equal the slope times the sum of all x-values
+      var f = m * xSum;
+      // Plug the values you have calculated for e and f into the following equation for the y-intercept
+      // y-intercept = b = (e - f) / n
+      var b = (e - f) / n;
+
+      // return an object of two points
+      // each point is an object with an x and y coordinate
+      return {
+        ptA : {
+          x:minX,
+          y: m * minX + b
+          // x: minX,
+          // y: m * minX + b
+        },
+        ptB : {
+          x: maxX,
+          y: m * maxX + b
+          // y: minY,
+          // x: (minY - b) / m
+        }
+      }
+    }
+
+}
+  })
+});
+
+</script>
+<script>
+
+  d3.json("LSTM_new_predictor.json", function (err, LSTM_data) {
+    // d3.json("new_predictor.json", function(err, RF_morale_data){
+  
+      if (err) console.warn(err, "error loading data");
+  
+  var MLheight = height - 200;
+  var MLwidth = width/2.5;
+  
+  var ML_mood_svg = d3.select("#ml_mood_predictions")
+        .attr("width", MLwidth + margin.left + margin.right)
+        .attr("height", MLheight + margin.top + margin.bottom)
+  var ML_mood_chart = ML_mood_svg.append("g")
+        .attr("class", "ML_mood_chartG")
+        .attr("transform", "translate(" + (margin.left + 10) + "," + margin.top + ")");
+  
+  var ML_morale_svg = d3.select("#ml_morale_predictions")
+        .attr("width", MLwidth + margin.left + margin.right)
+        .attr("height", MLheight + margin.top + margin.bottom)
+  var ML_morale_chart = ML_morale_svg.append("g")
+        .attr("class", "ML_morale_chartG")
+        .attr("transform", "translate(" + (margin.left + 10) + "," + margin.top + ")");
+  
+  var ML_stress_svg = d3.select("#ml_stress_predictions")
+        .attr("width", MLwidth + margin.left + margin.right)
+        .attr("height", MLheight + margin.top + margin.bottom)
+  var ML_stress_chart = ML_stress_svg.append("g")
+        .attr("class", "ML_stress_chartG")
+        .attr("transform", "translate(" + (margin.left + 10) + "," + margin.top + ")");
+  
+  var ML_fatigue_svg = d3.select("#ml_fatigue_predictions")
+        .attr("width", MLwidth + margin.left + margin.right)
+        .attr("height", MLheight + margin.top + margin.bottom)
+  var ML_fatigue_chart = ML_fatigue_svg.append("g")
+        .attr("class", "ML_fatigue_chartG")
+        .attr("transform", "translate(" + (margin.left + 10) + "," + margin.top + ")");
+  
+  
+  newPredictions = [];
+  nullPoints = [];
+  
+  LSTM_data.forEach(function(d,i){
+    // var currentTimestamp = new Date(d.response_time)
+    d['timestamp'] = d.response_time * 1000;
+  })
+  
+  // RF_morale_data.forEach(function(d,i){
+  //   // var currentTimestamp = new Date(d.response_time)
+  //   d['timestamp'] = d.response_time * 1000;
+  // })
+  
+    var nullTime = LSTM_data[0]['timestamp'] - 360000;
+    var nullItems = {};
+    nullItems["actual_mood"] = null;
+    nullItems["actual_stress"] = null;
+    nullItems["actual_fatigue"] = null;
+    nullItems["timestamp"] = nullTime;
+    nullItems["predictions"] = {}
+    nullItems["predictions"]["LSTM_mood_prediction"] = null;
+    nullItems["predictions"]["LSTM_stress_prediction"] = null;
+    nullItems["predictions"]["LSTM_fatigue_prediction"] = null;
+    nullItems["predictions"]["timestamp"] = null;
+  
+   nullPoints.push(nullItems)
+  
+  LSTM_data.forEach(function(d, i) {
+    newPredictions.push(d);
+  
+    if(i == LSTM_data.length -1){
+      var nullItems2 = {};
+      nullItems2["actual_mood"] = null;
+      nullItems2["actual_stress"] = null;
+      nullItems2["actual_fatigue"] = null;
+      nullItems2["timestamp"] = LSTM_data[i]['timestamp'] + 360000;
+      nullItems2["predictions"] = {}
+      nullItems2["predictions"]["LSTM_mood_prediction"] = null;
+      nullItems2["predictions"]["LSTM_stress_prediction"] = null;
+      nullItems2["predictions"]["LSTM_fatigue_prediction"] = null;
+      nullItems2["predictions"]["timestamp"] = null;
+      nullPoints.push(nullItems2)
+      return;
+    }
+  
+    var currentTime = LSTM_data[i+1]["timestamp"]
+  
+    if(d["timestamp"] < (currentTime - 22000000)) {
+      nullTime = currentTime - 360000;
+      var nullItems = {};
+      nullItems["actual_mood"] = null;
+      nullItems["actual_stress"] = null;
+      nullItems["actual_fatigue"] = null;
+      nullItems["timestamp"] = nullTime;
+      nullItems["predictions"] = {}
+      nullItems["predictions"]["LSTM_mood_prediction"] = null;
+      nullItems["predictions"]["LSTM_stress_prediction"] = null;
+      nullItems["predictions"]["LSTM_fatigue_prediction"] = null;
+      nullItems["predictions"]["timestamp"] = null;
+  
+      var nullItems2 = {};
+      nullItems2["actual_mood"] = null;
+      nullItems2["actual_stress"] = null;
+      nullItems2["actual_fatigue"] = null;
+      nullItems2["timestamp"] = LSTM_data[i]["timestamp"] + 360000;
+      nullItems2["predictions"] = {}
+      nullItems2["predictions"]["LSTM_mood_prediction"] = null;
+      nullItems2["predictions"]["LSTM_stress_prediction"] = null;
+      nullItems2["predictions"]["LSTM_fatigue_prediction"] = null;
+      nullItems2["predictions"]["timestamp"] = null;
+  
+      // newPredictions.push(nullItems2)
+      // newPredictions.push(nullItems)
+      nullPoints.push(nullItems2)
+      nullPoints.push(nullItems)
+    }
+  })
+  
+  // newMoralePredictions = [];
+  // nullMoralePoints = [];
+  
+  // RF_morale_data.forEach(function(d, i) {
+  //   newMoralePredictions.push(d);
+  
+  //   if(i == RF_morale_data.length -1){
+  //     var nullItems3 = {};
+  //     nullItems3["actual_mood"] = null;
+  //     nullItems3["actual_morale"] = null;
+  //     nullItems3["timestamp"] = RF_morale_data[i]['timestamp'] + 360000;
+  //     nullItems3["predictions"] = {}
+  //     nullItems3["predictions"]["mood_prediction"] = null;
+  //     nullItems3["predictions"]["morale_prediction"] = null;
+  //     nullItems3["predictions"]["timestamp"] = null;
+  //     nullMoralePoints.push(nullItems3)
+  //     return;
+  //   }
+  
+  //   var currentMoraleTime = RF_morale_data[i+1]["timestamp"]
+  
+  //   if(d["timestamp"] < (currentMoraleTime - 22000000)) {
+  //     nullMoraleTime = currentMoraleTime - 360000;
+  //     var nullItems4 = {};
+  //     nullItems4["actual_mood"] = null;
+  //     nullItems4["actual_morale"] = null;
+  //     nullItems4["timestamp"] = nullMoraleTime;
+  //     nullItems4["predictions"] = {}
+  //     nullItems4["predictions"]["mood_prediction"] = null;
+  //     nullItems4["predictions"]["morale_prediction"] = null;
+  //     nullItems4["predictions"]["timestamp"] = null;
+  
+  //     var nullItems5 = {};
+  //     nullItems5["actual_mood"] = null;
+  //     nullItems5["actual_morale"] = null;
+  //     nullItems5["timestamp"] = RF_morale_data[i]["timestamp"] + 360000;
+  //     nullItems5["predictions"] = {}
+  //     nullItems5["predictions"]["mood_prediction"] = null;
+  //     nullItems5["predictions"]["morale_prediction"] = null;
+  //     nullItems5["predictions"]["timestamp"] = null;
+  
+  
+  //     // newPredictions.push(nullItems2)
+  //     // newPredictions.push(nullItems)
+  //     nullMoralePoints.push(nullItems5)
+  //     nullMoralePoints.push(nullItems4)
+  //   }
+  // })
+  
+  var length = newPredictions.length - 1;
+  
+  var domainMax = new Date(nullPoints[nullPoints.length - 1]['timestamp']);
+  var domainMin = new Date(nullPoints[nullPoints.length - 2]['timestamp']);
+  
+  
+  var MLxScale = d3.scaleTime()
+    .range([0,MLwidth])
+    .domain([domainMin, domainMax]);
+  
+  var MLyScale = d3.scaleLinear()
+    .range([MLheight, 0])
+    .domain([0, 5]);
+  
+  var domainMaxStr = domainMax.toString().slice(3, 19)
+  var domainMinStr = domainMin.toString().slice(3, 19)
+  var predictions_nav_prev = d3.select("#prev-link");
+  var predictions_nav_next = d3.select("#next-link");
+  var currentRange = d3.select("#current-range")
+  var currentNullMin = nullPoints.length -2
+  currentRange.text(domainMinStr + "00 — " + domainMaxStr + "00")
+  
+  
+  predictions_nav_prev
+  .style("cursor", "pointer")
+  .on("mousedown", function(d){
+  
+    if(nullPoints[currentNullMin - 2] == null){
+      predictions_nav_prev.style("color", "lightgrey")
+    }
+    else {
+      predictions_nav_next.style("display", "inline-block").style("color", "black")
+      predictions_nav_prev.style("display", "inline-block").style("color", "black")
+  
+      currentNullMin = currentNullMin-2;
+      domainMax = new Date(nullPoints[currentNullMin + 1]['timestamp'])
+      domainMin = new Date(nullPoints[currentNullMin]['timestamp'])
+      MLxScale.domain([domainMin, domainMax])
+  
+      currentRange = d3.select("#current-range")
+      var domainMaxStr = domainMax.toString().slice(3, 19)
+      var domainMinStr = domainMin.toString().slice(3, 19)
+  
+      currentRange.text(domainMinStr + "00 — " + domainMaxStr + "00")
+  
+      // LSTM_moodAreaChart.attr("d", LSTM_moodArea(newPredictions));
+    LSTM_moodLineChart.attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_moodLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d+= "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+        }
+        return d
+        });
+  
+    actualMoodChart.attr("d", actualMoodLine(newPredictions))
+  
+      LSTM_stressLineChart.attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_stressLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d+= "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+  
+        }
+        return d;
+        })
+    actualStressChart.attr("d", actualStressLine(newPredictions))
+    // actualStressCircles.attr("cx", function(d) { return MLxScale(d.timestamp)}).attr("cy", function(d) { return MLyScale(d.actual_stress);})
+    
+    LSTM_fatigueLineChart.attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_fatigueLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d+= "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+  
+        }
+        return d;
+        })
+    actualFatigueChart.attr("d", actualFatigueLine(newPredictions))
+    // actualFatigueCircles.attr("cx", function(d) { return MLxScale(d.timestamp)}).attr("cy", function(d) { return MLyScale(d.actual_fatigue);})
+   
+    LSTM_moraleLineChart.attr("d", function(d,i){
+          var d = "";
+          for(var i = 0; i < newPredictions.length; i++){
+            var newCommand = LSTM_moraleLine(newPredictions[i]['predictions']);
+            if(i>0){
+              d+= "L" + newCommand.slice(1);
+            }
+            else{
+              d += newCommand;
+            }
+    
+          }
+          return d;
+          })
+      actualMoraleChart.attr("d", actualMoraleLine(newPredictions))
+      
+    MLxAxisGroup_mood.call(MLxAxis)
+    MLxAxisGroup_morale.call(MLxAxis)
+    MLxAxisGroup_stress.call(MLxAxis)
+    MLxAxisGroup_fatigue.call(MLxAxis)
+  
+  
+    if(nullPoints[currentNullMin - 2] == null){
+      predictions_nav_prev.style("color", "lightgrey")
+  
+    }
+    }
+  
+  })
+  
+  predictions_nav_next
+  .style("cursor", "pointer")
+  .on("mousedown", function(d){
+  
+    if(nullPoints[currentNullMin + 2] == null){
+      predictions_nav_next.style("color", "lightgrey")
+    }
+    else {
+      predictions_nav_next.style("display", "inline-block").style("color", "black")
+      predictions_nav_prev.style("display", "inline-block").style("color", "black")
+  
+    currentNullMin = currentNullMin+2;
+  
+  
+    domainMax = new Date(nullPoints[currentNullMin + 1]['timestamp'])
+    domainMin = new Date(nullPoints[currentNullMin]['timestamp'])
+    MLxScale.domain([domainMin, domainMax])
+  
+    currentRange = d3.select("#current-range")
+    var domainMaxStr = domainMax.toString().slice(3, 19)
+    var domainMinStr = domainMin.toString().slice(3, 19)
+  
+    currentRange.text(domainMinStr + "00 — " + domainMaxStr + "00")
+  
+    //  LSTM_moodAreaChart.attr("d", LSTM_moodArea(newPredictions));
+    LSTM_moodLineChart.attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_moodLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d+= "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+  
+        }
+        return d
+        })
+    actualMoodChart.attr("d", actualMoodLine(newPredictions))
+    // actualMoodCircles.attr("cx", function(d) { return MLxScale(d.timestamp)}).attr("cy", function(d) { return MLyScale(d.actual_mood);})
+    
+    LSTM_stressLineChart.attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_stressLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d+= "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+  
+        }
+        return d;
+        })
+    actualStressChart.attr("d", actualStressLine(newPredictions))
+    // actualStressCircles.attr("cx", function(d) { return MLxScale(d.timestamp)}).attr("cy", function(d) { return MLyScale(d.actual_stress);})
+    
+    LSTM_fatigueLineChart.attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_fatigueLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d+= "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+  
+        }
+        return d;
+        })
+    actualFatigueChart.attr("d", actualFatigueLine(newPredictions))
+    // actualFatigueCircles.attr("cx", function(d) { return MLxScale(d.timestamp)}).attr("cy", function(d) { return MLyScale(d.actual_fatigue);})
+    
+    LSTM_moraleLineChart.attr("d", function(d,i){
+          var d = "";
+          for(var i = 0; i < newPredictions.length; i++){
+            var newCommand = LSTM_moraleLine(newPredictions[i]['predictions']);
+            if(i>0){
+              d+= "L" + newCommand.slice(1);
+            }
+            else{
+              d += newCommand;
+            }
+    
+          }
+          return d;
+          })
+      actualMoraleChart.attr("d", actualMoraleLine(newPredictions))
+  
+  
+    MLxAxisGroup_mood.call(MLxAxis)
+    MLxAxisGroup_morale.call(MLxAxis)
+    MLxAxisGroup_stress.call(MLxAxis)
+    MLxAxisGroup_fatigue.call(MLxAxis)
+  
+  
+     if(nullPoints[currentNullMin + 2] == null){
+      predictions_nav_next.style("color", "lightgrey")
+  
+    }
+  }
+  
+  })
+  
+  
+  
+  
+  
+    var actualMoodLine = d3.area()
+    .defined(function(d){return d.actual_mood!=null})
+      .x(function(d) {return MLxScale(d.timestamp);})
+      .y1(function(d){return MLyScale(d.actual_mood);})
+      .y0(MLyScale(0));
+  
+    var actualStressLine = d3.area()
+    .defined(function(d){return d.actual_stress!=null})
+      .x(function(d) {return MLxScale(d.timestamp);})
+      .y1(function(d){return MLyScale(d.actual_stress);})
+      .y0(MLyScale(0));
+  
+  
+    var actualFatigueLine = d3.area()
+    .defined(function(d){return d.actual_fatigue!=null})
+      .x(function(d) {return MLxScale(d.timestamp);})
+      .y1(function(d){return MLyScale(d.actual_fatigue);})
+      .y0(MLyScale(0));
+  
+  
+    var LSTM_moodLine = d3.line()
+    .x(function(d) {return MLxScale(d.timestamp*1000) })
+    .y(function(d) {return MLyScale(d.LSTM_mood_prediction) })
+        // .defined(function(d,i){return d[i]["LSTM_mood_prediction"]!=null;});
+  
+    var LSTM_stressLine = d3.line()
+    .x(function(d) {return MLxScale(d.timestamp*1000) })
+    .y(function(d) {return MLyScale(d.LSTM_stress_prediction) })
+        // .defined(function(d,i){return d[i]["LSTM_mood_prediction"]!=null;});
+  
+    var LSTM_fatigueLine = d3.line()
+    .x(function(d) {return MLxScale(d.timestamp*1000) })
+    .y(function(d) {return MLyScale(d.LSTM_fatigue_prediction) })
+        // .defined(function(d,i){
+  
+    var LSTM_moraleLine = d3.line()
+      .x(function(d) {return MLxScale(d.timestamp*1000) })
+      .y(function(d) {return MLyScale(d.LSTM_morale_prediction) })
+  
+    var actualMoraleLine = d3.area()
+    .defined(function(d){return d.actual_morale!=null})
+      .x(function(d) {return MLxScale(d.timestamp);})
+      .y1(function(d){return MLyScale(d.actual_morale);})
+      .y0(MLyScale(0));
+  
+  
+  var MLxAxis = d3.axisBottom(MLxScale)
+    .tickPadding(10)
+    // .tickFormat(d3.timeFormat("%c"))
+    .ticks(4);
+  
+  
+  var MLyAxis = d3.axisLeft(MLyScale)
+    .tickPadding(10)
+    .tickSize(-MLwidth)
+    .ticks(5)
+    .tickSizeOuter(0);
+  
+  
+  var MLxAxisGroup_mood = ML_mood_chart.append("g")
+    .attr("class", "Axis")
+    .attr("transform","translate(0, "+(MLheight)+")")
+    .call(MLxAxis);
+  
+  
+  var MLxAxisGroup_stress = ML_stress_chart.append("g")
+    .attr("class", "Axis")
+    .attr("transform","translate(0, "+(MLheight)+")")
+    .call(MLxAxis);
+  
+  
+  var MLxAxisGroup_fatigue = ML_fatigue_chart.append("g")
+    .attr("class", "Axis")
+    .attr("transform","translate(0, "+(MLheight)+")")
+    .call(MLxAxis);
+  
+  var MLxAxisGroup_morale = ML_morale_chart.append("g")
+    .attr("class", "Axis")
+    .attr("transform","translate(0, "+(MLheight)+")")
+    .call(MLxAxis);
+  
+    ML_mood_chart.append("g")
+    .attr("class", "axis-label")
+    // .attr("transform","translate(0, "+(MLheight/2)+")")
+    .append("text")
+    .attr("x", -MLheight/2)
+    .attr("y", -30)
+    .attr("text-anchor", "middle")
+    .text("Mood Score");
+  
+  ML_morale_chart.append("g")
+    .attr("class", "axis-label")
+    // .attr("transform","translate(0, "+(MLheight/2)+")")
+    .append("text")
+    .attr("x", -MLheight/2)
+    .attr("y", -30)
+    .attr("text-anchor", "middle")
+    .text("Morale Score");
+  
+    ML_stress_chart.append("g")
+    .attr("class", "axis-label")
+    // .attr("transform","translate(0, "+(MLheight/2)+")")
+    .append("text")
+    .attr("x", -MLheight/2)
+    .attr("y", -30)
+    .attr("text-anchor", "middle")
+    .text("Stress Score");
+  
+    ML_fatigue_chart.append("g")
+    .attr("class", "axis-label")
+    // .attr("transform","translate(0, "+(MLheight/2)+")")
+    .append("text")
+    .attr("x", -MLheight/2)
+    .attr("y", -30)
+    .attr("text-anchor", "middle")
+    .text("Fatigue Score");
+  
+  ML_mood_chart.append("g")
+    .attr("class","Axis")
+    .call(MLyAxis);
+  
+  ML_stress_chart.append("g")
+    .attr("class","Axis")
+    .call(MLyAxis);
+  
+  ML_fatigue_chart.append("g")
+    .attr("class","Axis")
+    .call(MLyAxis);
+  
+  ML_morale_chart.append("g")
+    .attr("class","Axis")
+    .call(MLyAxis);
+  
+  
+  
+  
+  
+  var actualMoodChart = ML_mood_chart.append("path")
+      .attr("d", actualMoodLine(newPredictions))
+      // .attr("stroke", "black")
+      // .attr("stroke-width", 2.5)
+      .attr("fill", "fuchsia")
+      .attr("opacity", 0.2)
+      .attr("class", "line");
+  
+  var actualStressChart = ML_stress_chart.append("path")
+      .attr("d", actualStressLine(newPredictions))
+      // .attr("stroke", "black")
+      // .attr("stroke-width", 2.5)
+      .attr("fill", "blue")
+      .attr("opacity", 0.2)
+      .attr("class", "line");
+  
+  var actualFatigueChart = ML_fatigue_chart.append("path")
+      .attr("d", actualFatigueLine(newPredictions))
+      // .attr("stroke", "black")
+      // .attr("stroke-width", 2.5)
+      .attr("fill", "lavender")
+      .attr("opacity", 0.45)
+      .attr("class", "line");
+
+  var actualMoraleChart = ML_morale_chart.append("path")
+        .attr("d", actualMoraleLine(newPredictions))
+        // .attr("stroke", "black")
+        // .attr("stroke-width", 2.5)
+        .attr("fill", "gold")
+        .attr("opacity", 0.25)
+        .attr("class", "line");
+  
+  
+  var LSTM_moodLineChart = ML_mood_chart.append("path")
+      .attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_moodLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d += "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+        }
+        return d;
+        })
+      .attr("stroke", "fuchsia")
+      .attr("stroke-width", 1.75)
+      .attr("fill", "none")
+      .attr("class", "line");
+  
+  var LSTM_stressLineChart = ML_stress_chart.append("path")
+      .attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_stressLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d += "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+        }
+        return d;
+        })
+      .attr("stroke", "blue")
+      .attr("stroke-width", 1.75)
+      .attr("fill", "none")
+      .attr("class", "line");
+  
+  var LSTM_fatigueLineChart = ML_fatigue_chart.append("path")
+      .attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_fatigueLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d += "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+        }
+        return d;
+        })
+      .attr("stroke", "silver")
+      .attr("stroke-width", 2)
+      .attr("fill", "none")
+      .attr("class", "line");
+  
+    var LSTM_moraleLineChart = ML_morale_chart.append("path")
+      .attr("d", function(d,i){
+        var d = "";
+        for(var i = 0; i < newPredictions.length; i++){
+          var newCommand = LSTM_moraleLine(newPredictions[i]['predictions']);
+          if(i>0){
+            d += "L" + newCommand.slice(1);
+          }
+          else{
+            d += newCommand;
+          }
+        }
+        return d;
+        })
+      .attr("stroke", "gold")
+      .attr("stroke-width", 2)
+      .attr("fill", "none")
+      .attr("class", "line");
+  
+
+  
+  
+  });
+  // });
+  
+  </script>
+
+<script>
+
+  window.onload = function() {
+      $('#loader').fadeOut(2000);
+  
+  }
+  
+  </script>
+</body>
