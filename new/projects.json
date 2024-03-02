@@ -59,26 +59,6 @@
         ]
     },
     {
-        "project_title": "FirstThen V1 Prototype",
-        "img_src": "./new_doc/firstThen/firstThen_demo.gif",
-        "description_short": "Product development, design, and prototyping work on a web app for parents and their children with ADHD.",
-        "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
-        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev"],
-        "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
-        "documentation": "./new_doc/firstThen/index.php",
-        "featured_on": []
-    },
-    {
-        "project_title": "youarereally.cool",
-        "img_src": "./new_doc/Screen%20Shot%202021-06-15%20at%205.35.57%20PM.png",
-        "description_short": "Cool group ecards for warm, fuzzy feelings.",
-        "role": ["Product Designer", "Frontend Developer", "Co-Founder"],
-        "tags": ["mobile", "web", "product design", "visual design", "frontend dev", "backend dev", "branding"],
-        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
-        "link_out": "https://youarereally.cool",
-        "featured_on": []
-    },
-    {
         "project_title": "I Guess We're Stuck Here",
         "img_src": "./new_doc/america.png",
         "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
@@ -92,6 +72,26 @@
                 "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
             }
         ]
+    },
+    {
+        "project_title": "youarereally.cool",
+        "img_src": "./new_doc/Screen%20Shot%202021-06-15%20at%205.35.57%20PM.png",
+        "description_short": "Cool group ecards for warm, fuzzy feelings.",
+        "role": ["Product Designer", "Frontend Developer", "Co-Founder"],
+        "tags": ["mobile", "web", "product design", "visual design", "frontend dev", "backend dev", "branding"],
+        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
+        "link_out": "https://youarereally.cool",
+        "featured_on": []
+    },
+    {
+        "project_title": "FirstThen V1 Prototype",
+        "img_src": "./new_doc/firstThen/firstThen_demo.gif",
+        "description_short": "Product development, design, and prototyping work on a web app for parents and their children with ADHD.",
+        "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
+        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
+        "documentation": "./new_doc/firstThen/index.php",
+        "featured_on": []
     },
     {
         "project_title": "Adya V1 Prototype",

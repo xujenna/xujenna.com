@@ -1,8 +1,3 @@
-<!-- <script src='dir.php'></script> -->
-
-<?php require('../../nav.inc'); ?>
-
-
 <div class="type_test" id="description_text">
 <p>In H1 of 2020, I led a <a href="https://xujenna.com/Mindstrong/health/" target="new">redesign and restructuring</a> of Mindstrong's mobile app; this is a visual history of my explorations.</p>
 <p>
@@ -70,8 +65,3 @@ Because our population was older, of lower socioeconomic status and education le
 
 
 <!-- end text and image -->
-
-   </div>
-  </div>
-</div>
-</body>
