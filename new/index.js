@@ -9,7 +9,16 @@ async function loadData() {
         if(project.documentation){
             let rawHTML = await d3.text(project.documentation)
             let splitHTML = rawHTML.split('\n')
-            let startIndex = splitHTML.indexOf('    \t<!-- text and image -->') < 0 ? splitHTML.indexOf('<!-- text and image -->') : splitHTML.indexOf('    \t<!-- text and image -->')
+            let startIndex = ''
+            //splitHTML.indexOf('    \t<!-- text and image -->') < 0 ? splitHTML.indexOf('<!-- text and image -->') : splitHTML.indexOf('    \t<!-- text and image -->')
+            if(splitHTML.indexOf('    \t<!-- text and image -->') > 0){
+                startIndex = splitHTML.indexOf('    \t<!-- text and image -->')
+            } else if (splitHTML.indexOf('<!-- text and image -->') > 0){
+                startIndex = splitHTML.indexOf('<!-- text and image -->')
+            }else if (splitHTML.indexOf("<?php require('../../nav.inc'); ?>") > 0){
+                startIndex = splitHTML.indexOf("<?php require('../../nav.inc'); ?>") + 1
+            }
+
             let endIndex = ''
             if(splitHTML.indexOf('<script>') > 0){
                 endIndex = splitHTML.indexOf('<script>')
@@ -280,7 +289,7 @@ function cardHTML(d){
     let title = ''
 
 
-    if(d.descr_HTML){
+    if(d.descr_HTML && d.descr_HTML.replaceAll(' ', '').length > 0){
         if(d.descr_HTML.match(/<div/g).length > d.descr_HTML.match(/<\/div/g).length){
             d.descr_HTML += ('</div>').repeat(d.descr_HTML.match(/<div/g).length - d.descr_HTML.match(/<\/div/g).length)
         }
