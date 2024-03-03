@@ -203,7 +203,8 @@
         "role": ["Creative Director", "Web Designer", "Brand Designer", "Copy Writer"],
         "tags": ["web", "redesign", "visual design", "branding"],
         "medium": ["Photoshop", "Illustrator", "Squarespace"],
-        "link_out": "https://www.weareash.org/",
+        "documentation": "./ASH/WebRedesign/index.php",
+        "imgs":["Screen Shot 2023-01-05 at 2.13.17 PM.png", "Screen Shot 2023-01-05 at 2.13.43 PM.png", "Screen Shot 2023-01-05 at 2.14.55 PM.png", "Screen Shot 2023-01-05 at 2.15.08 PM.png", "Screen Shot 2023-01-05 at 2.16.04 PM.png"],
         "featured_on": []
     },
     {

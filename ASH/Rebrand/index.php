@@ -2,7 +2,11 @@
 
 <?php require('../../nav.inc'); ?>
 
+<div class='embed-responsive embed-responsive-16by9 video'> 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eB8iGwCMPnk?si=XcMOzFXqgYiDoyru" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p><br></p>
 
 
 <script>
