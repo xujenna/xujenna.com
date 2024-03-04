@@ -8,9 +8,11 @@
 <img class="img-responsive" style="margin-left:-30px" src="./peter.png">
 
 <div id="description_text">
-<p>Maybe I have no emotional boundaries, but I LOVE MY COWORKERS!! My team at Mindstrong had become no less than family to me, which made it all the more heartbreaking to watch them go. To distract myself from the pain, and give myself a proper platform for a heartfelt goodbye (Zoom is not it), I created the digital version of those physical cards that you'd pass around the office during non-pandemic times. Yes, I know some version of this already exists on the internet, and yes, we've used them before, but they... are not up to my standards. I'm sorry, but my fam deserves better! We are designers!</p>
+<p>To say a heartfelt goodbye to my departing coworkers/distract myself from the pain of everyone leaving their jobs during the pandemic, I created the digital version of those physical cards that you'd pass around the office during pre-pandemic times.</p>
+<p>We purchased the domain <span style="font-family:monospace">youarereally.cool</span> so that everyone could have their own vanity link (ie, <span style="font-family:monospace">youarereally.cool/jenna</span>). We eventually saw purchases outside of our own workplaces as well, because turnover is sad!</p>
+<p>After a few years and leaving my own job to return to freelance, I discontinud this service, but you can view the original version <a href="https://xujenna.com/bye-qt/" target="new">here</a>.</p>
 <p>
-Made with vanilla js and Firebase's Realtime Database (for messages) and Storage (for photo/gif uploads—very important). Check it out <a href="https://xujenna.com/bye-qt/" target="new">here</a> and <a href="https://xujenna.com/bye-peter/" target="new">here</a>. Posting is closed to the public!
+Made with vanilla js and Firebase's Realtime Database (for messages) and Storage (for photo/gif uploads—very important).
 </p>
 </div>
 

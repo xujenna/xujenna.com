@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+
+  <style type="text/css">
+    body{
+      font-family: europa, sans-serif;
+      letter-spacing: 0.75px;
+      background-color: #f3f5f8;
+    }
+    .column {
+      float: left;
+      width: 32%;
+    }
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .message{
+      padding: 6%;
+      border-radius: 10px;
+      width: 80%;
+      margin: 3%;
+      display: inline-block;
+      box-shadow: 0px 1px 4px #ccc;
+      text-align: left;
+      background-color: white;
+      vertical-align: top;
+    }
+    #posts{
+      padding: 5%;
+    }
+
+    #container{
+      text-align: center;
+      padding:3% 1%;
+    }
+
+    textarea, input[type=text], select {
+      font-family: europa, sans-serif;
+      width:35%;
+      padding: 1%;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+      letter-spacing: 0.75px;
+      font-size: 16px;
+    }
+    textarea{
+      resize:vertical;
+    }
+    input[type="file"]{
+      font-family: europa, sans-serif;
+      width:35%;
+      padding: 1%;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    #submit{
+      width: 200px;
+      background-color: #999;
+      color: white;
+      padding: 8px 4px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 35px;
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: 0.75px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    input[type=text]:focus, textarea:focus {
+      border: 1px solid #333;
+    }
+    
+    input[type=file]::-webkit-file-upload-button {
+      border: none;
+      background-color: #fff;
+      border-radius: 30px;
+      padding: 10px;
+      margin-right:20px;
+      font-family: europa, sans-serif;
+
+    }
+
+    input[type=file]::file-selector-button {
+      border: none;
+      background-color: #fff;
+      border-radius: 30px;
+      padding: 10px;
+      margin-right:20px;
+      font-family: europa, sans-serif;
+    }
+
+    textarea:focus{
+      box-shadow:none;
+      border: 1px solid #999;
+      outline: #999;
+    }
+    input[type=text]:focus{
+      box-shadow:none;
+      border: 1px solid #999;
+      outline: #999;
+
+    }
+    input[type=file]:focus{
+      box-shadow:none;
+      border: 1px solid #999;
+      outline: #999;
+
+    }
+
+
+    /* #file{
+      display:none;
+    }
+    .hand-cursor{
+      width:35%;
+      background-color: #ccc;
+      padding: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+    } */
+    .noContent{
+      color:red;
+    }
+
+    /* #hide{
+      margin: 40px 0 20px;
+    } */
+    /* #hide input[type=file] {
+      display:none;
+      margin:50px;
+      padding: 10px;
+      width:40%;
+      }
+      #hide input[type=file] + label {
+      display:inline-block;
+      margin:20px;
+      padding: 10px;
+      background-color: #ccc;
+      border:solid 1px #666F77;
+      border-radius: 6px;
+      color:#666F77;
+      }
+      #hide input[type=file]:active + label {
+      background-image: none;
+      background-color:#2D6C7A;
+      color:#FFFFFF;
+      } */
+
+      #card{
+        width:35%;
+        margin:1%;
+        filter: drop-shadow(0.2em 0.25em 0.25rem #999);
+      }
+
+    .posterName, .posterTime{
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    .posterTime{
+      color: #999;
+      letter-spacing: 1px;
+      font-weight:normal;
+    }
+    .message p {
+      line-height: 160%;
+    }
+    .posterMessage{
+      font-size:15px;
+    }
+    #drop-region {
+    background-color: #fff;
+    border-radius:20px;
+    width:35%;
+    padding:1%;
+    text-align: center;
+    cursor:pointer;
+    display:inline-block;
+}
+#drop-region:hover {
+    box-shadow:0 0 45px rgba(0,0,0,0.1);
+}
+
+#image-preview {
+    margin-top:20px;
+}
+#image-preview .image-view {
+    display: inline-block;
+    position:relative;
+    margin-right: 13px;
+    margin-bottom: 13px;
+}
+#image-preview .image-view img {
+    max-width: 100px;
+    max-height: 100px;
+}
+#image-preview .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background: rgba(255,255,255,0.5);
+}
+.msgImg{
+  width:100%;
+  margin-top:10px;
+}
+
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
+      textarea, input[type=text], select {
+        font-family: europa, sans-serif;
+        width:80%;
+        padding: 3%;
+      }
+      input[type="file"]{
+        width:80%;
+        padding: 3%;
+      }
+      #card{
+        width:80%;
+        margin:0.5%;
+        filter: drop-shadow(0.2em 0.25em 0.25rem #999);
+      }
+      #posts{
+      padding-top: 10%;
+    }
+    }
+    @media screen and (max-width: 1100px) and (min-width: 600px){
+      .column {
+        width: 50%;
+      }
+      textarea, input[type=text], select {
+        font-family: europa, sans-serif;
+        width:45%;
+        padding: 2%;
+      }
+      input[type="file"]{
+        width:45%;
+        padding: 2%;
+      }
+      #card{
+        width:45%;
+        margin:1%;
+        filter: drop-shadow(0.2em 0.25em 0.25rem #999);
+      }
+    }
+
+    
+  </style>
+
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bye qt</title>
+  <link rel="stylesheet" href="https://use.typekit.net/fao6qlb.css">
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-storage.js"></script>
+</head>
+
+<body>
+
+<div id="container">
+  <img src="card.png" id="card">
+  <!-- <div id="form-container">
+      <form id="form">
+        <input type="text" id="name" name="fname" placeholder="Your name"><br>
+
+        <textarea rows="5" id="message" name="lname" placeholder= "Your message to QT" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea><br>
+        <input type="file" id="file"><br>
+
+        <div id="submit">Post Message!</div>
+      </form> 
+  </div> -->
+  <div id="posts">
+    <div class="row">
+      <div class="column" id="column-0">
+      </div>
+      <div class="column" id="column-1">
+      </div>
+      <div class="column" id="column-2">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="post.js"></script>
+
+</body>
+
+</html>

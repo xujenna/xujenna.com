@@ -74,16 +74,6 @@
         ]
     },
     {
-        "project_title": "youarereally.cool",
-        "img_src": "./new_doc/Screen%20Shot%202021-06-15%20at%205.35.57%20PM.png",
-        "description_short": "Cool group ecards for warm, fuzzy feelings.",
-        "role": ["Product Designer", "Frontend Developer", "Co-Founder"],
-        "tags": ["mobile", "web", "product design", "visual design", "frontend dev", "backend dev", "branding"],
-        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
-        "link_out": "https://youarereally.cool",
-        "featured_on": []
-    },
-    {
         "project_title": "FirstThen V1 Prototype",
         "img_src": "./new_doc/firstThen/firstThen_demo.gif",
         "description_short": "Product development, design, and prototyping work on a web app for parents and their children with ADHD.",
@@ -101,6 +91,17 @@
         "tags": ["mental health tech", "mobile", "web", "product design", "frontend dev"],
         "medium": ["Javascript", "Firebase", "HTML", "CSS"],
         "link_out": "http://adyahealth.com",
+        "featured_on": []
+    },
+    {
+        "project_title": "youarereally.cool",
+        "img_src": "./new_doc/Screen%20Shot%202021-06-15%20at%205.35.57%20PM.png",
+        "description_short": "Cool group ecards for warm, fuzzy feelings.",
+        "role": ["Product Designer", "Frontend Developer", "Co-Founder"],
+        "tags": ["mobile", "web", "product design", "visual design", "frontend dev", "backend dev", "branding"],
+        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
+        "documentation": "./Mindstrong/bye-guys/index.php",
+        "link_out": "./bye-qt",
         "featured_on": []
     },
     {
