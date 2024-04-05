@@ -292,9 +292,11 @@ function cardHTML(d){
     // if(d.descr_HTML && d.descr_HTML.replaceAll(' ', '').length > 0){
 
     if(d.descr_HTML){
-        if(d.descr_HTML.replaceAll(' ', '').length > 0 && d.descr_HTML.match(/<div/g).length > d.descr_HTML.match(/<\/div/g).length){
+        if(d.descr_HTML.replaceAll(' ', '').length > 0){
+            if(d.descr_HTML.match(/<div/g) && d.descr_HTML.match(/<div/g).length > d.descr_HTML.match(/<\/div/g).length){
             d.descr_HTML += ('</div>').repeat(d.descr_HTML.match(/<div/g).length - d.descr_HTML.match(/<\/div/g).length)
         }
+    }
 
         // if(d.imgs && !d.descr_HTML.includes(d.imgs[0])){
         if(d.imgs){

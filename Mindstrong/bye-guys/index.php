@@ -5,7 +5,7 @@
 
 <!-- <p><br></p> -->
 
-<img class="img-responsive" style="margin-left:-30px" src="./peter.png">
+<img class="img-responsive" style="margin-left:-30px" src="https://xujenna.com/Mindstrong/bye-guys/peter.png">
 
 <div id="description_text">
 <p>To say a heartfelt goodbye to my departing coworkers/distract myself from the pain of everyone leaving their jobs during the pandemic, I created the digital version of those physical cards that you'd pass around the office during pre-pandemic times.</p>
