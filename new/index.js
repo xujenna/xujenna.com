@@ -39,6 +39,19 @@ async function loadData() {
             // })
 
             project.descr_HTML = newHTMLarray.join(' ')
+
+                if(project.descr_HTML.match(/<div/g) && project.descr_HTML.match(/<div/g).length > project.descr_HTML.match(/<\/div/g).length){
+                    project.descr_HTML += ('</div>').repeat(project.descr_HTML.match(/<div/g).length - project.descr_HTML.match(/<\/div/g).length)
+                }
+    
+            // if(d.imgs && !d.descr_HTML.includes(d.imgs[0])){
+            if(project.imgs){
+                project.imgs.forEach(file => {
+                    project.descr_HTML += "<img src='" + project.documentation.replace('index.php', '') + file + "' class='img-responsive'>"
+                })
+            }
+        
+            
             console.log(project.descr_HTML)
         }
     }
@@ -292,19 +305,18 @@ function cardHTML(d){
     // if(d.descr_HTML && d.descr_HTML.replaceAll(' ', '').length > 0){
 
     if(d.descr_HTML){
-        if(d.descr_HTML.replaceAll(' ', '').length > 0){
-            if(d.descr_HTML.match(/<div/g) && d.descr_HTML.match(/<div/g).length > d.descr_HTML.match(/<\/div/g).length){
-            d.descr_HTML += ('</div>').repeat(d.descr_HTML.match(/<div/g).length - d.descr_HTML.match(/<\/div/g).length)
-        }
-    }
+    //     if(d.descr_HTML.replaceAll(' ', '').length > 0){
+    //         if(d.descr_HTML.match(/<div/g) && d.descr_HTML.match(/<div/g).length > d.descr_HTML.match(/<\/div/g).length){
+    //         d.descr_HTML += ('</div>').repeat(d.descr_HTML.match(/<div/g).length - d.descr_HTML.match(/<\/div/g).length)
+    //     }
+    // }
 
-        // if(d.imgs && !d.descr_HTML.includes(d.imgs[0])){
-        if(d.imgs){
-
-            d.imgs.forEach(file => {
-                d.descr_HTML += "<img src='" + d.documentation.replace('index.php', '') + file + "' class='img-responsive'>"
-            })
-        }
+    //     // if(d.imgs && !d.descr_HTML.includes(d.imgs[0])){
+    //     if(d.imgs){
+    //         d.imgs.forEach(file => {
+    //             d.descr_HTML += "<img src='" + d.documentation.replace('index.php', '') + file + "' class='img-responsive'>"
+    //         })
+    //     }
         
         more += '<div class="link_out">' + d.descr_HTML + '</div><div class="minMax readMore lead-in">Read More <i class="material-icons">open_in_full</i></div>'
         coverImg = '<img src="' + d.img_src + '" class="card-img minMax">'
