@@ -56,6 +56,16 @@
         "featured_on": []
     },
     {
+        "project_title": "Adya MVP",
+        "img_src": "./new_doc/adya_demo.gif",
+        "description_short": "Product development, design, and prototyping work on a voice-only space for college students.",
+        "role": ["Product Designer", "Full Stack Developer", "Co-Founder"],
+        "tags": ["mental health tech", "mobile", "web", "product design", "frontend dev"],
+        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
+        "link_out": "http://adyahealth.com",
+        "featured_on": []
+    },
+    {
         "project_title": "I Guess We're Stuck Here",
         "img_src": "./new_doc/america.png",
         "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
