@@ -25,22 +25,22 @@ let stepContent = {};
 
 stepContent[0] = {};
 stepContent[0]["playerNum"] = 0;
-stepContent[0]["transcript"] = ["Please take a comfortable seat at the same level. [[slnc 1000]] First, establish which teammate had the original complaint; they are player one. [[slnc 1000]] Then, take turns reading each rule aloud. Let me know when you're ready."]
-// stepContent[1]["transcript"] = "Please take a comfortable seat at the same level, maintain open body language, and face each other. [[slnc 1000]] Take a moment to establish which teammate had the original complaint. They are player one. [[slnc 1000]] Now close your eyes.[[slnc 2000]] We'll start with a breathing ritual. [[slnc 2500]] Breathe in for one, [[slnc 1000]] two, [[slnc 1000]] three, [[slnc 1000]] four. [[slnc 1000]] Back out for one [[slnc 1000]], two [[slnc 1000]], three [[slnc 1000]], four [[slnc 1000]]. In for one, [[slnc 1000]] two, [[slnc 1000]] three, [[slnc 1000]] four. [[slnc 1000]] Out for one [[slnc 1000]], two [[slnc 1000]], three [[slnc 1000]], four [[slnc 1000]]. In for one, [[slnc 1000]] two, [[slnc 1000]] three, [[slnc 1000]] four. [[slnc 1000]] Out for one [[slnc 1000]], two [[slnc 1000]], three [[slnc 1000]], four [[slnc 3000]]. You'll only get out alive if you communicate honestly and listen carefully, without assumptions. [[slnc 1500]] Focus on the challenge at hand; you will lose points for global statements, as well as excessive anger. [[slnc 1500]] The quest cannot be completed without the full cooperation of two people, so maintain a positive, generous, and compassionate attitude. [[slnc 1500]] Remember, there can only be either two winners, or two losers, so leave your ego and pride with me before you go. [[slnc 1500]] When a player completes their turn, let me know by saying [[slnc 500]] I'm done. [[slnc 3000]] Now open your eyes. Player one, let me know when you're ready, and we can begin."
+stepContent[0]["transcript"] = ["Please take a comfortable seat at the same level... ... First, establish which teammate had the original complaint; they are player one... ... ... Then, take turns reading each rule aloud. Let me know when you're ready."]
+// stepContent[1]["transcript"] = "Please take a comfortable seat at the same level, maintain open body language, and face each other. <break time='1s'/> Take a moment to establish which teammate had the original complaint. They are player one. <break time='1s'/> Now close your eyes.[[slnc 2000]] We'll start with a breathing ritual. [[slnc 2500]] Breathe in for one, <break time='1s'/> two, <break time='1s'/> three, <break time='1s'/> four. <break time='1s'/> Back out for one <break time='1s'/>, two <break time='1s'/>, three <break time='1s'/>, four <break time='1s'/>. In for one, <break time='1s'/> two, <break time='1s'/> three, <break time='1s'/> four. <break time='1s'/> Out for one <break time='1s'/>, two <break time='1s'/>, three <break time='1s'/>, four <break time='1s'/>. In for one, <break time='1s'/> two, <break time='1s'/> three, <break time='1s'/> four. <break time='1s'/> Out for one <break time='1s'/>, two <break time='1s'/>, three <break time='1s'/>, four [[slnc 3000]]. You'll only get out alive if you communicate honestly and listen carefully, without assumptions. [[slnc 1500]] Focus on the challenge at hand; you will lose points for global statements, as well as excessive anger. [[slnc 1500]] The quest cannot be completed without the full cooperation of two people, so maintain a positive, generous, and compassionate attitude. [[slnc 1500]] Remember, there can only be either two winners, or two losers, so leave your ego and pride with me before you go. [[slnc 1500]] When a player completes their turn, let me know by saying [[slnc 500]] I'm done. [[slnc 3000]] Now open your eyes. Player one, let me know when you're ready, and we can begin."
 stepContent[0]["nextSubstep"] = [];
 stepContent[0]["bonus"] = [];
 stepContent[0]["bonusWords"] = [];
 
 stepContent[1] = {};
 stepContent[1]["playerNum"] = 1;
-stepContent[1]["transcript"] = ["Player 1: identify the complaint, not the criticism, by formulating the 'I' statement. Elaborate as necessary, using feeling words.", "[[slnc 1500]] Define your emotional needs, elaborating as necessary, using feeling words."]
+stepContent[1]["transcript"] = ["Player 1: identify the complaint, not the criticism, by formulating the 'I' statement. Elaborate as necessary, using feeling words.", "...Define your emotional needs, elaborating as necessary, using feeling words."]
 stepContent[1]["nextSubstep"] = ["i feel"]
 stepContent[1]["bonus"] = ["<p>Acknowledge that their intention may not have been to hurt you: <br><b>'I recognize that you did not mean to _____ because _______'</b></p><p>Give examples of when your partner has done the positive/reverse of the complaint as an example of a solution: <br><b>'I really appreciate when you ________ in the past, because it made me feel _______.'</b></p>"];
 stepContent[1]["bonusWords"] = ["i recognize", "you didn't mean", "you did not mean", "you didn't intend", "i appreciate", "i appreciated", "i really appreciate"]
 
 stepContent[2] = {};
 stepContent[2]["playerNum"] = 2;
-stepContent[2]["transcript"] = ["Player 2: acknowledge their feelings by repeating their 'I' statement.", "[[slnc 1000]] Consider and assert your responsibility, and explain your intentions or perspective using feeling words."]
+stepContent[2]["transcript"] = ["Player 2: acknowledge their feelings by repeating their 'I' statement.", "...Consider and assert your responsibility, and explain your intentions or perspective using feeling words."]
 stepContent[2]["nextSubstep"] = ["i understand"]
 stepContent[2]["bonus"] = ["<p>Make positive statements that abate your partner's hurt feelings/address their insecurities: <br><b>'I'm sorry my actions made you feel neglected. I love your company and want to spend time with you.', or, 'I'm sorry my actions made you feel judged. I think it is great that you feel passionate about _____'</b></p>"];
 stepContent[2]["bonusWords"] = ["i'm sorry", "caused you to feel", "i'm sorry my actions", "i'm sorry my behavior", "made you feel"]
@@ -71,7 +71,7 @@ stepContent[6]["transcript"] = ["Player 2: if a solution has been agreed to, say
 stepContent[6]["nextSubstep"] = []
 stepContent[6]["bonusWords"] = []
 
-let deEscalationScript = "Let's take a break to calm down and collect our thoughts. [[slnc 1000]] We'll start with a breathing exercise. Please close your eyes. [[slnc 2000]] Breathe in for one, [[slnc 1000]] two, [[slnc 1000]] three, [[slnc 1000]] four. [[slnc 1000]] Back out for one [[slnc 1000]], two [[slnc 1000]], three [[slnc 1000]], four [[slnc 1000]]. In for one, [[slnc 1000]] two, [[slnc 1000]] three, [[slnc 1000]] four. [[slnc 1000]] Out for one [[slnc 1000]], two [[slnc 1000]], three [[slnc 1000]], four [[slnc 1000]]. Remember that you are on the same team, playing for the same goal of a healthy relationship. [[slnc 2000]] Let go of your pride, or feelings of being wronged, and consider your partner's pain. [[slnc 4000]] When you're ready, open your eyes, and try to continue the conversation with one of the phrases on the screen."
+let deEscalationScript = "Let's take a break to calm down and collect our thoughts, ideally in separate rooms. When you're ready, come back here, try to continue the conversation with one of the phrases on the screen."
 
 let bonusCard = document.getElementById('bonus')
 let scoreCard = document.getElementById("score");
@@ -124,7 +124,6 @@ async function speak(textInput) {
     else if(interactions.listening == false){
         interactions.speaking = true;
         console.log("speaking: "+ interactions.speaking)
-
         utterThis = new SpeechSynthesisUtterance(textInput);
         await synth.speak(utterThis);
     }
