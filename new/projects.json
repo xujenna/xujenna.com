@@ -35,6 +35,103 @@
         ]
     },
     {
+        "project_title": "Journey Design System",
+        "img_src": "./Journey/design_system.gif",
+        "description_short": "Codified a brand refresh into guidelines and design system.",
+        "role": ["Product Designer"],
+        "tags": ["mobile", "product design", "visual design", "mental health tech", "redesign", "branding"],
+        "medium": ["Figma"],
+        "documentation": "./Journey/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "FirstThen MVP",
+        "img_src": "./new_doc/firstThen/firstThen_demo.gif",
+        "description_short": "Product development, design, and prototyping work on a web app for parents and their children with ADHD.",
+        "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
+        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
+        "documentation": "./new_doc/firstThen/index.php",
+        "imgs": ["1 User Journey Map.png", "2 ADVISOR MEETING_User Journey Map.jpg", "3 Screen Shot 2022-09-14 at 9.50.36 AM.png", "4 ADVISOR MEETING_V1 Prototype Wireframes.jpg"],
+        "featured_on": []
+    },
+    {
+        "project_title": "Adya MVP",
+        "img_src": "./new_doc/adya_demo.gif",
+        "description_short": "Product development, design, and prototyping work on a voice-only space for college students.",
+        "role": ["Product Designer", "Full Stack Developer", "Co-Founder"],
+        "tags": ["mental health tech", "mobile", "web", "product design", "frontend dev"],
+        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
+        "link_out": "http://adyahealth.com",
+        "featured_on": []
+    },
+    {
+        "project_title": "I Guess We're Stuck Here",
+        "img_src": "./new_doc/america.png",
+        "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
+        "role": ["All of them ✌️"],
+        "tags": ["web", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "Firebase", "Wikipedia API", "Google Maps API", "Navigator Web API", "Node", "HTML", "CSS"],
+        "link_out": "https://wiki-tour.web.app/",
+        "featured_on": [
+            {
+                "name": "At Home and Away from The New York Times",
+                "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
+            }
+        ]
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Product Work",
+        "img_src": "./new_doc/persistent_ranked.png",
+        "description_short": "Making good on the promise to meet users where they are.",
+        "role": ["Product Designer", "Copy Writer"],
+        "tags": ["mobile", "product design", "mental health tech", "redesign"],
+        "medium": ["Sketch", "Figma"],
+        "documentation": "./Mindstrong/health/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Mindstrong Brand Refresh",
+        "img_src": "./Mindstrong/brand-refresh/logo.gif",
+        "description_short": "Communicating care.",
+        "role": ["Product Designer", "Copy Writer"],
+        "tags": ["visual design", "mental health tech", "redesign", "branding"],
+        "medium": ["Illustrator", "Figma"],
+        "documentation": "./Mindstrong/brand-refresh/index.php",
+        "imgs":["Brand Refresh.png", "Brand Refresh-1.png", "Brand Refresh-2.png", "Brand Refresh-3.png", "Brand Refresh-4.png"],
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Redesign",
+        "img_src": "./new_doc/cover.gif",
+        "description_short": "Exploring how branding, visual language, and copy can help Mindstrong's members feel supported, engaged, and understood.",
+        "role": ["Product Designer", "Copy Writer"],
+        "tags": ["mobile", "product design", "visual design", "mental health tech", "redesign", "branding"],
+        "medium": ["Sketch", "Figma"],
+        "documentation": "./Mindstrong/health-redesign/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Data Viz for Clinical Workflows",
+        "img_src": "./new_doc/mindviz/emoji_sentiment.png",
+        "description_short": "Interpreting research data science for clinical product applications.",
+        "role": ["Frontend Developer", "Data Wrangler", "Product Designer"],
+        "tags": ["data viz", "web", "frontend dev", "product design", "mental health tech"],
+        "medium": ["Javascript", "d3.js", "Python"],
+        "documentation": "./new_doc/mindviz/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Clinical Web App Product Work",
+        "img_src": "./new_doc/timeline5.png",
+        "description_short": "Empowering Mindstrong's clinical web platform to minimize time spent on administrative tasks, and maximize time spent with patients.",
+        "role": ["Product Designer"],
+        "tags": ["web", "product design", "mental health tech", "redesign"],
+        "medium": ["Sketch", "Figma"],
+        "documentation": "./Mindstrong/care/index.php",
+        "featured_on": []
+    },
+    {
         "project_title": "How New York Are You?",
         "img_src": "./new_doc/20181216_175451.gif",
         "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
@@ -59,41 +156,6 @@
         ]
     },
     {
-        "project_title": "I Guess We're Stuck Here",
-        "img_src": "./new_doc/america.png",
-        "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
-        "role": ["All of them ✌️"],
-        "tags": ["web", "frontend dev", "backend dev"],
-        "medium": ["Javascript", "Firebase", "Wikipedia API", "Google Maps API", "Navigator Web API", "Node", "HTML", "CSS"],
-        "link_out": "https://wiki-tour.web.app/",
-        "featured_on": [
-            {
-                "name": "At Home and Away from The New York Times",
-                "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
-            }
-        ]
-    },
-    {
-        "project_title": "FirstThen V1 Prototype",
-        "img_src": "./new_doc/firstThen/firstThen_demo.gif",
-        "description_short": "Product development, design, and prototyping work on a web app for parents and their children with ADHD.",
-        "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
-        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev"],
-        "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
-        "documentation": "./new_doc/firstThen/index.php",
-        "featured_on": []
-    },
-    {
-        "project_title": "Adya V1 Prototype",
-        "img_src": "./new_doc/adya_demo.gif",
-        "description_short": "Product development, design, and prototyping work on a voice-only space for college students.",
-        "role": ["Product Designer", "Full Stack Developer", "Co-Founder"],
-        "tags": ["mental health tech", "mobile", "web", "product design", "frontend dev"],
-        "medium": ["Javascript", "Firebase", "HTML", "CSS"],
-        "link_out": "http://adyahealth.com",
-        "featured_on": []
-    },
-    {
         "project_title": "youarereally.cool",
         "img_src": "./new_doc/Screen%20Shot%202021-06-15%20at%205.35.57%20PM.png",
         "description_short": "Cool group ecards for warm, fuzzy feelings.",
@@ -102,46 +164,6 @@
         "medium": ["Javascript", "Firebase", "HTML", "CSS"],
         "documentation": "./Mindstrong/bye-guys/index.php",
         "link_out": "./bye-qt",
-        "featured_on": []
-    },
-    {
-        "project_title": "<span class='card-title-place'>mindstrong</span>Data Viz for Clinical Workflows",
-        "img_src": "./new_doc/mindviz/emoji_sentiment.png",
-        "description_short": "Interpreting research data science for clinical product applications.",
-        "role": ["Frontend Developer", "Data Wrangler", "Product Designer"],
-        "tags": ["data viz", "web", "frontend dev", "product design", "mental health tech"],
-        "medium": ["Javascript", "d3.js", "Python"],
-        "documentation": "./new_doc/mindviz/index.php",
-        "featured_on": []
-    },
-    {
-        "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Product Work",
-        "img_src": "./new_doc/persistent_ranked.png",
-        "description_short": "Helping Mindstrong design a mobile experience for the SMI population.",
-        "role": ["Product Designer", "Copy Writer"],
-        "tags": ["mobile", "product design", "mental health tech", "redesign"],
-        "medium": ["Sketch", "Figma"],
-        "documentation": "./Mindstrong/health/index.php",
-        "featured_on": []
-    },
-    {
-        "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Redesign",
-        "img_src": "./new_doc/cover.gif",
-        "description_short": "Exploring how branding, visual language, and copy can help Mindstrong's members feel supported, engaged, and understood.",
-        "role": ["Product Designer", "Copy Writer"],
-        "tags": ["mobile", "product design", "visual design", "mental health tech", "redesign", "branding"],
-        "medium": ["Sketch", "Figma"],
-        "documentation": "./Mindstrong/health-redesign/index.php",
-        "featured_on": []
-    },
-    {
-        "project_title": "<span class='card-title-place'>mindstrong</span>Clinical Web App Product Work",
-        "img_src": "./new_doc/timeline5.png",
-        "description_short": "Empowering Mindstrong's clinical web platform to minimize time spent on administrative tasks, and maximize time spent with patients.",
-        "role": ["Product Designer"],
-        "tags": ["web", "product design", "mental health tech", "redesign"],
-        "medium": ["Sketch", "Figma"],
-        "documentation": "./Mindstrong/care/index.php",
         "featured_on": []
     },
     {
