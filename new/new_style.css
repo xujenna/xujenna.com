@@ -277,11 +277,12 @@ a{
     width: 95.25%;
     max-height:max-content;
     display:inline-block;
-    padding: 6%;
+    padding: 4%;
 }
 .expanded > .card-img {
-    max-height: 600px;
+    max-height: none;
     transition: all ease 0.25s;
+    width:100%;
 }
 .link_out{
     display: none;

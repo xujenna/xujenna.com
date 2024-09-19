@@ -193,7 +193,8 @@ function displayProjects(tags){
         if(targetForExpansion){ // make target big
             targetForExpansion.className = 'project-card expanded'
             targetForExpansion.style.boxSizing = 'border-box'
-            if(window.innerWidth >= 900) targetForExpansion.style.width = document.querySelectorAll('.project-card.displayed')[0].offsetWidth * 2 + (parseFloat(window.getComputedStyle(document.querySelectorAll('.project-card.displayed')[0]).marginRight))
+            if(window.innerWidth >= 900) targetForExpansion.style.width = document.querySelectorAll('.project-card.displayed > .openProj')[0].parentElement.offsetWidth * 2 + (parseFloat(window.getComputedStyle(document.querySelectorAll('.project-card.displayed')[0]).marginRight))
+            
             document.querySelector('.expanded > .link_out').style.display = "block"
             document.querySelector('.expanded > .readMore').innerHTML = "Minimize <i class='material-icons'>close_fullscreen</i>"
             setTimeout(() => {

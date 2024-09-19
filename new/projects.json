@@ -1,5 +1,38 @@
 [
     {
+        "project_title": "Optimism Health Redesign + Branding",
+        "img_src": "./OptimismHealth/cover.png",
+        "description_short": "Empowering youth athletes to see consistant, measurable progress towards their health goals.",
+        "role": ["Product Designer"],
+        "tags": ["mobile", "product design", "redesign", "branding"],
+        "medium": ["Figma"],
+        "imgs": ["mobile_redesign.png"],
+        "documentation": "./OptimismHealth/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "Briefed.io \"Self-Service\" MVP+",
+        "img_src": "./Briefed.io/new.gif",
+        "description_short": "Making historical medical records instantly digestible for Social Security Disability lawyers.",
+        "role": ["Product Designer", "Frontend Developer"],
+        "tags": ["web", "product design", "branding", "redesign", "frontend dev", "data viz"],
+        "imgs": ["old.gif"],
+        "medium": ["Figma", "HTML", "Tailwind CSS", "Javascript"],
+        "documentation": "./Briefed.io/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "Journey Redesign + Design System",
+        "img_src": "./Journey/cover.png",
+        "description_short": "Modernizing employer mental health benefits.",
+        "role": ["Product Designer"],
+        "tags": ["mobile", "web", "product design", "visual design", "mental health tech", "redesign", "branding"],
+        "imgs": ["redesign_mobile.png", "redesign_web.png", "design_system.gif"],
+        "medium": ["Figma"],
+        "documentation": "./Journey/index.php",
+        "featured_on": []
+    },
+    {
         "project_title": "Speak, (Random Access) Memory",
         "img_src": "./new_doc/speak_mem_thumb.png",
         "description_short": "The first half of my masters thesis; visualizing my data collection and mood prediction efforts.",
@@ -33,16 +66,6 @@
                 "url": "https://www.cityu.edu.hk/iscma/"
             }
         ]
-    },
-    {
-        "project_title": "Journey Design System",
-        "img_src": "./Journey/design_system.gif",
-        "description_short": "Codified a brand refresh into guidelines and design system.",
-        "role": ["Product Designer"],
-        "tags": ["mobile", "product design", "visual design", "mental health tech", "redesign", "branding"],
-        "medium": ["Figma"],
-        "documentation": "./Journey/index.php",
-        "featured_on": []
     },
     {
         "project_title": "FirstThen MVP",
