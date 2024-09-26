@@ -1,13 +1,13 @@
 [
     {
-        "project_title": "Optimism Health Redesign + Branding",
-        "img_src": "./OptimismHealth/cover.png",
+        "project_title": "Hey Coach Redesign + Rebrand",
+        "img_src": "./HeyCoach/cover.png",
         "description_short": "Empowering youth athletes to make consistent, measurable progress towards their health goals.",
-        "role": ["Product Designer"],
+        "role": ["Product Designer", "Brand Designer"],
         "tags": ["mobile", "product design", "redesign", "branding"],
         "medium": ["Figma"],
-        "imgs": ["mobile_redesign.png"],
-        "documentation": "./OptimismHealth/index.php",
+        "imgs": ["mobile_redesign.png", "logos.png"],
+        "documentation": "./HeyCoach/index.php",
         "featured_on": []
     },
     {

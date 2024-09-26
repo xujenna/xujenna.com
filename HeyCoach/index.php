@@ -2,7 +2,7 @@
 
 <div class="type_test" id="description_text">
 <p>
-	Ongoing freelance work as Optimism Health's first design hire. More to come!
+	Leading a redesign, rebrand, and product rethink of Hey Coach's (fka Optimism Health) experience following a pivot to youth athletes. More to come!
 </p>
 </div>
 <script>
