@@ -2,7 +2,7 @@
     {
         "project_title": "non sequiturs",
         "img_src": "./nonsequiturs/cover.png",
-        "description_short": "A little game to try out your new adult-onset ADHD.",
+        "description_short": "A little game with which to try out your new adult-onset ADHD.",
         "role": ["All of them ✌️"],
         "tags": ["games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
         "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
