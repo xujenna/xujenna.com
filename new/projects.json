@@ -1,5 +1,15 @@
 [
     {
+        "project_title": "non sequiturs",
+        "img_src": "./nonsequiturs/cover.png",
+        "description_short": "A little game to try out your new adult-onset ADHD.",
+        "role": ["All of them ✌️"],
+        "tags": ["games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
+        "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
+        "link_out": "./nonsequiturs/",
+        "featured_on": []
+    },
+    {
         "project_title": "Hey Coach Redesign + Rebrand",
         "img_src": "./HeyCoach/cover.png",
         "description_short": "Empowering youth athletes to make consistent, measurable progress towards their health goals.",
@@ -83,7 +93,7 @@
         "img_src": "./new_doc/america.png",
         "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
         "role": ["All of them ✌️"],
-        "tags": ["web", "frontend dev", "backend dev"],
+        "tags": ["games", "web", "frontend dev", "backend dev"],
         "medium": ["Javascript", "Firebase", "Wikipedia API", "Google Maps API", "Navigator Web API", "Node", "HTML", "CSS"],
         "link_out": "https://wiki-tour.web.app/",
         "featured_on": [
@@ -149,7 +159,7 @@
         "img_src": "./new_doc/20181216_175451.gif",
         "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
         "role": ["All of them ✌️"],
-        "tags": ["voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
+        "tags": ["games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
         "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
         "link_out": "./NYQuotient/",
         "documentation": "./ITP/NYQuotient/index.php",
@@ -204,7 +214,7 @@
         "img_src": "./new_doc/mad_libs_transcript.gif",
         "description_short": "A browser-based couples therapist. Requires Chrome on desktop.",
         "role": ["All of them ✌️"],
-        "tags": ["voice", "frontend dev", "web", "two player"],
+        "tags": ["games", "voice", "frontend dev", "web", "two player"],
         "medium": ["Javascript", "HTML5 Speech API", "Chrome"],
         "documentation": "./ITP/mad_libs/index.php",
         "link_out": "./mad_libs/",

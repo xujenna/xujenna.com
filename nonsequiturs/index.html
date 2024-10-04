@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <style type="text/css">
+
+  body{
+    /* text-align: center; */
+    font-family: "IBM Plex Mono", monospace;
+    margin:0;
+    background-color: whitesmoke;
+    line-height:1.5;
+  }
+  
+  #start-button{
+    width:100%;
+    text-align: center;
+    margin-bottom:30px;
+  }
+
+
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    /* moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out; */
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+.btn-hover.color-11 {
+    background-image: linear-gradient(to right, red, #eb3941, white, #e14e53, red);  box-shadow: 0 5px 15px darkred;
+}
+
+  #start-button > button{
+    width:600px;
+    height:200px;
+    background-color: red;
+    color:white;
+    border-radius: 300px;
+    font-size: 40px;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight:bold;
+    padding: 20px;
+    cursor:pointer;
+    text-align: center;
+    box-shadow: 0 20px darkred;
+    border: none;
+    margin:auto;
+  }
+
+  #start-button > button:hover {
+    background-color: white;
+  }
+  #start-button > button:active {
+    background-color: white;
+    box-shadow: 0 5px darkred;
+    transform: translateY(15px)
+  }
+
+  #start-button > button:focus{
+    outline:0;
+  }
+
+  #restart-button{
+    width:140px;
+    height:60px;
+    border-radius: 60px;
+    border: 3px solid white;
+    background-color: transparent;
+    display:none;
+    font-size: 16px;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight:bold;
+    color: white;
+    padding: 10px;
+    cursor:pointer;
+    text-align: center;
+    box-shadow: 3px 3px white;
+  }
+
+  #restart-button:hover{
+    background-color: rgba(250,250,250,0.25);
+  }
+
+  #restart-button:active{
+    box-shadow: 3px 1px white;
+    transform: translateY(2px)
+  }
+
+  #restart-button:focus{
+    outline:0;
+  }
+  #restartButtonContainer{
+    display:none;
+
+    /* width:200px;
+    height:100px;
+    text-align:center;
+    vertical-align: middle;
+    position:fixed;
+    top:50%;
+    left: 50%;
+    margin-top:-50px;
+    margin-left: -100px; */
+  }
+
+  #turnBar {
+    text-align: center;
+    display: none;
+    color:white;
+    position:fixed;
+    top:0px;
+    width:100%;
+    /* height:60px; */
+    padding:10px;
+    background-color: grey;
+    /* width:180px; */
+  }
+
+#turnBar > div {
+  display:inline-block;
+  margin-left:75px;
+  vertical-align: middle;
+}
+
+#turnBar > div > h1 {
+  font-size:30px;
+}
+
+  #timer{
+    /* display:inline-block;
+    margin-left:50px; */
+    /* width:180px; */
+    /* border: 2px solid black; */
+    /* border-radius: 10px; */
+    /* color:black; */
+    /* padding:10px; */
+    /* margin:20px; */
+    /* line-height:30px; */
+  }
+
+ 
+  #lastRoundPoints{
+    color:mediumblue;
+  }
+  #lastRoundTimePenalty{
+    color:red;
+  }
+
+  .embeddingText {
+    mediumblfont-family: "IBM Plex Mono", monospaceue;
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:0.75px;
+    z-index: 100;
+  }
+
+  #newEmbeddingText {
+    mediumblfont-family: "IBM Plex Mono", monospaceue;
+    font-size:30px;
+    font-weight:bold;
+  }
+
+  .player1text{
+    fill:red;
+  }
+
+  .player2text{
+    fill:mediumblue;
+  }
+  .player0text{
+    fill:grey;
+  }
+ 
+
+  .plotScore{
+    mediumblfont-family: "IBM Plex Mono", monospaceue;
+    font-size:20px;
+    /* font-weight:bold; */
+  }
+
+  .player1line{
+    stroke:red;
+    stroke-width: 3;
+    opacity: 0.6;
+    /* stroke-dasharray: 3; */
+  }
+  .player2line{
+    stroke: mediumblue;
+    stroke-width: 3;
+    opacity: 0.6;
+    /* stroke-dasharray: 3; */
+  }
+
+  #rules{
+    margin:auto;
+    width:50%;
+    margin-bottom:50px;
+    font-size:19px;
+    margin-top:2%;
+    line-height:1.5;
+  }
+  #tsneSVG{
+    width:100%;
+    margin-top:70px;
+    display:none;
+    /* text-align:right; */
+  }
+  .title{
+    text-transform: uppercase;
+    font-weight:bold;
+    padding-bottom:15px;
+    margin-bottom:8px;
+    letter-spacing: 4px;
+  }
+
+  #playerContainer{
+    margin-left:0px;
+  }
+
+  #playerOneStats > .title{
+    border-bottom: 3px solid red;
+    color:red;
+    margin-top:0px;
+  }
+  #playerTwoStats > .title{
+    border-bottom: 3px solid mediumblue;
+    color:mediumblue;
+    margin-top:0px;
+  }
+  .playerStats{
+    width:160px;
+    padding:25px;
+    margin:auto;
+    margin-top:20px;
+    text-align:left;
+    display:none;
+    position:fixed;
+    top:0px;
+    box-shadow: 10px 10px rgba(128,128,128, 0.5);
+    background-color: white;
+  }
+
+  .playerStats p{
+    font-family: roboto,sans-serif;
+    font-size: 11px;
+    text-transform:uppercase;
+    width: 50px;
+    display: inline-block;
+    padding-right:20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+  .playerStats h2{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size:24px;
+  }
+  #playerOneStats{
+    border: 3px solid red;
+    color:red;
+    left:30px;
+  }
+  #playerOneStats p {
+    /* border-right: 2px solidred; */
+  }
+  #playerTwoStats{
+    border: 3px solid mediumblue;
+    color: mediumblue;
+    right:30px;
+  }
+  #playerTwoStats p {
+    /* border-right: 2px solid mediumblue; */
+  }
+ 
+.playerBars{
+  width: 30px;
+  /* height: 100px; */
+  bottom: 0px;
+  position: fixed;
+  /* width:100%; */
+}
+
+#playerOneBar{
+  background-color:red;
+  /* right:50%; */
+}
+#playerTwoBar{
+  background-color: mediumblue;
+  right:0;
+  /* left:50% */
+}
+
+  #turnInfo{
+    /* width:180px; */
+    /* padding:10px; */
+    /* margin:auto;
+    display: inline-block; */
+    /* margin-top:10px; */
+  }
+
+  #highScore{
+    position: fixed;
+    display:none;
+    width:40%;
+    left: 50%;
+    margin-left:-23%;
+    top: 30%;
+    margin-top: -10%;
+    padding: 40px 40px 60px 40px;
+    background-color: white;
+    box-shadow: 10px 10px rgba(128,128,128, 0.5);
+    border: 3px solid black;
+    max-height: 80%;
+    overflow:scroll;
+  }
+
+  #highScore input{
+    width: 50%;
+    font-size: 24px;
+    height: 34px;
+    font-family: "IBM Plex Mono", monospace;
+    color: grey;
+    padding: 10px;
+    border: 3px solid grey;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: grey;
+  }
+
+  #highScore input:focus{
+    outline:0;
+  }
+
+  #highScore button{
+    margin-left:20px;
+    font-size:18px;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: bold;
+    height:60px;
+    padding:10px;
+    border: 3px solid black;
+    color:black;
+    box-shadow: 3px 3px black;
+    cursor:pointer;
+  }
+
+  #highScore button:hover{
+    border: 3px solid red;
+    color:red;
+    box-shadow: 3px 3px red; 
+  }
+
+  #highScore button:active{
+    box-shadow: 3px 1px rgba(128,128,128, 0.5);
+    transform: translateY(2px)
+  }
+
+  #highScore button:focus{
+    outline:0;
+  }
+
+#closeHighScore{
+  position:absolute;
+  top:0px;
+  right:8px;
+  padding:10px;
+  font-weight:bold;
+  font-size:20px;
+  cursor:pointer;
+}
+
+#closeHighScore:hover{
+  color:red;
+}
+
+#highScore p{
+  font-size:36px;
+}
+li{
+  margin-bottom: 10px;
+}
+#rules > h1{
+  font-size:60px;
+  margin-bottom: 0px;
+}
+
+#rules-container{
+  margin:auto;
+  vertical-align: middle;
+}
+  </style>
+
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>non sequiturs 🌪️</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-tsne"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+  <script src="https://d3js.org/d3-ease.v1.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  </head>
+
+<body>
+  <div id="rules-container">
+    <div id="rules">
+      <h1>non sequiturs 🌪️</h1>
+      <!-- <p>Imagine every tweet ever published laid out before you: science twitter may be clustered in one corner, journalists in another, conspiracy theorists in a third, with pet and meme accounts probably keeping the entire world together.</p> -->
+      <p>Your objective is to say a word as fast and as unrelated as possible from the last played word.</p>
+      <ol>
+        <li>Decide who's <b><span style="color:red">player one</span></b> and <b><span style="color:mediumblue">player two</span></b>...or go hard mode and compete against yourself.</li>
+        <li>The computer will start you out with a random word.</li>
+        <li><b><span style="color:red">Player one</span></b> must say—out loud!—the most unrelated word they can think of, as fast as possible.</li>
+        <li><b><span style="color:mediumblue">Player two</span></b> does the same with player one's word—and so on.</li>
+        <li>Score points based on how unrelated your word is. Or lose by taking too long!</li>
+      </ol>
+      <p><b>Game requirements:</b> Chrome on desktop with mic enabled; <span onclick="micTest();" style="cursor:pointer;text-decoration:underline;">click here to test.</span><p id="micTest"></p>
+    </p>
+    </div>
+    
+    <div id="start-button">Loading word2vec Model...</div>
+    <p style="font-size:12px;text-align: center;"><i>Scores calculated by a word2vec model trained on tweets, don't @ me.</i></p>
+  </div>
+
+<div id="tsneSVG"></div>
+
+
+<div id="turnBar">
+    <!-- <p>Current Word:</p> -->
+  <div id="playerContainer"><h1 id="player"></h1></div>
+
+  <div id="timer">
+      <h1 id="countDown"></h1>
+    </div>
+
+  <div id="error"><h1 id="tryAgain"></h1></div>
+
+  <div id="restartButtonContainer">
+      <button id="restart-button" onclick="start();">PLAY AGAIN</button>
+    </div>
+
+</div>
+
+
+<div class="playerBars" id="playerOneBar"></div>
+<div class="playerBars" id="playerTwoBar"></div>
+
+  <div class="playerStats" id="playerOneStats">
+    <h3 class="title">Player One</h3>
+    <p>Distance:</p>
+    <h2 id="playerOnePoints"></h2>
+    <p>Time Penalty:</p>
+    <h2 id="playerOneTimePenalty"></h2>
+    <p>Efficiency Bonus:</p>
+    <h2 id="playerOneEfficiencyBonus"></h2>
+    <p>Overall Score:</p>
+    <h2 id="playerOneScore"></h2>
+  </div>
+
+  <div class="playerStats" id="playerTwoStats">
+    <h3 class="title">Player Two</h3>
+    <p>Distance:</p>
+    <h2 id="playerTwoPoints"></h2>
+    <p>Time Penalty:</p>
+    <h2 id="playerTwoTimePenalty"></h2>
+    <p>Efficiency Bonus:</p>
+    <h2 id="playerTwoEfficiencyBonus"></h2>
+    <p>Overall Score:</p>
+    <h2 id="playerTwoScore"></h2>
+  </div>
+
+
+  <div id="highScore">
+    <div id="closeHighScore">X</div>
+    <h1>High Score!</h1>
+    <input type="text" id="hiScore_name" name="hiScore_name" size="40" required>
+    <button id="submitHighScore">SUBMIT</button>
+  </div>
+
+
+  <script src="sketch.js"></script>
+
+
+</body>
+
+</html>

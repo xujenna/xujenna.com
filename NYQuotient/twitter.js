@@ -184,10 +184,9 @@ function demo(){
     .attr("id", "newEmbeddingText")
     .attr("class", "player0text");
 
-
   var msg = new SpeechSynthesisUtterance();
   var voices = window.speechSynthesis.getVoices();
-  msg.voice = voices[10]; // Note: some voices don't support altering params
+  msg.voice = voices[1]; // Note: some voices don't support altering params
   msg.voiceURI = 'native';
   msg.volume = 1; // 0 to 1
   msg.rate = 1; // 0.1 to 10
@@ -203,7 +202,7 @@ function demo(){
   }, 1500);
 
 var msg2 = new SpeechSynthesisUtterance();
-msg2.voice = voices[5]; // Note: some voices don't support altering params
+msg2.voice = voices[1]; // Note: some voices don't support altering params
 msg2.voiceURI = 'native';
 msg2.volume = 1; // 0 to 1
 msg2.rate = 1; // 0.1 to 10
