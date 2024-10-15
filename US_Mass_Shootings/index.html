@@ -90,7 +90,7 @@
     width:110px;
     display:block;
     font-size:12px;
-    line-height: 10px;
+    line-height: 5px;
     color:white;
     opacity:0.85;
     content: "\25BC";
@@ -176,12 +176,12 @@ a:link, a:visited, a:hover, a:active {
 
 <body>
   <div class="intro">
-    <h1>U.S. Mass Shootings, 1982-2016</h1>
+    <h1>U.S. Mass Shootings, 1982-2022</h1>
     <h4>Data and text from <a href="https://www.motherjones.com/politics/2012/07/mass-shootings-map" target="new">Mother Jones</a></h4>
   </div>
   <div class="chart"><div class="tooltip"></div></div>
   <div class="shooting-details"><p id="hed">A Guide to Mass Shootings in America</p>
-<h5>There have been at least 81 in the last three-plus decades—and most of the killers got their guns legally.</h5><p id="intro-text"><span id ="stats">Editor's note: </span>In July 2012, in the aftermath&nbsp;of the movie theater massacre in Aurora, Colorado, <em>Mother Jones</em> created the first open-source database documenting mass shootings in the United States. Our research has focused on seemingly indiscriminate rampages in public places resulting in four or more victims killed. We exclude shootings stemming from more conventional crimes such as armed robbery or gang violence. Other news outlets and researchers have published larger tallies that include a wide range of gun crimes in which four or more people have been either wounded or killed. While those larger datasets of multiple-victim shootings may be useful for studying the broader problem of gun violence, our investigation provides an in-depth look at the distinct phenomenon of mass shootings—from the <a href="https://www.motherjones.com/politics/2013/02/assault-weapons-high-capacity-magazines-mass-shootings-feinstein" target="_blank">firearms used</a> to <a href="https://www.motherjones.com/politics/2015/09/mass-shootings-threat-assessment-shooter-fbi-columbine" target="_blank">mental health factors</a> and the growing <a href="https://www.motherjones.com/politics/2015/10/columbine-effect-mass-shootings-copycat-data" target="_blank">copycat </a><a href="https://www.motherjones.com/politics/2015/10/media-inspires-mass-shooters-copycats" target="_blank">problem</a>. Tracking mass shootings is complex; we believe ours is the <a href="https://www.motherjones.com/politics/2015/12/no-there-were-not-355-mass-shootings-this-year" target="_blank">most useful</a> <a href="https://www.nytimes.com/2015/12/04/opinion/how-many-mass-shootings-are-there-really.html" target="_blank">approach</a>.</p>
+<h5>There have been at least 152 since 1982—and most of the killers got their guns legally.</h5><p id="intro-text"><span id ="stats">Editor's note: </span>In July 2012, in the aftermath&nbsp;of the movie theater massacre in Aurora, Colorado, <em>Mother Jones</em> created the first open-source database documenting mass shootings in the United States. Our research has focused on seemingly indiscriminate rampages in public places resulting in four or more victims killed. We exclude shootings stemming from more conventional crimes such as armed robbery or gang violence. Other news outlets and researchers have published larger tallies that include a wide range of gun crimes in which four or more people have been either injured or killed. While those larger datasets of multiple-victim shootings may be useful for studying the broader problem of gun violence, our investigation provides an in-depth look at the distinct phenomenon of mass shootings—from the <a href="https://www.motherjones.com/politics/2013/02/assault-weapons-high-capacity-magazines-mass-shootings-feinstein" target="_blank">firearms used</a> to <a href="https://www.motherjones.com/politics/2015/09/mass-shootings-threat-assessment-shooter-fbi-columbine" target="_blank">mental health factors</a> and the growing <a href="https://www.motherjones.com/politics/2015/10/columbine-effect-mass-shootings-copycat-data" target="_blank">copycat </a><a href="https://www.motherjones.com/politics/2015/10/media-inspires-mass-shooters-copycats" target="_blank">problem</a>. Tracking mass shootings is complex; we believe ours is the <a href="https://www.motherjones.com/politics/2015/12/no-there-were-not-355-mass-shootings-this-year" target="_blank">most useful</a> <a href="https://www.nytimes.com/2015/12/04/opinion/how-many-mass-shootings-are-there-really.html" target="_blank">approach</a>.</p>
 
 <p id="intro-text">The interactive map below and our <a href="https://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data" target="_blank">downloadable database</a> have been expanded with 19 additional cases from 2013-2016. Back in 2005, the FBI and leading criminologists essentially defined a mass shooting&nbsp;as an attack in a public place in which four or more victims were killed. We adopted that baseline when we gathered data in 2012 on three decades worth of&nbsp;cases. In January 2013, <a href="https://www.congress.gov/112/plaws/publ265/PLAW-112publ265.pdf" target="_blank">a mandate</a> for federal investigation of mass shootings authorized by President Barack Obama lowered that&nbsp;baseline to three or more victims. Accordingly, we include attacks dating from January 2013 in which three or more victims died. Our original analysis, which covers cases with four or more victims killed from 1982-2012, follows below. The cases we have documented since then using the revised federal baseline reaffirm our major findings.</p>
 
@@ -240,29 +240,29 @@ var svg = d3.select(".chart").append("svg")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-console.log("shootings", shootings);
 
 
 
 var coordinates = [];
 
   shootings.forEach(function(d) {
-    d.Fatalities = +d.Fatalities;
-    d["Total victims"] = +d["Total victims"];
-    d.Wounded = +d.Wounded;
+    d.fatalities = +d.fatalities;
+    d["total_victims"] = +d["total_victims"];
+    d.injured = +d.injured;
     d.latitude = +d.latitude;
     d.longitude = +d.longitude;
     d.coordinates = [d.longitude, d.latitude];
   });
 
-shootings = shootings.sort(function (a,b) {return d3.descending(a.Fatalities, b.Fatalities); });
+shootings = shootings.filter(d=> !isNaN(d.latitude)).sort(function (a,b) {return d3.descending(a.Fatalities, b.Fatalities); })
+console.log("shootings", shootings);
 
 
 var tip = d3.tip()
   .attr("class", "tooltip")
   .offset([-15,0])
   .html(function(d) {
-    return "<p><b>" + d.Case + "</b></p>" + "<p>" + d.Date + "<p>" + d.Fatalities + " fatalities" + "</p><p>" + d.Wounded  + " wounded" + "</p><p id='click'>" + "Click for details." + "</p>";
+    return "<p><b>" + d.case + "</b></p>" + "<p>" + d.date + "<p>" + d.fatalities + " fatalities" + "</p><p>" + d.injured  + " injured" + "</p><p id='click'>" + "Click for details." + "</p>";
   });
 
 
@@ -280,14 +280,14 @@ svg.selectAll("circle")
   .append("circle")
   .attr("cx", function(d) {return projection(d.coordinates)[0];})
   .attr("cy", function(d) {return projection(d.coordinates)[1];})
-  .attr("r", function(d) {return d.Fatalities + "px";})
+  .attr("r", function(d) {return d.fatalities + "px";})
   .attr("class", "points")
   .call(tip)
 
   .on("mouseover", function(d) {
     d3.select(this)
       .classed("mouseover", true)
-      .attr("r", function(d) {return d["Total victims"] + "px"})
+      .attr("r", function(d) {return d["total_victims"] + "px"})
       .attr("class", "hoveredpoints")
     tip.show(d);
 
@@ -301,7 +301,7 @@ svg.selectAll("circle")
   .on("mouseout", function(d) {
     tip.hide(d);
     d3.select(this)
-      .attr("r", function(d) {return d.Fatalities + "px";})
+      .attr("r", function(d) {return d.fatalities + "px";})
       .attr("class", "points")
       .classed("mouseover", false);
   });
@@ -310,7 +310,7 @@ svg.selectAll("circle")
 
   function updateDetail(d) {
     var updateDetail = d3.select(".shooting-details")
-      .html(function() { return "<p id='hed'>" + d.Case + "</p>" + "<p><span id='stats'>" + "Summary: </span>" +d.Summary + "</p><p><span id='stats'>" + "Date: </span>" + d.Date + "</p><p><span id='stats'>Location: </span>" + d.Location + "</p><p><span id='stats'>Fatalities: </span>" + d.Fatalities + "</p><p><span id='stats'>Wounded: </span>" + d.Wounded + "</p></p><p id ='subheds'>" + "PERPETRATOR" + "</p><p><span id='stats'>" + "Gender: </span>" + d.Gender + "</p><p><span id='stats'>" + "Race: </span>" + d.Race + "</p><p><span id='stats'>" + "Mental Health: </span>" + d["Mental Health"] + "</p><p id='subheds'>" + "WEAPONS</p><p><span id='stats'>" + "Type of Weapons: </span>" + d["Weapon details"] + "</p><p><span id='stats'>" + "Weapons Obtained Legally? </span>" + d["Weapons obtained legally"] + "</p><p><span id='stats'>" + "Where obtained: </span>" + d["Where obtained"] + "</p></p><p id='details-sources'><b>SOURCES: </b>" + d.Sources + "</p>"; })
+      .html(function() { return "<p id='hed'>" + d.case + "</p>" + "<p><span id='stats'>" + "Summary: </span>" +d.summary + "</p><p><span id='stats'>" + "Date: </span>" + d.date + "</p><p><span id='stats'>Location: </span>" + d.location + "</p><p><span id='stats'>Fatalities: </span>" + d.fatalities + "</p><p><span id='stats'>injured: </span>" + d.injured + "</p></p><p id ='subheds'>" + "PERPETRATOR" + "</p><p><span id='stats'>" + "Gender: </span>" + d.gender + "</p><p><span id='stats'>" + "Race: </span>" + d.race + "</p><p><span id='stats'>" + "Mental Health: </span>" + d["mental_health_details"] + "</p><p id='subheds'>" + "WEAPONS</p><p><span id='stats'>" + "Type of Weapons: </span>" + d.weapon_details + "</p><p><span id='stats'>" + "Weapons Obtained Legally? </span>" + d.weapons_obtained_legally + "</p><p><span id='stats'>" + "Where obtained: </span>" + d.where_obtained + "</p></p><p id='details-sources'><b>SOURCES: </b>" + d.sources + "</p>"; })
   }
   
 }
