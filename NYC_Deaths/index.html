@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style type="text/css">
+  /*css to go here*/
+  body {
+      font-family: arial;
+      font-size: 12px;
+      text-align:center;
+  }
+
+  svg {
+/*      border: 1px solid #f0f;
+*/  }
+
+  .yAxis line,
+  .yAxis path {
+    fill:none;
+    stroke:silver;
+    stroke-dasharray: 2px 2px;
+  }
+
+.yAxis text {
+  text-align:right;
+  font-size:10px;
+}
+
+  .xAxis line,
+  .xAxis path {
+    fill:none;
+    stroke:silver;
+    stroke-dasharray: 2px 2px;
+
+  }
+
+.xAxis text {
+  transform: rotate(-45deg) translateX(-10px) translateY(-4px);
+  text-align:right;
+  text-anchor:end !important;
+  font-size:10px;
+}
+
+
+.g-chart {
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+
+.country-title {
+  font-size:14px;
+  font-weight:bold;
+  text-transform: uppercase;
+  margin: 10px auto;
+  max-width: 750px;
+  }
+
+
+
+</style>
+
+
+<div class="country-title">Choose an Ethnicity: </div> <div class="button-container"></div>
+<div class ="g-chart">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+
+<script>
+//JS to go here
+
+
+var margin = {top: 20, right: 20, bottom: 300, left: 80};
+
+var chart = d3.select(".g-chart");
+
+var width = chart.node().clientWidth - margin.left - margin.right,
+  height = 800 - margin.top - margin.bottom;
+
+
+
+
+d3.csv("New_York_City_Leading_Causes_of_Death.csv", ready);
+
+
+function ready(err, data) {
+    if (err) console.warn(err, "error loading data");
+
+// var maleDeaths = data.filter(function(d) {
+//   return d.Sex === "MALE";
+// })
+
+var deathsByEthnicity = d3.nest()
+  .key(function(d) { return d.Ethnicity; })
+  .key(function(d) { return d.Sex; })
+  .entries(data);
+
+data.forEach(function(d) {
+  d.y = +d.Count;
+});
+
+// console.log("deathsByEthnicity", deathsByEthnicity);
+
+
+var yMin = d3.min(data, function(d) {return d.Count;});
+var yMax = d3.max(data, function(d) {return d.Count;});
+
+
+var xScale = d3.scale.ordinal()
+  .rangeRoundBands([0,width], .1)
+  .domain(data.map(function(d) {return d.DeathCause;}));
+
+
+var yScale = d3.scale.linear()
+  .range([height, 0])
+  .domain([yMin, yMax]);
+
+var xAxis = d3.svg.axis()
+  .orient("bottom")
+  .scale(xScale)
+  .tickPadding(0);
+
+var yAxis = d3.svg.axis()
+  .orient("left")
+  .scale(yScale)
+  .tickSize(-width)
+  .tickPadding(6);
+
+
+// var color = d3.scale.ordinal()
+//   .range(["#f0f", "cyan"]);
+
+var svg = chart.append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// color.domain(d3.keys(data[0]).filter(function(key){return key !== "Ethnicity";}));
+
+// data.forEach(function(d) {
+//   var y0 = 0;
+//   d.Sex = color.domain().map(function(name) {return {name:name, y0: y0, y1: y0 += +d[name]};})
+// })
+
+var xAxisGroup = svg.append("g")
+  .attr("class", "xAxis")
+  .attr("transform", "translate(0, " + (height) + ")")
+  .call(xAxis);
+
+svg.append("g")
+  .attr("class", "yAxis")
+  .call(yAxis);
+ 
+
+//nav
+
+console.log("deathsByEthnicity", deathsByEthnicity);
+
+d3.select(".button-container").selectAll(".g-country-buttons")
+  .data(deathsByEthnicity)
+  .enter().append("button")
+  .attr("class", "g-country-buttons")
+  .text(function(d) {return d.key;})
+  .on("click", function(d) {
+    title(d);
+    drawRects(d.values);
+    console.log("d", d);
+  });
+
+
+
+
+function title(d) {
+  var title = d3.select(".country-title")
+  .text(function() {return d.key;});
+}
+
+
+
+function drawRects(d) {
+
+    // console.log("d", d);
+
+// var stack = d3.layout.stack();
+// stack(function(d,i) {return d[i].values;});
+
+//     console.log("d after stack", d);
+
+// var females = d[0].values;
+// var males = d[1].values;
+var bothSexes = [d[0].values, d[1].values];
+
+var stack = d3.layout.stack();
+stack(bothSexes);
+
+console.log("bothSexes", bothSexes);
+
+
+// var femalesPrestackedData = {};
+
+// females.forEach(function(d) {
+//   femalesPrestackedData[d.DeathCause] = d.Count;
+// });
+
+
+
+  var rectsDataSel = svg.selectAll("rect")
+    .data(bothSexes)
+
+console.log("bothSexes", bothSexes);
+
+  var rectsEnter = rectsDataSel
+    .enter().append("rect")
+    .attr("class", "g");
+
+
+// console.log("d.values", d.values);
+
+  svg.selectAll("rect")
+      .attr("transform", function(d, i) { return "translate(" + xScale(d[i].DeathCause) + ",0)"; })
+
+    // .attr("x", function(d,i) {return xScale(d[i].DeathCause)})
+    // .data(d)
+    // .enter().append("rect")
+    .attr("width", xScale.rangeBand())
+    .attr("y", function(d,i) { return yScale(d[i].y0);})
+    .attr("height", function(d,i) {return yScale(d[i].y);});
+    // .style("fill", function(d) {return color(d.name);});
+
+
+  // var rectsEnter = rectsDataSel
+  //   .enter()
+  //   .append("rect")
+  //   .attr("class", "enter")
+  //   .attr();
+
+  // svg.selectAll("circle")
+  //   .transition().duration(1000)
+  //   .attr("cx", function(d) {return xScale(d.year);})
+  //   .attr("cy", function(d) {return yScale(d.val);})
+  //   .attr("r", 4);
+
+
+rectsDataSel
+  .exit().remove();
+
+// title
+//   .remove();
+}
+
+
+
+
+
+
+// d3.select(window)
+//   .on("resize", resize);
+
+// function resize() {
+//   width = chart.node().clientWidth - margin.left - margin.right;
+//   xScale
+//    .range([0,width]);
+
+//   d3.select("svg")
+//    .attr("width", width + margin.left + margin.right);
+
+// xAxisGroup
+//     .call(xAxis);
+
+// yAxis
+//   .tickSize(-width);
+
+// };
+}
+
+
+
+
+
+</script>
+</body>

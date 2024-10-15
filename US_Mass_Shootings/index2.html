@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style type="text/css">
+  /*css to go here*/
+  body {
+      font-family: Roboto;
+      font-size: 13px;
+  }
+
+  svg {
+     /* border: 1px solid #f0f;*/
+ 
+  }
+
+  h1 {
+    font-family: monospace;
+    border-bottom: 1px solid black;
+    padding-bottom: 6px;
+    margin-bottom: 0px;
+  }
+
+  h4 {
+    padding-top:0px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+  }
+
+  h5 {
+    font-family: monospace;
+    font-weight: normal;
+    font-size: 14px;
+  }
+
+  .chart {
+    position:fixed;
+    margin-top: 100px;
+  }
+
+  .states {
+    fill:#ececec;
+    stroke:white;
+    stroke-width:1px;
+  }
+
+  .points {
+    fill:#f0f;
+    fill-opacity:0.4;
+  }
+
+  .hoveredpoints {
+    fill: yellow;
+    fill-opacity:0.5;
+    stroke:white;
+    stroke-opacity:1;
+  }
+
+  .mouseover {
+    stroke: #f0f;
+    stroke-opacity:0.2;
+    stroke-alignment:outer;
+  }
+
+  .tooltip {
+    font-family:monospace;
+    font-size:11px;
+    width:110px;
+    background:rgba(255,255,255,0.9);
+    padding-right:10px;
+    padding-left:10px;
+    word-spacing: -2px;
+    position: fixed;
+  }
+
+  .tooltip p {
+    padding-bottom:4px;
+    border-bottom: 1px solid black;
+  }
+
+  .tooltip #click {
+    font-size:9px;
+    font-style: italic;
+    border-bottom: none;
+    color:grey;
+  }
+
+  .tooltip:after {
+    width:110px;
+    display:block;
+    font-size:12px;
+    line-height: 10px;
+    color:white;
+    opacity:0.85;
+    content: "\25BC";
+    position:absolute;
+    text-align:center;
+    pointer-events:none;
+  }
+
+
+.intro {
+  margin-left:90px;
+  text-align: left;
+  padding-top: 10px;
+  max-width: 475px;
+  position: fixed;
+}
+
+.shooting-details {
+  position:absolute;
+  right:70px;
+  top:95px;
+  width:220px;
+  word-wrap: break-word;
+}
+
+.shooting-details p {
+  margin: 2px 0px;
+  padding: 0px;
+}
+
+.shooting-details #intro-text {
+  margin: 10px 0px;
+}
+
+
+.shooting-details #hed {
+  font-family:monospace;
+  font-size:18px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+  letter-spacing: -0.25px;
+  word-spacing: -2px;
+}
+
+.shooting-details #subheds {
+  font-family: monospace;
+  font-size:12px;
+  font-weight: bold;
+/*  text-decoration: underline;
+*/  letter-spacing: 1px;
+  border-bottom: 1px solid black;
+  padding-bottom: 2px;
+  margin-bottom: 6px;
+  margin-top: 19px;
+}
+
+.shooting-details #stats {
+  font-size:9px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color:grey;
+}
+
+.shooting-details #details-sources {
+  font-size:10px;
+  border-top: 1px solid black;
+  margin-top: 18px;
+  margin-bottom: 50px; 
+  padding-top: 12px;
+  color:grey;
+  line-height: 11px;
+}
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color:#f0f;
+}
+
+</style>
+
+<body>
+  <div class="intro">
+    <h1>U.S. Mass Shootings, 1982-2016</h1>
+    <h4>Data and text from <a href="http://www.motherjones.com/politics/2012/07/mass-shootings-map" target="new">Mother Jones</a></h4>
+  </div>
+  <div class="chart"><div class="tooltip"></div></div>
+  <div class="shooting-details"><p id="hed">A Guide to Mass Shootings in America</p>
+<h5>There have been at least 81 in the last three-plus decades—and most of the killers got their guns legally.</h5><p id="intro-text"><span id ="stats">Editor's note: </span>In July 2012, in the aftermath&nbsp;of the movie theater massacre in Aurora, Colorado, <em>Mother Jones</em> created the first open-source database documenting mass shootings in the United States. Our research has focused on seemingly indiscriminate rampages in public places resulting in four or more victims killed. We exclude shootings stemming from more conventional crimes such as armed robbery or gang violence. Other news outlets and researchers have published larger tallies that include a wide range of gun crimes in which four or more people have been either wounded or killed. While those larger datasets of multiple-victim shootings may be useful for studying the broader problem of gun violence, our investigation provides an in-depth look at the distinct phenomenon of mass shootings—from the <a href="http://www.motherjones.com/politics/2013/02/assault-weapons-high-capacity-magazines-mass-shootings-feinstein" target="_blank">firearms used</a> to <a href="http://www.motherjones.com/politics/2015/09/mass-shootings-threat-assessment-shooter-fbi-columbine" target="_blank">mental health factors</a> and the growing <a href="http://www.motherjones.com/politics/2015/10/columbine-effect-mass-shootings-copycat-data" target="_blank">copycat </a><a href="http://www.motherjones.com/politics/2015/10/media-inspires-mass-shooters-copycats" target="_blank">problem</a>. Tracking mass shootings is complex; we believe ours is the <a href="http://www.motherjones.com/politics/2015/12/no-there-were-not-355-mass-shootings-this-year" target="_blank">most useful</a> <a href="http://www.nytimes.com/2015/12/04/opinion/how-many-mass-shootings-are-there-really.html" target="_blank">approach</a>.</p>
+
+<p id="intro-text">The interactive map below and our <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data" target="_blank">downloadable database</a> have been expanded with 19 additional cases from 2013-2016. Back in 2005, the FBI and leading criminologists essentially defined a mass shooting&nbsp;as an attack in a public place in which four or more victims were killed. We adopted that baseline when we gathered data in 2012 on three decades worth of&nbsp;cases. In January 2013, <a href="https://www.congress.gov/112/plaws/publ265/PLAW-112publ265.pdf" target="_blank">a mandate</a> for federal investigation of mass shootings authorized by President Barack Obama lowered that&nbsp;baseline to three or more victims. Accordingly, we include attacks dating from January 2013 in which three or more victims died. Our original analysis, which covers cases with four or more victims killed from 1982-2012, follows below. The cases we have documented since then using the revised federal baseline reaffirm our major findings.</p>
+
+<p id="intro-text">It is perhaps too easy to forget how many times this has happened. The horrific massacre <a href="http://www.motherjones.com/politics/2012/07/batman-theater-shooting-updates-dark-knight-rises" target="_blank">at a movie theater in Aurora, Colorado</a>, in July 2012, <a href="http://www.motherjones.com/politics/2012/08/what-we-know-about-sikh-temple-shooting-wisconsin-updates" target="_blank">another at a Sikh temple in Wisconsin</a> that August, <a href="http://www.startribune.com/local/171774461.html" target="_blank">another at a manufacturer in Minneapolis</a> that September—and then the unthinkable nightmare <a href="http://www.motherjones.com/politics/2012/12/newtown-connecticut-school-shooting-explained" target="_blank">at a Connecticut elementary school</a> that December—were some of the latest in an epidemic of such gun violence over the last three-plus decades. Since 1982, there have been at least 81 public mass shootings across the country, with the killings unfolding in 33 states from Massachusetts to Hawaii. Forty-four of these mass shootings have occurred since 2006. Seven of them took place in 2012 alone, including Sandy Hook. A recent analysis of this database by researchers at Harvard University, further corroborated by a recent <a href="https://www.fbi.gov/about-us/office-of-partner-engagement/active-shooter-incidents/a-study-of-active-shooter-incidents-in-the-u.s.-2000-2013" target="_blank">FBI study</a>, determined that mass shootings <a href="http://www.motherjones.com/politics/2014/10/mass-shootings-rising-harvard" target="_blank">have been on the rise</a>.</p>
+
+<p id="intro-text">We've gathered detailed data on more than three decades of cases and mapped them below, including information on the attackers' profiles, the types of weapons they used, and the number of victims they injured and killed. The following analysis covers our original dataset comprised of 62 cases from 1982-2012.</p>
+
+<p id="intro-text"><span id="stats">Weapons: </span>Of the 143 guns possessed by the killers, more than three quarters were obtained legally. The arsenal included dozens of&nbsp;assault weapons and semi-automatic handguns with <a href="http://www.motherjones.com/politics/2013/01/high-capacity-magazines-mass-shootings" target="_blank">high-capacity magazines</a>. (See charts below.) Just as a perpetrator used a .40-caliber Glock to slaughter students in Red Lake, Minnesota, in 2005, so too did the one in Aurora, along with an <a href="http://en.wikipedia.org/wiki/AR-15" target="_blank">AR-15 assault rifle</a>, when blasting away at his victims in a darkened movie theater. In Newtown, Connecticut, the attacker wielded a <a href="http://en.wikipedia.org/wiki/Bushmaster_Firearms_International" target="_blank">.223 Bushmaster semi-automatic assault rifle</a> as he massacred 20 school children and six adults.</p>
+
+<p id="intro-text"><span id="stats">The perpetrators: </span>More than half of the cases involved school or workplace shootings (12 and 20, respectively); the other 30 cases took place in locations including shopping malls, restaurants, and religious and government buildings. Forty-four of the killers were white males. Only one was a woman. (See Goleta, Calif., in 2006.) The average age of the killers was 35, though the youngest among them was a mere 11 years old. (See Jonesboro, Ark., in 1998.) A majority were mentally troubled—<a href="http://www.motherjones.com/politics/2012/11/jared-loughner-mass-shootings-mental-illness" target="_blank">and many displayed signs of mental health problems before setting out to kill</a>. Explore the map for further details—we do not consider it to be all-inclusive, but based on <a href="#criteria">the criteria we used,</a> we believe that we've produced the most comprehensive rundown available on this particular type of violence. (Mass shootings represent only a sliver of America's overall gun violence.) For the stories of the 151 shooting rampage victims of 2012, <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-victims-2012" target="_blank">click here</a>, and for our groundbreaking investigation into the economic costs of the nation's gun violence, including mass shootings, <a href="http://www.motherjones.com/politics/2015/04/true-cost-of-gun-violence-in-america" target="_blank">click here</a>.</p>
+
+<p id="details-sources">Click on the dots for more details.</p>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script> 
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<!-- <script src="https://raw.githubusercontent.com/enjalot/adventures_in_d3/master/d3/d3.geom.js"></script>
+ -->
+
+<script type="text/javascript">
+
+
+var margin = {top: 0, right: 10, bottom: 10, left: 10};
+
+var width = 1500 - margin.left - margin.right,
+    height = 760 - margin.top - margin.bottom;
+
+
+
+
+var projection = d3.geo.mercator();
+
+var path = d3.geo.path()
+  .projection(projection);
+
+
+queue()
+  .defer(d3.json, "us.json")
+  .defer(d3.csv, "US_mass_shootings.csv")
+  .await(ready);
+
+function ready(err, us, shootings) {
+  if (err) console.warn(err, "error loading data");
+
+var topo = topojson.feature(us, us.objects.states).features
+
+projection
+  .scale(1375)
+  .center([-106, 42])
+
+var svg = d3.select(".chart").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+console.log("shootings", shootings);
+
+
+
+var coordinates = [];
+
+  shootings.forEach(function(d) {
+    d.Fatalities = +d.Fatalities;
+    d["Total victims"] = +d["Total victims"];
+    d.Wounded = +d.Wounded;
+    d.latitude = +d.latitude;
+    d.longitude = +d.longitude;
+    d.coordinates = [d.longitude, d.latitude];
+  });
+
+shootings = shootings.sort(function (a,b) {return d3.descending(a.Fatalities, b.Fatalities); });
+
+var shootingsCoordinates;
+
+shootingsCoordinates.push(shootings.coordinates);
+
+
+var tip = d3.tip()
+  .attr("class", "tooltip")
+  .offset([-15,0])
+  .html(function(d) {
+    return "<p><b>" + d.Case + "</b></p>" + "<p>" + d.Date + "<p>" + d.Fatalities + " fatalities" + "</p><p>" + d.Wounded  + " wounded" + "</p><p id='click'>" + "Click for details." + "</p>";
+  });
+
+// svg.selectAll("path")
+//   .data(topo)
+//   .enter()
+//   .append("path")
+//   .attr("class", "states")
+//   .attr("d", path);
+
+
+var paths = svg.append("svg:g").attr("id", "point-paths");
+var points = svg.append("svg:g").attr("id", "points");
+var clips = svg.append("svg:g").attr("id", "point-clips");
+
+svg.selectAll("clipPath")
+  .data(shootings)
+  .enter().append("svg:ClipPath")
+  .attr("id", function(d,i) {return "clip-"+i})
+  .append("svg:circle")
+    .attr("cx", function(d) {return projection(d.coordinates)[0];})
+    .attr("cy", function(d) {return projection(d.coordinates)[1];})
+    .attr("r", function(d) {return d.Fatalities + 20 + "px";})
+    .attr("class", "points")
+    .call(tip)
+
+paths.selectAll("path")
+  .data(function(d) {return d3.geom.voronoi(shootingsCoordinates)})
+  .enter().append("svg:path")
+      .attr("d", function(d) { return "M" + d.join(",") + "Z"; })
+  .attr("id", function(d,i) {
+    return "path-"+i;})
+  .attr("clip-path", function(d,i) {return "url(#clip-"+i+")";})
+        .style("fill", d3.rgb(230, 230, 230))
+      .style('fill-opacity', 0.4)
+      .style("stroke", d3.rgb(200,200,200));
+  
+
+clips.selectAll("clipPath")
+  .on("mouseover", function(d) {
+    d3.select(this)
+      .classed("mouseover", true)
+      .attr("r", function(d) {return d["Total victims"] + "px"})
+      .attr("class", "hoveredpoints")
+    tip.show(d);
+
+  })
+
+  .on("click", function(d) {
+    updateDetail(d);
+    window.scrollTo(0,0);
+  })
+
+  .on("mouseout", function(d) {
+    tip.hide(d);
+    d3.select(this)
+      .attr("r", function(d) {return d.Fatalities + "px";})
+      .attr("class", "points")
+      .classed("mouseover", false);
+  });
+
+
+svg.selectAll("circle")
+  .data(shootings)
+  .enter()
+  .append("circle")
+  .attr("cx", function(d) {return projection(d.coordinates)[0];})
+  .attr("cy", function(d) {return projection(d.coordinates)[1];})
+  .attr("r", function(d) {return d.Fatalities + "px";})
+  .attr("class", "points");
+
+  // .on("mouseover", function(d) {
+  //   d3.select(this)
+  //     .classed("mouseover", true)
+  //     .attr("r", function(d) {return d["Total victims"] + "px"})
+  //     .attr("class", "hoveredpoints")
+  //   tip.show(d);
+
+  // })
+
+  // .on("click", function(d) {
+  //   updateDetail(d);
+  //   window.scrollTo(0,0);
+  // })
+
+  // .on("mouseout", function(d) {
+  //   tip.hide(d);
+  //   d3.select(this)
+  //     .attr("r", function(d) {return d.Fatalities + "px";})
+  //     .attr("class", "points")
+  //     .classed("mouseover", false);
+  // });
+
+
+
+  function updateDetail(d) {
+    var updateDetail = d3.select(".shooting-details")
+      .html(function() { return "<p id='hed'>" + d.Case + "</p>" + "<p><span id='stats'>" + "Summary: </span>" +d.Summary + "</p><p><span id='stats'>" + "Date: </span>" + d.Date + "</p><p><span id='stats'>Location: </span>" + d.Location + "</p><p><span id='stats'>Fatalities: </span>" + d.Fatalities + "</p><p><span id='stats'>Wounded: </span>" + d.Wounded + "</p></p><p id ='subheds'>" + "PERPETRATOR" + "</p><p><span id='stats'>" + "Gender: </span>" + d.Gender + "</p><p><span id='stats'>" + "Race: </span>" + d.Race + "</p><p><span id='stats'>" + "Mental Health: </span>" + d["Mental Health"] + "</p><p id='subheds'>" + "WEAPONS</p><p><span id='stats'>" + "Type of Weapons: </span>" + d["Weapon details"] + "</p><p><span id='stats'>" + "Weapons Obtained Legally? </span>" + d["Weapons obtained legally"] + "</p><p><span id='stats'>" + "Where obtained: </span>" + d["Where obtained"] + "</p></p><p id='details-sources'><b>SOURCES: </b>" + d.Sources + "</p>"; })
+  }
+  
+}
+
+
+
+(function(){d3.geom = {};
+/**
+ * Computes a contour for a given input grid function using the <a
+ * href="http://en.wikipedia.org/wiki/Marching_squares">marching
+ * squares</a> algorithm. Returns the contour polygon as an array of points.
+ *
+ * @param grid a two-input function(x, y) that returns true for values
+ * inside the contour and false for values outside the contour.
+ * @param start an optional starting point [x, y] on the grid.
+ * @returns polygon [[x1, y1], [x2, y2], …]
+ */
+d3.geom.contour = function(grid, start) {
+  var s = start || d3_geom_contourStart(grid), // starting point
+      c = [],    // contour polygon
+      x = s[0],  // current x position
+      y = s[1],  // current y position
+      dx = 0,    // next x direction
+      dy = 0,    // next y direction
+      pdx = NaN, // previous x direction
+      pdy = NaN, // previous y direction
+      i = 0;
+
+  do {
+    // determine marching squares index
+    i = 0;
+    if (grid(x-1, y-1)) i += 1;
+    if (grid(x,   y-1)) i += 2;
+    if (grid(x-1, y  )) i += 4;
+    if (grid(x,   y  )) i += 8;
+
+    // determine next direction
+    if (i === 6) {
+      dx = pdy === -1 ? -1 : 1;
+      dy = 0;
+    } else if (i === 9) {
+      dx = 0;
+      dy = pdx === 1 ? -1 : 1;
+    } else {
+      dx = d3_geom_contourDx[i];
+      dy = d3_geom_contourDy[i];
+    }
+
+    // update contour polygon
+    if (dx != pdx && dy != pdy) {
+      c.push([x, y]);
+      pdx = dx;
+      pdy = dy;
+    }
+
+    x += dx;
+    y += dy;
+  } while (s[0] != x || s[1] != y);
+
+  return c;
+};
+
+// lookup tables for marching directions
+var d3_geom_contourDx = [1, 0, 1, 1,-1, 0,-1, 1,0, 0,0,0,-1, 0,-1,NaN],
+    d3_geom_contourDy = [0,-1, 0, 0, 0,-1, 0, 0,1,-1,1,1, 0,-1, 0,NaN];
+
+function d3_geom_contourStart(grid) {
+  var x = 0,
+      y = 0;
+
+  // search for a starting point; begin at origin
+  // and proceed along outward-expanding diagonals
+  while (true) {
+    if (grid(x,y)) {
+      return [x,y];
+    }
+    if (x === 0) {
+      x = y + 1;
+      y = 0;
+    } else {
+      x = x - 1;
+      y = y + 1;
+    }
+  }
+}
+/**
+ * Computes the 2D convex hull of a set of points using Graham's scanning
+ * algorithm. The algorithm has been implemented as described in Cormen,
+ * Leiserson, and Rivest's Introduction to Algorithms. The running time of
+ * this algorithm is O(n log n), where n is the number of input points.
+ *
+ * @param vertices [[x1, y1], [x2, y2], …]
+ * @returns polygon [[x1, y1], [x2, y2], …]
+ */
+d3.geom.hull = function(vertices) {
+  if (vertices.length < 3) return [];
+
+  var len = vertices.length,
+      plen = len - 1,
+      points = [],
+      stack = [],
+      i, j, h = 0, x1, y1, x2, y2, u, v, a, sp;
+
+  // find the starting ref point: leftmost point with the minimum y coord
+  for (i=1; i<len; ++i) {
+    if (vertices[i][1] < vertices[h][1]) {
+      h = i;
+    } else if (vertices[i][1] == vertices[h][1]) {
+      h = (vertices[i][0] < vertices[h][0] ? i : h);
+    }
+  }
+
+  // calculate polar angles from ref point and sort
+  for (i=0; i<len; ++i) {
+    if (i === h) continue;
+    y1 = vertices[i][1] - vertices[h][1];
+    x1 = vertices[i][0] - vertices[h][0];
+    points.push({angle: Math.atan2(y1, x1), index: i});
+  }
+  points.sort(function(a, b) { return a.angle - b.angle; });
+
+  // toss out duplicate angles
+  a = points[0].angle;
+  v = points[0].index;
+  u = 0;
+  for (i=1; i<plen; ++i) {
+    j = points[i].index;
+    if (a == points[i].angle) {
+      // keep angle for point most distant from the reference
+      x1 = vertices[v][0] - vertices[h][0];
+      y1 = vertices[v][1] - vertices[h][1];
+      x2 = vertices[j][0] - vertices[h][0];
+      y2 = vertices[j][1] - vertices[h][1];
+      if ((x1*x1 + y1*y1) >= (x2*x2 + y2*y2)) {
+        points[i].index = -1;
+      } else {
+        points[u].index = -1;
+        a = points[i].angle;
+        u = i;
+        v = j;
+      }
+    } else {
+      a = points[i].angle;
+      u = i;
+      v = j;
+    }
+  }
+
+  // initialize the stack
+  stack.push(h);
+  for (i=0, j=0; i<2; ++j) {
+    if (points[j].index !== -1) {
+      stack.push(points[j].index);
+      i++;
+    }
+  }
+  sp = stack.length;
+
+  // do graham's scan
+  for (; j<plen; ++j) {
+    if (points[j].index === -1) continue; // skip tossed out points
+    while (!d3_geom_hullCCW(stack[sp-2], stack[sp-1], points[j].index, vertices)) {
+      --sp;
+    }
+    stack[sp++] = points[j].index;
+  }
+
+  // construct the hull
+  var poly = [];
+  for (i=0; i<sp; ++i) {
+    poly.push(vertices[stack[i]]);
+  }
+  return poly;
+}
+
+// are three points in counter-clockwise order?
+function d3_geom_hullCCW(i1, i2, i3, v) {
+  var t, a, b, c, d, e, f;
+  t = v[i1]; a = t[0]; b = t[1];
+  t = v[i2]; c = t[0]; d = t[1];
+  t = v[i3]; e = t[0]; f = t[1];
+  return ((f-b)*(c-a) - (d-b)*(e-a)) > 0;
+}
+// Note: requires coordinates to be counterclockwise and convex!
+d3.geom.polygon = function(coordinates) {
+
+  coordinates.area = function() {
+    var i = 0,
+        n = coordinates.length,
+        a = coordinates[n - 1][0] * coordinates[0][1],
+        b = coordinates[n - 1][1] * coordinates[0][0];
+    while (++i < n) {
+      a += coordinates[i - 1][0] * coordinates[i][1];
+      b += coordinates[i - 1][1] * coordinates[i][0];
+    }
+    return (b - a) * .5;
+  };
+
+  coordinates.centroid = function(k) {
+    var i = -1,
+        n = coordinates.length - 1,
+        x = 0,
+        y = 0,
+        a,
+        b,
+        c;
+    if (!arguments.length) k = -1 / (6 * coordinates.area());
+    while (++i < n) {
+      a = coordinates[i];
+      b = coordinates[i + 1];
+      c = a[0] * b[1] - b[0] * a[1];
+      x += (a[0] + b[0]) * c;
+      y += (a[1] + b[1]) * c;
+    }
+    return [x * k, y * k];
+  };
+
+  // The Sutherland-Hodgman clipping algorithm.
+  coordinates.clip = function(subject) {
+    var input,
+        i = -1,
+        n = coordinates.length,
+        j,
+        m,
+        a = coordinates[n - 1],
+        b,
+        c,
+        d;
+    while (++i < n) {
+      input = subject.slice();
+      subject.length = 0;
+      b = coordinates[i];
+      c = input[(m = input.length) - 1];
+      j = -1;
+      while (++j < m) {
+        d = input[j];
+        if (d3_geom_polygonInside(d, a, b)) {
+          if (!d3_geom_polygonInside(c, a, b)) {
+            subject.push(d3_geom_polygonIntersect(c, d, a, b));
+          }
+          subject.push(d);
+        } else if (d3_geom_polygonInside(c, a, b)) {
+          subject.push(d3_geom_polygonIntersect(c, d, a, b));
+        }
+        c = d;
+      }
+      a = b;
+    }
+    return subject;
+  };
+
+  return coordinates;
+};
+
+function d3_geom_polygonInside(p, a, b) {
+  return (b[0] - a[0]) * (p[1] - a[1]) < (b[1] - a[1]) * (p[0] - a[0]);
+}
+
+// Intersect two infinite lines cd and ab.
+function d3_geom_polygonIntersect(c, d, a, b) {
+  var x1 = c[0], x2 = d[0], x3 = a[0], x4 = b[0],
+      y1 = c[1], y2 = d[1], y3 = a[1], y4 = b[1],
+      x13 = x1 - x3,
+      x21 = x2 - x1,
+      x43 = x4 - x3,
+      y13 = y1 - y3,
+      y21 = y2 - y1,
+      y43 = y4 - y3,
+      ua = (x43 * y13 - y43 * x13) / (y43 * x21 - x43 * y21);
+  return [x1 + ua * x21, y1 + ua * y21];
+}
+// Adapted from Nicolas Garcia Belmonte's JIT implementation:
+// http://blog.thejit.org/2010/02/12/voronoi-tessellation/
+// http://blog.thejit.org/assets/voronoijs/voronoi.js
+// See lib/jit/LICENSE for details.
+
+// Notes:
+//
+// This implementation does not clip the returned polygons, so if you want to
+// clip them to a particular shape you will need to do that either in SVG or by
+// post-processing with d3.geom.polygon's clip method.
+//
+// If any vertices are coincident or have NaN positions, the behavior of this
+// method is undefined. Most likely invalid polygons will be returned. You
+// should filter invalid points, and consolidate coincident points, before
+// computing the tessellation.
+
+/**
+ * @param vertices [[x1, y1], [x2, y2], …]
+ * @returns polygons [[[x1, y1], [x2, y2], …], …]
+ */
+d3.geom.voronoi = function(vertices) {
+  var polygons = vertices.map(function() { return []; });
+
+  d3_voronoi_tessellate(vertices, function(e) {
+    var s1,
+        s2,
+        x1,
+        x2,
+        y1,
+        y2;
+    if (e.a === 1 && e.b >= 0) {
+      s1 = e.ep.r;
+      s2 = e.ep.l;
+    } else {
+      s1 = e.ep.l;
+      s2 = e.ep.r;
+    }
+    if (e.a === 1) {
+      y1 = s1 ? s1.y : -1e6;
+      x1 = e.c - e.b * y1;
+      y2 = s2 ? s2.y : 1e6;
+      x2 = e.c - e.b * y2;
+    } else {
+      x1 = s1 ? s1.x : -1e6;
+      y1 = e.c - e.a * x1;
+      x2 = s2 ? s2.x : 1e6;
+      y2 = e.c - e.a * x2;
+    }
+    var v1 = [x1, y1],
+        v2 = [x2, y2];
+    polygons[e.region.l.index].push(v1, v2);
+    polygons[e.region.r.index].push(v1, v2);
+  });
+
+  // Reconnect the polygon segments into counterclockwise loops.
+  return polygons.map(function(polygon, i) {
+    var cx = vertices[i][0],
+        cy = vertices[i][1];
+    polygon.forEach(function(v) {
+      v.angle = Math.atan2(v[0] - cx, v[1] - cy);
+    });
+    return polygon.sort(function(a, b) {
+      return a.angle - b.angle;
+    }).filter(function(d, i) {
+      return !i || (d.angle - polygon[i - 1].angle > 1e-10);
+    });
+  });
+};
+
+var d3_voronoi_opposite = {"l": "r", "r": "l"};
+
+function d3_voronoi_tessellate(vertices, callback) {
+
+  var Sites = {
+    list: vertices
+      .map(function(v, i) {
+        return {
+          index: i,
+          x: v[0],
+          y: v[1]
+        };
+      })
+      .sort(function(a, b) {
+        return a.y < b.y ? -1
+          : a.y > b.y ? 1
+          : a.x < b.x ? -1
+          : a.x > b.x ? 1
+          : 0;
+      }),
+    bottomSite: null
+  };
+
+  var EdgeList = {
+    list: [],
+    leftEnd: null,
+    rightEnd: null,
+
+    init: function() {
+      EdgeList.leftEnd = EdgeList.createHalfEdge(null, "l");
+      EdgeList.rightEnd = EdgeList.createHalfEdge(null, "l");
+      EdgeList.leftEnd.r = EdgeList.rightEnd;
+      EdgeList.rightEnd.l = EdgeList.leftEnd;
+      EdgeList.list.unshift(EdgeList.leftEnd, EdgeList.rightEnd);
+    },
+
+    createHalfEdge: function(edge, side) {
+      return {
+        edge: edge,
+        side: side,
+        vertex: null,
+        "l": null,
+        "r": null
+      };
+    },
+
+    insert: function(lb, he) {
+      he.l = lb;
+      he.r = lb.r;
+      lb.r.l = he;
+      lb.r = he;
+    },
+
+    leftBound: function(p) {
+      var he = EdgeList.leftEnd;
+      do {
+        he = he.r;
+      } while (he != EdgeList.rightEnd && Geom.rightOf(he, p));
+      he = he.l;
+      return he;
+    },
+
+    del: function(he) {
+      he.l.r = he.r;
+      he.r.l = he.l;
+      he.edge = null;
+    },
+
+    right: function(he) {
+      return he.r;
+    },
+
+    left: function(he) {
+      return he.l;
+    },
+
+    leftRegion: function(he) {
+      return he.edge == null
+          ? Sites.bottomSite
+          : he.edge.region[he.side];
+    },
+
+    rightRegion: function(he) {
+      return he.edge == null
+          ? Sites.bottomSite
+          : he.edge.region[d3_voronoi_opposite[he.side]];
+    }
+  };
+
+  var Geom = {
+
+    bisect: function(s1, s2) {
+      var newEdge = {
+        region: {"l": s1, "r": s2},
+        ep: {"l": null, "r": null}
+      };
+
+      var dx = s2.x - s1.x,
+          dy = s2.y - s1.y,
+          adx = dx > 0 ? dx : -dx,
+          ady = dy > 0 ? dy : -dy;
+
+      newEdge.c = s1.x * dx + s1.y * dy
+          + (dx * dx + dy * dy) * .5;
+
+      if (adx > ady) {
+        newEdge.a = 1;
+        newEdge.b = dy / dx;
+        newEdge.c /= dx;
+      } else {
+        newEdge.b = 1;
+        newEdge.a = dx / dy;
+        newEdge.c /= dy;
+      }
+
+      return newEdge;
+    },
+
+    intersect: function(el1, el2) {
+      var e1 = el1.edge,
+          e2 = el2.edge;
+      if (!e1 || !e2 || (e1.region.r == e2.region.r)) {
+        return null;
+      }
+      var d = (e1.a * e2.b) - (e1.b * e2.a);
+      if (Math.abs(d) < 1e-10) {
+        return null;
+      }
+      var xint = (e1.c * e2.b - e2.c * e1.b) / d,
+          yint = (e2.c * e1.a - e1.c * e2.a) / d,
+          e1r = e1.region.r,
+          e2r = e2.region.r,
+          el,
+          e;
+      if ((e1r.y < e2r.y) ||
+         (e1r.y == e2r.y && e1r.x < e2r.x)) {
+        el = el1;
+        e = e1;
+      } else {
+        el = el2;
+        e = e2;
+      }
+      var rightOfSite = (xint >= e.region.r.x);
+      if ((rightOfSite && (el.side === "l")) ||
+        (!rightOfSite && (el.side === "r"))) {
+        return null;
+      }
+      return {
+        x: xint,
+        y: yint
+      };
+    },
+
+    rightOf: function(he, p) {
+      var e = he.edge,
+          topsite = e.region.r,
+          rightOfSite = (p.x > topsite.x);
+
+      if (rightOfSite && (he.side === "l")) {
+        return 1;
+      }
+      if (!rightOfSite && (he.side === "r")) {
+        return 0;
+      }
+      if (e.a === 1) {
+        var dyp = p.y - topsite.y,
+            dxp = p.x - topsite.x,
+            fast = 0,
+            above = 0;
+
+        if ((!rightOfSite && (e.b < 0)) ||
+          (rightOfSite && (e.b >= 0))) {
+          above = fast = (dyp >= e.b * dxp);
+        } else {
+          above = ((p.x + p.y * e.b) > e.c);
+          if (e.b < 0) {
+            above = !above;
+          }
+          if (!above) {
+            fast = 1;
+          }
+        }
+        if (!fast) {
+          var dxs = topsite.x - e.region.l.x;
+          above = (e.b * (dxp * dxp - dyp * dyp)) <
+            (dxs * dyp * (1 + 2 * dxp / dxs + e.b * e.b));
+
+          if (e.b < 0) {
+            above = !above;
+          }
+        }
+      } else /* e.b == 1 */ {
+        var yl = e.c - e.a * p.x,
+            t1 = p.y - yl,
+            t2 = p.x - topsite.x,
+            t3 = yl - topsite.y;
+
+        above = (t1 * t1) > (t2 * t2 + t3 * t3);
+      }
+      return he.side === "l" ? above : !above;
+    },
+
+    endPoint: function(edge, side, site) {
+      edge.ep[side] = site;
+      if (!edge.ep[d3_voronoi_opposite[side]]) return;
+      callback(edge);
+    },
+
+    distance: function(s, t) {
+      var dx = s.x - t.x,
+          dy = s.y - t.y;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+  };
+
+  var EventQueue = {
+    list: [],
+
+    insert: function(he, site, offset) {
+      he.vertex = site;
+      he.ystar = site.y + offset;
+      for (var i=0, list=EventQueue.list, l=list.length; i<l; i++) {
+        var next = list[i];
+        if (he.ystar > next.ystar ||
+          (he.ystar == next.ystar &&
+          site.x > next.vertex.x)) {
+          continue;
+        } else {
+          break;
+        }
+      }
+      list.splice(i, 0, he);
+    },
+
+    del: function(he) {
+      for (var i=0, ls=EventQueue.list, l=ls.length; i<l && (ls[i] != he); ++i) {}
+      ls.splice(i, 1);
+    },
+
+    empty: function() { return EventQueue.list.length === 0; },
+
+    nextEvent: function(he) {
+      for (var i=0, ls=EventQueue.list, l=ls.length; i<l; ++i) {
+        if (ls[i] == he) return ls[i+1];
+      }
+      return null;
+    },
+
+    min: function() {
+      var elem = EventQueue.list[0];
+      return {
+        x: elem.vertex.x,
+        y: elem.ystar
+      };
+    },
+
+    extractMin: function() {
+      return EventQueue.list.shift();
+    }
+  };
+
+  EdgeList.init();
+  Sites.bottomSite = Sites.list.shift();
+
+  var newSite = Sites.list.shift(), newIntStar;
+  var lbnd, rbnd, llbnd, rrbnd, bisector;
+  var bot, top, temp, p, v;
+  var e, pm;
+
+  while (true) {
+    if (!EventQueue.empty()) {
+      newIntStar = EventQueue.min();
+    }
+    if (newSite && (EventQueue.empty()
+      || newSite.y < newIntStar.y
+      || (newSite.y == newIntStar.y
+      && newSite.x < newIntStar.x))) { //new site is smallest
+      lbnd = EdgeList.leftBound(newSite);
+      rbnd = EdgeList.right(lbnd);
+      bot = EdgeList.rightRegion(lbnd);
+      e = Geom.bisect(bot, newSite);
+      bisector = EdgeList.createHalfEdge(e, "l");
+      EdgeList.insert(lbnd, bisector);
+      p = Geom.intersect(lbnd, bisector);
+      if (p) {
+        EventQueue.del(lbnd);
+        EventQueue.insert(lbnd, p, Geom.distance(p, newSite));
+      }
+      lbnd = bisector;
+      bisector = EdgeList.createHalfEdge(e, "r");
+      EdgeList.insert(lbnd, bisector);
+      p = Geom.intersect(bisector, rbnd);
+      if (p) {
+        EventQueue.insert(bisector, p, Geom.distance(p, newSite));
+      }
+      newSite = Sites.list.shift();
+    } else if (!EventQueue.empty()) { //intersection is smallest
+      lbnd = EventQueue.extractMin();
+      llbnd = EdgeList.left(lbnd);
+      rbnd = EdgeList.right(lbnd);
+      rrbnd = EdgeList.right(rbnd);
+      bot = EdgeList.leftRegion(lbnd);
+      top = EdgeList.rightRegion(rbnd);
+      v = lbnd.vertex;
+      Geom.endPoint(lbnd.edge, lbnd.side, v);
+      Geom.endPoint(rbnd.edge, rbnd.side, v);
+      EdgeList.del(lbnd);
+      EventQueue.del(rbnd);
+      EdgeList.del(rbnd);
+      pm = "l";
+      if (bot.y > top.y) {
+        temp = bot;
+        bot = top;
+        top = temp;
+        pm = "r";
+      }
+      e = Geom.bisect(bot, top);
+      bisector = EdgeList.createHalfEdge(e, pm);
+      EdgeList.insert(llbnd, bisector);
+      Geom.endPoint(e, d3_voronoi_opposite[pm], v);
+      p = Geom.intersect(llbnd, bisector);
+      if (p) {
+        EventQueue.del(llbnd);
+        EventQueue.insert(llbnd, p, Geom.distance(p, bot));
+      }
+      p = Geom.intersect(bisector, rrbnd);
+      if (p) {
+        EventQueue.insert(bisector, p, Geom.distance(p, bot));
+      }
+    } else {
+      break;
+    }
+  }//end while
+
+  for (lbnd = EdgeList.right(EdgeList.leftEnd);
+      lbnd != EdgeList.rightEnd;
+      lbnd = EdgeList.right(lbnd)) {
+    callback(lbnd.edge);
+  }
+}
+/**
+* @param vertices [[x1, y1], [x2, y2], …]
+* @returns triangles [[[x1, y1], [x2, y2], [x3, y3]], …]
+ */
+d3.geom.delaunay = function(vertices) {
+  var edges = vertices.map(function() { return []; }),
+      triangles = [];
+
+  // Use the Voronoi tessellation to determine Delaunay edges.
+  d3_voronoi_tessellate(vertices, function(e) {
+    edges[e.region.l.index].push(vertices[e.region.r.index]);
+  });
+
+  // Reconnect the edges into counterclockwise triangles.
+  edges.forEach(function(edge, i) {
+    var v = vertices[i],
+        cx = v[0],
+        cy = v[1];
+    edge.forEach(function(v) {
+      v.angle = Math.atan2(v[0] - cx, v[1] - cy);
+    });
+    edge.sort(function(a, b) {
+      return a.angle - b.angle;
+    });
+    for (var j = 0, m = edge.length - 1; j < m; j++) {
+      triangles.push([v, edge[j], edge[j + 1]]);
+    }
+  });
+
+  return triangles;
+};
+// Constructs a new quadtree for the specified array of points. A quadtree is a
+// two-dimensional recursive spatial subdivision. This implementation uses
+// square partitions, dividing each square into four equally-sized squares. Each
+// point exists in a unique node; if multiple points are in the same position,
+// some points may be stored on internal nodes rather than leaf nodes. Quadtrees
+// can be used to accelerate various spatial operations, such as the Barnes-Hut
+// approximation for computing n-body forces, or collision detection.
+d3.geom.quadtree = function(points, x1, y1, x2, y2) {
+  var p,
+      i = -1,
+      n = points.length;
+
+  // Type conversion for deprecated API.
+  if (n && isNaN(points[0].x)) points = points.map(d3_geom_quadtreePoint);
+
+  // Allow bounds to be specified explicitly.
+  if (arguments.length < 5) {
+    if (arguments.length === 3) {
+      y2 = x2 = y1;
+      y1 = x1;
+    } else {
+      x1 = y1 = Infinity;
+      x2 = y2 = -Infinity;
+
+      // Compute bounds.
+      while (++i < n) {
+        p = points[i];
+        if (p.x < x1) x1 = p.x;
+        if (p.y < y1) y1 = p.y;
+        if (p.x > x2) x2 = p.x;
+        if (p.y > y2) y2 = p.y;
+      }
+
+      // Squarify the bounds.
+      var dx = x2 - x1,
+          dy = y2 - y1;
+      if (dx > dy) y2 = y1 + dx;
+      else x2 = x1 + dy;
+    }
+  }
+
+  // Recursively inserts the specified point p at the node n or one of its
+  // descendants. The bounds are defined by [x1, x2] and [y1, y2].
+  function insert(n, p, x1, y1, x2, y2) {
+    if (isNaN(p.x) || isNaN(p.y)) return; // ignore invalid points
+    if (n.leaf) {
+      var v = n.point;
+      if (v) {
+        // If the point at this leaf node is at the same position as the new
+        // point we are adding, we leave the point associated with the
+        // internal node while adding the new point to a child node. This
+        // avoids infinite recursion.
+        if ((Math.abs(v.x - p.x) + Math.abs(v.y - p.y)) < .01) {
+          insertChild(n, p, x1, y1, x2, y2);
+        } else {
+          n.point = null;
+          insertChild(n, v, x1, y1, x2, y2);
+          insertChild(n, p, x1, y1, x2, y2);
+        }
+      } else {
+        n.point = p;
+      }
+    } else {
+      insertChild(n, p, x1, y1, x2, y2);
+    }
+  }
+
+  // Recursively inserts the specified point p into a descendant of node n. The
+  // bounds are defined by [x1, x2] and [y1, y2].
+  function insertChild(n, p, x1, y1, x2, y2) {
+    // Compute the split point, and the quadrant in which to insert p.
+    var sx = (x1 + x2) * .5,
+        sy = (y1 + y2) * .5,
+        right = p.x >= sx,
+        bottom = p.y >= sy,
+        i = (bottom << 1) + right;
+
+    // Recursively insert into the child node.
+    n.leaf = false;
+    n = n.nodes[i] || (n.nodes[i] = d3_geom_quadtreeNode());
+
+    // Update the bounds as we recurse.
+    if (right) x1 = sx; else x2 = sx;
+    if (bottom) y1 = sy; else y2 = sy;
+    insert(n, p, x1, y1, x2, y2);
+  }
+
+  // Create the root node.
+  var root = d3_geom_quadtreeNode();
+
+  root.add = function(p) {
+    insert(root, p, x1, y1, x2, y2);
+  };
+
+  root.visit = function(f) {
+    d3_geom_quadtreeVisit(f, root, x1, y1, x2, y2);
+  };
+
+  // Insert all points.
+  points.forEach(root.add);
+  return root;
+};
+
+function d3_geom_quadtreeNode() {
+  return {
+    leaf: true,
+    nodes: [],
+    point: null
+  };
+}
+
+function d3_geom_quadtreeVisit(f, node, x1, y1, x2, y2) {
+  if (!f(node, x1, y1, x2, y2)) {
+    var sx = (x1 + x2) * .5,
+        sy = (y1 + y2) * .5,
+        children = node.nodes;
+    if (children[0]) d3_geom_quadtreeVisit(f, children[0], x1, y1, sx, sy);
+    if (children[1]) d3_geom_quadtreeVisit(f, children[1], sx, y1, x2, sy);
+    if (children[2]) d3_geom_quadtreeVisit(f, children[2], x1, sy, sx, y2);
+    if (children[3]) d3_geom_quadtreeVisit(f, children[3], sx, sy, x2, y2);
+  }
+}
+
+function d3_geom_quadtreePoint(p) {
+  return {
+    x: p[0],
+    y: p[1]
+  };
+}
+})();
+
+</script>
+</body>

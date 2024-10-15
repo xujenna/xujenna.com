@@ -292,7 +292,7 @@
         "role": ["All of them ✌️"],
         "tags": ["frontend dev", "backend dev", "data viz", "web"],
         "medium": ["Python", "Javascript", "d3.js"],
-        "link_out": "http://bl.ocks.org/xujenna/raw/32b4b11f1b25a5cf3493fd9308e1e735/",
+        "link_out": "./2014_gun_deaths/",
         "featured_on": []
     },
     {
@@ -302,7 +302,7 @@
         "role": ["All of them ✌️"],
         "tags": ["frontend dev", "backend dev", "data viz", "web"],
         "medium": ["Python", "Javascript", "d3.js"],
-        "link_out": "http://bl.ocks.org/xujenna/raw/25db2af0bf59950d7390ceeba187df42/",
+        "link_out": "./US_Mass_Shootings/",
         "featured_on": []
     },
     {
