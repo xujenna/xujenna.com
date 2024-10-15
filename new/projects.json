@@ -286,16 +286,6 @@
         "featured_on": []
     },
     {
-        "project_title": "Death by Firearms, 2014",
-        "img_src": "./new_doc/death_firearms.png",
-        "description_short": "Visualized breakdown of deaths by firearms in the US in 2014.",
-        "role": ["All of them ✌️"],
-        "tags": ["frontend dev", "backend dev", "data viz", "web"],
-        "medium": ["Python", "Javascript", "d3.js"],
-        "link_out": "./2014_gun_deaths/",
-        "featured_on": []
-    },
-    {
         "project_title": "U.S. Mass Shootings, 1982-2016",
         "img_src": "./new_doc/mass_shootings.png",
         "description_short": "Visualizing Mother Jones's database of 3+ decades of US mass shootings.",

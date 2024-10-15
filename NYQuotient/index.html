@@ -173,7 +173,7 @@
     font-size:28px;
   }
 
-  #homepage div{
+  #homepage>div{
     font-size: 16px;
     width:25%;
     display:inline-block;
@@ -394,6 +394,21 @@ margin-top: 10%;
   color:white;
 }
 
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    width:100%;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
   </style>
 
 
@@ -419,6 +434,10 @@ margin-top: 10%;
   </div>
   <div id="rules">
     <p><h3 class="title">How to play:</h3></p>
+    <div class="video-responsive">
+      <iframe title="vimeo-player" src="https://player.vimeo.com/video/307767198?h=81f1d84ede" width="100%" frameborder="0" allowfullscreen></iframe>
+
+    </div>
     <p>Speakers, a microphone (laptop built-ins are fine), and the Chrome browser are required. The computer will volley hot topic keywords from the past year, and two players will have one shot per topic to prove how aligned they are with most common New York opinions. But you have to be quick, because nothing is less cool than trying too hard.</p>
     <p onclick="micTest();" id="micTest"><span style="cursor:pointer; text-decoration: underline">Click here to test your mic.</span></p>
     <p onclick="demo();"><span style="cursor:pointer; text-decoration: underline;">Click here to view a demo.</span></p>
