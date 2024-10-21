@@ -1,20 +1,10 @@
 [
     {
-        "project_title": "non sequiturs",
-        "img_src": "./nonsequiturs/cover.png",
-        "description_short": "A little game with which to try out your new adult-onset ADHD.",
-        "role": ["All of them ✌️"],
-        "tags": ["games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
-        "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
-        "link_out": "./nonsequiturs/",
-        "featured_on": []
-    },
-    {
         "project_title": "Hey Coach Redesign + Rebrand",
         "img_src": "./HeyCoach/cover.png",
         "description_short": "Empowering youth athletes to make consistent, measurable progress towards their health goals.",
         "role": ["Product Designer", "Brand Designer"],
-        "tags": ["mobile", "product design", "redesign", "branding"],
+        "tags": ["mobile", "product design", "redesign", "branding", "mental health tech"],
         "medium": ["Figma"],
         "imgs": ["mobile_redesign.png", "logos.png"],
         "documentation": "./HeyCoach/index.php",
@@ -43,12 +33,32 @@
         "featured_on": []
     },
     {
+        "project_title": "non sequiturs",
+        "img_src": "./nonsequiturs/cover.png",
+        "description_short": "A little game to try out your newly-diagnosed adult-onset ADHD.",
+        "role": ["All of them ✌️"],
+        "tags": ["fun+games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player", "one player"],
+        "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
+        "link_out": "./nonsequiturs/",
+        "featured_on": []
+    },
+    {
+        "project_title": "Sleepbot: an insomnia intervention",
+        "img_src": "./Sleepbot/text.png",
+        "description_short": "A low-threshold intervention for insomnia patients and their doctors.",
+        "role": ["Product Designer", "Full Stack Developer"],
+        "tags": ["mental health tech", "web", "mobile", "product design", "data viz", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "d3.js", "HTML", "CSS"],
+        "documentation": "./Sleepbot/index.php",
+        "featured_on": []
+    },
+    {
         "project_title": "Speak, (Random Access) Memory",
         "img_src": "./new_doc/speak_mem_thumb.png",
         "description_short": "The first half of my masters thesis; visualizing my data collection and mood prediction efforts.",
         "role": ["All of them ✌️"],
         "tags": ["frontend dev", "machine learning", "backend dev", "data viz", "mental health tech", "web"],
-        "medium": ["Python", "Javascript", "d3.js", "Node", "bash"],
+        "medium": ["Python", "Javascript", "d3.js", "Node", "HTML", "CSS"],
         "link_out": "./speakmemory/",
         "featured_on": [
             {
@@ -78,6 +88,21 @@
         ]
     },
     {
+        "project_title": "I Guess We're Stuck Here",
+        "img_src": "./new_doc/america.png",
+        "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
+        "role": ["All of them ✌️"],
+        "tags": ["fun+games", "web", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "Firebase", "Wikipedia API", "Google Maps API", "Navigator Web API", "Node", "HTML", "CSS"],
+        "link_out": "https://wiki-tour.web.app/",
+        "featured_on": [
+            {
+                "name": "At Home and Away from The New York Times",
+                "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
+            }
+        ]
+    },
+    {
         "project_title": "FirstThen MVP",
         "img_src": "./new_doc/firstThen/firstThen_demo.gif",
         "description_short": "Product development, design, and prototyping work on a web app for parents and their children with ADHD.",
@@ -87,21 +112,6 @@
         "documentation": "./new_doc/firstThen/index.php",
         "imgs": ["1 User Journey Map.png", "2 ADVISOR MEETING_User Journey Map.jpg", "3 Screen Shot 2022-09-14 at 9.50.36 AM.png", "4 ADVISOR MEETING_V1 Prototype Wireframes.jpg"],
         "featured_on": []
-    },
-    {
-        "project_title": "I Guess We're Stuck Here",
-        "img_src": "./new_doc/america.png",
-        "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
-        "role": ["All of them ✌️"],
-        "tags": ["games", "web", "frontend dev", "backend dev"],
-        "medium": ["Javascript", "Firebase", "Wikipedia API", "Google Maps API", "Navigator Web API", "Node", "HTML", "CSS"],
-        "link_out": "https://wiki-tour.web.app/",
-        "featured_on": [
-            {
-                "name": "At Home and Away from The New York Times",
-                "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
-            }
-        ]
     },
     {
         "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Product Work",
@@ -159,7 +169,7 @@
         "img_src": "./new_doc/20181216_175451.gif",
         "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
         "role": ["All of them ✌️"],
-        "tags": ["games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
+        "tags": ["fun+games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
         "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
         "link_out": "./NYQuotient/",
         "documentation": "./ITP/NYQuotient/index.php",
@@ -173,7 +183,7 @@
                 "url": "https://xujenna.com/ABOUT/io.mp4"
             },
             {
-                "name": "IEEE Games, Entertainment, Media (GEM) 2019 Conference",
+                "name": "IEEE fun+games, Entertainment, Media (GEM) 2019 Conference",
                 "url": "https://ieeegem.org/"
             }
         ]
@@ -214,7 +224,7 @@
         "img_src": "./new_doc/mad_libs_transcript.gif",
         "description_short": "A browser-based couples therapist. Requires Chrome on desktop.",
         "role": ["All of them ✌️"],
-        "tags": ["games", "voice", "frontend dev", "web", "two player"],
+        "tags": ["fun+games", "voice", "frontend dev", "web", "two player"],
         "medium": ["Javascript", "HTML5 Speech API", "Chrome"],
         "documentation": "./ITP/mad_libs/index.php",
         "link_out": "./mad_libs/",
