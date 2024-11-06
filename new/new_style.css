@@ -113,8 +113,7 @@ body {
     font-family: "The Serif", serif;
     /* letter-spacing: 1; */
 	font-weight: 300;
-	/* word-spacing: -3px;
-	line-height: 1.7; */
+	line-height: 1.6;
 	background: #fff;
 	  background: no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -416,7 +415,7 @@ a{
     border-top: solid 1px black;
     padding-top: 40px;
     margin-top: 50px;
-    max-width: 600px;
+    /* max-width: 600px; */
     margin-bottom: 30px;
     font-family: 'meridian';
 }

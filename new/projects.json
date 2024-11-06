@@ -1,12 +1,12 @@
 [
     {
-        "project_title": "Hey Coach Redesign + Rebrand",
+        "project_title": "(Re)designing for Youth Athlete Engagement",
         "img_src": "./HeyCoach/cover.png",
-        "description_short": "Empowering youth athletes to make consistent, measurable progress towards their health goals.",
-        "role": ["Product Designer", "Brand Designer"],
-        "tags": ["mobile", "product design", "redesign", "branding", "mental health tech"],
+        "description_short": "Empowering young athletes to make consistent, measurable progress towards their health goals.",
+        "role": ["Product Designer"],
+        "tags": ["mobile", "product design", "redesign", "mental health tech"],
         "medium": ["Figma"],
-        "imgs": ["mobile_redesign.png", "logos.png"],
+        "imgs": [],
         "documentation": "./HeyCoach/index.php",
         "featured_on": []
     },
