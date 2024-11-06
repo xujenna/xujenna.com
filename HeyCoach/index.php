@@ -30,6 +30,7 @@ Following a pivot to youth sports, Optimism Health’s founding team brought me 
 <b>Ideation & Refinement</b>
 </p><p>Because interviews were scheduled on a rolling basis, I started by designing low-hanging usability improvements in high fidelity to seed discussions with our founding team. Eventual UXR findings enabled me to prioritize and develop new and improved features, which I expressed with high-fidelity mockups in Figma to ensure productive conversations with the founding team (who, by their own admission, knew nothing about design!). This also allowed us to better negotiate resource constraints and plan for a phased rollout with maximum impact.
 </p>
+</div>
 <h2 class="section_hed">Final Designs</h2>
 <div class="type_test" id="description_text">
 <p>
@@ -48,10 +49,13 @@ What’s more motivating than a good old visualization? When users now login, th
 </p><p>I introduced team-branded skins as an easy way to tap into a major user motivator (community) while punting on visual direction (knowing a branding exercise was coming). Additionally, subtle leaderboards, as well as the presence of teammate profiles, added easy elements of healthy competition.<br>
 <img class="img-responsive" src="./team_skins.png"><br>
 </p>
+</div>
+<h2 class="section_hed">Future Designs</h2>
+<div class="type_test" id="description_text">
 <p>
 <b>A new task management paradigm</b>
 </p><p>
-As a north-star design, I proposed replacing the survey-style check-in with a task management system where players could check off tasks throughout the day, making it easier to track and log activities as they occurred. This shift aligned with how players naturally interacted with the app, providing a more intuitive experience and fostering adherence and habit formation.<br>
+As a new paradigm for their future native app, I proposed replacing the survey-style check-in with a task management system where players could check off tasks throughout the day, making it easier to track and log activities as they occurred. This shift aligned with how players naturally interacted with the app, providing a more intuitive experience and fostering adherence and habit formation.<br>
 <img class="img-responsive" src="./task_paradigm.png"><br>
 </p>
 <p>
@@ -59,11 +63,17 @@ As a north-star design, I proposed replacing the survey-style check-in with a ta
 </p><p>As part of the new experience, I developed a content strategy for Opti to start conversations with tailored prompt variations based on players’ behaviors, values, and interests. I proposed separating conversations from the check-in flow, enabling Opti to deliver timely, asynchronous messages triggered by user behavior instead of check-in completion.<br>
 <img class="img-responsive" src="./async_opti.png"><br>
 </p>
+<p>
+<b>Future ways to interact with the team</b>
+</p><p>
+Additional features for their upcoming native app include messaging threads, event coordination features, and calendars, which would enable Optimism Health to replace more rudimentary competitors currently being used.<br>
+<img class="img-responsive" src="./native_app.png"><br>
+</p>
 </div>
 <h2 class="section_hed">Implementation & Outcome</h2>
 <div class="type_test" id="description_text">
 	<p>
-We rolled out the top three items in time for the start of hockey season, while doing ongoing testing with Opti’s conversation starters. The task management system and Opti’s asynchronous communications are scheduled for implementation in Q4.
+We rolled out the top three items in time for the start of hockey season, while doing ongoing testing with Opti’s conversation starters. The native app and concomitant task management system, async Opti, and additional team features are scheduled for implementation in Q4.
 </p>
 <p>
 While still fresh, key outcomes have included increased daily engagement among existing users and significantly increased traction with the business’s new target customer. The redesigned app was used in demos with interested coaches and drove the acquisition of 10+ new teams and counting. Existing users reported significantly favoring the redesign as well.
