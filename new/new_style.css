@@ -350,7 +350,18 @@ a{
     height:40px;
     min-height: 40px;
 }
-
+.quote{
+    font-family: 'meridian';
+    font-weight: 600;
+    font-size: 1.25em;
+    padding: 20px;
+}
+.attribution{
+    font-size: 0.6em;
+    font-weight: 900;
+    text-transform:uppercase;
+    line-height: 2.75;
+}
 #description_text{
     width: 90%;
     line-height:1.5;

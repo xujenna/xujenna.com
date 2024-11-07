@@ -50,6 +50,7 @@
         "tags": ["mental health tech", "web", "mobile", "product design", "data viz", "frontend dev", "backend dev"],
         "medium": ["Javascript", "d3.js", "HTML", "CSS"],
         "documentation": "./Sleepbot/index.php",
+        "link_out": "https://sleep.docbotic.care/",
         "featured_on": []
     },
     {
