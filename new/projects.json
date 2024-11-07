@@ -16,7 +16,7 @@
         "description_short": "Making historical medical records instantly digestible for Social Security Disability lawyers.",
         "role": ["Product Designer", "Frontend Developer"],
         "tags": ["web", "product design", "branding", "redesign", "frontend dev", "data viz"],
-        "imgs": ["old.gif"],
+        "imgs": [],
         "medium": ["Figma", "HTML", "Tailwind CSS", "Javascript"],
         "documentation": "./Briefed.io/index.php",
         "featured_on": []

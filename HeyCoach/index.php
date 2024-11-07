@@ -3,7 +3,7 @@
 Following a pivot to youth sports, Optimism Health’s founding team brought me on for three months as their first design hire to overhaul the app for hockey players aged 13-18. The original experience was built for data-driven health optimizers and offered little appeal for teenage users. Opti, their AI assistant coach, especially struggled to engage them in conversation. With only two engineers and myself as the sole designer, the challenge was to deliver a high-impact redesign before hockey season began in three months.
 </p>
 <p>
-<b>Goals:</b> Revamp the app to boost engagement with youth athletes in order to demonstrate value to their coaches—the customer—and build on the momentum of their initial traction in this new market. To make the most of limited time and resources, we prioritized strategic UX enhancements and lightweight visual updates, with a full rebrand planned for a later phase.
+<b>Goals:</b> Revamp the app to boost engagement with youth athletes in order to demonstrate value to their coaches—the customer—and build on the momentum of their initial traction in this new market. To make the most of limited time and resources during my 3-month engagement, we prioritized strategic UX enhancements and lightweight visual updates, with a full rebrand planned for a later phase.
 </p>
 <h2 class="section_hed">Process</h2>
 <div class="type_test" id="description_text">
