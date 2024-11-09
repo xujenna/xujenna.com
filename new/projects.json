@@ -2,7 +2,7 @@
     {
         "project_title": "(Re)designing for Youth Athlete Engagement",
         "img_src": "./HeyCoach/cover.png",
-        "description_short": "Empowering young athletes to make consistent, measurable progress towards their health goals.",
+        "description_short": "Helping Optimism Health empower young hockey players to make consistent, measurable progress towards their health goals.",
         "role": ["Product Designer"],
         "tags": ["mobile", "product design", "redesign", "mental health tech"],
         "medium": ["Figma"],
@@ -11,9 +11,9 @@
         "featured_on": []
     },
     {
-        "project_title": "Briefed.io \"Self-Service\" MVP+",
+        "project_title": "(Re)designing for Late-Career Lawyers",
         "img_src": "./Briefed.io/new.gif",
-        "description_short": "Making historical medical records instantly digestible for Social Security Disability lawyers.",
+        "description_short": "Helping Briefed.io make historical medical records instantly digestible for Social Security Disability lawyers.",
         "role": ["Product Designer", "Frontend Developer"],
         "tags": ["web", "product design", "branding", "redesign", "frontend dev", "data viz"],
         "imgs": [],
@@ -22,9 +22,9 @@
         "featured_on": []
     },
     {
-        "project_title": "Journey Redesign + Design System",
+        "project_title": "(Re)designing for Blue-Collar Benefits",
         "img_src": "./Journey/cover.png",
-        "description_short": "Modernizing employer mental health benefits.",
+        "description_short": "Helping Journey modernize employer mental health benefits.",
         "role": ["Product Designer"],
         "tags": ["mobile", "web", "product design", "visual design", "mental health tech", "redesign", "branding"],
         "imgs": ["redesign_mobile.png", "redesign_web.png", "design_system.gif"],
@@ -43,7 +43,18 @@
         "featured_on": []
     },
     {
-        "project_title": "Sleepbot: an insomnia intervention",
+        "project_title": "Designing for Families with ADHD",
+        "img_src": "./new_doc/firstThen/firstThen_demo.gif",
+        "description_short": "MVP development, design, and prototyping for FirstThen.",
+        "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
+        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
+        "documentation": "./new_doc/firstThen/index.php",
+        "imgs": [],
+        "featured_on": []
+    },
+    {
+        "project_title": "Actually Accessible Mental Health Tech",
         "img_src": "./Sleepbot/text.png",
         "description_short": "A low-threshold intervention for insomnia patients and their doctors.",
         "role": ["Product Designer", "Full Stack Developer"],
@@ -52,41 +63,6 @@
         "documentation": "./Sleepbot/index.php",
         "link_out": "https://sleep.docbotic.care/",
         "featured_on": []
-    },
-    {
-        "project_title": "Speak, (Random Access) Memory",
-        "img_src": "./new_doc/speak_mem_thumb.png",
-        "description_short": "The first half of my masters thesis; visualizing my data collection and mood prediction efforts.",
-        "role": ["All of them ✌️"],
-        "tags": ["frontend dev", "machine learning", "backend dev", "data viz", "mental health tech", "web"],
-        "medium": ["Python", "Javascript", "d3.js", "Node", "HTML", "CSS"],
-        "link_out": "./speakmemory/",
-        "featured_on": [
-            {
-                "name": "Mozilla's Artists Open Web",
-                "url": "https://www.mozillapulse.org/entry/854"
-            },
-            {
-                "name": "MozFest 2018",
-                "url": "https://xujenna.com/ABOUT/Screen%20Shot%202018-10-18%20at%2010.33.40%20PM.png"
-            },
-            {
-                "name": "NYC Media Lab's 2018 Summit",
-                "url": "https://www.nycmedialab.org/"
-            },
-            {
-                "name": "NYU's Tech Summit 2018",
-                "url": "https://www.nyu.edu/life/information-technology/about-nyu-it/nyu-technology-summit.HTML"
-            },
-            {
-                "name": "The Adjacent Conference 2018",
-                "url": "https://tisch.nyu.edu/itp/events/fall-2018/adjacent-conference--bodies-and-borders"
-            },
-            {
-                "name": "Art Machines: International Symposium on Computational Media Art",
-                "url": "https://www.cityu.edu.hk/iscma/"
-            }
-        ]
     },
     {
         "project_title": "I Guess We're Stuck Here",
@@ -102,17 +78,6 @@
                 "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
             }
         ]
-    },
-    {
-        "project_title": "FirstThen MVP",
-        "img_src": "./new_doc/firstThen/firstThen_demo.gif",
-        "description_short": "Product development, design, and prototyping work on a web app for parents and their children with ADHD.",
-        "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
-        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev"],
-        "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
-        "documentation": "./new_doc/firstThen/index.php",
-        "imgs": ["1 User Journey Map.png", "2 ADVISOR MEETING_User Journey Map.jpg", "3 Screen Shot 2022-09-14 at 9.50.36 AM.png", "4 ADVISOR MEETING_V1 Prototype Wireframes.jpg"],
-        "featured_on": []
     },
     {
         "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Product Work",
@@ -186,6 +151,41 @@
             {
                 "name": "IEEE fun+games, Entertainment, Media (GEM) 2019 Conference",
                 "url": "https://ieeegem.org/"
+            }
+        ]
+    },
+    {
+        "project_title": "Speak, (Random Access) Memory",
+        "img_src": "./new_doc/speak_mem_thumb.png",
+        "description_short": "The first half of my masters thesis; visualizing my data collection and mood prediction efforts.",
+        "role": ["All of them ✌️"],
+        "tags": ["frontend dev", "machine learning", "backend dev", "data viz", "mental health tech", "web"],
+        "medium": ["Python", "Javascript", "d3.js", "Node", "HTML", "CSS"],
+        "link_out": "./speakmemory/",
+        "featured_on": [
+            {
+                "name": "Mozilla's Artists Open Web",
+                "url": "https://www.mozillapulse.org/entry/854"
+            },
+            {
+                "name": "MozFest 2018",
+                "url": "https://xujenna.com/ABOUT/Screen%20Shot%202018-10-18%20at%2010.33.40%20PM.png"
+            },
+            {
+                "name": "NYC Media Lab's 2018 Summit",
+                "url": "https://www.nycmedialab.org/"
+            },
+            {
+                "name": "NYU's Tech Summit 2018",
+                "url": "https://www.nyu.edu/life/information-technology/about-nyu-it/nyu-technology-summit.HTML"
+            },
+            {
+                "name": "The Adjacent Conference 2018",
+                "url": "https://tisch.nyu.edu/itp/events/fall-2018/adjacent-conference--bodies-and-borders"
+            },
+            {
+                "name": "Art Machines: International Symposium on Computational Media Art",
+                "url": "https://www.cityu.edu.hk/iscma/"
             }
         ]
     },

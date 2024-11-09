@@ -27,7 +27,7 @@
 	unicode-range: U+0000-DFFF, U+F900-FFFD;
   }
 
-  @font-face {
+  /* @font-face {
 	font-family: "Freight Big";
 	src: url("./freight/freight-big-pro-regular-font.woff2") format("woff2");
 	font-style: normal;
@@ -40,7 +40,7 @@
 	font-style: italic;
 	font-weight: italic;
 	unicode-range: U+0000-DFFF, U+F900-FFFD;
-  }
+  } */
 
   @font-face {
 	font-family: "futura";
@@ -355,6 +355,7 @@ a{
     font-weight: 600;
     font-size: 1.25em;
     padding: 20px;
+    color:blue;
 }
 .attribution{
     font-size: 0.6em;
@@ -368,7 +369,12 @@ a{
     font-family: 'The Serif';
     font-size:1em;
 }
-
+.subhead{
+    font-weight: bold;
+    font-family: 'meridian';
+    margin-top: 50px;
+    margin-bottom: 0px;
+}
 .slideshow-container{
     margin-top: 2em;
     /* font-family: 'meridian'; */

@@ -7,44 +7,44 @@ Following a pivot to youth sports, Optimism Health’s founding team brought me 
 </p>
 <h2 class="section_hed">Process</h2>
 <div class="type_test" id="description_text">
-<p>
+<p class="subhead">
 <b>User Research</b>
 </p><p>
 	I conducted interviews to understand youth athletes’ motivations and pain points, revealing several key insights:
 <ul>
 	<li>
-		All players cited being motivated by seeing improvement in their own personal fitness, expressing desire to <b>“be their best selves”</b>.
+		All players cited being motivated by seeing improvement in their own personal fitness, expressing desire to <i>“be their best selves”</i>.
 	</li>
 	<li>
-		All players cited their team as major motivators in keeping up with on- and off-ice fitness regimens, and valued the <b>sense of community and connection</b> their team provided. Interestingly, they all expressed interest in <b>friendly competition</b> with their teammates as well.
+		All players cited their team as major motivators in keeping up with on- and off-ice fitness regimens, and valued the <i>sense of community and connection</i> their team provided. Interestingly, they all expressed interest in <i>friendly competition</i> with their teammates as well.
 	</li>
 	<li>
-		Despite insisting that Opti was helpful, many players skipped conversations with the AI coach, blaming repetitive, bland topics as well as their own <b>perceived impatience and disinterest</b>.
+		Despite insisting that Opti was helpful, many players skipped conversations with the AI coach, blaming repetitive, bland topics as well as their own <i>perceived impatience and disinterest</i>.
 	</li>
 	<li>
-		Despite the survey-like format, <b>players treated check-ins more like checklists</b>, often returning to the app throughout the day to log progress. This misalignment highlighted the need for a new interface that matched user behavior.
+		Despite the survey-like format, <i>players treated check-ins more like checklists</i>, often returning to the app throughout the day to log progress. This misalignment highlighted the need for a new interface that matched user behavior.
 	</li>
 </ul>
 </p>
-<p>
+<p class="subhead">
 <b>Ideation & Refinement</b>
 </p><p>Because interviews were scheduled on a rolling basis, I started by designing low-hanging usability improvements in high fidelity to seed discussions with our founding team. Eventual UXR findings enabled me to prioritize and develop new and improved features, which I expressed with high-fidelity mockups in Figma to ensure productive conversations with the founding team (who, by their own admission, knew nothing about design!). This also allowed us to better negotiate resource constraints and plan for a phased rollout with maximum impact.
 </p>
 </div>
 <h2 class="section_hed">Final Designs</h2>
 <div class="type_test" id="description_text">
-<p>
+<p class="subhead">
 <b>Usability improvements</b>
 </p><p>The existing web app, built by the founders, had limited functionality and posed usability challenges, such as small fonts, non-standard form inputs, and a pop-up chat window for Opti that made interactions cumbersome.<br>
 <img class="img-responsive" src="./usability.png"><br>
 </p>
-<p>
+<p class="subhead">
 <b>A homescreen that mirrors your best self</b>
 </p><p>
 What’s more motivating than a good old visualization? When users now login, they immediately see their personal records as a reminder of their own potential—as well as an incentive to complete their check-in! I also introduced more forgiving check-in streaks, which allow users to claw back their streaks by retroactively completing check-ins.<br>
 <img class="img-responsive" src="./homescreen.png"><br>
 </p>
-<p>
+<p class="subhead">
 <b>Leveraging the team to improve the player</b>
 </p><p>I introduced team-branded skins as an easy way to tap into a major user motivator (community) while punting on visual direction (knowing a branding exercise was coming). Additionally, subtle leaderboards, as well as the presence of teammate profiles, added easy elements of healthy competition.<br>
 <img class="img-responsive" src="./team_skins.png"><br>
@@ -52,18 +52,18 @@ What’s more motivating than a good old visualization? When users now login, th
 </div>
 <h2 class="section_hed">Future Designs</h2>
 <div class="type_test" id="description_text">
-<p>
+<p class="subhead">
 <b>A new task management paradigm</b>
 </p><p>
 As a new paradigm for their future native app, I proposed replacing the survey-style check-in with a task management system where players could check off tasks throughout the day, making it easier to track and log activities as they occurred. This shift aligned with how players naturally interacted with the app, providing a more intuitive experience and fostering adherence and habit formation.<br>
 <img class="img-responsive" src="./task_paradigm.png"><br>
 </p>
-<p>
+<p class="subhead">
 <b>A new Opti</b>
 </p><p>As part of the new experience, I developed a content strategy for Opti to start conversations with tailored prompt variations based on players’ behaviors, values, and interests. I proposed separating conversations from the check-in flow, enabling Opti to deliver timely, asynchronous messages triggered by user behavior instead of check-in completion.<br>
 <img class="img-responsive" src="./async_opti.png"><br>
 </p>
-<p>
+<p class="subhead">
 <b>Future ways to interact with the team</b>
 </p><p>
 Additional features for their upcoming native app include messaging threads, event coordination features, and calendars, which would enable Optimism Health to replace more rudimentary competitors currently being used.<br>

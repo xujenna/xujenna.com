@@ -18,33 +18,34 @@ Collaborating with a clinical psychologist and digital interventions expert, we 
 </div>
 <h2 class="section_hed">Design solutions</h2>
 <div class="type_test" id="description_text">
+<p class="subhead">
 <b>Conversational interface over text messaging</b>
 </p><p>
 Mobile apps require a baseline digital literacy and rely on pull interventions, placing the burden of care management entirely on the user. This makes little sense for users with impaired functioning (imagine how you felt the day after your last all-nighter). By using SMS to deliver push interventions, Sleepbot makes a notoriously difficult therapeutic protocol as easy as getting text reminders, breaking down CBT-i strategies into manageable, actionable messages throughout the day.
 <br>
 <img class="img-responsive" style="display:inline-block; width:49%" src="./Sleepbot/texts.png">
 </p>
-<p>
+<p class="subhead">
 <b>Daily measurement</b>
 </p><p>Users maintain a daily sleep diary, tracking their nightly sleep patterns, behaviors, and any issues that arise. This consistent data collection forms the basis for sleep restriction and personalized interventions.
 <div class="quote inset_emphasis" style="margin-top:0px!important">
 	“It was really useful to have the adapting sleep times and the checkins each morning. It made me more aware of my sleep for sure."<br><span class="attribution">— Canada, 30-40 years old</span>
 </div>
 </p>
-<p>
+<p class="subhead">
 <b>Just-In-Time Adaptive Interventions</b>
 <p>
 Tailored reminders about relevant desirable behaviors, sent at times when the user should be doing them, means the user has to do little more than follow instructions—making healthy habit building nearly effortless.<br>
 <div class="quote inset_emphasis" style="margin-top:0px!important">
 	“This was actually a big help for me to start being more consistent with my sleep schedule, something that had NEVER been consistent.”<br><span class="attribution">– USA, 50–60 Y/O</span>
 </div>
-<p>
+<p class="subhead">
 <b>Psychoeducation</b>
 </p><p>Sleepbot addresses common insomnia factors with evidence-based educational content, helping users understand and manage underlying issues.
 <div class="quote inset_emphasis" style="margin-top:0px!important">
 	“The consistency and attention to detail. It felt like a customized service.”<br><span class="attribution">– South Africa, 18-30 Y/O</span>
 </div></p>
-<p>
+<p class="subhead">
 <b>Supportive language</b>
 </p><p>Our clinical collaborations ensured that the tone of Sleepbot remained compassionate and encouraging, encouraging a flexibility crucial for driving long-term engagement and behavior change.
 <div class="quote inset_emphasis" style="margin-top:0px!important">
@@ -59,7 +60,7 @@ Tailored reminders about relevant desirable behaviors, sent at times when the us
 </div>
 <h2 class="section_hed">Implementation & Impact</h2>
 <div class="type_test" id="description_text">
-	<p>
+<p class="subhead">
 	<b>Clinical Validation</b>
 	</p><p>
 	A feasibility study with 50 participants validated our approach; users saw substantial benefits, including a 73% reduction in severe fatigue and a 92% decrease in clinically significant anxiety. An 80% daily engagement rate produced clinical benefits within the first two weeks.<br>
@@ -68,7 +69,7 @@ Tailored reminders about relevant desirable behaviors, sent at times when the us
 		<img class="img-responsive inline_screens" src="./chart_GAD.png" style="box-shadow:none!important;width:45%;max-width:none">
 		<img class="img-responsive inline_screens" src="./chart_PHQ.png" style="box-shadow:none!important;width:45%;max-width:none">
 	</p>
-	<p>
+	<p class="subhead">
 	<b>Real-World Validation</b>
 	</p><p>
 	Feedback from the study drove iterations ahead of the public launch, which maintained high engagement rates even in real-world settings—empowering users to enact lasting behavior change. In a public effectiveness trial with 3000+ users in 130+ countries, users had an average engagement rate of 71%.</p>
