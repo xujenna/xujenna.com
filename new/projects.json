@@ -4,7 +4,7 @@
         "img_src": "./HeyCoach/cover.png",
         "description_short": "Helping Optimism Health empower young hockey players to make consistent, measurable progress towards their health goals.",
         "role": ["Product Designer"],
-        "tags": ["mobile", "product design", "redesign", "mental health tech"],
+        "tags": ["mobile", "product design", "redesign", "mental health tech", "case study"],
         "medium": ["Figma"],
         "imgs": [],
         "documentation": "./HeyCoach/index.php",
@@ -15,7 +15,7 @@
         "img_src": "./Briefed.io/new.gif",
         "description_short": "Helping Briefed.io make historical medical records instantly digestible for Social Security Disability lawyers.",
         "role": ["Product Designer", "Frontend Developer"],
-        "tags": ["web", "product design", "branding", "redesign", "frontend dev", "data viz"],
+        "tags": ["web", "product design", "branding", "redesign", "frontend dev", "data viz", "case study"],
         "imgs": [],
         "medium": ["Figma", "HTML", "Tailwind CSS", "Javascript"],
         "documentation": "./Briefed.io/index.php",
@@ -33,21 +33,35 @@
         "featured_on": []
     },
     {
-        "project_title": "non sequiturs",
-        "img_src": "./nonsequiturs/cover.png",
-        "description_short": "A little game to try out your newly-diagnosed adult-onset ADHD.",
+        "project_title": "How New York Are You?",
+        "img_src": "./new_doc/20181216_175451.gif",
+        "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
         "role": ["All of them ✌️"],
-        "tags": ["fun+games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player", "one player"],
+        "tags": ["fun+games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
         "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
-        "link_out": "./nonsequiturs/",
-        "featured_on": []
+        "link_out": "./NYQuotient/",
+        "documentation": "./ITP/NYQuotient/index.php",
+        "featured_on": [
+            {
+                "name": "Experiments with Google",
+                "url": "https://experiments.withgoogle.com/how-new-york-are-you"
+            },
+            {
+                "name": "Google I/O 2019",
+                "url": "https://xujenna.com/ABOUT/io.mp4"
+            },
+            {
+                "name": "IEEE fun+games, Entertainment, Media (GEM) 2019 Conference",
+                "url": "https://ieeegem.org/"
+            }
+        ]
     },
     {
         "project_title": "Designing for Families with ADHD",
         "img_src": "./new_doc/firstThen/firstThen_demo.gif",
         "description_short": "MVP development, design, and prototyping for FirstThen.",
         "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
-        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev"],
+        "tags": ["mental health tech", "mobile", "web", "data viz", "product design", "frontend dev", "backend dev", "case study"],
         "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
         "documentation": "./new_doc/firstThen/index.php",
         "imgs": [],
@@ -58,7 +72,7 @@
         "img_src": "./Sleepbot/text.png",
         "description_short": "A low-threshold intervention for insomnia patients and their doctors.",
         "role": ["Product Designer", "Full Stack Developer"],
-        "tags": ["mental health tech", "web", "mobile", "product design", "data viz", "frontend dev", "backend dev"],
+        "tags": ["mental health tech", "web", "mobile", "product design", "data viz", "frontend dev", "backend dev", "case study"],
         "medium": ["Javascript", "d3.js", "HTML", "CSS"],
         "documentation": "./Sleepbot/index.php",
         "link_out": "https://sleep.docbotic.care/",
@@ -80,11 +94,21 @@
         ]
     },
     {
+        "project_title": "<span class='card-title-place'>mindstrong</span>Data Viz for Clinical Workflows",
+        "img_src": "./new_doc/mindviz/emoji_sentiment.png",
+        "description_short": "Interpreting research data science for clinical product applications.",
+        "role": ["Frontend Developer", "Data Wrangler", "Product Designer"],
+        "tags": ["data viz", "web", "frontend dev", "product design", "mental health tech", "case study"],
+        "medium": ["Javascript", "d3.js", "Python"],
+        "documentation": "./new_doc/mindviz/index.php",
+        "featured_on": []
+    },
+    {
         "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Product Work",
         "img_src": "./new_doc/persistent_ranked.png",
         "description_short": "Making good on the promise to meet users where they are.",
         "role": ["Product Designer", "Copy Writer"],
-        "tags": ["mobile", "product design", "mental health tech", "redesign"],
+        "tags": ["mobile", "product design", "mental health tech", "redesign", "case study"],
         "medium": ["Sketch", "Figma"],
         "documentation": "./Mindstrong/health/index.php",
         "featured_on": []
@@ -111,48 +135,14 @@
         "featured_on": []
     },
     {
-        "project_title": "<span class='card-title-place'>mindstrong</span>Data Viz for Clinical Workflows",
-        "img_src": "./new_doc/mindviz/emoji_sentiment.png",
-        "description_short": "Interpreting research data science for clinical product applications.",
-        "role": ["Frontend Developer", "Data Wrangler", "Product Designer"],
-        "tags": ["data viz", "web", "frontend dev", "product design", "mental health tech"],
-        "medium": ["Javascript", "d3.js", "Python"],
-        "documentation": "./new_doc/mindviz/index.php",
-        "featured_on": []
-    },
-    {
         "project_title": "<span class='card-title-place'>mindstrong</span>Clinical Web App Product Work",
         "img_src": "./new_doc/timeline5.png",
         "description_short": "Empowering Mindstrong's clinical web platform to minimize time spent on administrative tasks, and maximize time spent with patients.",
         "role": ["Product Designer"],
-        "tags": ["web", "product design", "mental health tech", "redesign"],
+        "tags": ["web", "product design", "mental health tech", "redesign", "case study"],
         "medium": ["Sketch", "Figma"],
         "documentation": "./Mindstrong/care/index.php",
         "featured_on": []
-    },
-    {
-        "project_title": "How New York Are You?",
-        "img_src": "./new_doc/20181216_175451.gif",
-        "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
-        "role": ["All of them ✌️"],
-        "tags": ["fun+games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
-        "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
-        "link_out": "./NYQuotient/",
-        "documentation": "./ITP/NYQuotient/index.php",
-        "featured_on": [
-            {
-                "name": "Experiments with Google",
-                "url": "https://experiments.withgoogle.com/how-new-york-are-you"
-            },
-            {
-                "name": "Google I/O 2019",
-                "url": "https://xujenna.com/ABOUT/io.mp4"
-            },
-            {
-                "name": "IEEE fun+games, Entertainment, Media (GEM) 2019 Conference",
-                "url": "https://ieeegem.org/"
-            }
-        ]
     },
     {
         "project_title": "Speak, (Random Access) Memory",
@@ -188,6 +178,16 @@
                 "url": "https://www.cityu.edu.hk/iscma/"
             }
         ]
+    },
+    {
+        "project_title": "non sequiturs",
+        "img_src": "./nonsequiturs/cover.png",
+        "description_short": "A little game to try out your newly-diagnosed adult-onset ADHD.",
+        "role": ["All of them ✌️"],
+        "tags": ["fun+games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player", "one player"],
+        "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
+        "link_out": "./nonsequiturs/",
+        "featured_on": []
     },
     {
         "project_title": "youarereally.cool",
