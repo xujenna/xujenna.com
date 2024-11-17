@@ -55,12 +55,12 @@ What’s more motivating than a good old visualization? When users now login, th
 <p class="subhead">
 <b>A new task management paradigm</b>
 </p><p>
-As a new paradigm for their future native app, I proposed replacing the survey-style check-in with a task management system where players could check off tasks throughout the day, making it easier to track and log activities as they occurred. This shift aligned with how players naturally interacted with the app, providing a more intuitive experience and fostering adherence and habit formation.<br>
+Armed with user data and collaborative impact mapping with the founders, I successfully proposed and designed a significant workflow redesign for their future native app. The redesign transformed the overburdened, survey-style check-in into a task management system that not only better supports the hidden behavior-changing functionality, but also allows players to track and log activities throughout the day. This paradigm shift aligned more naturally with how players were engaging with check-ins, as well as with the existing check-in survey logic that dynamically adapted to activity cadences and user behavior. By improving alignment across design, functionality, and user behavior and expectation, the new paradigm can seamlessly foster adherence and habit formation.<br>
 <img class="img-responsive" src="./task_paradigm.png"><br>
 </p>
 <p class="subhead">
 <b>A new Opti</b>
-</p><p>As part of the new experience, I developed a content strategy for Opti to start conversations with tailored prompt variations based on players’ behaviors, values, and interests. I proposed separating conversations from the check-in flow, enabling Opti to deliver timely, asynchronous messages triggered by user behavior instead of check-in completion.<br>
+</p><p>Because Opti only and always appeared after completing a check-in, it was difficult to come back after the user decided the conversations weren't worth having. And it was clear from the data that users didn't think talking to Opti was important. I developed a strategy to free Opti from check-ins: the new "Async Opti" would start conversations for meaningful reasons, ie trending task completions or incompletions, and tailored conversation topics and openers based on players’ behaviors, values, and interests. Separating Opti from check-in completions, and triggering it instead based on user behavior, actually affords more opportunities for more relevant and meaningful conversations, while lowering the volume overall.<br>
 <img class="img-responsive" src="./async_opti.png"><br>
 </p>
 <p class="subhead">
@@ -70,13 +70,14 @@ Additional features for their upcoming native app include messaging threads, eve
 <img class="img-responsive" src="./native_app.png"><br>
 </p>
 </div>
-<h2 class="section_hed">Implementation & Outcome</h2>
+<h2 class="section_hed">Implementation, Outcome, and Next Steps</h2>
 <div class="type_test" id="description_text">
 	<p>
-We rolled out the top three items in time for the start of hockey season, while doing ongoing testing with Opti’s conversation starters. The native app and concomitant task management system, async Opti, and additional team features are scheduled for implementation in Q4.
+We rolled out the top three items in time for the start of hockey season, while doing ongoing testing with Opti’s conversation starters. The native app and concomitant task management system, async Opti, and additional team features are scheduled for implementation in Q4. </p>
+<p>New designs have significantly increased traction with the business’s new target customer, youth hockey coaches. The redesigned app was used in demos with interested coaches and drove the acquisition of 10+ new teams and counting. End users reported significantly favoring the redesign as well.
 </p>
 <p>
-While still fresh, key outcomes have included increased daily engagement among existing users and significantly increased traction with the business’s new target customer. The redesigned app was used in demos with interested coaches and drove the acquisition of 10+ new teams and counting. Existing users reported significantly favoring the redesign as well.
+Next steps include monitoring engagement with the app, especially with check-ins and Opti conversations, as well as a rebrand currently underway.
 </p>
 </div>
 <!-- end text and image -->
