@@ -73,14 +73,15 @@ Additional features for their upcoming native app include messaging threads, eve
 <h2 class="section_hed">Implementation, Outcome, and Next Steps</h2>
 <div class="type_test" id="description_text">
 	<p>
-We rolled out the top three items in time for the start of hockey season, while doing ongoing testing with Opti’s conversation starters. The native app and concomitant task management system, async Opti, and additional team features are scheduled for implementation in Q4.</p>
+We rolled out the top three items—usability improvements, new homescreen, and team skins—in time for the start of hockey season, while doing ongoing testing with Opti’s conversation starters.</p>
 <p>In the month following the launch of the redesign:
 	<ul>
 		<li>Weekly active users <i>increased 267% (!)</i></li>
 		<li>Check-in rates <i>increased 62%</i></li>
 		<li>Total users <i>increased 44%</i></li>
+		<li>Response from players and coaches have reportedly been overwhelmingly positive!</li>
 </ul>
 </p>
-<p>Response from end users and customers have reportedly been overwhelmingly positive as well!</p>
+<p>The native app and concomitant task management system, async Opti, and additional team features are scheduled for implementation in Q4.</p>
 </div>
 <!-- end text and image -->
