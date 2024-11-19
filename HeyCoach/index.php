@@ -76,9 +76,9 @@ Additional features for their upcoming native app include messaging threads, eve
 We rolled out the top three items in time for the start of hockey season, while doing ongoing testing with Opti’s conversation starters. The native app and concomitant task management system, async Opti, and additional team features are scheduled for implementation in Q4.</p>
 <p>In the month following the launch of the redesign:
 	<ul>
-		<li>Weekly active users <b>increased 267% (!)</b></li>
-		<li>Check-in rates <b>increased 62%</b></li>
-		<li>Total users <b>increased 44%</b></li>
+		<li>Weekly active users <i>increased 267% (!)</i></li>
+		<li>Check-in rates <i>increased 62%</i></li>
+		<li>Total users <i>increased 44%</i></li>
 </ul>
 </p>
 <p>Response from end users and customers have reportedly been overwhelmingly positive as well!</p>
