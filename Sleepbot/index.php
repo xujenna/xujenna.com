@@ -63,11 +63,24 @@ Tailored reminders about relevant desirable behaviors, sent at times when the us
 <p class="subhead">
 	<b>Clinical Validation</b>
 	</p><p>
-	A feasibility study with 50 participants validated our approach; users saw substantial benefits, including a 73% reduction in severe fatigue and a 92% decrease in clinically significant anxiety. An 80% daily engagement rate produced clinical benefits within the first two weeks.<br>
+	A feasibility study with 50 participants over an 8-week period validated our approach:<br>
+	<ul>
+		<li>Severe fatigue reduced 73%</li>
+		<li>Impaired functioning due to fatigue reduced 63%</li>
+		<li>Time required to fall sleep reduced 45%</li>
+		<li>Clinically significant anxiety reduced 92%</li>
+		<li>Clinically significant depression reduced 62%</li>
+		<li>8-week daily engagement: 80%</li>
+		<li>8-week adherence: 92%</li>
+		<li>Improvement in 2-3 weeks</li>
+	</ul>
+	<br>
 		<img class="img-responsive inline_screens" src="./chart_FFS.png" style="box-shadow:none!important;width:45%;max-width:none">
 		<img class="img-responsive inline_screens" src="./chart_Promise.png" style="box-shadow:none!important;width:45%;max-width:none">
 		<img class="img-responsive inline_screens" src="./chart_GAD.png" style="box-shadow:none!important;width:45%;max-width:none">
 		<img class="img-responsive inline_screens" src="./chart_PHQ.png" style="box-shadow:none!important;width:45%;max-width:none">
+		<br>
+
 	</p>
 	<p class="subhead">
 	<b>Real-World Validation</b>
