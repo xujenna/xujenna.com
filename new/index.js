@@ -86,6 +86,7 @@ function displayProjects(tags){
         .data(projects.filter(project => project.tags.some(r=>Array.from(tags).includes(r.replaceAll(' ', '-')))))
         // .call(update => update.transition(t))
         .style("right", 0)
+        .style("height", "min-content")
         .classed("hidden", false)
         // .attr("class", "project-card")
 
@@ -102,6 +103,7 @@ function displayProjects(tags){
         .attr("class", "project-card displayed")
         .attr("id", d => d.project_title.replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-'))
         .html(d=>cardHTML(d))
+        .attr("height", "min-content")
 
         
     currentProj.each(proj => {
@@ -148,9 +150,11 @@ function displayProjects(tags){
     } else{
         d3.selectAll('.collapsed')
             .style("right", (d, i) => i * 10)
+            .style("height", d3.select('#filters').style('height').replace('px', ''))
+
             // .html('')
-        
-        filters.style("right", d3.select('.collapsed')._groups[0][0] == null ? 0 : parseInt(d3.selectAll('.collapsed:last-of-type').style('right').replace('px', '')) + 10)
+        filters
+            .style("right", d3.select('.collapsed')._groups[0][0] == null ? 0 : parseInt(d3.selectAll('.collapsed:last-of-type').style('right').replace('px', '')) + 10)
     }
     
     d3.selectAll('.tag').on('click', event => {

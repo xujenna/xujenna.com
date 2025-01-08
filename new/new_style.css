@@ -207,7 +207,7 @@ a{
     /* margin-bottom: 2.5%; */
     position: fixed;
     width: 180px;
-    height: 250px;
+    /* height: 250px; */
     min-height: max-content;
     z-index:100;
     transition: height ease 0.25s;
@@ -219,6 +219,8 @@ a{
     display:inline-block;
     width: 27%;
     min-width:240px;
+    height:min-content;
+    overflow:auto;
 }
 .project-card:hover{
     top: -10;
@@ -242,7 +244,7 @@ a{
     background-color: rgba(0%, 0%, 100%, 40%);
 }
 .tags{
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     border-bottom: 1px solid lightgrey;
     padding-bottom: 15px;
 }
@@ -263,11 +265,10 @@ a{
 .collapsed{
     position: fixed;
     width: 180px;
-    height: 250px;
+    /* height: 250px; */
     overflow: hidden;
     background-color: lightgrey;
     padding:1%;
-
 }
 .collapsed:hover{
     box-shadow: none;
@@ -493,6 +494,11 @@ a{
         margin-right: 0;
         margin-bottom: 10%;
         width: auto;
+        height:min-content;
+        overflow: auto;
+    }
+    .tags{
+        margin-bottom: 20px;
     }
     .expanded{
         width: auto;
