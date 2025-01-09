@@ -243,17 +243,6 @@
         "featured_on": []
     },
     {
-        "project_title": "Photo Jukebox",
-        "img_src": "./ITP/Jukebox/37920748842_7e78c081f1_o.png",
-        "description_short": "A little jukebox that plays music associated with photographs; a collaboration with Ilana Bonder.",
-        "role": ["Full Stack Developer", "Interface Designer", "Interaction Designer", "Prototyper", "Visual Designer"],
-        "tags": ["physical computing", "backend dev", "audio", "open-source hardware"],
-        "medium": ["Arduino", "C++", "Copper Tape", "Electronics Components"],
-        "documentation": "./ITP/Jukebox/index.php",
-        "imgs": ["37920748842_7e78c081f1_o.png", "37951351261_85bcbc0a8c_o.png", "37951358171_074e5ea668_o.png"],
-        "featured_on": []
-    },
-    {
         "project_title": "<span class='card-title-place'>ambassadors for sustained health</span>Website Redesign",
         "img_src": "./new_doc/ASH_web.png",
         "description_short": "A website redesign as part of my larger rebrand for the nonprofit Ambassadors for Sustained Health.",
@@ -284,16 +273,6 @@
         "medium": ["Photoshop", "Illustrator", "social media", "t-shirts"],
         "documentation": "./ASH/DonutDash/index.php",
         "imgs": ["57_1849149118535630613361931644989030637607117o.jpg", "57_1858872218535573980034261609916826102267777o.jpg", "57_1852751018535245646733764675031245757347738o.jpg", "57_flier.png", "57_screen-shot-2017-05-22-at-84608-pm.png"],
-        "featured_on": []
-    },
-    {
-        "project_title": "<span class='card-title-place'>itp unconference</span>Ode to the Avocado",
-        "img_src": "./new_doc/avo.png",
-        "description_short": "Data viz demo created for our d3.js workshop at ITP's 2019 Unconference.",
-        "role": ["Frontend Developer"],
-        "tags": ["frontend dev", "backend dev", "data viz", "web"],
-        "medium": ["Python", "Javascript", "d3.js"],
-        "link_out": "https://xujenna.github.io/d3-unconference-workshop/",
         "featured_on": []
     },
     {
@@ -370,17 +349,6 @@
         "medium": ["Indesign", "print"],
         "documentation": "./EDG/DOMINO/index.php",
         "imgs": ["41_spread1.png","41_spread12.png","41_spread13.png","41_spread14.png"],
-        "featured_on": []
-    },
-    {
-        "project_title": "A Wedding",
-        "img_src": "./ETC/WEDDING/42_screen-shot-2014-07-31-at-94900-pm.png",
-        "description_short": "Design for a wedding.",
-        "role": ["All of them ✌️"],
-        "tags": ["visual design", "branding"],
-        "medium": ["Indesign", "print", "lots of nice paper"],
-        "documentation": "./ETC/WEDDING/index.php",
-        "imgs": ["42_20140621103617-copy.jpg", "42_20140124215507.jpg", "42_20140319231243-copy.jpg", "42_screen-shot-2014-07-31-at-94900-pm.png"],
         "featured_on": []
     }
 ]
