@@ -57,17 +57,6 @@
         "featured_on": []
     },
     {
-        "project_title": "(Re)designing for Blue-Collar Benefits",
-        "img_src": "./Journey/cover.png",
-        "description_short": "Helping Journey modernize employer mental health benefits.",
-        "role": ["Product Designer"],
-        "tags": ["mobile", "web", "product design", "visual design", "mental health tech", "redesign", "branding"],
-        "imgs": ["redesign_mobile.png", "redesign_web.png", "design_system.gif"],
-        "medium": ["Figma"],
-        "documentation": "./Journey/index.php",
-        "featured_on": []
-    },
-    {
         "project_title": "Designing for Families with ADHD",
         "img_src": "./new_doc/firstThen/firstThen_demo.gif",
         "description_short": "MVP development, design, and prototyping for FirstThen.",
@@ -76,6 +65,17 @@
         "medium": ["Javascript", "d3.js", "Node", "Firebase", "HTML", "CSS"],
         "documentation": "./new_doc/firstThen/index.php",
         "imgs": [],
+        "featured_on": []
+    },
+    {
+        "project_title": "(Re)designing for Blue-Collar Benefits",
+        "img_src": "./Journey/cover.png",
+        "description_short": "Helping Journey modernize employer mental health benefits.",
+        "role": ["Product Designer"],
+        "tags": ["mobile", "web", "product design", "visual design", "mental health tech", "redesign", "branding"],
+        "imgs": ["redesign_mobile.png", "redesign_web.png", "design_system.gif"],
+        "medium": ["Figma"],
+        "documentation": "./Journey/index.php",
         "featured_on": []
     },
     {
