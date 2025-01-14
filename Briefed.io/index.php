@@ -47,7 +47,7 @@ Previously, lawyers needed the founder to manually set up accounts and upload me
 <b>Simplified Workflows</b>
 <p>
 I replaced the static, text-based UI with linear task flows that made it clear what the next step was. Once a file was uploaded, the UI guided users directly to search. Suggested terms became clickable, and the search results page clearly showed options for adding or removing results from cases, dramatically reducing steps needed.</p>
-<p>Additionally, searches were transformed into workspaces, allowing users to save and revisit their progress easily. A new side navigation bar gave quick access to previous searches, mimicking the familiar PC file management structure lawyers are so accustomed to, as well as a high-level readout of the file.<br>
+<p>Additionally, searches were transformed into workspaces, allowing users to save and revisit their progress easily. A new side navigation bar gave quick access to previous searches, mimicking the familiar PC file management structure lawyers are so accustomed to, as well as a high-level readout of the file to give lawyers visibility into search results.<br>
 <img class="img-responsive" src="./search.png"><br>
 </p>
 <p class="subhead">

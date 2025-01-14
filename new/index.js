@@ -2,7 +2,6 @@ let projects
 let allTags
 let mobile
 // const projectsByTags;
-
 async function loadData() {
     projects = await d3.json('./new/projects.json');
     for (const project of projects) {
@@ -65,6 +64,7 @@ async function loadData() {
     // let tagged = Array.from(document.querySelectorAll('input[type="checkbox"]')).map(box => box.value)
 
     displayProjects(allTags)
+    if(window.location.href.includes("#")) {document.getElementById(window.location.href.slice(window.location.href.indexOf("#") + 1)).querySelector(".readMore").click()}
 }
 
 function displayProjects(tags){
@@ -101,14 +101,15 @@ function displayProjects(tags){
     // .remove());
     let currentProj = projEnter.merge(projUpdate)
         .attr("class", "project-card displayed")
-        .attr("id", d => d.project_title.replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-'))
+        .attr("id", d => d.project_title.indexOf("</span>") > 0 ? d.project_title.slice(d.project_title.indexOf("</span>") + 7).replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-') : d.project_title.replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-'))
         .html(d=>cardHTML(d))
         .attr("height", "min-content")
 
         
     currentProj.each(proj => {
         if(proj.documentation && proj.documentation.includes('index.php')){
-            let projDiv = d3.select('#' + proj.project_title.replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-'))
+            let projID = proj.project_title.indexOf("</span>") > 0 ? proj.project_title.slice(proj.project_title.indexOf("</span>") + 7).replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-') : proj.project_title.replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-')
+            let projDiv = d3.select('#' + projID)
             let newSrc = proj.documentation.replace('index.php', '')
             projDiv.selectAll('img')
             .each(function(d, i) {

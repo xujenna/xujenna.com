@@ -286,25 +286,14 @@
         "featured_on": []
     },
     {
-        "project_title": "<span class='card-title-place'>new york magazine</span>Spring/Summer Weddings 2016",
-        "img_src": "./NYMAG/SS2016/55_nymss163.png",
+        "project_title": "<span class='card-title-place'>new york magazine</span>The Weddings Issue",
+        "img_src": "./NYMAG/Samples/55_nymss163.png",
         "description_short": "Sample work from my seasonal contract with NY Mag.",
         "role": ["Designer", "Art Director"],
         "tags": ["visual design", "editorial design"],
         "medium": ["Indesign", "print"],
-        "documentation": "./NYMAG/SS2016/index.php",
-        "imgs": ["55_nymss16.png", "55_nymss162.png", "55_nymss163.png", "55_nymss164.png", "55_nymss165.png", "55_nymss166.png", "55_nymss167.png"],
-        "featured_on": []
-    },
-    {
-        "project_title": "<span class='card-title-place'>new york magazine</span>Winter Weddings 2016",
-        "img_src": "./NYMAG/WW2016/50_nymww1677.png",
-        "description_short": "Sample work from my seasonal contract with NY Mag.",
-        "role": ["Designer", "Art Director"],
-        "tags": ["visual design", "editorial design"],
-        "medium": ["Indesign", "print"],
-        "documentation": "./NYMAG/WW2016/index.php",
-        "imgs": ["50_nymww167.png", "50_nymww16710.png","50_nymww16712.png", "50_nymww1672.png","50_nymww1673.png", "50_nymww1674.png", "50_nymww1675.png","50_nymww1676_v2.png","50_nymww1677.png","50_nymww1678.png","50_nymww1679.png"],
+        "documentation": "./NYMAG/Samples/index.php",
+        "imgs": ["50_nymww167.png", "50_nymww16710.png","50_nymww16712.png", "50_nymww1672.png","50_nymww1673.png", "50_nymww1674.png", "50_nymww1675.png","50_nymww1676_v2.png","50_nymww1677.png","50_nymww1678.png","50_nymww1679.png", "55_nymss16.png", "55_nymss162.png", "55_nymss163.png", "55_nymss166.png", "55_nymss167.png"],
         "featured_on": []
     },
     {
@@ -315,7 +304,7 @@
         "tags": ["visual design", "editorial design", "redesign", "branding"],
         "medium": ["Indesign", "print"],
         "documentation": "./EHM/Redesign/index.php",
-        "imgs": ["1_coversgif3.gif", "EHAM4.jpg", "EHAM5.jpg","EHAM6.jpg","EHAM7.jpg","EHAM8.jpg","EHAM9.jpg","EHAM10.jpg","EHAM17.jpg","EHAM19.jpg","EHAM20.jpg","EHAM26.jpg","EHAM27.jpg","EHAM28.jpg", "EHAM29.jpg","EHAM30.jpg","EHAM.jpg"],
+        "imgs": ["1_coversgif3.gif", "EHAM4.jpg", "NA2.jpg", "EHAM5.jpg","EHAM6.jpg", "EHAM8.jpg","EHAM9.jpg","EHAM10.jpg","EHAM17.jpg","EHAM26.jpg","EHAM27.jpg","EHAM29.jpg","EHAM30.jpg","opener.png", "EHAM.jpg"],
         "featured_on": []
     },
     {
