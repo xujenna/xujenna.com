@@ -1,6 +1,17 @@
 [
     {
-        "project_title": "(Re)designing for Youth Athlete Engagement",
+        "project_title": "<span class='card-title-place'>freelance</span>Math Puzzles for the Masses",
+        "img_src": "./InkwellGames/cover.gif",
+        "description_short": "Helping Inkwell Games launch a premium daily puzzle platform for public beta testing.",
+        "role": ["Product Designer"],
+        "tags": ["mobile", "web", "product design"],
+        "medium": ["Figma"],
+        "imgs": ["happypath.gif"],
+        "documentation": "./InkwellGames/index.php",
+        "featured_on": []
+    },
+    {
+        "project_title": "<span class='card-title-place'>freelance</span>(Re)designing for Youth Athlete Engagement",
         "img_src": "./HeyCoach/cover.png",
         "description_short": "Helping Optimism Health empower young hockey players to make consistent, measurable progress towards their health goals.",
         "role": ["Product Designer"],
@@ -11,7 +22,7 @@
         "featured_on": []
     },
     {
-        "project_title": "(Re)designing for Late-Career Lawyers",
+        "project_title": "<span class='card-title-place'>freelance</span>(Re)designing for Late-Career Lawyers",
         "img_src": "./Briefed.io/new.gif",
         "description_short": "Helping Briefed.io make historical medical records instantly digestible for Social Security Disability lawyers.",
         "role": ["Product Designer", "Frontend Developer"],
@@ -22,26 +33,17 @@
         "featured_on": []
     },
     {
-        "project_title": "How New York Are You?",
-        "img_src": "./new_doc/20181216_175451.gif",
-        "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
+        "project_title": "<span class='card-title-place'>personal</span>I Guess We're Stuck Here",
+        "img_src": "./new_doc/america.png",
+        "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
         "role": ["All of them ✌️"],
-        "tags": ["fun+games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
-        "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
-        "link_out": "./NYQuotient/",
-        "documentation": "./ITP/NYQuotient/index.php",
+        "tags": ["fun stuff", "web", "frontend dev", "backend dev"],
+        "medium": ["Javascript", "Firebase", "Wikipedia API", "Google Maps API", "Navigator Web API", "Node", "HTML", "CSS"],
+        "link_out": "https://wiki-tour.web.app/",
         "featured_on": [
             {
-                "name": "Experiments with Google",
-                "url": "https://experiments.withgoogle.com/how-new-york-are-you"
-            },
-            {
-                "name": "Google I/O 2019",
-                "url": "https://xujenna.com/ABOUT/io.mp4"
-            },
-            {
-                "name": "IEEE fun+games, Entertainment, Media (GEM) 2019 Conference",
-                "url": "https://ieeegem.org/"
+                "name": "At Home and Away from The New York Times",
+                "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
             }
         ]
     },
@@ -57,7 +59,7 @@
         "featured_on": []
     },
     {
-        "project_title": "Designing for Families with ADHD",
+        "project_title": "<span class='card-title-place'>freelance</span>Designing for Families with ADHD",
         "img_src": "./new_doc/firstThen/firstThen_demo.gif",
         "description_short": "MVP development, design, and prototyping for FirstThen.",
         "role": ["Product Designer", "Full Stack Developer", "Product Consultant"],
@@ -68,7 +70,31 @@
         "featured_on": []
     },
     {
-        "project_title": "(Re)designing for Blue-Collar Benefits",
+        "project_title": "<span class='card-title-place'>personal</span>How New York Are You?",
+        "img_src": "./new_doc/20181216_175451.gif",
+        "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
+        "role": ["All of them ✌️"],
+        "tags": ["fun stuff", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player"],
+        "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
+        "link_out": "./NYQuotient/",
+        "documentation": "./ITP/NYQuotient/index.php",
+        "featured_on": [
+            {
+                "name": "Experiments with Google",
+                "url": "https://experiments.withgoogle.com/how-new-york-are-you"
+            },
+            {
+                "name": "Google I/O 2019",
+                "url": "https://xujenna.com/ABOUT/io.mp4"
+            },
+            {
+                "name": "IEEE fun stuff, Entertainment, Media (GEM) 2019 Conference",
+                "url": "https://ieeegem.org/"
+            }
+        ]
+    },
+    {
+        "project_title": "<span class='card-title-place'>freelance</span>(Re)designing for Blue-Collar Benefits",
         "img_src": "./Journey/cover.png",
         "description_short": "Helping Journey modernize employer mental health benefits.",
         "role": ["Product Designer"],
@@ -77,21 +103,6 @@
         "medium": ["Figma"],
         "documentation": "./Journey/index.php",
         "featured_on": []
-    },
-    {
-        "project_title": "I Guess We're Stuck Here",
-        "img_src": "./new_doc/america.png",
-        "description_short": "An ode to lockdown: historical tours for everyone, anywhere in the US. Requires enabled geolocation.",
-        "role": ["All of them ✌️"],
-        "tags": ["fun+games", "web", "frontend dev", "backend dev"],
-        "medium": ["Javascript", "Firebase", "Wikipedia API", "Google Maps API", "Navigator Web API", "Node", "HTML", "CSS"],
-        "link_out": "https://wiki-tour.web.app/",
-        "featured_on": [
-            {
-                "name": "At Home and Away from The New York Times",
-                "url": "https://www.nytimes.com/2022/01/12/at-home/newsletter.html"
-            }
-        ]
     },
     {
         "project_title": "<span class='card-title-place'>mindstrong</span>Data Viz for Clinical Workflows",
@@ -145,7 +156,7 @@
         "featured_on": []
     },
     {
-        "project_title": "Speak, (Random Access) Memory",
+        "project_title": "<span class='card-title-place'>personal</span>Speak, (Random Access) Memory",
         "img_src": "./new_doc/speak_mem_thumb.png",
         "description_short": "The first half of my masters thesis; visualizing my data collection and mood prediction efforts.",
         "role": ["All of them ✌️"],
@@ -180,17 +191,17 @@
         ]
     },
     {
-        "project_title": "non sequiturs",
+        "project_title": "<span class='card-title-place'>personal</span>non sequiturs",
         "img_src": "./nonsequiturs/cover.png",
         "description_short": "A little game to try out your newly-diagnosed adult-onset ADHD.",
         "role": ["All of them ✌️"],
-        "tags": ["fun+games", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player", "one player"],
+        "tags": ["fun stuff", "voice", "machine learning", "frontend dev", "backend dev", "data viz", "web", "two player", "one player"],
         "medium": ["Python", "Javascript", "d3.js", "tensorflow.js", "Node", "HTML5 Speech API", "Chrome"],
         "link_out": "./nonsequiturs/",
         "featured_on": []
     },
     {
-        "project_title": "youarereally.cool",
+        "project_title": "<span class='card-title-place'>personal</span>youarereally.cool",
         "img_src": "./new_doc/Screen%20Shot%202021-06-15%20at%205.35.57%20PM.png",
         "description_short": "Cool group ecards for warm, fuzzy feelings.",
         "role": ["Product Designer", "Frontend Developer", "Co-Founder"],
@@ -201,7 +212,7 @@
         "featured_on": []
     },
     {
-        "project_title": "Self-Portrait as Allegory Of",
+        "project_title": "<span class='card-title-place'>personal</span>Self-Portrait as Allegory Of",
         "img_src": "./new_doc/Screen%20Shot%202018-10-13%20at%201.15.47%20PM.png",
         "description_short": "My masters thesis, an n-of-1 experiment composed of three systems: data collection, mood prediction, and intervention.",
         "role": ["All of them ✌️"],
@@ -211,7 +222,7 @@
         "featured_on": []
     },
     {
-        "project_title": "Life Support",
+        "project_title": "<span class='card-title-place'>personal</span>Life Support",
         "img_src": "./new_doc/clip.gif",
         "description_short": "Teaching a voice assistant to teach me back.",
         "role": ["All of them ✌️"],
@@ -221,18 +232,18 @@
         "featured_on": []
     },
     {
-        "project_title": "Mad Libs",
+        "project_title": "<span class='card-title-place'>personal</span>Mad Libs",
         "img_src": "./new_doc/mad_libs_transcript.gif",
         "description_short": "A browser-based couples therapist. Requires Chrome on desktop.",
         "role": ["All of them ✌️"],
-        "tags": ["fun+games", "voice", "frontend dev", "web", "two player"],
+        "tags": ["fun stuff", "voice", "frontend dev", "web", "two player"],
         "medium": ["Javascript", "HTML5 Speech API", "Chrome"],
         "documentation": "./ITP/mad_libs/index.php",
         "link_out": "./mad_libs/",
         "featured_on": []
     },
     {
-        "project_title": "Good Vibrations",
+        "project_title": "<span class='card-title-place'>personal</span>Good Vibrations",
         "img_src": "./new_doc/good_vibes.gif",
         "description_short": "Enter the mind of a monk via our pan-sensory brain entrainment dome ✨; a collaboration with Barak Chamo.",
         "role": ["Full Stack Developer", "EEG Hacker", "Dome Builder", "Interaction Designer", "Prototyper"],
@@ -276,7 +287,7 @@
         "featured_on": []
     },
     {
-        "project_title": "U.S. Mass Shootings, 1982-2016",
+        "project_title": "<span class='card-title-place'>personal</span>U.S. Mass Shootings, 1982-2016",
         "img_src": "./new_doc/mass_shootings.png",
         "description_short": "Visualizing Mother Jones's database of 3+ decades of US mass shootings.",
         "role": ["All of them ✌️"],

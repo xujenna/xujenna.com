@@ -325,7 +325,7 @@ function cardHTML(d){
     //     }
         
         more += '<div class="link_out">' + d.descr_HTML + '</div><div class="minMax readMore lead-in">Read More <i class="material-icons">open_in_full</i></div>'
-        coverImg = '<img src="' + d.img_src + '" class="card-img minMax">'
+        coverImg = '<div class="cover-img-container minMax"><img src="' + d.img_src + '" class="card-img"></div>'
         title = '<p class="minMax card-title">' + d.project_title + '</p>'
     }
     if(d.link_out){
