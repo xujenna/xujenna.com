@@ -28,29 +28,28 @@ function displayMsgs() {
 
       if (posters[d]['fileRef']) {
         let file = posters[d]['fileRef'];
-        let fileImg = document.createElement('img');
-        fileImg.className = 'msgImg';
 
         storageRef
           .child(file)
           .getDownloadURL()
           .then(function (url) {
-            // This can be downloaded directly:
-            var xhr = new XMLHttpRequest();
-            xhr.responseType = 'blob';
-            xhr.onload = function (event) {
-              var blob = xhr.response;
-            };
-            xhr.open('GET', url);
-            xhr.send();
+            let isVideo = /\.(mov|mp4|m4v|webm)(?:$|[?#])/i.test(file) ||
+              /\.(mov|mp4|m4v|webm)(?:$|[?#])/i.test(url);
+            let fileMedia = document.createElement(isVideo ? 'video' : 'img');
+            fileMedia.className = 'msgImg';
+            fileMedia.src = url;
 
-            // Or inserted into an <img> element:
-            fileImg.src = url;
-            messageDiv.appendChild(fileImg);
+            if (isVideo) {
+              fileMedia.controls = true;
+              fileMedia.playsInline = true;
+              fileMedia.preload = 'metadata';
+            }
+
+            messageDiv.appendChild(fileMedia);
           })
           .catch(function (error) {
             // Handle any errors
-            console.log('error creating img');
+            console.log('error creating attachment', error);
           });
       }
 
