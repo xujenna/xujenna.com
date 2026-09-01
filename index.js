@@ -2,6 +2,24 @@ let projects
 let allTags
 // const projectsByTags;
 
+function getFilterCollapsedHeight() {
+    return Math.round(document.getElementById('filters').getBoundingClientRect().height) + 'px'
+}
+
+function getFilterExpandedHeight() {
+    return document.getElementById('filter-inputs').offsetHeight + document.getElementById('filter-minMax').offsetHeight + 'px'
+}
+
+function expandFilterMenu() {
+    const filter = document.getElementById('filters')
+    const inputs = document.getElementById('filter-inputs')
+
+    filter.style.height = getFilterCollapsedHeight()
+    inputs.style.display = 'block'
+    filter.offsetHeight
+    filter.style.height = getFilterExpandedHeight()
+}
+
 async function loadData() {
     projects = await d3.json('projects.json');
     for (const project of projects) {
@@ -116,19 +134,18 @@ d3.selectAll("input[type='checkbox']").on("change", (event)=>{
 document.getElementById('filter-minMax').addEventListener('click', event => {
     let caret = document.getElementById('filter-minMax-icon')
     if (caret.classList.contains('expand-less-icon')){
-        caret.classList = 'material-icons expand-more-icon'
-        caret.innerHTML = 'expand_more'
+        caret.className = 'material-icons chevron-right-icon'
+        caret.innerHTML = 'chevron_right'
         document.getElementById('filter-inputs').style.display = 'none'
         // document.getElementById('filters').style.minHeight = '240px';
         document.getElementById('filters').style.height = '40px';
         document.querySelectorAll('.collapsed').forEach(card => {card.classList.add('collapsed-min')})
 
     }else{
-        caret.classList = 'material-icons expand-less-icon'
-        caret.innerHTML = 'expand_less'
-        document.getElementById('filter-inputs').style.display = 'block'
+        caret.className = 'material-icons expand-less-icon'
+        caret.innerHTML = 'expand_more'
         // document.getElementById('filters').style.minHeight = 'min-content';
-        document.getElementById('filters').style.height = '240px';
+        expandFilterMenu()
         document.querySelectorAll('.collapsed').forEach(card => {card.classList.remove('collapsed-min')})
     }
 })

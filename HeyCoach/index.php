@@ -36,18 +36,18 @@ Following a pivot to youth sports, Optimism Health’s founding team brought me 
 <p class="subhead">
 <b>Usability improvements</b>
 </p><p>The existing web app, built by the founders, had limited functionality and posed usability challenges, such as small fonts, non-standard form inputs, and a pop-up chat window for Opti that made interactions cumbersome.<br>
-<img class="img-responsive" src="./usability.png"><br>
+<img class="img-responsive" src="usability-opt.webp"><br>
 </p>
 <p class="subhead">
 <b>A homescreen that mirrors your best self</b>
 </p><p>
 What’s more motivating than a good old visualization? When users now login, they immediately see their personal records as a reminder of their own potential—as well as an incentive to complete their check-in! I also introduced more forgiving check-in streaks, which allow users to claw back their streaks by retroactively completing check-ins.<br>
-<img class="img-responsive" src="./homescreen.png"><br>
+<img class="img-responsive" src="homescreen-opt.webp"><br>
 </p>
 <p class="subhead">
 <b>Leveraging the team to improve the player</b>
 </p><p>I introduced team-branded skins as an easy way to tap into a major user motivator (community) while punting on visual direction (knowing a branding exercise was coming). Additionally, subtle leaderboards, as well as the presence of teammate profiles, added easy elements of healthy competition.<br>
-<img class="img-responsive" src="./team_skins.png"><br>
+<img class="img-responsive" src="team_skins-opt.webp"><br>
 </p>
 </div>
 <h2 class="section_hed">Future Designs</h2>
@@ -56,18 +56,18 @@ What’s more motivating than a good old visualization? When users now login, th
 <b>A new task management paradigm</b>
 </p><p>
 Armed with user data and collaborative impact mapping with the founders, I successfully proposed and designed a significant workflow redesign for their future native app. The redesign transformed the overburdened, survey-style check-in into a task management system that not only better supports the hidden behavior-changing functionality, but also allows players to track and log activities throughout the day. This paradigm shift aligned more naturally with how players were engaging with check-ins, as well as with the existing check-in survey logic that dynamically adapted to activity cadences and user behavior. By improving alignment across design, functionality, and user behavior and expectation, the new paradigm can seamlessly foster adherence and habit formation.<br>
-<img class="img-responsive" src="./task_paradigm.png"><br>
+<img class="img-responsive" src="task_paradigm-opt.webp"><br>
 </p>
 <p class="subhead">
 <b>A new Opti</b>
 </p><p>Because Opti only and always appeared after completing a check-in, it was difficult to come back after the user decided the conversations weren't worth having. And it was clear from the data that users didn't think talking to Opti was important. I developed a strategy to free Opti from check-ins: the new "Async Opti" would start conversations for meaningful reasons, ie trending task completions or incompletions, and tailored conversation topics and openers based on players’ behaviors, values, and interests. Separating Opti from check-in completions, and triggering it instead based on user behavior, actually affords more opportunities for more relevant and meaningful conversations, while lowering the volume overall.<br>
-<img class="img-responsive" src="./async_opti.png"><br>
+<img class="img-responsive" src="async_opti-opt.webp"><br>
 </p>
 <p class="subhead">
 <b>Future ways to interact with the team</b>
 </p><p>
 Additional features for their upcoming native app include messaging threads, event coordination features, and calendars, which would enable Optimism Health to replace more rudimentary competitors currently being used.<br>
-<img class="img-responsive" src="./native_app.png"><br>
+<img class="img-responsive" src="native_app-opt.webp"><br>
 </p>
 </div>
 <h2 class="section_hed">Implementation, Outcome, and Next Steps</h2>

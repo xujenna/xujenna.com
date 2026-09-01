@@ -21,7 +21,7 @@
 		</p>
 		<p>Not only did the existing platform burden clinical work, but there was pressure to refrain from relying on the EMR, so most clinicians maintained their own spreadsheets to keep track of the important human details their patients shared during sessions.</p>
 	</div>
-	<img class="img-responsive" src="./timeline/clinician_spreadsheet.png">
+	<img class="img-responsive" src="timeline/clinician_spreadsheet-opt.webp">
 
 	<div class="inset_emphasis">
 		<p><b>Opportunity:</b></p>
@@ -52,26 +52,26 @@
 			</li>
 		</ul>
 		<p>Biomarkers would be the focal point, as Mindstrong was actively validating them and needed buy-in from their clinicians. As such, I thought this was a simple data viz problem, and got straight to work.</p>
-		<img class="img-responsive" src="./timeline/comps/timeline1.png">
+		<img class="img-responsive" src="timeline/comps/timeline1-opt.webp">
 		<p>
 			The hope was that biomarkers would indicate the "cause", and concurrent events would be the "effect", so I thought it would be helpful to show the events as points on the biomarker graph. Because were was so many variables, I also included a filtering mechanism for when clinicians were looking for specific trends over a specific duration.
 		</p>
 		<p>
 			Based on initial feedback, I realized that line graphs weren't particularly easy to read, and weren't very scalable to boot. Perhaps a heat map make a better snapshot. You could quickly see where the (alleged) problem days where, and hover over to see the details! I love data viz!
 		</p>
-		<img class="img-responsive" src="./timeline/comps/timeline2.png">
+		<img class="img-responsive" src="timeline/comps/timeline2-opt.webp">
 		<p>
 			Turns out, clinicians were much less interested in the biomarkers or data than I was. Perhaps if they had more time, they'd play around with the the different charts and dig around in the data. But for a pre-session memory jog, the visualizations would be overwhelming, and they didn't want to click through to see details. They wanted the recent events in front of their faces. It was way more important to see whether a patient expressed suicidal intent than to see their biomarker level. 
 		</p>
 		<p>
 			One clinician mentioned liking macOS's Time Machine software, where you could scrub through to see records from the past. So I went back to the drawing board with this:
 		</p>
-		<img class="img-responsive" src="./timeline/comps/timeline3.png">
+		<img class="img-responsive" src="timeline/comps/timeline3-opt.webp">
 		<p>
 			It was what the clinician asked for, and my boss's boss was super excited about it, but I still thought it was too much work for the clinician. Then I realized: if clinicians wanted to scroll through a patient's history in order to get a sense of their progress—well, a computer could do that for them. The back end could facilitate much of the clinical analysis and provide a high-level snapshot on user metrics. Clinicians shouldn't be expected to perform human calculus during their 10 minute breaks between sessions.
 		</p>
 		<p>So yeah, that's how "Dashboard" was born.</p>
-		<img class="img-responsive" src="./timeline/comps/timeline5.png">
+		<img class="img-responsive" src="timeline/comps/timeline5-opt.webp">
 		<p>The cool thing about outsourcing analytical work to a computer is that suddenly, your scope is way wider; introducing ✨Insights✨, your data science assistant. In the above example, it warns the clinician that, during the time frame they selected, their patient was at a 6% higher risk for suicide than normal, but 8% lower than the general Mindstrong population.</p>
 		<p>There was a lot of excitement around this idea: clinicians wanted a dashboard for their entire panel (ie, aggregated stats for all their patients); product saw this as a way to maximize engagement efforts. While these ideas were beyond the capabilities of the platform's engineering resources at the time, they're still informing its development to this day.</p>
 
@@ -81,13 +81,13 @@
 	<div id="description_text">
 		<p>Being a big advocate of outsourcing low-level work to computers, I was excited to explore the idea of a task engine for Care.</p>
 		<p>Between regular therapy sessions, clinicians were expected to monitor all 60+ patients in their caseload for certain events (biomarkers, hospitalizations, disengagement, etc) and respond in accordance to elaborate protocols.</p>
-		<img class="img-responsive" src="./old_care.png">
+		<img class="img-responsive" src="old_care-opt.webp">
 		<div class="inset_emphasis">
 			<p><b>Problem:</b></p>
 			<p>The existing Care platform was built for multiple stakeholders (member support, psychiatrists, clinicians, etc), and clinicians especially needed to dig around for the information they needed, for every patient they had. Its passivity meant that clinicians monitored with the help of their own spreadsheets.</p>
 			<p>Clinical protocols for such events were documented in yet more Google Docs.</p>
 		</div>
-		<img class="img-responsive" src="./tasks/protocol/protocol_animation.gif">
+		<video class="img-responsive" src="tasks/protocol/protocol_animation-opt.mp4" autoplay muted loop playsinline></video>
 		<p>Clinical protocols were complex but resembled decision trees, which could be easily automated—especially considering that many of the triggers (biomarker alerts, drop offs in engagement, hospitalizations) were coming from the back end.</p>
 		<div class="inset_emphasis">
 			<p><b>Opportunity:</b></p>
@@ -101,7 +101,7 @@
 		<a class="prev" onclick="plusSlides(-1)">Prev</a> / 
 		<a class= "next" onclick="plusSlides(1)">Next</a>
 		<p id="caption">Similar to your basic task management app, there are three states your task can be in: current, pending, and completed. These states are represented in a 3-column layout which organize the Tasks workspace.</p>
-		<img id="slide_img" src="./tasks/comps/step0.png">
+		<img id="slide_img" src="tasks/comps/step0-opt.webp">
 	</div>
 
 </div>

@@ -5,7 +5,7 @@
 
 <!-- <p><br></p> -->
 
-<img class="img-responsive" style="margin-left:-3%" src="./cover.gif">
+<video class="img-responsive" style="margin-left:-3%" src="cover-opt.mp4" autoplay muted loop playsinline></video>
 
 <div class="type_test" id="description_text">
 <p>When I began working at Mindstrong in September 2019, I helped with the redesign of their electronic medical record (EMR) management web platform and had the pleasure of speaking to all of my patient-facing coworkers to understand their needs and workdays. From their stories, I learned a lot about our users with serious mental illnesses (SMI) and found that I empathized strongly with them because of my own history with depression.</p>
@@ -51,13 +51,13 @@
 </div>
 
 <h2 class="section_hed">The Dynamic Homescreen Module</h2>
-<img class="img-responsive" src="./vn/homescreen_modules/persistent_ranked.png">
+<img class="img-responsive" src="vn/homescreen_modules/persistent_ranked-opt.webp">
 <div class="type_test" id="description_text">
 <p>I had initially envisioned the entire homescreen as a dynamic module with dynamic navigation; rather than expecting the user to know what, when, and how to do a certain task, the app would simply anticipate their needs or remind them to perform a task before its deadline for a fully guided, on-the-rails experience. No badges, no banners, no "inboxes", and fewer notifications.</p>
 <p>For example, a module might request an emergency contact shortly after intake and begin the flow right there and then:</p>
 	<img class="img-responsive inline_screens" src="./v1/emergency_contact/emergency_contact1.png">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./v1/emergency_contact/emergency_contact2.png">
+	<img class="img-responsive inline_screens" src="v1/emergency_contact/emergency_contact2-opt.webp">
 <p>The spoon-fed approach to dynamic modules quickly became a business concern as it was being built out. What if a user simply ignored the presented task? Would we timebox the module? How long would we display it before moving on to the next module? The framework was a great platform to quickly iterate and test on, but how would we prioritize and timbox a potentially endless number of modules? There would need to be more than one.</p>
 
 <p>Stress tested, the core principles of the dynamic homescreen module became:</p>
@@ -71,29 +71,29 @@
 </ul>
 <p>Below, the categories of modules we socialized to the team:</p>
 <p><b>Welcome modules:</b> Shown after onboarding, intended to supplement or facilitate intake.</p>
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/welcome_intro.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/welcome_team.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/welcome_survey.png">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/welcome_intro-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/welcome_team-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/welcome_survey-opt.webp">
 <p><b>Therapy session modules:</b> Intended to keep a patient in regular sessions with their assigned therapist.</p>
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/session_schedule.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/session_future.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/session_now.png">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/session_schedule-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/session_future-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/session_now-opt.webp">
 <p><b>Psychiatry session modules:</b> Intended to help manage a patient's medications, if they opt in to Mindstrong's psychiatric services.</p>
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/psychiatry_renewal.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/psychiatry_adjustment.png">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/psychiatry_renewal-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/psychiatry_adjustment-opt.webp">
 <p><b>Biomarker modules:</b> Intended to facilitate clinical biomarker protocols.</p>
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/biomarker_daily.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/biomarker_mid.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/biomarker_high.png">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/biomarker_daily-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/biomarker_mid-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/biomarker_high-opt.webp">
 <p><b>Survey, administrative, and homework modules:</b> Intended to manage the work needed for therapy.</p>
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/misc_surveys.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/misc_administrative.png">
-	<img class="img-responsive inline_screens" src="./vn/homescreen_modules/misc_homework.png">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/misc_surveys-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/misc_administrative-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/homescreen_modules/misc_homework-opt.webp">
 	
 </div>
 
 <h2 class="section_hed">Simplicity First</h2>
-<img class="img-responsive" src="./future_map.jpg">
+<img class="img-responsive" src="future_map-opt.webp">
 <div class="type_test" id="description_text">
 <!-- <p>With the user's work managed and delivered in digestible pieces at the appropriate times, the navigation was also able to play a more targeted role in the app. -->
 	<p>With the dynamic homescreen module playing a management role for clinicians, users, and Mindstrong, the navigation was able to play a much more targeted role. Two buttons—"View my progress" and "Get help now"—encompassed the core of why users would open the Mindstrong app at all (ie, their long- and short-term needs, respectively).</p>
@@ -101,41 +101,41 @@
 	<div class="inset_emphasis">
 		<p><b>"View my progress"</b> was, and still is, completely aspirational: an amalgamation of the hopes and dreams of clinicians, users, and Mindstrong alike. For clinicians, it could be a digital workbook that facilitates the work they give their patients. For Mindstrong, it could be a modular guide that helps standardize treatment across dozens of clinicians, as well as a repository for the data it collects. For the users, it could be a toolbox for their long-term goals and an accessible version of a clinician's chart, from which they could get a sense of their progress.</p> 
 	</div>
-	<img class="img-responsive inline_screens" src="./vn/progress/Toolbox.png">
-	<img class="img-responsive inline_screens" src="./vn/progress/Toolbox_Course.png">
-	<img class="img-responsive inline_screens" src="./vn/progress/Toolbox_Skills.png">
+	<img class="img-responsive inline_screens" src="vn/progress/Toolbox-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/progress/Toolbox_Course-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/progress/Toolbox_Skills-opt.webp">
 
-	<img class="img-responsive inline_screens" src="./vn/progress/Toolbox_Goals.png">
-	<img class="img-responsive inline_screens" src="./vn/progress/session_history.png">
-	<img class="img-responsive inline_screens" src="./vn/progress/session_history2.png">
+	<img class="img-responsive inline_screens" src="vn/progress/Toolbox_Goals-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/progress/session_history-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/progress/session_history2-opt.webp">
 
-	<img class="img-responsive inline_screens" src="./vn/progress/MS_scores.png">
-	<img class="img-responsive inline_screens" src="./vn/progress/Surveys.png">
+	<img class="img-responsive inline_screens" src="vn/progress/MS_scores-opt.webp">
+	<img class="img-responsive inline_screens" src="vn/progress/Surveys-opt.webp">
 
 	<div class="inset_emphasis">
 		<p><b>"Get help now"</b> is an aspirational triaging mechanism. Mindstrong clinicians often get urgent session requests for decidedly nonurgent reasons; this flow is designed to get users the help they need while reducing clinical burden.</p> 
 	</div>
 
-	<img class="img-responsive inline_screens" src="./vn/help/triage1.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage1-opt.webp">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./vn/help/triage2.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage2-opt.webp">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./vn/help/triage3.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage3-opt.webp">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./vn/help/triage4.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage4-opt.webp">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./vn/help/triage5.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage5-opt.webp">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./vn/help/triage6.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage6-opt.webp">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./vn/help/triage7.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage7-opt.webp">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./vn/help/triage8.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage8-opt.webp">
 	<span class="inline_screen_arrows">→</span>
-	<img class="img-responsive inline_screens" src="./vn/help/triage9.png">
+	<img class="img-responsive inline_screens" src="vn/help/triage9-opt.webp">
 	
 	<p>While interviewing clinicians for this feature, I realized that "Get help now" could also incorporate the clinical protocols (both formal and informal) that they have established for emergencies. By automating the rote questioning necessary before any action can be taken, wait times for the next available therapist can be maximized effectively.</p>
-	<img class="img-responsive" src="./vn/help/map.png">
+	<img class="img-responsive" src="vn/help/map-opt.webp">
 	<p>These explorations were presented as northstar vision and influenced product planning for 2020.</p>
 </div>
 

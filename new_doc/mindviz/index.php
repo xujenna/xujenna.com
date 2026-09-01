@@ -12,18 +12,18 @@
     <p>But how can a dashboard apply clinical judgement? Not very well, but we could at least do the prerequisite legwork. I interviewed clinicians about their process—what did they need to know about their patients, and why? Their responses were prioritized to the top of the information hierarchy.</p>
     <p>Yes, we still included most of the dataset in all its granular glory, in case clinicians found something unexpectedly useful. We also provided multiple avenues for providing feedback on it in the UI, from the general dashboard itself to individual data points.</p>
     <p>The following prototype was piloted for three weeks with clinicians working with patients on their sleep. It features a top layer of interpreted and clinically relevant stats, meant as potential conversation starters with patients. Once started, clinicians can drill down into the data if needed.</p>
-    <img src="./v1_sleep_pilot.png" class="img-responsive">
+    <img src="v1_sleep_pilot-opt.webp" class="img-responsive">
     <p>Thanks to the efforts and feedback of our participants, we were able to confidently streamline the sleep dashboard to the following form:</p>
-    <img src="./v2_sleep_pilot.png" class="img-responsive">
+    <img src="v2_sleep_pilot-opt.webp" class="img-responsive">
     <p>Clearly much easier to read, without losing any of the granularity. Preparations were made for a second pilot in mid-2021.</p>
 </div>
 
 <h2 class="section_hed">Other Experiments</h2>
 <div class="type_test" id="description_text">
     <p></p>
-    <img src="./social_app_usage.png" class="img-responsive">
+    <img src="social_app_usage-opt.webp" class="img-responsive">
     <p></p>
-    <img src="./emoji_sentiment.png" class="img-responsive">
+    <img src="emoji_sentiment-opt.webp" class="img-responsive">
     <p></p>
     <img src="./topics_time.gif" class="img-responsive">
     <p></p>

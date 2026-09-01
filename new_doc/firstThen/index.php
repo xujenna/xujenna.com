@@ -25,9 +25,9 @@ The founders provided notes from customer discovery interviews with families; I 
 <p class="subhead">
 <b>Product definition</b>
 </p><p>Armed with these insights, I guided the founders through several scoping and refining exercises to turn their lofty vision into an MVP, including user experience mapping, user journey mapping, personas, product matrices, roadmapping, among others:
-<img class="img-responsive" src="./1 User Journey Map.png"><br>
-<img class="img-responsive" src="./2 ADVISOR MEETING_User Journey Map.jpg"><br>
-<img class="img-responsive" src="./3 Screen Shot 2022-09-14 at 9.50.36 AM.png"><br>
+<img class="img-responsive" src="1 User Journey Map-opt.webp"><br>
+<img class="img-responsive" src="2 ADVISOR MEETING_User Journey Map-opt.webp"><br>
+<img class="img-responsive" src="3 Screen Shot 2022-09-14 at 9.50.36 AM-opt.webp"><br>
 </p>
 <p class="subhead">
 <b>Wireframing</b>
@@ -36,7 +36,7 @@ The founders provided notes from customer discovery interviews with families; I 
 <p class="subhead">
 <b>Iterative Feedback & Refinement</b>
 </p><p>We met regularly with FirstThen’s clinical advisors to ensure designs were informed by clinical experience and aligned with best practices. Their feedback fed rounds of iteration, refining features for usability, flexibility, and engagement.
-<img class="img-responsive" src="./4 ADVISOR MEETING_V1 Prototype Wireframes.jpg"><br>
+<img class="img-responsive" src="4 ADVISOR MEETING_V1 Prototype Wireframes-opt.webp"><br>
 </p>
 </div>
 <h2 class="section_hed">V1 MVP Design</h2>
@@ -55,7 +55,7 @@ Our tool enabled parents to customize their child's morning routine with clear s
 <b>Psychoeducation Modules</b>
 </p><p>Developed in collaboration with clinical experts, these modules were designed to be easily digestible during busy days, and offered practical ADHD management education in short, actionable formats. Visual and audio options accommodated different learning styles in parents—likely to have ADHD themselves!<br>
 </p>
-<img class="img-responsive" src="./5 firstThen_demo.gif"><br>
+<video class="img-responsive" src="5 firstThen_demo-opt.mp4" autoplay muted loop playsinline></video><br>
 </div>
 <h2 class="section_hed">Implementation, Testing, and Iteration</h2>
 <div class="type_test" id="description_text">
@@ -92,6 +92,6 @@ Our tool enabled parents to customize their child's morning routine with clear s
 </div>
 <h2 class="section_hed">V2 Preview</h2>
 <div class="type_test" id="description_text">
-<img class="img-responsive" src="./firstThen_demo.gif"><br>
+<video class="img-responsive" src="firstThen_demo-opt.mp4" autoplay muted loop playsinline></video><br>
 </div>
 <!-- end text and image -->

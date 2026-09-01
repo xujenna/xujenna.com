@@ -36,26 +36,26 @@ I began by attending user interviews and observing live demos with the founder a
 <b>Login/signup</b>
 </p><p>
 Previously, lawyers needed the founder to manually set up accounts and upload medical files. I designed and implemented a simple quickstart flow that led users from sign-up/log-in directly into file selection/upload.<br>
-<img class="img-responsive" src="./loginflow.png"><br>
+<img class="img-responsive" src="loginflow-opt.webp"><br>
 </p>
 <p class="subhead">
 <b>Reducing complexity</b>
 </p><p>I introduced a file upload flow that included automatic ingest and parse functionality, obscuring their innovation's complex backend processes to simplify the user flow significantly, with the goal of enabling lawyers to create cases independently.<br>
-<img class="img-responsive" src="./file_upload.png"><br>
+<img class="img-responsive" src="file_upload-opt.webp"><br>
 </p>
 <p class="subhead">
 <b>Simplified Workflows</b>
 <p>
 I replaced the static, text-based UI with linear task flows that made it clear what the next step was. Once a file was uploaded, the UI guided users directly to search. Suggested terms became clickable, and the search results page clearly showed options for adding or removing results from cases, dramatically reducing steps needed.</p>
 <p>Additionally, searches were transformed into workspaces, allowing users to save and revisit their progress easily. A new side navigation bar gave quick access to previous searches, mimicking the familiar PC file management structure lawyers are so accustomed to, as well as a high-level readout of the file to give lawyers visibility into search results.<br>
-<img class="img-responsive" src="./search.png"><br>
+<img class="img-responsive" src="search-opt.webp"><br>
 </p>
 <p class="subhead">
 <b>Usability improvements</b>
 </p><p>The old web platform hindered usability with its text-based presentation, small font sizes, and non-standard and unobvious affordances:<br>
-<img class="img-responsive" src="./old.gif"><br>
+<img class="img-responsive" src="old-opt.webp"><br>
 The new experience:<br>
-<img class="img-responsive" src="./new.gif"><br>
+<img class="img-responsive" src="new-opt.webp"><br>
 
 </p>
 </div>

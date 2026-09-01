@@ -1,6 +1,161 @@
 let projects
 let allTags
 let mobile
+const cardTransitionMs = 650
+const cardCollapseMs = 325
+const cardCollapseOverlapMs = 200
+
+function getDocumentTop(element) {
+    return element.getBoundingClientRect().top + window.scrollY
+}
+
+function smoothScrollTo(top, duration = cardTransitionMs) {
+    return new Promise(resolve => {
+        const start = window.scrollY
+        const distance = top - start
+        const startTime = performance.now()
+        const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+        function step(now) {
+            const elapsed = Math.min((now - startTime) / duration, 1)
+            window.scrollTo(0, start + distance * easeInOutCubic(elapsed))
+            if (elapsed < 1) {
+                requestAnimationFrame(step)
+            } else {
+                resolve()
+            }
+        }
+
+        requestAnimationFrame(step)
+    })
+}
+
+function isFilterCollapsed() {
+    return document.getElementById('filter-minMax-icon').classList.contains('chevron-right-icon')
+}
+
+function getFilterCollapsedHeight() {
+    const filter = document.getElementById('filters')
+    const rect = filter.getBoundingClientRect()
+    return Math.round(rect.height) + 'px'
+}
+
+function getFilterExpandedHeight() {
+    return document.getElementById('filter-inputs').offsetHeight + document.getElementById('filter-minMax').offsetHeight + 'px'
+}
+
+function expandFilterMenu() {
+    const filter = document.getElementById('filters')
+    const inputs = document.getElementById('filter-inputs')
+
+    filter.style.height = getFilterCollapsedHeight()
+    inputs.style.display = 'block'
+    filter.offsetHeight
+    filter.style.height = getFilterExpandedHeight()
+}
+
+function syncCollapsedCardsWithFilter() {
+    const height = isFilterCollapsed() ? getFilterCollapsedHeight() : getFilterExpandedHeight()
+    document.querySelectorAll('.collapsed').forEach(card => {
+        card.style.display = ''
+        card.style.height = height
+        card.style.minHeight = height
+        card.style.maxHeight = height
+        card.style.paddingTop = ''
+        card.style.paddingBottom = ''
+        card.classList.toggle('collapsed-min', isFilterCollapsed())
+    })
+}
+
+function resetCollapsedContent(card) {
+    const linkOut = card.querySelector('.link_out')
+    const readMore = card.querySelector('.readMore')
+
+    if(linkOut) linkOut.style.display = "none"
+    if(readMore) readMore.innerHTML = "Read More <i class='material-icons'>open_in_full</i>"
+}
+
+function restoreCollapsedCard(card, animate = false, targetTop = 0) {
+    if(!animate) {
+        resetCollapsedContent(card)
+        card.removeAttribute('style')
+        card.className = 'project-card displayed no-transition'
+        requestAnimationFrame(() => card.classList.remove('no-transition'))
+        return
+    }
+
+    const expandedRect = card.getBoundingClientRect()
+    const expandedStyle = window.getComputedStyle(card)
+    const overlay = card.cloneNode(true)
+
+    resetCollapsedContent(card)
+
+    overlay.removeAttribute('id')
+    overlay.className = 'project-card expanded no-transition'
+    overlay.style.position = 'fixed'
+    overlay.style.top = expandedRect.top + 'px'
+    overlay.style.left = expandedRect.left + 'px'
+    overlay.style.width = expandedRect.width + 'px'
+    overlay.style.height = expandedRect.height + 'px'
+    overlay.style.margin = '0'
+    overlay.style.padding = expandedStyle.padding
+    overlay.style.overflow = 'hidden'
+    overlay.style.boxSizing = 'border-box'
+    overlay.style.pointerEvents = 'none'
+    overlay.style.zIndex = '1000'
+    document.body.appendChild(overlay)
+
+    card.removeAttribute('style')
+    card.className = 'project-card displayed no-transition'
+    card.style.visibility = 'hidden'
+
+    const collapsedRect = card.getBoundingClientRect()
+    const collapsedStyle = window.getComputedStyle(card)
+    overlay.offsetHeight
+    overlay.classList.remove('no-transition')
+    overlay.style.transition = 'top ' + cardCollapseMs + 'ms ease, left ' + cardCollapseMs + 'ms ease, width ' + cardCollapseMs + 'ms ease, height ' + cardCollapseMs + 'ms ease, padding ' + cardCollapseMs + 'ms ease'
+
+    requestAnimationFrame(() => {
+        overlay.style.top = targetTop + 'px'
+        overlay.style.left = collapsedRect.left + 'px'
+        overlay.style.width = collapsedRect.width + 'px'
+        overlay.style.height = collapsedRect.height + 'px'
+        overlay.style.padding = collapsedStyle.padding
+    })
+
+    setTimeout(() => {
+        overlay.remove()
+        card.removeAttribute('style')
+        card.className = 'project-card displayed no-transition'
+        requestAnimationFrame(() => card.classList.remove('no-transition'))
+    }, cardCollapseMs)
+}
+
+function collapseExpandedCard(card, scrollTop, waitForScroll = true) {
+    if(!waitForScroll) {
+        restoreCollapsedCard(card)
+        return
+    }
+
+    smoothScrollTo(scrollTop, cardTransitionMs)
+    setTimeout(() => restoreCollapsedCard(card, true, 0), Math.max(cardTransitionMs - cardCollapseOverlapMs, 0))
+}
+
+function setExpandedCardWidth(card) {
+    if(!card) return
+
+    if(window.innerWidth <= 681) {
+        card.style.width = ''
+        return
+    }
+
+    const referenceCard = document.querySelector('.project-card.displayed')
+    if(!referenceCard) return
+
+    const referenceWidth = referenceCard.getBoundingClientRect().width
+    const referenceMarginRight = parseFloat(window.getComputedStyle(referenceCard).marginRight) || 0
+    card.style.width = (referenceWidth * 2 + referenceMarginRight) + 'px'
+}
 // const projectsByTags;
 async function loadData() {
     projects = await d3.json('./new/projects.json');
@@ -111,12 +266,21 @@ function displayProjects(tags){
             let projID = proj.project_title.indexOf("</span>") > 0 ? proj.project_title.slice(proj.project_title.indexOf("</span>") + 7).replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-') : proj.project_title.replaceAll(/[^a-zA-Z ]/g, "").replaceAll(' ', '-')
             let projDiv = d3.select('#' + projID)
             let newSrc = proj.documentation.replace('index.php', '')
-            projDiv.selectAll('img')
+            // Documentation HTML is fetched and injected into the main page, so
+            // relative media URLs otherwise resolve against the site root instead
+            // of the documentation file's directory.
+            projDiv.selectAll('.link_out img, .link_out video, .link_out audio, .link_out source')
             .each(function(d, i) {
                 let oldSrc = d3.select(this).attr('src')
+                let normalizedSrc = oldSrc ? oldSrc.replace(/^\.\//, '') : ''
+                let normalizedBase = newSrc.replace(/^\.\//, '')
 
-                // if(!oldSrc.includes('new_doc') && !oldSrc.split('/').some(r => newSrc.split('/').includes(r))){
-                if(!oldSrc.includes('new_doc') && !oldSrc.includes('http')){
+                if(oldSrc &&
+                    !oldSrc.includes('http') &&
+                    !oldSrc.startsWith('/') &&
+                    !oldSrc.startsWith('data:') &&
+                    !oldSrc.startsWith('blob:') &&
+                    !normalizedSrc.startsWith(normalizedBase)){
 
                     // let imgSrc = oldSrc.split('/')[d3.select(this).attr('src').split('/').length-1]
                     d3.select(this)
@@ -151,7 +315,7 @@ function displayProjects(tags){
     } else{
         d3.selectAll('.collapsed')
             .style("right", (d, i) => i * 10)
-            .style("height", d3.select('#filters').style('height').replace('px', ''))
+        syncCollapsedCardsWithFilter()
 
             // .html('')
         filters
@@ -183,27 +347,26 @@ function displayProjects(tags){
 
         if(document.querySelector('.expanded') !== null){ //if something else is big, make it small
             let prevExpanded = document.querySelector('.expanded')
-            document.querySelector('.expanded > .link_out').style.display = "none"
-            document.querySelector('.expanded > .readMore').innerHTML = "Read More <i class='material-icons'>open_in_full</i>"
-            prevExpanded.style = ''
-            prevExpanded.className = 'project-card displayed'
+            let returnTop = parseFloat(prevExpanded.dataset.returnScrollTop)
+            if(Number.isNaN(returnTop)) returnTop = getDocumentTop(prevExpanded)
             if(!targetForExpansion){
-                setTimeout(() => {
-                    prevExpanded.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
-                }, scrollDelay)
+                collapseExpandedCard(prevExpanded, returnTop)
             } else {
+                collapseExpandedCard(prevExpanded, window.scrollY, false)
                 scrollDelay = 250
             }
         }
         if(targetForExpansion){ // make target big
+            targetForExpansion.dataset.returnScrollTop = getDocumentTop(targetForExpansion)
             targetForExpansion.className = 'project-card expanded'
+            targetForExpansion.style.transition = 'width ' + cardTransitionMs + 'ms ease, height ' + cardTransitionMs + 'ms ease, padding ' + cardTransitionMs + 'ms ease'
             targetForExpansion.style.boxSizing = 'border-box'
-            if(window.innerWidth >= 900) targetForExpansion.style.width = document.querySelectorAll('.project-card.displayed > .openProj')[0].parentElement.offsetWidth * 2 + (parseFloat(window.getComputedStyle(document.querySelectorAll('.project-card.displayed')[0]).marginRight))
+            setExpandedCardWidth(targetForExpansion)
             
             document.querySelector('.expanded > .link_out').style.display = "block"
             document.querySelector('.expanded > .readMore').innerHTML = "Minimize <i class='material-icons'>close_fullscreen</i>"
             setTimeout(() => {
-                targetForExpansion.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+                smoothScrollTo(getDocumentTop(targetForExpansion), cardTransitionMs)
             }, scrollDelay)
         }
 
@@ -262,21 +425,20 @@ d3.selectAll("input[type='checkbox']").on("change", (event)=>{
 document.getElementById('filter-minMax').addEventListener('click', event => {
     let caret = document.getElementById('filter-minMax-icon')
     if (caret.classList.contains('expand-less-icon')){
-        caret.classList = 'material-icons expand-more-icon'
-        caret.innerHTML = 'expand_more'
+        caret.className = 'material-icons chevron-right-icon'
+        caret.innerHTML = 'chevron_right'
         document.getElementById('filter-inputs').style.display = 'none'
         // document.getElementById('filters').style.minHeight = '240px';
         document.getElementById('filters').style.height = '40px';
-        document.querySelectorAll('.collapsed').forEach(card => {card.classList.add('collapsed-min')})
+        syncCollapsedCardsWithFilter()
 
     }else{
-        caret.classList = 'material-icons expand-less-icon'
-        caret.innerHTML = 'expand_less'
-        document.getElementById('filter-inputs').style.display = 'block'
+        caret.className = 'material-icons expand-less-icon'
+        caret.innerHTML = 'expand_more'
         // document.getElementById('filters').style.minHeight = 'min-content';
         // document.getElementById('filters').style.height = '240px';
-        document.getElementById('filters').style.height = document.getElementById('filter-inputs').offsetHeight + document.getElementById('filter-minMax').offsetHeight
-        document.querySelectorAll('.collapsed').forEach(card => {card.classList.remove('collapsed-min')})
+        expandFilterMenu()
+        syncCollapsedCardsWithFilter()
     }
 })
 
@@ -305,8 +467,12 @@ function cardHTML(d){
     tags += '</div>'
 
     let more = ''
-    let coverImg = ''
-    let title = ''
+    let canExpand = Boolean(d.descr_HTML)
+    let minMaxClass = canExpand ? ' minMax' : ''
+    let isVideoCover = /\.(mp4|mov|webm)(\?.*)?$/i.test(d.img_src)
+    let coverMedia = isVideoCover ? '<video src="' + d.img_src + '" class="card-img" autoplay muted loop playsinline preload="metadata"></video>' : '<img src="' + d.img_src + '" class="card-img">'
+    let coverImg = '<div class="cover-img-container' + minMaxClass + '">' + coverMedia + '</div>'
+    let title = '<p class="' + (canExpand ? 'minMax ' : '') + 'card-title">' + d.project_title + '</p>'
 
     // if(d.descr_HTML && d.descr_HTML.replaceAll(' ', '').length > 0){
 
@@ -325,13 +491,10 @@ function cardHTML(d){
     //     }
         
         more += '<div class="link_out">' + d.descr_HTML + '</div><div class="minMax readMore lead-in">Read More <i class="material-icons">open_in_full</i></div>'
-        coverImg = '<div class="cover-img-container minMax"><img src="' + d.img_src + '" class="card-img"></div>'
-        title = '<p class="minMax card-title">' + d.project_title + '</p>'
     }
     if(d.link_out){
         more += '<div class="openProj lead-in"><a href="' + d.link_out + '" target="new">Open Project <i class="material-icons">open_in_new</i></a></div>'
-        coverImg = '<a href="' + d.link_out + '" target="new"><img src="' + d.img_src + '" class="card-img"></a>'
-        title = '<p class="card-title"><a href="' + d.link_out + '" target="new" class="card-title">' + d.project_title + '</a></p>'
+
     }
 
     return (coverImg + title + description + role + medium + featured + tags + more )
@@ -341,7 +504,15 @@ window.addEventListener("load", (event) => {
     loadData()
     if(window.innerWidth < 600) mobile = true
     if(mobile) document.getElementById('filter-minMax').click()
-    filters.style("right", "10px")
+    d3.select('#filters').style("right", "10px")
+})
+
+let resizeFrame
+window.addEventListener('resize', () => {
+    if(resizeFrame) cancelAnimationFrame(resizeFrame)
+    resizeFrame = requestAnimationFrame(() => {
+        setExpandedCardWidth(document.querySelector('.project-card.expanded'))
+    })
 })
 
 let tasksCaptions = ["Similar to your basic task management app, there are three states your task can be in: current, pending, and completed. These states are represented in a 3-column layout which organize the Tasks workspace.", "The 'current task' column details the next step of the highest priority task, what’s already been done, and who did it. In this case, a patient’s biomarkers went out of range yesterday, which triggered a workflow to assure their safety.", "The system provides the next decision to be made, per clinical protocol. In this case, the clinician calls the number provided for the patient's emergency contact. They make contact, so the task engine gives options for the next step.", "Once clinical judgement is applied, the system facilitates the chosen action. In this case, the clinicians decides to follow up on an unanswered, previously sent message to the patient. The task engine suggests an editable message to be sent to the patient, Judy.", "Once all available actions are taken, the still uncompleted task goes into the 'pending tasks' column for a specified period of time. Once it's time to follow up, the task will go back to the 'current task' column. In this case, the clinician will check back in one hour.", "Now that the task is pending, the next highest priority task appears in 'current task'. In this case, it's another biomarker trigger. The clinician sent a message to the patient yesterday, but never received a response.", "Since there's been no sign of the patient for 24 hours, the clinician calls the patient at the number provided by the task engine, per clinical protocol, and is able to reach them. The task engine asks for notes on the interaction, as well as the outcome.", "During the phone call with the patient, the clinician in this case makes an appointment for a future session. Once indicated, the task is then allowed to complete according to clinical protocol.", "The task is then archived in the 'completed tasks' column. This record allows clinicians to refer back to past cases, but also instills a sense of accomplishment (arguably the best part of any task management app).", "That's the gist of Tasks. This flow was was presented to product and subsequently added to a distant future roadmap. These explorations informed later designs, which are still in development."]

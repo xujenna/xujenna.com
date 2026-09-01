@@ -125,9 +125,12 @@ body {
 }
 
 a{
-    color:blue;
+    color:red;
     text-decoration: none;
-    text-decoration: underline;
+    /* border-bottom: solid red 1px;
+    padding-bottom:2px; */
+    /* text-decoration: underline; */
+
 }
 
 .card-title{
@@ -146,7 +149,7 @@ a{
     font-size: 1em!important;
 }
 .card-title:hover{
-    color: blue;
+    color: red;
 }
 #hello{
     font-size:2.1em;
@@ -168,7 +171,7 @@ a{
     letter-spacing: 1.25;
     font-size:0.95em;
     margin-bottom:2.5%;
-    color:blue; */
+    color:red; */
     font-family: "meridian";
     font-weight: medium;
     font-size: 100;
@@ -193,7 +196,7 @@ a{
 }
 .project-card > p{
     line-height: 1.4;
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid rgb(235, 235, 235);
     padding-bottom: 16px;
     font-size:0.9em;
 }
@@ -208,7 +211,7 @@ a{
     position: fixed;
     width: 180px;
     /* height: 250px; */
-    min-height: max-content;
+    min-height: 0;
     z-index:100;
     transition: height ease 0.25s;
     overflow:hidden;
@@ -222,13 +225,16 @@ a{
     height:min-content;
     overflow:auto;
 }
+.project-card.no-transition{
+    transition: none !important;
+}
 .project-card:hover{
     top: -10;
     box-shadow: -5px 5px rgb(0 0 0 / 40%);
 }
 
 .tag{
-    background-color: lightgrey;
+    background-color:whitesmoke;
     padding:2px 4px;
     display: inline-block;
     margin-right:4px;
@@ -241,11 +247,12 @@ a{
     cursor:pointer
 }
 .tag:hover{
-    background-color: rgba(0%, 0%, 100%, 40%);
+    /* background-color: rgba(0%, 0%, 100%, 40%); */
+    color:red;
 }
 .tags{
     margin-bottom: 30px;
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid rgb(235, 235, 235);
     padding-bottom: 15px;
 }
 
@@ -273,7 +280,7 @@ a{
     width: 180px;
     /* height: 250px; */
     overflow: hidden;
-    background-color: lightgrey;
+    background-color: gainsboro;
     padding:1%;
 }
 .collapsed:hover{
@@ -281,10 +288,23 @@ a{
 }
 
 .expanded{
-    width: 95.25%;
+    box-sizing: border-box;
+    width: calc(54% + 2%);
+    max-width: calc(100vw - 6%);
     max-height:max-content;
     display:inline-block;
     padding: 4%;
+}
+
+.expanded .link_out,
+.expanded .type_test {
+    max-width: 100%;
+}
+
+.expanded img,
+.expanded video {
+    max-width: 100%;
+    height: auto;
 }
 
 .expanded > .cover-img-container > .card-img {
@@ -314,7 +334,7 @@ a{
     display: inline-block;
 }
 .readMore:hover{
-    color:blue;
+    color:red;
 }
 .openProj{
     margin-bottom:5px;
@@ -330,10 +350,12 @@ a{
 
 .featured-links > a{
     color:black;
-    text-decoration: underline;
+    /* border-bottom: solid rgb(70, 70, 70) 1px;
+    padding-bottom: 2px; */
 }
 .featured-links > a:hover{
-    color:blue;
+    color:red;
+        /* border-bottom: solid red 1px; */
 }
 
 #filter-minMax{
@@ -355,7 +377,8 @@ a{
     font-size: 1.5em;
     vertical-align: middle;
 }
-.expand-more-icon{
+.expand-more-icon,
+.chevron-right-icon{
     font-weight: bold;
     font-size: 1.25em;
     font-weight: bold;
@@ -363,15 +386,17 @@ a{
     vertical-align: middle;
 }
 .collapsed-min{
-    height:40px;
-    min-height: 40px;
+    height:69px;
+    min-height: 69px;
+    max-height: 69px;
+    box-sizing: border-box;
 }
 .quote{
     font-family: 'meridian';
     font-weight: 600;
     font-size: 1.25em;
     padding: 20px;
-    color:blue;
+    color:red;
 }
 .attribution{
     font-size: 0.6em;
@@ -418,6 +443,16 @@ a{
     max-width: 100%;
     margin-bottom: 15px;
     margin-top: 15px;
+}
+
+.browser-window-gif {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    margin: 28px 0 44px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 .inline_screens {
