@@ -747,7 +747,7 @@
     },
     {
         "project_title": "<span class='card-title-place'>condé nast</span>A-List 2014 Prototype",
-        "img_src": "./EDG/A_LIST2/44_alist26-opt.webp",
+        "img_src": "./EDG/A_LIST2/44_alist_fashion-opt.webp",
         "description_short": "Prototype issue showcasing the 'the best performances of 2014', with curated content from Condé Nast's premier titles.",
         "role": [
             "Designer",
@@ -770,6 +770,8 @@
             "44_alist24-opt.webp",
             "44_alist25-opt.webp",
             "44_alist26-opt.webp",
+            "44_alist_fashion-opt.webp",
+            "44_alist_beyonce-opt.webp",
             "44_alist27-opt.webp"
         ],
         "featured_on": []
@@ -793,11 +795,6 @@
         ],
         "documentation": "./EDG/EPI_AMERICA/index.php",
         "imgs": [
-            "38_sketches-opt.webp",
-            "38_sketches2-opt.webp",
-            "38_sketches3-opt.webp",
-            "38_sketches4-opt.webp",
-            "38_sketches5-opt.webp",
             "38_spread13-opt.webp",
             "38_spread14-opt.webp",
             "38_spread15-opt.webp",
@@ -828,6 +825,8 @@
         "imgs": [
             "41_spread1-opt.webp",
             "41_spread12-opt.webp",
+            "41_spread_red-opt.webp",
+            "41_spread_yellow-opt.webp",
             "41_spread13-opt.webp",
             "41_spread14-opt.webp"
         ],

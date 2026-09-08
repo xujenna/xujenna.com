@@ -445,6 +445,16 @@ a{
     margin-top: 15px;
 }
 
+/* hairline around print spreads (replaces the border that used to be baked into the images) */
+.print-page{
+    border: 1px solid rgb(0 0 0 / 40%);
+    box-sizing: border-box;
+}
+.print-page.single-page{
+    display: block;   /* one per line, so two singles never read as a spread */
+    width: 50%;       /* one page-width of a spread */
+}
+
 .browser-window-gif {
     display: block;
     width: 100%;

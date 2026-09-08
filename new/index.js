@@ -200,8 +200,12 @@ async function loadData() {
     
             // if(d.imgs && !d.descr_HTML.includes(d.imgs[0])){
             if(project.imgs){
+                // Print spreads get a hairline border via CSS (see .print-page)
+                let imgClass = project.medium && project.medium.includes('print') ? 'img-responsive print-page' : 'img-responsive'
+                // Portrait images are single pages: tag them on load so CSS can size them to one page-width of a spread
+                let onload = project.medium && project.medium.includes('print') ? " onload='if(this.naturalWidth<this.naturalHeight)this.classList.add(\"single-page\")'" : ''
                 project.imgs.forEach(file => {
-                    project.descr_HTML += "<img src='" + project.documentation.replace('index.php', '') + file + "' class='img-responsive'>"
+                    project.descr_HTML += "<img src='" + project.documentation.replace('index.php', '') + file + "' class='" + imgClass + "'" + onload + ">"
                 })
             }
         
@@ -470,7 +474,8 @@ function cardHTML(d){
     let canExpand = Boolean(d.descr_HTML)
     let minMaxClass = canExpand ? ' minMax' : ''
     let isVideoCover = /\.(mp4|mov|webm)(\?.*)?$/i.test(d.img_src)
-    let coverMedia = isVideoCover ? '<video src="' + d.img_src + '" class="card-img" autoplay muted loop playsinline preload="metadata"></video>' : '<img src="' + d.img_src + '" class="card-img">'
+    let coverClass = d.medium && d.medium.includes('print') ? 'card-img print-page' : 'card-img'
+    let coverMedia = isVideoCover ? '<video src="' + d.img_src + '" class="card-img" autoplay muted loop playsinline preload="metadata"></video>' : '<img src="' + d.img_src + '" class="' + coverClass + '">'
     let coverImg = '<div class="cover-img-container' + minMaxClass + '">' + coverMedia + '</div>'
     let title = '<p class="' + (canExpand ? 'minMax ' : '') + 'card-title">' + d.project_title + '</p>'
 
