@@ -50,15 +50,15 @@
 	<p class="caption">After: Mem 2.0</p>
 </div>
 
+
+<h2 class="section_hed">Process</h2>
 <p>
-	The new brand in a nutshell: a match for great minds. Mem as your thought partner, that works alongside you and has your back. For creative, tireless, nonlinear thinkers and leaders, drawn to the promise that Mem would organize their multifaceted lives for them.
+	The gist of the rebrand: a match for great minds. Mem as your thought partner, that works alongside you and has your back. For creative, tireless, nonlinear thinkers and leaders, drawn to the promise that Mem would organize their multifaceted lives for them.
 </p>
 <div class="case-study-figure">
 	<img class="img-responsive case-study-media" src="brand-guidelines-opt.webp">
 	<p class="caption">Red Antler’s brand guidelines</p>
 </div>
-
-<h2 class="section_hed">Process</h2>
 <p class="subhead">
 <b>Explore</b>
 </p>
