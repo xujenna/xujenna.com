@@ -1,24 +1,4 @@
 [
-        {
-        "project_title": "<span class='card-title-place'>mem</span>The World's First Agentic Web Clipper",
-        "img_src": "./mem/chrome-extension-draft/chrome-web-store-assets-carousel-1280.webp",
-        "description_short": "Turning anything on the internet into a summarized and organized note with one click.",
-        "role": [
-            "Product Design Lead"
-        ],
-        "tags": [
-            "web",
-            "product design",
-            "case study"
-        ],
-        "medium": [
-            "Figma"
-        ],
-        "imgs": [],
-        "link_out": "https://chromewebstore.google.com/detail/mem-web-clipper/kgfnifoledgeaphonbpbpfaepckpdgkg",
-        "documentation": "./mem/chrome-extension-draft/index.php",
-        "featured_on": []
-    },
     {
         "project_title": "<span class='card-title-place'>mem</span>Mem 2.0 Redesign + Relaunch",
         "img_src": "./mem/mem-relaunch-draft/highlight-reel-web.mp4",
@@ -45,6 +25,26 @@
                 "url": "https://www.producthunt.com/products/mem-2-0"
             }
         ]
+    },
+            {
+        "project_title": "<span class='card-title-place'>mem</span>The World's First Agentic Web Clipper",
+        "img_src": "./mem/chrome-extension-draft/chrome-web-store-assets-carousel-1280.webp",
+        "description_short": "Turning anything on the internet into a summarized and organized note with one click.",
+        "role": [
+            "Product Design Lead"
+        ],
+        "tags": [
+            "web",
+            "product design",
+            "case study"
+        ],
+        "medium": [
+            "Figma"
+        ],
+        "imgs": [],
+        "link_out": "https://chromewebstore.google.com/detail/mem-web-clipper/kgfnifoledgeaphonbpbpfaepckpdgkg",
+        "documentation": "./mem/chrome-extension-draft/index.php",
+        "featured_on": []
     },
     {
         "project_title": "<span class='card-title-place'>freelance</span>Math Puzzles for the Masses",
