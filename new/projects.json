@@ -2,6 +2,7 @@
     {
         "project_title": "<span class='card-title-place'>mem</span>Mem 2.0 Redesign + Relaunch",
         "img_src": "./mem/mem-relaunch-draft/highlight-reel-web.mp4",
+        "poster": "./mem/mem-relaunch-draft/highlight-reel-poster.webp",
         "description_short": "Gut-renovating the home for everything on your mind.",
         "role": [
             "Product Design Lead"
@@ -62,7 +63,7 @@
             "Figma"
         ],
         "imgs": [
-            "happypath-opt.webp"
+            "happypath-opt.mp4"
         ],
         "documentation": "./InkwellGames/index.php",
         "featured_on": []
@@ -177,7 +178,8 @@
     },
     {
         "project_title": "<span class='card-title-place'>freelance</span>Designing for Families with ADHD",
-        "img_src": "./new_doc/firstThen/firstThen_demo-opt.webp",
+        "img_src": "./new_doc/firstThen/firstThen_demo-opt.mp4",
+        "poster": "./new_doc/firstThen/firstThen_demo-poster.webp",
         "description_short": "MVP development, design, and prototyping for FirstThen.",
         "role": [
             "Product Design Lead",
@@ -208,7 +210,8 @@
     },
     {
         "project_title": "<span class='card-title-place'>personal</span>How New York Are You?",
-        "img_src": "./new_doc/20181216_175451-opt.webp",
+        "img_src": "./new_doc/20181216_175451-opt.mp4",
+        "poster": "./new_doc/20181216_175451-poster.webp",
         "description_short": "Objective proof that you're a true New Yorker...or not. Requires Chrome on desktop.",
         "role": [
             "Everything ✌️"
@@ -268,7 +271,7 @@
         "imgs": [
             "redesign_mobile-opt.webp",
             "redesign_web-opt.webp",
-            "design_system-opt.webp"
+            "design_system-opt.mp4"
         ],
         "medium": [
             "Figma"
@@ -353,7 +356,8 @@
     },
     {
         "project_title": "<span class='card-title-place'>mindstrong</span>Mobile App Redesign",
-        "img_src": "./new_doc/cover-opt.webp",
+        "img_src": "./new_doc/cover-opt.mp4",
+        "poster": "./new_doc/cover-poster.webp",
         "description_short": "Exploring how branding, visual language, and copy can help Mindstrong's members feel supported, engaged, and understood.",
         "role": [
             "Product Design Lead",
@@ -530,7 +534,8 @@
     },
     {
         "project_title": "<span class='card-title-place'>personal</span>Life Support",
-        "img_src": "./new_doc/clip-opt.webp",
+        "img_src": "./new_doc/clip-opt.mp4",
+        "poster": "./new_doc/clip-poster.webp",
         "description_short": "Teaching a voice assistant to teach me back.",
         "role": [
             "Everything ✌️"
@@ -551,7 +556,8 @@
     },
     {
         "project_title": "<span class='card-title-place'>personal</span>Mad Libs",
-        "img_src": "./new_doc/mad_libs_transcript.gif",
+        "img_src": "./new_doc/mad_libs_transcript-opt.mp4",
+        "poster": "./new_doc/mad_libs_transcript-poster.webp",
         "description_short": "A browser-based couples therapist. Requires Chrome on desktop.",
         "role": [
             "Everything ✌️"
@@ -574,7 +580,8 @@
     },
     {
         "project_title": "<span class='card-title-place'>personal</span>Good Vibrations",
-        "img_src": "./new_doc/good_vibes-opt.webp",
+        "img_src": "./new_doc/good_vibes-opt.mp4",
+        "poster": "./new_doc/good_vibes-poster.webp",
         "description_short": "Enter the mind of a monk via our pan-sensory brain entrainment dome ✨; a collaboration with Barak Chamo.",
         "role": [
             "Full Stack Developer",

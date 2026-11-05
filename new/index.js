@@ -67,6 +67,14 @@ function syncCollapsedCardsWithFilter() {
     })
 }
 
+function loadDeferredMedia(card) {
+    card.querySelectorAll('.link_out [data-src]').forEach(el => {
+        el.setAttribute('src', el.getAttribute('data-src'))
+        el.removeAttribute('data-src')
+        if(el.tagName === 'SOURCE') el.parentElement.load()
+    })
+}
+
 function resetCollapsedContent(card) {
     const linkOut = card.querySelector('.link_out')
     const readMore = card.querySelector('.readMore')
@@ -159,7 +167,8 @@ function setExpandedCardWidth(card) {
 // const projectsByTags;
 async function loadData() {
     projects = await d3.json('./new/projects.json');
-    for (const project of projects) {
+    // fetch every write-up in parallel so the cards don't wait on them one by one
+    await Promise.all(projects.map(async project => {
         if(project.documentation){
             let rawHTML = await d3.text(project.documentation)
             let splitHTML = rawHTML.split('\n')
@@ -205,14 +214,23 @@ async function loadData() {
                 // Portrait images are single pages: tag them on load so CSS can size them to one page-width of a spread
                 let onload = project.medium && project.medium.includes('print') ? " onload='if(this.naturalWidth<this.naturalHeight)this.classList.add(\"single-page\")'" : ''
                 project.imgs.forEach(file => {
-                    project.descr_HTML += "<img src='" + project.documentation.replace('index.php', '') + file + "' class='" + imgClass + "'" + onload + ">"
+                    let fileSrc = project.documentation.replace('index.php', '') + file
+                    if(/\.(mp4|webm)$/i.test(file)){
+                        project.descr_HTML += "<video src='" + fileSrc + "' class='" + imgClass + "' autoplay muted loop playsinline></video>"
+                    } else {
+                        project.descr_HTML += "<img src='" + fileSrc + "' class='" + imgClass + "'" + onload + ">"
+                    }
                 })
             }
+
+            // Hold back write-up media until its card is expanded (see loadDeferredMedia),
+            // so hidden case studies don't compete with the cover images on page load
+            project.descr_HTML = project.descr_HTML.replace(/(<(?:img|video|audio|source|iframe)\b[^>]*?\s)src=/gi, '$1data-src=')
         
             
             console.log(project.descr_HTML)
         }
-    }
+    }))
 
     allTags = new Set(projects.reduce((acc,val)=> {return acc.concat(val.tags)}, []))
     // projectsByTags = {}
@@ -273,9 +291,9 @@ function displayProjects(tags){
             // Documentation HTML is fetched and injected into the main page, so
             // relative media URLs otherwise resolve against the site root instead
             // of the documentation file's directory.
-            projDiv.selectAll('.link_out img, .link_out video, .link_out audio, .link_out source')
+            projDiv.selectAll('.link_out [data-src]')
             .each(function(d, i) {
-                let oldSrc = d3.select(this).attr('src')
+                let oldSrc = d3.select(this).attr('data-src')
                 let normalizedSrc = oldSrc ? oldSrc.replace(/^\.\//, '') : ''
                 let normalizedBase = newSrc.replace(/^\.\//, '')
 
@@ -288,7 +306,7 @@ function displayProjects(tags){
 
                     // let imgSrc = oldSrc.split('/')[d3.select(this).attr('src').split('/').length-1]
                     d3.select(this)
-                        .attr('src', newSrc + oldSrc.replace(newSrc, '').replace('./', ''));
+                        .attr('data-src', newSrc + oldSrc.replace(newSrc, '').replace('./', ''));
                     // .attr('src', newSrc + imgSrc.replace('./', ''));
                 } 
                 // else if(oldSrc.split('/').some(r => newSrc.split('/').includes(r)) && !oldSrc.includes('new_doc') && !oldSrc.includes('http')) {
@@ -368,6 +386,7 @@ function displayProjects(tags){
             setExpandedCardWidth(targetForExpansion)
             
             document.querySelector('.expanded > .link_out').style.display = "block"
+            loadDeferredMedia(targetForExpansion)
             document.querySelector('.expanded > .readMore').innerHTML = "Minimize <i class='material-icons'>close_fullscreen</i>"
             setTimeout(() => {
                 smoothScrollTo(getDocumentTop(targetForExpansion), cardTransitionMs)
@@ -475,7 +494,7 @@ function cardHTML(d){
     let minMaxClass = canExpand ? ' minMax' : ''
     let isVideoCover = /\.(mp4|mov|webm)(\?.*)?$/i.test(d.img_src)
     let coverClass = d.medium && d.medium.includes('print') ? 'card-img print-page' : 'card-img'
-    let coverMedia = isVideoCover ? '<video src="' + d.img_src + '" class="card-img" autoplay muted loop playsinline preload="metadata"></video>' : '<img src="' + d.img_src + '" class="' + coverClass + '">'
+    let coverMedia = isVideoCover ? '<video src="' + d.img_src + '"' + (d.poster ? ' poster="' + d.poster + '"' : '') + ' class="card-img" autoplay muted loop playsinline preload="metadata"></video>' : '<img src="' + d.img_src + '" class="' + coverClass + '">'
     let coverImg = '<div class="cover-img-container' + minMaxClass + '">' + coverMedia + '</div>'
     let title = '<p class="' + (canExpand ? 'minMax ' : '') + 'card-title">' + d.project_title + '</p>'
 
